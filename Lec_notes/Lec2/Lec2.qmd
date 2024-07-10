@@ -1,0 +1,66 @@
+---
+title: "Day 2: Data wrangling with data.table (and tidyverse package)"
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - default 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+webr:
+  packages: ['ggplot2', 'dplyr']
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+
+## Objective of this Lecture {.center}
+
++ Do basic mathematical oeprations
++ Define objects in R
++ learn different object types 
+
+
+
+## Today's outline: {.center}
+
++ Types of R-object
+  + 
++ Basisc of R operation:
+  + calculation
+  + select row and columns 
+  + create a new column
+
+## data.table vs dplyr {.center}
+
++ data.table 
+  + pros:
+    + fast computation especially for large data (multi-threads)
+      + if you are interested in speed, use `data.table`
+    + less syntax compared to `dplyr`
+  + cons:
+    + you cannot use the same syntax when you use spatial data (`sf` object and `StatRaster` object)
+
++ dplyr
+  + pros:
+    + the sytax is pretty straightforward 
+      + e.g., select column with `select()`, filter rows with `filter()`
+      + Spatial object such as `sf` package (for vector object) and `terra` package (for raster object) support `dplyr` syntax.
+  + cons:
+    + slow computation for large data
+    + you need to know lots of functions to do the same thing as `data.table`
+
