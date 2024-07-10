@@ -1,0 +1,137 @@
+---
+title: "Day 1: Basics of R"
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - default 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+webr:
+  packages: [""]
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+## Tips {.center}
+
++ Hitting "o" can give you 
++ You can directly write and run R codes, and see the outputs on slides. 
+  + When you want to run the code, hit `command` + `enter` (Mac) or `Control` + `enter` (Windows). Or you can click the "Run" button on the top left corner of the code chunk.
+
+
+## Objective of this Lecture {.center}
+
++ Do basic mathematical oeprations
++ Define objects in R
++ learn different object types 
+
+
+## Today's outline: {.center}
+
++ Types of R-object
+  + 
++ Basisc of R operation:
+  + calculation
+  + select row and columns 
+  + create a new column
+
+
++ Appendix: 
+  + Faster vector calculation for Mac user 
+    + [here](https://gist.github.com/nicebread/6920c8287d7bffb03007)
+    + [here](https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas)
+
+## Rstudio tips {.center}
++ `command` + `enter` (Mac) runs the code (`Control` + `enter` (Windows))
++ `command` (`Control`) + `1` for Mac (Windows) to move the cursor to the source pane
++ `command` (`Control`) + `2` for Mac (Windows) to move the cursor to the source pane
++ `Option` + `-` (`Alt` + `-` ) for Mac (Windows) to inset the assignment operator (`<-`)
+
+
+## Basic element types (atomic mode)
++ integer: e.g., 1, 3,
++ numeric (double): e.g., 1, 1.3
++ complex:
++ logical (boolean): true or false
++ character: combination of letters (numerical operations not allowed)
+
+
+## Basic operations in R
+
+::: {.panel-tabset}
+
+### Basic arithmetics
+
+```{webr-r} 
+#--- addition ---#
+2 + 3
+#--- subtraction ---#
+6 - 2
+#--- multiplications ---#
+6 * 2
+#--- exponentiation ---#
+2 ^ 3
+#--- division ---#
+6 / 2
+#--- remainder ---#
+9 %% 4
+#--- quotient ---#
+9 %/% 4
+```
+
+### logical values and operators (important!)
+
+```{webr-r}
+#--- true or false ---#
+5 == 5
+5 == 4
+5 > 4
+5 < 4 
+```
+
+
+### Assignment
+
+You can assign contents (numeric numbers, character, boolean, etc) to an object on R and reuse it later using either `<-` or `=`.
+
+```{r}
+
+```
+
+:::
+
+
+## Objects
+
+R is an object-oriented programming (OOP), which basically means:
+
+*"Everything is an object and everything has a name."*
+
+<br>
+
+::: {.callout-note title="Different object types (classes)"}
++ vector
++ matrix
++ data.frame
++ list
++ function
+:::
+
+
+
+

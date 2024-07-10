@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="Lec_day1_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lec_day1_files/libs/quarto-html/tabby.min.js"></script>
-<script src="Lec_day1_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lec_day1_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="Lec_day1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lec_day1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="Lec_day1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="Lec_day1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
-
-  <meta name="author" content="Shunkei Kakimoto">
-  <title>Day 1: Basics of R</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="Lec_day1_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="Lec_day1_files/libs/revealjs/dist/reveal.css">
-  <style>
+<script src="Lec1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lec1_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Lec1_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lec1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Lec1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lec1_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Lec1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Lec1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+<meta name="author" content="Shunkei Kakimoto">
+<title>Day 1: Basics of R</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="Lec1_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="Lec1_files/libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -30,12 +30,12 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="Lec_day1_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="Lec_day1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="Lec_day1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="Lec_day1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="Lec_day1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="Lec1_files/libs/revealjs/dist/theme/quarto.css">
+<link href="Lec1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="Lec1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="Lec1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="Lec1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -233,7 +233,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -321,10 +321,9 @@
       margin-right: 0; 
     }
   </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-  <style type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style type="text/css">
   .monaco-editor pre {
     background-color: unset !important;
   }
@@ -585,11 +584,11 @@
   }
 
   </style>
-  <script type="module">
+<script type="module">
   // Document level settings ----
 
   // Determine if we need to install R packages
-  globalThis.qwebrInstallRPackagesList = ['ggplot2', 'dplyr', 'sf', 'sp'];
+  globalThis.qwebrInstallRPackagesList = [''];
 
   // Specify possible locations to search for the repository
   globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -611,10 +610,9 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","context":"interactive","fig-cap":"","warning":"true","read-only":"false","editor-word-wrap":"true","editor-max-height":"","editor-font-scale":"0.8","label":"unnamed-chunk-1","out-height":"","dpi":72,"editor-quick-suggestions":"false","fig-height":5,"output":"true","message":"true","comment":"","autorun":"false","classes":"","results":"markup","fig-width":7},"code":"plot(pressure)"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"#--- addition ---#\n2 + 3\n#--- subtraction ---#\n6 - 2\n#--- multiplications ---#\n6 * 2\n#--- exponentiation ---#\n2 ^ 3\n#--- division ---#\n6 / 2\n#--- remainder ---#\n9 %% 4\n#--- quotient ---#\n9 %/% 4","options":{"fig-height":5,"fig-width":7,"classes":"","out-width":"700px","editor-max-height":"","output":"true","editor-quick-suggestions":"false","results":"markup","message":"true","comment":"","editor-font-scale":"0.8","warning":"true","label":"unnamed-chunk-1","out-height":"","dpi":72,"autorun":"false","fig-cap":"","read-only":"false","editor-word-wrap":"true","context":"interactive"}},{"id":2,"code":"#--- true or false ---#\n5 == 5\n5 == 4\n5 > 4\n5 < 4 ","options":{"fig-height":5,"fig-width":7,"classes":"","out-width":"700px","editor-max-height":"","output":"true","editor-quick-suggestions":"false","results":"markup","message":"true","comment":"","editor-font-scale":"0.8","warning":"true","label":"unnamed-chunk-2","out-height":"","dpi":72,"autorun":"false","fig-cap":"","read-only":"false","editor-word-wrap":"true","context":"interactive"}}];
 
-  </script>
-  <script type="module">
+  </script><script type="module">
   // Declare startupMessageQWebR globally
   globalThis.qwebrStartupMessage = document.createElement("p");
 
@@ -983,8 +981,7 @@
 
   displayStartupMessage(qwebrShowStartupMessage, qwebrShowHeaderMessage);
   qwebrOffScreenCanvasSupportWarningMessage();
-  </script>
-  <script type="module">
+  </script><script type="module">
   // Define a global storage and retrieval solution ----
 
   // Store commands executed in R
@@ -1095,8 +1092,7 @@
   command_history_download_btn.onclick = function() {
       downloadRHistory();
   };
-  </script>
-  <script type="module">
+  </script><script type="module">
   // Supported Evaluation Types for Context
   globalThis.EvalTypes = Object.freeze({
     Interactive: 'interactive',
@@ -1371,8 +1367,7 @@
 
     return container;
   }
-  </script>
-  <script type="module">
+  </script><script type="module">
   // Function to install a single package
   async function qwebrInstallRPackage(packageName) {
     await mainWebR.evalRVoid(`webr::install('${packageName}');`);
@@ -1468,8 +1463,7 @@
   // Stop timer
   const initializeWebRTimerEnd = performance.now();
 
-  </script>
-  <script type="module">
+  </script><script type="module">
   // Function to verify a given JavaScript Object is empty
   globalThis.qwebrIsObjectEmpty = function (arr) {
       return Object.keys(arr).length === 0;
@@ -1810,8 +1804,7 @@
   </script>
 </head>
 <body class="quarto-light">
-<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
-<script type="module" id="qwebr-monaco-editor-init">
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script><script type="module" id="qwebr-monaco-editor-init">
 
   // Configure the Monaco Editor's loader
   require.config({
@@ -1819,8 +1812,7 @@
       'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
     }
   });
-</script>
-<script type="module">
+</script><script type="module">
 // Function to update Monaco Editors when body class changes
 function updateMonacoEditorsOnBodyClassChange() {
     // Select the body element
@@ -1863,8 +1855,7 @@ function updateMonacoEditorTheme() {
 
 // Call the function to start observing changes to body class
 updateMonacoEditorsOnBodyClassChange();
-</script>
-<script type="module">
+</script><script type="module">
 // Global array to store Monaco Editor instances
 globalThis.qwebrEditorInstances = [];
 
@@ -2093,12 +2084,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
   
 }
-</script>
-  <div class="reveal">
+</script><div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#447099" class="quarto-title-block center">
-  <h1 class="title">Day 1: Basics of R</h1>
+<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Day 1: Basics of R</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -2108,71 +2097,113 @@ Shunkei Kakimoto
 </div>
 </div>
 
-</section>
-<section id="todays-outline" class="slide level2 center">
-<h2>Today’s outline:</h2>
+</section><section id="tips" class="slide level2 center"><h2>Tips</h2>
 <ul>
-<li>Introduction
+<li>Hitting “o” can give you</li>
+<li>You can directly write and run R codes, and see the outputs on slides.
 <ul>
-<li>About class</li>
-<li>About R and R studio</li>
-</ul></li>
-<li>Basisc of R:</li>
+<li>When you want to run the code, hit <code>command</code> + <code>enter</code> (Mac) or <code>Control</code> + <code>enter</code> (Windows). Or you can click the “Run” button on the top left corner of the code chunk.</li>
 </ul>
-</section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
-
-</section>
-<section id="before-starting" class="slide level2 center">
-<h2>Before starting</h2>
-<div>
+</li>
+</ul></section><section id="objective-of-this-lecture" class="slide level2 center"><h2>Objective of this Lecture</h2>
 <ul>
-<li class="fragment">First</li>
-<li class="fragment">Second</li>
+<li>Do basic mathematical oeprations</li>
+<li>Define objects in R</li>
+<li>learn different object types</li>
+</ul></section><section id="todays-outline" class="slide level2 center"><h2>Today’s outline:</h2>
+<ul>
+<li>Types of R-object
+<ul>
+<li>
+</li></ul>
+</li>
+<li>Basisc of R operation:
+<ul>
+<li>calculation</li>
+<li>select row and columns</li>
+<li>create a new column</li>
 </ul>
-</div>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p>contents…</p>
-</div><div class="column" style="width:60%;">
-<p>contents…</p>
-</div>
-</div>
-</section>
-<section id="about-class" class="slide level2 center">
-<h2>About class</h2>
+</li>
+<li>Appendix:
+<ul>
+<li>Faster vector calculation for Mac user
+<ul>
+<li><a href="https://gist.github.com/nicebread/6920c8287d7bffb03007">here</a></li>
+<li><a href="https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas">here</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></section><section id="rstudio-tips" class="slide level2 center"><h2>Rstudio tips</h2>
+<ul>
+<li>
+<code>command</code> + <code>enter</code> (Mac) runs the code (<code>Control</code> + <code>enter</code> (Windows))</li>
+<li>
+<code>command</code> (<code>Control</code>) + <code>1</code> for Mac (Windows) to move the cursor to the source pane</li>
+<li>
+<code>command</code> (<code>Control</code>) + <code>2</code> for Mac (Windows) to move the cursor to the source pane</li>
+<li>
+<code>Option</code> + <code>-</code> (<code>Alt</code> + <code>-</code> ) for Mac (Windows) to inset the assignment operator (<code>&lt;-</code>)</li>
+</ul></section><section id="basic-element-types-atomic-mode" class="slide level2"><h2>Basic element types (atomic mode)</h2>
+<ul>
+<li>integer: e.g., 1, 3,</li>
+<li>numeric (double): e.g., 1, 1.3</li>
+<li>complex:</li>
+<li>logical (boolean): true or false</li>
+<li>character: combination of letters (numerical operations not allowed)</li>
+</ul></section><section id="basic-operations-in-r" class="slide level2"><h2>Basic operations in R</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Basic arithmetics</a></li>
+<li><a href="#tabset-1-2">logical values and operators (important!)</a></li>
+<li><a href="#tabset-1-3">Assignment</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-1-2">
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-1-3">
+<p>You can assign contents (numeric numbers, character, boolean, etc) to an object on R and reuse it later using either <code>&lt;-</code> or <code>=</code>.</p>
+</div>
+</div>
+</div>
+</section><section id="objects" class="slide level2"><h2>Objects</h2>
+<p>R is an object-oriented programming (OOP), which basically means:</p>
+<p><em>“Everything is an object and everything has a name.”</em></p>
+<p><br></p>
+<div title="Different object types (classes)">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Different object types (classes)</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>vector</li>
+<li>matrix</li>
+<li>data.frame</li>
+<li>list</li>
+<li>function</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
-    </div>
+</section>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="Lec_day1_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="Lec_day1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="Lec_day1_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="Lec_day1_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Lec1_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Lec1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Lec1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Lec1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Lec1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Lec1_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="Lec1_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="Lec1_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Lec1_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Lec1_files/libs/revealjs/plugin/search/search.js"></script><script src="Lec1_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Lec1_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -2184,7 +2215,7 @@ Shunkei Kakimoto
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":"1719001450027107647","id":"c0956088c8999bcd","url":"https://reveal-multiplex.glitch.me/"},
+'multiplex': {"secret":null,"id":"1194bad79d98eb73","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2358,13 +2389,47 @@ Shunkei Kakimoto
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -2539,8 +2604,7 @@ Shunkei Kakimoto
         }
       }
     });
-    </script>
-    <script type="module">
+    </script><script type="module">
     // Handle cell initialization initialization
     qwebrCellDetails.map(
       (entry) => {
@@ -2656,6 +2720,6 @@ Shunkei Kakimoto
       }
     );
     </script>
-    
+
 
 </body></html>
