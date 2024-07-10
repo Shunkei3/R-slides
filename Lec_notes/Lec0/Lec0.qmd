@@ -1,0 +1,214 @@
+---
+title: "Day 1: Introduction to R Statistical Analysis Software"
+subtitle: Summer - 2024, University of Minnesota
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - simple 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+webr:
+  packages: ['ggplot2', 'dplyr']
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+## For myself {.center} (delete this later)
++ show some R work to get an image of goals of this course
+  + Monte Calro Simulation 
+    + Measurement error simulation
+    + unbiased estimator
++ 
+
+
+## Outline {.center}
+
+::: {.callout-important title="Objective of this slide deck"} 
++ Introduce myself
++ Clarify the goal and plan of this course
+:::
+
+<br>
+
+### Table of contents
++ Introduction 
++ Motivation
+  + What you can do with R?
+  + How do we use R in course in APEC?
+  + Basic knowledge about R and Rstudio (R 101)
++ Plan for this course
+
+
+## About myself {.center}
+
++ **Shunkei Kakimoto**
+  + Originally from Japan
+  + 3rd year Ph.D. in Applied Economics (from this fall)
+  + Area of interests: Environmental and Resource Economics, Water Economics, Groundwater Mangement, and Empirical analysis of climate change imapct on agriculture, grondwater management.
+  + I was TA in Econometrics I and II (APEC 8211-12) and Micro Economics III and IV (APEC 8003-04)
+
+
+## Current Research {.center}
+
++ Measurement Error Issues in Gridded Weather Data
+
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+
+# Motivation to learn R 
+
+## What you can do with R? {.center}
+
++ Data Analysis (of course)
+  + Data type: Tabular data, Spatial data
+  + Regression analysis, spatial analysis, machine learning
+
++ Data Visualization
+  + ggplot2
+  + leaflet
+
+Once you results, you can easily incorporate the results into your research paper or presentation slides.
+
++ Write an academic paper and make presentation slides
+  + Qarto presentations
+  + xaringan presentation with Rmarkdown
+    + Dynamic documents
+
+
+## How R is used in the course of APEC?{.center}
+
++ We use R in a serise of Econometric couses (APEC 8211-8214)
+
+Specifically, 
+
++ To conduct regression analysis (e.g., OLS, IV, FE, etc.)
++ To conduct Monte Calro simulation to understand the property of the statistical tools
+  + e.g., understand the difference in variance estimators in the presence of heteroskedasticity. 
+
++ Even if you are not familier or not confident in R, that's okay!
+  + The required operation of R in these courses is not difficult.
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## Objective of this course {.center}
+
+The primary goals of this course is to provide you with the basic knowledge of R to conduct the following tasks:
+
+::: {.callout-important title="Primary Goals"}
++ Understand the basic operation of data manupulation
+  + e.g., selecting row and columns, creating new variables, reshaping data, merging two datasets.
+
++ Understand how to run regression analsysis and to create the regression table.
+
++ Understand how to run Monte Calro simulation using your own function and loops.
+
++ Understand the basic data visualization skill with ggplot2 package.
+:::
+
+That's it!!
+
+::: {.notes}
++ These tasks might be too easy for some students, so I will provide some additional advanved topics for those students.
+:::
+
+## R and Rstudio {.center}
+
+If you haven't done so, please install the following software:
+
++ Install R ([here](https://www.r-project.org/))
++ Install R studio ([here](https://posit.co/))
+
+<br>
+
+::: {.callout-tip title="What is R?"}
++ R is a programming language and free software environment for statistical computing and graphics.
++ has been and is evolving rapidly by the contributions of its users
+  + state-of-the-art statistical methods (e.g., machine learning algorithms) written by the developers of the methods
+  + geographic information system (GIS)
+  + big data handling and analysis
+:::
+
+<br>
+
+::: {.callout-tip title="What is Rstudio?"}
++ RStudio is an integrated development environment (IDE) for R. 
++ by far the most popular graphic user interface of R.
+:::
+
++ So, in summary, R is the programming language itself, while RStudio is the IDE that provides a more user-friendly and efficient environment for working with R.
+
+::: {.notes}
+
++ R has a terrible graphic user interface. Rstudio, which is another application built on top of R, provides a more user-friendly and efficient environment for working with R.
+:::
+
+
+
+## Course Details {.center}
+
+| Day  | Topic  |
+|--------|--------|
+| Day1  | Introduction to R: Basic operation of R   |
+| Day2   | Data warngling with `data.table`(and `dplyr` package)  |
+| Day3 | Data visualization with ggplot2   |
+| Day4 | Econometric analysis with R, and Monte Calro simulation  |
+| Day5 | Write functions for more complicated Monte Carlo simulation
+<!-- : Schedule {.striped .hover} -->
+
+<br>
+
++ This is a tentative plan for this course. I am frexible to change the plan based on your needs and our progress.
+
+<!-- + I use slides to proceed my lecture.
+  + On the slides, we can run R codes and see the outputs.
+
++ After of the each chunk of the lecture, we will do exercise problems together. -->
+
+
+::: {.notes}
++ These are the plans for this course. Since we only have 5 days, the topics that I can hand with is very limited. 
++ I will Focusing on the R skills that would be useful for your Eocnometric class. 
+:::
+
+## For Further Learning of R {.center}
+
+If you want to learn more about R process (e.g., geospatial analysis) and Python, I recommend you to take the following courses:
+
++ R and Python, Programming for Econometrics (APEC8221) 
+
++ Big Data Methods in
+Economics (APEC8222)
+
+
+## By the end of this class ...
+
++ 
+
+
+
+
+
+
+
+
+
