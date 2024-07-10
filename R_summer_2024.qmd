@@ -6,6 +6,12 @@ title: "R_summer_2024"
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-```{r}
+```{webr-r}
 1 + 1
+```
+
+```{webr-r}
+fit = lm(mpg ~ am, data = mtcars)
+
+summary(fit)
 ```

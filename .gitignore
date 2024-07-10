@@ -1,4 +1,9 @@
 Data/*
+.DS_Store
 
+*.pdf
+
+0_doc
 /.quarto/
 .Rproj.user
+.Rhistory
