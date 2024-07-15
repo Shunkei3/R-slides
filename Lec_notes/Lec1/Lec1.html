@@ -9,7 +9,7 @@
 <link href="Lec1_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Lec1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.52">
 <meta name="author" content="Shunkei Kakimoto">
 <title>Day 1: Basics of R</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="Lec1_files/libs/revealjs/dist/theme/quarto.css">
 <link href="Lec1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -610,7 +675,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"#--- addition ---#\n2 + 3\n#--- subtraction ---#\n6 - 2\n#--- multiplications ---#\n6 * 2\n#--- exponentiation ---#\n2 ^ 3\n#--- division ---#\n6 / 2\n#--- remainder ---#\n9 %% 4\n#--- quotient ---#\n9 %/% 4","options":{"fig-height":5,"fig-width":7,"classes":"","out-width":"700px","editor-max-height":"","output":"true","editor-quick-suggestions":"false","results":"markup","message":"true","comment":"","editor-font-scale":"0.8","warning":"true","label":"unnamed-chunk-1","out-height":"","dpi":72,"autorun":"false","fig-cap":"","read-only":"false","editor-word-wrap":"true","context":"interactive"}},{"id":2,"code":"#--- true or false ---#\n5 == 5\n5 == 4\n5 > 4\n5 < 4 ","options":{"fig-height":5,"fig-width":7,"classes":"","out-width":"700px","editor-max-height":"","output":"true","editor-quick-suggestions":"false","results":"markup","message":"true","comment":"","editor-font-scale":"0.8","warning":"true","label":"unnamed-chunk-2","out-height":"","dpi":72,"autorun":"false","fig-cap":"","read-only":"false","editor-word-wrap":"true","context":"interactive"}}];
+  globalThis.qwebrCellDetails = [{"code":"# This is an example of R code chunk you will see in this slide deck.\nprint(\"Let's get started!\")\n\n1 + 1","id":1,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-1","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# assign value 1 to an object called \"x\" \nx <- 1\n# see what's inside object \"x\"\nx\n\n# assign the result of a product to an objecte called \"y\"\ny <- 2*3\n\n# store sum of x and y in z\nz <- x + y\n# see what's inside object \"z\"\nz\n# take z, add 1, and store result back in z\nz <- z + 1\n# Now, the value stored in z is updated.\nz\n\n# use z as an input of square root function\nsqrt(z)","id":2,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-2","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# For example, this is not allowed. You will see an error.\n1_test <- 1:3\n\n# Intead, you can do this.\ntest_1 <- 1:3\ntest_1","id":3,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-3","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"class(5.2)\nclass(2L)\nclass(TRUE)\n\nis.integer(5.2)\nis.integer(2L)","id":4,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-4","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"test_chr <- \"5.2\"\nclass(test_chr)\n\n# convert to numeric\ntest_num <- as.numeric(test_chr)\ntest_num\nclass(test_num)\n\n# convert from numeric to character type\nas.character(test_num)\n\n# conver from numeric to factor type\nas.factor(test_num)","id":5,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-5","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"#--- true or false ---#\n5 == 5\n5 != 4\n5 > 4\n5 >= 4\n5 < 4\n5 <= 4\n\n5 == 5 &  5 != 4\n5 == 5 &  5 < 4\n5 == 5 | 5 < 4","id":6,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-6","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Empty vector\nc()\n\n# Create a numeric vector\nx <- c(1, 2, 3) # equivalent to seq(1, 5) and \nx\n\n# Combine another numeric vector and x\ny <- c(x, c(4, 5))\n\n# Create a character vector\nz <- c(\"a\", \"b\", \"c\")\n\n# See what happens when you combine numeric and character vector\nc(x, z)\n# All the numeric values are converted to characters!","id":7,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-7","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# === Positional indexing === #\n# Create a numeric vector \nx <- seq(from = 1, to = 5, by = 2)\nx\n\n# Get 2nd element of x\nindex_vec <- 2\nx[index_vec] # or simply you can do x[2]\n\n# Get 1st and 3rd element of x\nindex_vec <- c(1, 3)\nx[index_vec] # or simply you can do x[c(1, 3)]\n\n# Get the last element of x without knowing the length of x.\nx[length(x)]","id":8,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-8","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# === Named indexing === #\n# Create a numeric vector with names\ny <- c(x=1, y=2, z=3)\ny \n\nindex_vec <- \"x\"\ny[index_vec] # or simply y[\"x\"]","id":9,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-9","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Create a numeric vector \nx <- c(5, -8, 2, -1)\n\n# === For example, let's get the positive elements === #\n# create a logical vector \ny <- x > 0\n# Let's see what's inside y\ny\n\n# subset the data\nx[y] #Or you can simply do x[x>0]","id":10,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-10","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"x <- 1:5\n\n# Assign names to each of the elements\nnames(x) <- c(\"a\", \"b\", \"c\", \"d\", \"e\")\nx\n\n# Replace a specific element to another value\nx[\"a\"] <- 100\nx","id":11,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-11","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Run this code:\nset.seed(3746)\nx <- runif(n = 30, min = 0, max = 1)","id":12,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-12","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Create a numeric matrix\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# use dim() to see the dimension of the matrix\ndim(m_num)\n\n# Create a matrix of characters\nm_chr <- matrix(c(\"a\", \"b\" , \"c\", \"d\", \"e\", \"f\"), nrow = 3)\nm_chr","id":13,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-13","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Create a matrix of numbers\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# Get the element in the 1st row and 2nd column\nm_num[1, 2]\n\n# Modify a specific element\nm_num[1, 2] <- 100\nm_num","id":14,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-14","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Create a matrix of numbers\nm_num <- matrix(1:6, nrow = 3)\n\n# Add column names\ncolnames(m_num) <- c(\"A\", \"B\")\nm_num\n# Add row names\nrownames(m_num) <- c(\"a\", \"b\", \"c\")\nm_num","id":15,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-15","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# create a data.frame \nyield_data <- \n  data.frame(\n    Nitrogen = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\nyield_data","id":16,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-16","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"yield_data <- \n  data.frame(\n    Nitrogen = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\nyield_data\n\n# Get the elements in the 1st row \nyield_data[1, ]\n\n# Get the elements in the 1st column\nyield_data[ , 1]\n\n# Get the element in the 1st row and 2nd column\nyield_data[1, 2]\n\n# Or you can use the column name\nyield_data[1, \"Yield\"]\n\n# Find a state whose yield is more than 225\nyield_data[yield_data$Yield > 225, ]","id":17,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-17","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"yield_data <- \n  data.frame(\n    Nitrogen = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\n\n# column names\nnames(yield_data) #or colnames(yield_data)\n\n# Change the column names to lower case\nnames(yield_data) <- tolower(names(yield_data))\nyield_data","id":18,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-18","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"list_a <- list(1, 2, \"3\", 4)\nlist_a","id":19,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-19","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# Create a numeric vector \nvec_a <- 1:4\n# Create a \n# Create a data.frame\nyield_data <- \n  data.frame(\n    Nitrogen = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\n\n","id":20,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-20","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"#--- addition ---#\n2 + 3\n#--- subtraction ---#\n6 - 2\n#--- multiplications ---#\n6 * 2\n#--- exponentiation ---#\n2 ^ 3\n#--- division ---#\n6 / 2\n#--- remainder ---#\n9 %% 4\n#--- quotient ---#\n9 %/% 4","id":21,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-21","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"mat_a <- matrix(1:4, nrow = 2)\nmat_b <- matrix(4:7, nrow = 2)\n\n\n#--- Matrix Addition and Substraction ---#\nmat_a + mat_b\nmat_b - mat_a\n\n# --- Matrix Multiplication using %*% operator --- #\nmat_a %*% mat_b\n\n# --- Matrix Transpose --- #\nt(mat_a)","id":22,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-22","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"# If you don't have the rio package, install it by running the following code:\n# install.packages(\"rio\")\n\n# To use the package, you need to load the package with library() function.\nlibrary(rio)","id":23,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-23","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}},{"code":"","id":24,"options":{"message":"true","warning":"true","fig-width":7,"read-only":"false","editor-quick-suggestions":"false","fig-cap":"","out-width":"700px","label":"unnamed-chunk-24","out-height":"","editor-max-height":"","fig-height":5,"comment":"","output":"true","context":"interactive","classes":"","results":"markup","autorun":"false","editor-font-scale":"0.8","editor-word-wrap":"true","dpi":72}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2099,107 +2164,776 @@ Shunkei Kakimoto
 
 </section><section id="tips" class="slide level2 center"><h2>Tips</h2>
 <ul>
-<li>Hitting “o” can give you</li>
-<li>You can directly write and run R codes, and see the outputs on slides.
-<ul>
-<li>When you want to run the code, hit <code>command</code> + <code>enter</code> (Mac) or <code>Control</code> + <code>enter</code> (Windows). Or you can click the “Run” button on the top left corner of the code chunk.</li>
+<li>Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see table of contents, and you can jump to the section you want to see.</li>
+<li>Hitting letter “o” on your keyboard and you will have a panel view of all the slides.</li>
+<li>You can directly write and run R codes, and see the outputs on slides.</li>
+<li>When you want to execute (run) code, hit <code>command</code> + <code>enter</code> (Mac) or <code>Control</code> + <code>enter</code> (Windows) on your keybord. Alternatively, you can click the “Run Code” button on the top left corner of the code chunk.</li>
 </ul>
-</li>
-</ul></section><section id="objective-of-this-lecture" class="slide level2 center"><h2>Objective of this Lecture</h2>
+<p><br></p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="before-you-start" class="slide level2 scrollable"><h2>Before you start</h2>
+<p><br></p>
+<div class="fragment fade-up">
+<!-- -->
+<h3 id="goals-of-this-lecture">Goals of this lecture</h3>
 <ul>
-<li>Do basic mathematical oeprations</li>
-<li>Define objects in R</li>
-<li>learn different object types</li>
-</ul></section><section id="todays-outline" class="slide level2 center"><h2>Today’s outline:</h2>
-<ul>
-<li>Types of R-object
-<ul>
-<li>
-</li></ul>
-</li>
-<li>Basisc of R operation:
-<ul>
-<li>calculation</li>
-<li>select row and columns</li>
-<li>create a new column</li>
+<li>To get familiar with the feature of RStudio.</li>
+<li>To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.</li>
+<li>To get familiar with base R functions to do mathematical calculations.</li>
+<li>To get familiar with be able to base plotting functions to visualize data.</li>
 </ul>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<!-- -->
+<h3 class="center" id="todays-outline">Today’s outline:</h3>
+<ol type="1">
+<li>Explore the features of Rstudio.</li>
+<li>R Coding Basics</li>
+<li>Basic Data Types and Data Structures
+<ol type="1">
+<li>Data types</li>
+<li>Data structure</li>
+</ol>
 </li>
-<li>Appendix:
-<ul>
-<li>Faster vector calculation for Mac user
+<li>Basic arithmetics with base function</li>
+<li>Base plotting functions</li>
+<li>Exercise problems</li>
+<li>Appendix: Faster vector calculation for Mac user
 <ul>
 <li><a href="https://gist.github.com/nicebread/6920c8287d7bffb03007">here</a></li>
 <li><a href="https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas">here</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul></section><section id="rstudio-tips" class="slide level2 center"><h2>Rstudio tips</h2>
-<ul>
-<li>
-<code>command</code> + <code>enter</code> (Mac) runs the code (<code>Control</code> + <code>enter</code> (Windows))</li>
-<li>
-<code>command</code> (<code>Control</code>) + <code>1</code> for Mac (Windows) to move the cursor to the source pane</li>
-<li>
-<code>command</code> (<code>Control</code>) + <code>2</code> for Mac (Windows) to move the cursor to the source pane</li>
-<li>
-<code>Option</code> + <code>-</code> (<code>Alt</code> + <code>-</code> ) for Mac (Windows) to inset the assignment operator (<code>&lt;-</code>)</li>
-</ul></section><section id="basic-element-types-atomic-mode" class="slide level2"><h2>Basic element types (atomic mode)</h2>
-<ul>
-<li>integer: e.g., 1, 3,</li>
-<li>numeric (double): e.g., 1, 1.3</li>
-<li>complex:</li>
-<li>logical (boolean): true or false</li>
-<li>character: combination of letters (numerical operations not allowed)</li>
-</ul></section><section id="basic-operations-in-r" class="slide level2"><h2>Basic operations in R</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-1-1">Basic arithmetics</a></li>
-<li><a href="#tabset-1-2">logical values and operators (important!)</a></li>
-<li><a href="#tabset-1-3">Assignment</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</ol>
 </div>
-<div id="tabset-1-2">
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-1-3">
-<p>You can assign contents (numeric numbers, character, boolean, etc) to an object on R and reuse it later using either <code>&lt;-</code> or <code>=</code>.</p>
-</div>
-</div>
-</div>
-</section><section id="objects" class="slide level2"><h2>Objects</h2>
-<p>R is an object-oriented programming (OOP), which basically means:</p>
-<p><em>“Everything is an object and everything has a name.”</em></p>
+</section><section id="before-you-start-1" class="slide level2 center"><h2>Before you start</h2>
 <p><br></p>
-<div title="Different object types (classes)">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Different object types (classes)</strong></p>
+<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li>vector</li>
-<li>matrix</li>
-<li>data.frame</li>
-<li>list</li>
-<li>function</li>
+<li>You don’t need to memorize nor understand completely all the contents in this lecture.</li>
+<li>In the end of the each section, I set a summary of the key points you need to know. As long as you understand the key points, you are good to go.</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="rstudio" class="slide level2 center"><h2>Rstudio</h2>
+<p>These are the things you should know at least:</p>
+<ul>
+<li>How to create R script (<code>.R</code> files)?</li>
+<li>How to open files or folderz in Rstudio?</li>
+<li>How to run the code line by line?</li>
+<li>How to comment out the code?</li>
+</ul>
+<p><br></p>
+<div title="Rstudio tips">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Rstudio tips</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Run the code: [<code>Command</code> + <code>Enter</code> (Mac), <code>Control</code> + <code>Enter</code> (Windows)]</li>
+<li>Comment out the code [<code>Command</code> + <code>Shift</code> + <code>C</code> on macOS, <code>Ctrl</code> + <code>Shift</code> + <code>C</code> (Windows)]</li>
+<li>Split code panes (→ Pane Layout → click “Add Column”)</li>
+<li>inset the assignment operator (<code>&lt;-</code>): [<code>Option</code> + <code>-</code> for Mac, <code>Alt</code> + <code>-</code> for Windows]</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+</section><section id="section" class="slide level2"><h2></h2>
+</section><section id="before-starting" class="slide level2 center"><h2>Before Starting:</h2>
+<p><span style="color: red;">R programing language is object-oriented programming (OOP), which basically means: “Everything is an object and everything has a name.”</span></p>
+<h3 id="generall-rule-in-r">Generall rule in R</h3>
+<ul>
+<li>You can assign information (numbers, character, data) to an object on R using <code>&lt;-</code> or <code>=</code> (e.g., <code>object_name &lt;- value</code>) and resue it later.
+<ul>
+<li>If you assign contents to an object of the same name, the object that had the same name will be overwritten.</li>
+</ul>
+</li>
+<li>Once objects are created, you can evaluate them on the console to see what is inside.</li>
+</ul>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+</section><section id="section-1" class="slide level2 center"><h2></h2>
+<div title="Object naming">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Object naming</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>You can name the object whatever you want, but <strong>it must start with a letter</strong>.</li>
+<li>You can use <code>_</code> or <code>.</code> to in the object name.</li>
+<li>It is recommended to use a meaningful name for the object so that you can understand what the object contains.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="basic-data-types-i.e.-atomic-data-types-in-r" class="slide level2 center"><h2>Basic data types (i.e., atomic data types) in R</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Data types in R</a></li>
+<li><a href="#tabset-1-2">How to check data type?</a></li>
+<li><a href="#tabset-1-3">Data Type Conversion</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><br></p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 47%">
+<col style="width: 26%">
+<col style="width: 16%">
+</colgroup>
+<thead><tr class="header">
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+<th>Check Function</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>numeric</td>
+<td>General number, can be integer or decimal.</td>
+<td>
+<code>5.2</code>, <code>3L</code> (the <code>L</code> makes it integer)</td>
+<td><code><a href="https://rdrr.io/r/base/numeric.html">is.numeric()</a></code></td>
+</tr>
+<tr class="even">
+<td>character</td>
+<td>Text or string data.</td>
+<td><code>"Hello, R!"</code></td>
+<td><code><a href="https://rdrr.io/r/base/character.html">is.character()</a></code></td>
+</tr>
+<tr class="odd">
+<td>logical</td>
+<td>Boolean values.</td>
+<td>
+<code>TRUE</code>, <code>FALSE</code>
+</td>
+<td><code><a href="https://rdrr.io/r/base/logical.html">is.logical()</a></code></td>
+</tr>
+<tr class="even">
+<td>integer</td>
+<td>Whole numbers.</td>
+<td>
+<code>2L</code>, <code>100L</code>
+</td>
+<td><code><a href="https://rdrr.io/r/base/integer.html">is.integer()</a></code></td>
+</tr>
+<tr class="odd">
+<td>complex</td>
+<td>Numbers with real and imaginary parts.</td>
+<td><code>3 + 2i</code></td>
+<td><code><a href="https://rdrr.io/r/base/complex.html">is.complex()</a></code></td>
+</tr>
+<tr class="even">
+<td>raw</td>
+<td>Raw bytes.</td>
+<td><code>charToRaw("Hello")</code></td>
+<td><code><a href="https://rdrr.io/r/base/raw.html">is.raw()</a></code></td>
+</tr>
+<tr class="odd">
+<td>factor</td>
+<td>Categorical data. Can have ordered and unordered categories.</td>
+<td><code>factor(c("low", "high", "medium"))</code></td>
+<td><code><a href="https://rdrr.io/r/base/factor.html">is.factor()</a></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2">
+<p>Use <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> or <code>is.XXX()</code> to examine the data types.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-1-3">
+<p>You can convert one type of data to anoter type of data using <code>as.XXX()</code> function.</p>
+<p>Three conversion functions that are used often are: + <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> + <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> + <code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code></p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<div class="note">
+<ul>
+<li>There six “basic types” called atomic data types for data in R:</li>
+<li>You specify that some information is character data by surrounding it in either single quotes (’) or double quotes (“).</li>
+<li>Factor and character are similar but different. Unlike chracter, factor is used to represent categorical data and the number of order is implictly encoded in the data.</li>
+<li>
+</li></ul>
+</div>
+</section><section id="logical-values" class="slide level2 center"><h2>Logical values</h2>
+<!-- useful
++ Logical Indexing: https://bookdown.org/ndphillips/YaRrr/logical-indexing.html
++ Basic Data Types: https://info201.github.io/r-intro.html 
++ -->
+<!-- see this:  -->
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>A Logical value can be either <code>TRUE</code> and <code>FALSE</code> (and these are not characters!)</li>
+<li>Logical values are often results of comparison operations such as <code>&lt;</code> (less than), <code>&gt;</code> (greater than), <code>&lt;=</code> (less-than-or-equal), <code>&gt;=</code> (greater-than-or-equal), <code>==</code> (equal), and <code>!=</code> (not-equal).</li>
+<li>As we will see latewr, a sequence of logical values (i.e., logical vectors) can be used index vector to subset the data!</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Relational operators (or comparison operator): <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>.</li>
+<li>Logical operators: <code>&amp;</code> (and), <code>|</code> (or), and <code>!</code> (not).</li>
+</ul>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="section-2" class="slide level2 center"><h2></h2>
+<div title="Key points">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Key points</strong></p>
+</div>
+<div class="callout-content">
+<p>Know that:</p>
+<ul>
+<li>There are multiple data types in R.
+<ul>
+<li>Specifically, “numeric”, “character”, “logical” are the most common types.</li>
+</ul>
+</li>
+<li>You can check the data type using <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function.</li>
+<li>You can convert one data type to another using <code>as.XXX()</code> function.</li>
+<li>Finally, you can</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structures-in-r" class="slide level2 center"><h2>Data Structures in R</h2>
+<p>R has many data structures. These include:</p>
+<p><br></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 33%">
+<col style="width: 21%">
+<col style="width: 35%">
+</colgroup>
+<thead><tr class="header">
+<th>Data Structure</th>
+<th>Description</th>
+<th>Creation Function</th>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Vector</td>
+<td>Holds elements of the <strong>same type</strong>.</td>
+<td><code><a href="https://rdrr.io/r/base/c.html">c()</a></code></td>
+<td><code>c(1, 2, 3, 4)</code></td>
+</tr>
+<tr class="even">
+<td>Matrix</td>
+<td>Two-dimensional; elements of the <strong>same type</strong>.</td>
+<td><code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code></td>
+<td><code>matrix(1:4, ncol=2)</code></td>
+</tr>
+<tr class="odd">
+<td>Array</td>
+<td>Multi-dimensional; elements of the <strong>same type</strong>.</td>
+<td><code><a href="https://rdrr.io/r/base/array.html">array()</a></code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>List</td>
+<td>Can hold elements of <strong>different types</strong>.</td>
+<td><code><a href="https://rdrr.io/r/base/list.html">list()</a></code></td>
+<td><code>list(name="John", age=30, scores=c(85, 90, 92))</code></td>
+</tr>
+<tr class="odd">
+<td>Data Frame</td>
+<td>Like a table; columns can be different types.</td>
+<td><code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code></td>
+<td><code>data.frame(name=c("John", "Jane"), age=c(30, 25))</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment fade-up">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Caution</strong></p>
+</div>
+<div class="callout-content">
+<p>Here, we focus on two things:</p>
+<ul>
+<li>How to create each of the data class.</li>
+<li>How to access and modify the elements in the data.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes"><ul>
+<li>We learned the types of element of data. Now, we are going to learn the types of data structures in R.</li>
+<li>Depending on the data structure, you can store different types of data.</li>
+<li>Mainly,</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="vector-one-dimensional-array" class="slide level2 center scrollable"><h2>Vector (one-dimensional array)</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-2-1">Basics</a></li>
+<li><a href="#tabset-2-2">Indexing</a></li>
+<li><a href="#tabset-2-3">Logical Vectors</a></li>
+<li><a href="#tabset-2-4">Others</a></li>
+<li><a href="#tabset-2-5">Exercise</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ul>
+<li>A vectors is a class of object that consists of elements of the <strong>same kind of elements</strong> (All elements in a vector must be of the same data type). You use <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> to create a vector.
+<ul>
+<li>As other functions to create vectore, you can use <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>, <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>.</li>
+</ul>
+</li>
+<li>You can also combine two vectors using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>.</li>
+</ul>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-2">
+<!-- 
++ Chapter 7 Indexing Vectors with [ ]: https://bookdown.org/ndphillips/YaRrr/vectorindexing.html
++ Vector Indexing: https://thomasleeper.com/Rcourse/Tutorials/vectorindexing.html
++  -->
+<ul>
+<li>You can get a single element, or a set of specific elements of a vector by indexing with <code>[]</code> blackets. Inside <code>[]</code>, you provide anothe vector (i.e.&nbsp;index vector) the position of the element you want to extract
+<ul>
+<li>e.g., <code>x[2]</code> returns the second element of <code>x</code>.</li>
+</ul>
+</li>
+</ul>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>You don’t need to create a separate index vector. <br></p>
+<ul>
+<li>If a vector has names, you can also use the name of the element to extract it.</li>
+</ul>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-3">
+<!-- see the section of Corecion: https://rstudio-education.github.io/hopr/r-objects.html  -->
+<ul>
+<li>A logical vector is a vector that only contains logical values (TRUE and FALSE values).</li>
+<li>You can use logical vector as an index vector to subset the data.</li>
+</ul>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p>The following figure shows how logical indexing works.</p>
+<div id="fig-elephant" class="quarto-float quarto-figure quarto-figure-left" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="image/logical_vector.png" class="quarto-figure quarto-figure-left" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Logical Indexing (cited from <a href="https://bookdown.org/ndphillips/YaRrr/logical-indexing.html">here</a>)
+</figcaption></figure>
+</div>
+</div>
+<div id="tabset-2-4">
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-5">
+<p>The following code randomly samples 30 numbers from a uniform distribution between 0 and 1, and stores the result in <code>x</code>.</p>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol type="1">
+<li>Get 10th and 15th element of <code>x</code>.</li>
+<li>Get elements larger than <span class="math inline">\(0.5\)</span>.</li>
+<li>Replace 10th and 15th element of <code>x</code> to 0.</li>
+<li>If an element of <code>x</code> is larger than <span class="math inline">\(0.9\)</span>, replace it with <span class="math inline">\(1\)</span>.</li>
+<li>Count the elements larger than <span class="math inline">\(0.6\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section><section id="matrix" class="slide level2"><h2>Matrix</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-3-1">Basics</a></li>
+<li><a href="#tabset-3-2">Indexing</a></li>
+<li><a href="#tabset-3-3">Others</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>A matrix is a class of object that consists of elements of** the same kind of elements** (All elements in a matrix must be of the same data type) stored in a** two-dimensional array**.</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function is used to create a matrix.</li>
+</ul>
+<div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>You can also create a matrix by combining multiple vectors using <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code> or <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>vec_a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb1-2"><a href=""></a>vec_b <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span></span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a>mat1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(vec_a, vec_b)</span>
+<span id="cb1-5"><a href=""></a>mat1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     vec_a vec_b
+[1,]     1     4
+[2,]     2     5
+[3,]     3     6
+[4,]     4     7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>mat2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(vec_a, vec_b)</span>
+<span id="cb3-2"><a href=""></a>mat2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2] [,3] [,4]
+vec_a    1    2    3    4
+vec_b    4    5    6    7</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<p>In the same way as vectors, you can access the elements of a matrix using <code>[]</code> brackets. But you need to specify the row and column index.</p>
+<div id="qwebr-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-3-3">
+<div id="qwebr-insertion-location-15"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<aside class="notes"><ul>
+<li>While vector is one-dimentional array, matrix is two-dimentional array.</li>
+<li>
+</li></ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="data.frame" class="slide level2"><h2>data.frame</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-4-1">Basics</a></li>
+<li><a href="#tabset-4-2">Indexing</a></li>
+<li><a href="#tabset-4-3">Others</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p><code>data.frame</code> is like a matrix but it can store different types of data in each column.</p>
+<div id="qwebr-insertion-location-16"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>There are different kinds of objects that are like “data.frame”:</p>
+<ul>
+<li><code>tibble</code></li>
+<li><code>data.table</code></li>
+</ul>
+<p>We will learn these in the next lecture!</p>
+</div>
+<div id="tabset-4-2">
+<p>You can access the elements of a data.frame using <code>[]</code> brackets. But you need to specify the row and column index.</p>
+<div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-4-3">
+<div id="qwebr-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</section><section id="list" class="slide level2"><h2>List</h2>
+<ul>
+<li>A <code>list</code> is a class of object that consists of elements of mixed types. You can create a list using <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> function.</li>
+</ul>
+<div id="qwebr-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>A list is very flexible. It can hold basically any type of R objects as its elements.</p>
+<div id="qwebr-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="summary" class="slide level2 center"><h2>Summary</h2>
+<p>Don’t worry about the details. You’ll get used to these data structures as you use R more. Here are the key points you need to knowb at this point:</p>
+<div title="key points">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>key points</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>To know that how to create vector, matrix, data.frame, and list object in R.
+<ul>
+<li>Among all, <code>data.frame</code> is the most common data structure you will see when you work with the real-world data.</li>
+<li>(In the next lecture, we will learn advanced data structures such as <code>tibble</code> and <code>data.table</code>.)</li>
+</ul>
+</li>
+<li>To know that how to access elements of an object (Use indexing with <code>[]</code>).
+<ul>
+<li>positional indexing, named indexing, and logical indexing.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Use <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function to know the class of data structure you’re working on.</p>
+</div>
+</div>
+</div>
+</section><section id="exercise-problems" class="slide level2"><h2>Exercise Problems</h2>
+<!-- create a problem related to vector and data.frame -->
+</section><section><section id="matrixlinear-algebra-in-r" class="title-slide slide level1 center"><h1>Matrix/Linear Algebra in R</h1>
+
+</section><section class="slide level2"><div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-5-1">Basic arithmetics</a></li>
+<li><a href="#tabset-5-2">Vector calculation</a></li>
+<li><a href="#tabset-5-3">Matrix calculation</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div id="qwebr-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-2"><a href=""></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="co"># --- Addition --- #</span></span>
+<span id="cb5-5"><a href=""></a>a <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 4 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  6 10  8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># --- Substraction --- #</span></span>
+<span id="cb9-2"><a href=""></a>a <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 2 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>b <span class="sc">-</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 4 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># --- Multiplication --- #</span></span>
+<span id="cb13-2"><a href=""></a>a<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 6 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>a<span class="sc">*</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5 21 12</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-5-3">
+<ul>
+<li>As you saw in the vector calculation, R can calculate element-wise operations. If you want to do matrix multiplication, you need to use <code>%*%</code> operator.</li>
+</ul>
+<div id="qwebr-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</section></section><section><section id="loading-and-saving-data" class="title-slide slide level1 center"><h1>Loading and Saving Data</h1>
+
+</section><section id="r-base-functions-for-data-import-and-export" class="slide level2"><h2>R base functions for data import and export</h2>
+<ul>
+<li>Like other softwares (e.g., Stata, Excel) do, R has two native data formats: <code>.Rdata</code> and <code>.Rds</code> (<code>.rdata</code> and <code>.rds</code>)</li>
+<li>
+<code>.Rds</code> format is more common. So, use <code>.Rds</code> extension whenever you save data.</li>
+</ul>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>.Rdata</strong> format</p>
+<ul>
+<li>Load data:</li>
+</ul>
+<p><code>load("path_to_Rdata_file")</code></p>
+<ul>
+<li>Save data:</li>
+</ul>
+<p><code>save(object_name, file = "path_to_Rdata_file")</code></p>
+</div><div class="column" style="width:50%;">
+<p><strong>.Rds</strong> format</p>
+<ul>
+<li>Load data:</li>
+</ul>
+<p><code>readRDS("path_to_Rds_file")</code></p>
+<ul>
+<li>Save data:</li>
+</ul>
+<p><code>saveRDS(object_name, file = "path_to_Rds_file")</code></p>
+</div></div>
+<aside class="notes"><ul>
+<li>An rds ( r data set) file is a file type that is supported by R.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><p><br></p>
+<div class="fragment fade-up">
+<div title="">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Caution</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="color: red;">How to set the path to the data file?</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="setting-the-working-directory" class="slide level2"><h2>Setting the working directory</h2>
+</section><section id="loading-the-data" class="slide level2"><h2>Loading the data</h2>
+<ul>
+<li>R can load data from various sources such as CSV, Excel, and Stata files.</li>
+<li>There exists many functions that can help you to load data:
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> to read a <code>.csv</code> file</li>
+<li>
+<code>read_excel()</code> from the <code>readxl</code> package to read data sheets from an <code>.xls(x)</code> file</li>
+<li>
+<code>read.dta13()</code> function from the <code>readstata13</code> package to read a STATA data file (<code>.dta</code>)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>
+<strong>But</strong> <code>import()</code> function from the <code>rio</code> package might the most coveneint one.
+<ul>
+<li>Unlike, <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> and <code>read.dta13()</code> which specialize in reading a specific type of file, <code>import()</code> can load data from various sources.</li>
+</ul>
+</li>
+</ul>
+<div id="qwebr-insertion-location-23"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>:::</p>
+</section><section id="saving-the-data" class="slide level2"><h2>Saving the data</h2>
+<ul>
+<li>You can save the data with varioius format</li>
+<li>Use <code>.rds</code> format to save the data in R format.
+<ul>
+<li>save: <code>saveRDS(object_name, path_to_save)</code>
+</li>
+<li>read: <code>readRDS(path_to_save)</code>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<p>Let’s try</p>
+<div id="qwebr-insertion-location-24"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="exercise-problems-1" class="slide level2"><h2>Exercise Problems</h2>
+<!-- create a problem related to vector and data.frame -->
+</section></section><section><section id="useful-base-function-in-r" class="title-slide slide level1 center"><h1>Useful Base Function in R</h1>
+<ul>
+<li>paste0()</li>
+<li>length()</li>
+<li>dim()</li>
+<li>rbind(), cbind()</li>
+<li>nrow(), ncol()</li>
+<li>colMeans(), rowMeans()</li>
+</ul></section><section id="exercise-problems-2" class="slide level2"><h2>Exercise problems</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>?sample</span>
+<span id="cb17-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href=""></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 33 85 78 75 19 48 40 22 16 35  1 85 13 72 41 11 76 86 85 72</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>x <span class="sc">&gt;</span> <span class="dv">50</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+[13] FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>x[x <span class="sc">&gt;</span> <span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 85 78 75 85 72 76 86 85 72</code></pre>
+</div>
+</div>
+<ul>
+<li>From this <a href="https://www.w3resource.com/r-programming-exercises/basic/index.php">webwise</a>
+<ul>
+<li>Write a R program to create a sequence of numbers from 20 to 50 and find the mean of numbers from 20 to 60 and sum of numbers from 51 to 91.</li>
+<li>Write a R program to create a vector which contains 10 random integer values between -50 and +50.</li>
+<li>Write a R program to create a list of random numbers in normal distribution and count occurrences of each value.</li>
+</ul>
+</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
 </div>
   </div>
 
@@ -2461,18 +3195,7 @@ Shunkei Kakimoto
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2504,7 +3227,29 @@ Shunkei Kakimoto
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2512,7 +3257,7 @@ Shunkei Kakimoto
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

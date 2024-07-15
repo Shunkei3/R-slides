@@ -1,0 +1,42 @@
+---
+title: "Exercise Idea"
+---
+
+# data.frame 
+
+1. Load the file nscg17tiny.dta into a data.frame using import() from the rio package.
+2. Create a vector of IDs ranging from 1 through the number of rows (nrow()) in the NSCG data using seq().
+3. Append the ID as a new variable in your data.
+4. Create a new variable in your data that represents the $z$-score of the hours worked.
+$$
+Z=(x-\mu) / \sigma
+$$
+
+Where $Z=$ standard score; $x=$ observed value; $\mu=$ mean of sample; and $\sigma=$ standard deviation of the sample.
+5. Calculate the share of observations in your data sample with above average hours worked.
+
+
+# data.frame
+
+1. Create a tiny data frame using the following code:
+
+```{r}
+td <- data.frame(female = c(1,0,0,1),
+age = c(27,62,33,59),
+county = c("Hennepin","Hennepin","Ramsey","Otter Tail"),
+in. survey = c(T, F, T, T))
+```
+
+1. Create a new data frame from td which contains only female and age columns and rows where female equals zero.
+2. In the td data frame, set age values greater than 60 to missing.
+3. In the td data frame, calculate the average age.
+
+
+
+# data.table
+
+1. Load the mtcars demo data using the command data("mtcars"). Use ?mtcars to access the help documentation.
+2. Convert the mtcars data from a data.frame object to a data.table object.
+3. Create a dummy variable for least fuel efficient vehicles (less than 20 mpg ).
+4. How many automobiles have low fuel efficiency?
+5. Calculate the average mpg by number of cylinders using the by argument in data.table

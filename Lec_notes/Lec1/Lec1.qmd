@@ -19,6 +19,7 @@ format:
     title-slide-attributes:
       data-background-color: "#447099"
     fig-dpi: 400
+engine: knitr
 webr:
   packages: [""]
   cell-options:
@@ -27,56 +28,650 @@ filters:
   - webr
 ---
 
+```{css}
+/*| echo: false */
+/*| include: false */
+
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+
+.caption{
+   text-align: center;
+}
+```
+
 ## Tips {.center}
 
-+ Hitting "o" can give you 
++ Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see table of contents, and you can jump to the section you want to see.
++ Hitting letter "o" on your keyboard and you will have a panel view of all the slides.
 + You can directly write and run R codes, and see the outputs on slides. 
-  + When you want to run the code, hit `command` + `enter` (Mac) or `Control` + `enter` (Windows). Or you can click the "Run" button on the top left corner of the code chunk.
++ When you want to execute (run) code, hit `command` + `enter` (Mac) or `Control` + `enter` (Windows) on your keybord. Alternatively, you can click the "Run Code" button on the top left corner of the code chunk.
 
+<br>
 
-## Objective of this Lecture {.center}
+```{webr-r}
+# This is an example of R code chunk you will see in this slide deck.
+print("Let's get started!")
 
-+ Do basic mathematical oeprations
-+ Define objects in R
-+ learn different object types 
+1 + 1
+```
+## Before you start
 
+<br>
 
-## Today's outline: {.center}
+::: {.fragment .fade-up}
+### Goals of this lecture
++ To get familiar with the feature of RStudio.
++ To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.
++ To get familiar with base R functions to do mathematical calculations.
++ To get familiar with be able to base plotting functions to visualize data.
+:::
 
-+ Types of R-object
-  + 
-+ Basisc of R operation:
-  + calculation
-  + select row and columns 
-  + create a new column
+<br>
 
+::: {.fragment .fade-up}
+### Today's outline: {.center}
 
-+ Appendix: 
-  + Faster vector calculation for Mac user 
+1. Explore the features of Rstudio.
+2. R Coding Basics
+3. Basic Data Types and Data Structures
+   1. Data types
+   2. Data structure
+4. Basic arithmetics with base function
+5. Base plotting functions
+6. Exercise problems
+7. Appendix: Faster vector calculation for Mac user 
     + [here](https://gist.github.com/nicebread/6920c8287d7bffb03007)
     + [here](https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas)
-
-## Rstudio tips {.center}
-+ `command` + `enter` (Mac) runs the code (`Control` + `enter` (Windows))
-+ `command` (`Control`) + `1` for Mac (Windows) to move the cursor to the source pane
-+ `command` (`Control`) + `2` for Mac (Windows) to move the cursor to the source pane
-+ `Option` + `-` (`Alt` + `-` ) for Mac (Windows) to inset the assignment operator (`<-`)
+:::
 
 
-## Basic element types (atomic mode)
-+ integer: e.g., 1, 3,
-+ numeric (double): e.g., 1, 1.3
-+ complex:
-+ logical (boolean): true or false
-+ character: combination of letters (numerical operations not allowed)
+## Before you start {.center}
+
+<br>
+
+::: {.callout-note}
++ You don't need to memorize nor understand completely all the contents in this lecture. 
++ In the end of the each section, I set a summary of the key points you need to know. As long as you understand the key points, you are good to go.
+:::
 
 
-## Basic operations in R
+## Rstudio {.center}
+
+These are the things you should know at least:
+
++ How to create R script (`.R` files)?
++ How to open files or folderz in Rstudio?
++ How to run the code line by line?
++ How to comment out the code?
+
+<br>
+
+
+::: {.callout-tip title="Rstudio tips"}
++ Run the code: [`Command` + `Enter` (Mac),  `Control` + `Enter` (Windows)]
++ Comment out the code [`Command` + `Shift` + `C` on macOS, `Ctrl` + `Shift` + `C` (Windows)]
++ Split code panes (&rarr; Pane Layout &rarr; click "Add Column")
++ inset the assignment operator (`<-`): [`Option` + `-` for Mac, `Alt` + `-`  for Windows]
+:::
+
+## 
+
+## Before Starting: {.center}
+
+[R programing language is object-oriented programming (OOP), which basically means: "Everything is an object and everything has a name."]{style="color: red;"}
+
+### Generall rule in R
++ You can assign information (numbers, character, data) to an object on R using `<-` or `=` (e.g., `object_name <- value`) and resue it later.
+  + If you assign contents to an object of the same name, the object that had the same name will be overwritten.
++ Once objects are created, you can evaluate them on the console to see what is inside.
+
+```{webr-r}
+# assign value 1 to an object called "x" 
+x <- 1
+# see what's inside object "x"
+x
+
+# assign the result of a product to an objecte called "y"
+y <- 2*3
+
+# store sum of x and y in z
+z <- x + y
+# see what's inside object "z"
+z
+# take z, add 1, and store result back in z
+z <- z + 1
+# Now, the value stored in z is updated.
+z
+
+# use z as an input of square root function
+sqrt(z)
+```
+<br>
+
+## {.center}
+
+::: {.callout-tip title="Object naming"}
++ You can name the object whatever you want, but **it must start with a letter**. 
++ You can use `_` or `.` to in the object name.
++ It is recommended to use a meaningful name for the object so that you can understand what the object contains.
+:::
+
+<br>
+
+```{webr-r}
+# For example, this is not allowed. You will see an error.
+1_test <- 1:3
+
+# Intead, you can do this.
+test_1 <- 1:3
+test_1
+```
+
+
+## Basic data types (i.e., atomic data types) in R {.center}
 
 ::: {.panel-tabset}
 
-### Basic arithmetics
+### Data types in R
 
+<br>
+
+| Data Type  | Description                                                  | Example                           | Check Function      |
+|------------|--------------------------------------------------------------|-----------------------------------|---------------------|
+| numeric    | General number, can be integer or decimal.                   | `5.2`, `3L` (the `L` makes it integer) | `is.numeric()`     |
+| character  | Text or string data.                                         | `"Hello, R!"`                     | `is.character()`    |
+| logical    | Boolean values.                                              | `TRUE`, `FALSE`                   | `is.logical()`      |
+| integer    | Whole numbers.                                               | `2L`, `100L`                      | `is.integer()`      |
+| complex    | Numbers with real and imaginary parts.                       | `3 + 2i`                          | `is.complex()`      |
+| raw        | Raw bytes.                                                   | `charToRaw("Hello")`              | `is.raw()`          |
+| factor     | Categorical data. Can have ordered and unordered categories. | `factor(c("low", "high", "medium"))` | `is.factor()`    |
+
+
+### How to check data type?
+Use `class()` or `is.XXX()` to examine the data types.
+
+
+```{webr-r}
+class(5.2)
+class(2L)
+class(TRUE)
+
+is.integer(5.2)
+is.integer(2L)
+```
+
+
+### Data Type Conversion
+
+You can convert one type of data to anoter type of data using `as.XXX()` function.
+
+Three conversion functions that are used often are:
++ `as.numeric()`
++ `as.character()`
++ `as.factor()`
+
+
+```{webr-r}
+test_chr <- "5.2"
+class(test_chr)
+
+# convert to numeric
+test_num <- as.numeric(test_chr)
+test_num
+class(test_num)
+
+# convert from numeric to character type
+as.character(test_num)
+
+# conver from numeric to factor type
+as.factor(test_num)
+```
+:::
+
+:::{.note}
++ There six "basic types" called atomic data types for data in R:
++ You specify that some information is character data by surrounding it in either single quotes (') or double quotes ("). 
++ Factor and character are similar but different. Unlike chracter, factor is used to represent categorical data and the number of order is implictly encoded in the data.
++ 
+:::
+
+## Logical values {.center}
+
+<!-- useful
++ Logical Indexing: https://bookdown.org/ndphillips/YaRrr/logical-indexing.html
++ Basic Data Types: https://info201.github.io/r-intro.html 
++ -->
+
+<!-- see this:  -->
+::: {.callout-important}
++ A Logical value can be either `TRUE` and `FALSE` (and these are not characters!)
++ Logical values are often results of comparison operations such as `<` (less than), `>` (greater than), `<=` (less-than-or-equal), `>=` (greater-than-or-equal), `==` (equal), and `!=` (not-equal).
++ As we will see latewr, a sequence of logical values (i.e., logical vectors) can be used index vector to subset the data!
+:::
+
++ Relational operators (or comparison operator): `==`, `!=`, `>`, `<`, `>=`, `<=`.
++ Logical operators:  `&` (and), `|` (or), and `!` (not).
+
+```{webr-r}
+#--- true or false ---#
+5 == 5
+5 != 4
+5 > 4
+5 >= 4
+5 < 4
+5 <= 4
+
+5 == 5 &  5 != 4
+5 == 5 &  5 < 4
+5 == 5 | 5 < 4
+```
+
+
+## {.center}
+::: {.callout-important title="Key points"}
+Know that:
+
++ There are multiple data types in R. 
+  + Specifically, "numeric", "character", "logical" are the most common types.
++ You can check the data type using `class()` function.
++ You can convert one data type to another using `as.XXX()` function.
++ Finally, you can 
+:::
+
+
+
+## Data Structures in R {.center}
+
+R has many data structures. These include:
+
+<br>
+
+| Data Structure | Description                                         | Creation Function                | Example                                               |
+|----------------|-----------------------------------------------------|---------------------------------|-------------------------------------------------------|
+| Vector         | Holds elements of the **same type**.                    | `c()`                           | `c(1, 2, 3, 4)`                                       |
+| Matrix         | Two-dimensional; elements of the **same type**.         | `matrix()`                      | `matrix(1:4, ncol=2)`                                 |
+| Array          | Multi-dimensional; elements of the **same type**.      | `array()`                       |                                                       |
+| List           | Can hold elements of **different types**.               | `list()`                        | `list(name="John", age=30, scores=c(85, 90, 92))`     |
+| Data Frame     | Like a table; columns can be different types.       | `data.frame()`                  | `data.frame(name=c("John", "Jane"), age=c(30, 25))`   |
+                                                     |
+
+:::{.fragment .fade-up}
+::: {.callout-caution}
+Here, we focus on two things:
+
++ How to create each of the data class.
++ How to access and modify the elements in the data.
+:::
+:::
+
+:::{.notes}
++ We learned the types of element of data. Now, we are going to learn the types of data structures in R.
++ Depending on the data structure, you can store different types of data.
++ Mainly, 
+:::
+
+
+
+## Vector (one-dimensional array) {.center}
+
+::: {.panel-tabset}
+
+### Basics
++ A vectors is a class of object that consists of elements of the **same kind of elements** (All elements in a vector must be of the same data type). You use `c()` to create a vector.
+  + As other functions to create vectore, you can use `seq()`, `rep()`.
++ You can also combine two vectors using `c()`.
+
+```{webr-r}
+# Empty vector
+c()
+
+# Create a numeric vector
+x <- c(1, 2, 3) # equivalent to seq(1, 5) and 
+x
+
+# Combine another numeric vector and x
+y <- c(x, c(4, 5))
+
+# Create a character vector
+z <- c("a", "b", "c")
+
+# See what happens when you combine numeric and character vector
+c(x, z)
+# All the numeric values are converted to characters!
+```
+
+
+
+
+### Indexing
+<!-- 
++ Chapter 7 Indexing Vectors with [ ]: https://bookdown.org/ndphillips/YaRrr/vectorindexing.html
++ Vector Indexing: https://thomasleeper.com/Rcourse/Tutorials/vectorindexing.html
++  -->
+
++ You can get a single element, or a set of specific elements of a vector by indexing with `[]` blackets. Inside `[]`, you provide anothe vector (i.e. index vector) the position of the element you want to extract 
+  + e.g., `x[2]` returns the second element of `x`.
+
+```{webr-r}
+# === Positional indexing === #
+# Create a numeric vector 
+x <- seq(from = 1, to = 5, by = 2)
+x
+
+# Get 2nd element of x
+index_vec <- 2
+x[index_vec] # or simply you can do x[2]
+
+# Get 1st and 3rd element of x
+index_vec <- c(1, 3)
+x[index_vec] # or simply you can do x[c(1, 3)]
+
+# Get the last element of x without knowing the length of x.
+x[length(x)]
+```
+
+You don't need to create a separate index vector.
+<br>
+
++ If a vector has names, you can also use the name of the element to extract it.
+```{webr-r}
+# === Named indexing === #
+# Create a numeric vector with names
+y <- c(x=1, y=2, z=3)
+y 
+
+index_vec <- "x"
+y[index_vec] # or simply y["x"]
+```
+
+
+### Logical Vectors
+
+
+<!-- see the section of Corecion: https://rstudio-education.github.io/hopr/r-objects.html  -->
++ A logical vector is a vector that only contains logical values (TRUE and FALSE values).
++ You can use logical vector as an index vector to subset the data.
+
+
+```{webr-r}
+# Create a numeric vector 
+x <- c(5, -8, 2, -1)
+
+# === For example, let's get the positive elements === #
+# create a logical vector 
+y <- x > 0
+# Let's see what's inside y
+y
+
+# subset the data
+x[y] #Or you can simply do x[x>0]
+```
+
+<br>
+
+The following figure shows how logical indexing works.
+
+![Logical Indexing (cited from [here](https://bookdown.org/ndphillips/YaRrr/logical-indexing.html))](image/logical_vector.png){#fig-elephant fig-align="left" width=40%}
+
+### Others
+
+```{webr-r}
+x <- 1:5
+
+# Assign names to each of the elements
+names(x) <- c("a", "b", "c", "d", "e")
+x
+
+# Replace a specific element to another value
+x["a"] <- 100
+x
+```
+
+
+### Exercise
+
+The following code randomly samples 30 numbers from a uniform distribution between 0 and 1, and stores the result in `x`. 
+```{webr-r}
+# Run this code:
+set.seed(3746)
+x <- runif(n = 30, min = 0, max = 1)
+```
+
+1. Get 10th and 15th element of `x`.
+2. Get elements larger than $0.5$.
+3. Replace 10th and 15th element of `x` to 0.
+4. If an element of `x` is larger than $0.9$, replace it with $1$.
+5. Count the elements larger than $0.6$. 
+
+```{r}
+#| include: false
+#| eval: false
+
+set.seed(3746)
+x <- runif(n = 30, min = 0, max = 1)
+
+# 1.1
+x[c(10,15)]
+x[x > 0.5]
+x[c(10,15)] <- 0
+x[x > 0.9] <- 1
+sum(x > 0.6)
+```
+:::
+
+
+
+## Matrix
+
+:::{.panel-tabset}
+
+### Basics
+A matrix is a class of object that consists of elements of** the same kind of elements** (All elements in a matrix must be of the same data type) stored in a** two-dimensional array**.
+
++ `matrix()` function is used to create a matrix.
+```{webr-r}
+# Create a numeric matrix
+m_num <- matrix(1:6, nrow = 3)
+m_num
+
+# use dim() to see the dimension of the matrix
+dim(m_num)
+
+# Create a matrix of characters
+m_chr <- matrix(c("a", "b" , "c", "d", "e", "f"), nrow = 3)
+m_chr
+```
+
+
+You can also create a matrix by combining multiple vectors using `cbind()` or `rbind()` functions.
+```{r}
+vec_a <- 1:4
+vec_b <- 4:7
+
+mat1 <- cbind(vec_a, vec_b)
+mat1
+
+mat2 <- rbind(vec_a, vec_b)
+mat2
+```
+
+
+
+### Indexing
+
+In the same way as vectors, you can access the elements of a matrix using `[]` brackets. But you need to specify the row and column index.
+
+```{webr-r}
+# Create a matrix of numbers
+m_num <- matrix(1:6, nrow = 3)
+m_num
+
+# Get the element in the 1st row and 2nd column
+m_num[1, 2]
+
+# Modify a specific element
+m_num[1, 2] <- 100
+m_num
+```
+
+### Others
+
+```{webr-r}
+# Create a matrix of numbers
+m_num <- matrix(1:6, nrow = 3)
+
+# Add column names
+colnames(m_num) <- c("A", "B")
+m_num
+# Add row names
+rownames(m_num) <- c("a", "b", "c")
+m_num
+```
+:::
+
+:::{.notes}
++ While vector is one-dimentional array, matrix is two-dimentional array.
++ 
+:::
+
+
+## data.frame
+
+:::{.panel-tabset}
+
+### Basics
+`data.frame` is like a matrix but it can store different types of data in each column.
+
+```{webr-r}
+# create a data.frame 
+yield_data <- 
+  data.frame(
+    Nitrogen = c(200, 180, 300),
+    Yield = c(240, 220, 230),
+    State = c("Kansas", "Nebraska", "Iowas")
+  )
+yield_data
+```
+
+
+There are different kinds of objects that are like "data.frame":
+
++ `tibble`
++ `data.table`
+
+We will learn these in the next lecture!
+
+
+### Indexing
+
+You can access the elements of a data.frame using `[]` brackets. But you need to specify the row and column index.
+
+```{webr-r}
+yield_data <- 
+  data.frame(
+    Nitrogen = c(200, 180, 300),
+    Yield = c(240, 220, 230),
+    State = c("Kansas", "Nebraska", "Iowas")
+  )
+yield_data
+
+# Get the elements in the 1st row 
+yield_data[1, ]
+
+# Get the elements in the 1st column
+yield_data[ , 1]
+
+# Get the element in the 1st row and 2nd column
+yield_data[1, 2]
+
+# Or you can use the column name
+yield_data[1, "Yield"]
+
+# Find a state whose yield is more than 225
+yield_data[yield_data$Yield > 225, ]
+```
+
+### Others
+
+```{webr-r}
+yield_data <- 
+  data.frame(
+    Nitrogen = c(200, 180, 300),
+    Yield = c(240, 220, 230),
+    State = c("Kansas", "Nebraska", "Iowas")
+  )
+
+# column names
+names(yield_data) #or colnames(yield_data)
+
+# Change the column names to lower case
+names(yield_data) <- tolower(names(yield_data))
+yield_data
+```
+:::
+
+
+## List
+
++ A `list` is a class of object that consists of elements of mixed types. You can create a list using `list()` function.
+
+```{webr-r}
+list_a <- list(1, 2, "3", 4)
+list_a
+```
+
+
+A list is very flexible. It can hold basically any type of R objects as its elements.
+
+```{webr-r}
+# Create a numeric vector 
+vec_a <- 1:4
+# Create a 
+# Create a data.frame
+yield_data <- 
+  data.frame(
+    Nitrogen = c(200, 180, 300),
+    Yield = c(240, 220, 230),
+    State = c("Kansas", "Nebraska", "Iowas")
+  )
+
+
+
+```
+
+## Summary {.center}
+
+Don't worry about the details. You'll get used to these data structures as you use R more. Here are the key points you need to knowb at this point:
+
+::: {.callout-important title="key points"}
++ To know that how to create vector, matrix, data.frame, and list object in R.
+  + Among all, `data.frame` is the most common data structure you will see when you work with the real-world data. 
+  + (In the next lecture, we will learn advanced data structures such as `tibble` and `data.table`.)
++ To know that how to access elements of an object (Use indexing with `[]`).
+  + positional indexing, named indexing, and logical indexing.
+:::
+
+<br>
+
+::: {.callout-tip}
+Use `class()` function to know the class of data structure you're working on.
+:::
+
+
+## Exercise Problems
+
+<!-- create a problem related to vector and data.frame -->
+
+
+# Matrix/Linear Algebra in R
+
+---
+
+:::{.panel-tabset}
+### Basic arithmetics
 ```{webr-r} 
 #--- addition ---#
 2 + 3
@@ -94,44 +689,176 @@ filters:
 9 %/% 4
 ```
 
-### logical values and operators (important!)
 
-```{webr-r}
-#--- true or false ---#
-5 == 5
-5 == 4
-5 > 4
-5 < 4 
-```
-
-
-### Assignment
-
-You can assign contents (numeric numbers, character, boolean, etc) to an object on R and reuse it later using either `<-` or `=`.
+### Vector calculation
 
 ```{r}
+a <- c(1, 3, 2)
+b <- c(5, 7, 6)
 
+# --- Addition --- #
+a + 1
+a + b
+
+# --- Substraction --- #
+a - 1
+b - a
+
+# --- Multiplication --- #
+a*2
+a*b
 ```
 
+
+### Matrix calculation
+
++ As you saw in the vector calculation, R can calculate element-wise operations. If you want to do matrix multiplication, you need to use `%*%` operator.
+
+```{webr-r}
+mat_a <- matrix(1:4, nrow = 2)
+mat_b <- matrix(4:7, nrow = 2)
+
+
+#--- Matrix Addition and Substraction ---#
+mat_a + mat_b
+mat_b - mat_a
+
+# --- Matrix Multiplication using %*% operator --- #
+mat_a %*% mat_b
+
+# --- Matrix Transpose --- #
+t(mat_a)
+```
 :::
 
 
-## Objects
 
-R is an object-oriented programming (OOP), which basically means:
 
-*"Everything is an object and everything has a name."*
+# Loading and Saving Data
+
+
+---
+
+## R base functions for data import and export
+
+
++ Like other softwares (e.g., Stata, Excel) do, R has two native data formats: `.Rdata` and `.Rds` (`.rdata` and `.rds`) 
++ `.Rds` format is more common. So, use `.Rds` extension whenever you save data.
 
 <br>
 
-::: {.callout-note title="Different object types (classes)"}
-+ vector
-+ matrix
-+ data.frame
-+ list
-+ function
+:::: {.columns}
+::: {.column width="50%"}
+**.Rdata** format
+
++ Load data: 
+
+```load("path_to_Rdata_file")```
+
++ Save data: 
+
+```save(object_name, file = "path_to_Rdata_file")```
 :::
 
 
+::: {.column width="50%"}
+**.Rds** format
+
++ Load data: 
+
+```readRDS("path_to_Rds_file")```
+
++ Save data: 
+  
+```saveRDS(object_name, file = "path_to_Rds_file")```
+:::
+::::
 
 
+:::{.notes}
++ An rds ( r data set) file is a file type that is supported by R.
+:::
+
+<br>
+
+:::{.fragment .fade-up}
+::: {.callout-caution title=""}
+[How to set the path to the data file?]{style="color: red;"}
+:::
+:::
+
+
+## Setting the working directory
+
+
+
+
+
+## Loading the data
+
++ R can load data from various sources such as CSV, Excel, and Stata files.
++ There exists many functions that can help you to load data:
+  + `read.csv()` to read a `.csv` file
+  +  `read_excel()` from the `readxl` package to read data sheets from an `.xls(x)` file
+  + `read.dta13()` function from the `readstata13` package to read a STATA data file (`.dta`)
+
+<br>
+
++ **But** `import()` function from the `rio` package might the most coveneint one. 
+  + Unlike, `read.csv()` and `read.dta13()` which specialize in reading a specific type of file, `import()` can load data from various sources.
+
+```{webr-r}
+# If you don't have the rio package, install it by running the following code:
+# install.packages("rio")
+
+# To use the package, you need to load the package with library() function.
+library(rio)
+```
+:::
+
+
+## Saving the data
+
++ You can save the data with varioius format
++ Use `.rds` format to save the data in R format.
+  + save: `saveRDS(object_name, path_to_save)`
+  + read: `readRDS(path_to_save)`
+
+<br>
+
+Let's try
+
+```{webr-r}
+
+```
+
+
+
+## Exercise Problems
+
+<!-- create a problem related to vector and data.frame -->
+
+
+# Useful Base Function in R
++ paste0()
++ length()
++ dim()
++ rbind(), cbind()
++ nrow(), ncol()
++ colMeans(), rowMeans()
+
+
+## Exercise problems
+```{r}
+?sample
+x <- sample(1:100, size=20, replace = TRUE)
+x
+x > 50
+x[x > 50]
+```
+
+
++ From this [webwise](https://www.w3resource.com/r-programming-exercises/basic/index.php)
+  + Write a R program to create a sequence of numbers from 20 to 50 and find the mean of numbers from 20 to 60 and sum of numbers from 51 to 91.
+  + Write a R program to create a vector which contains 10 random integer values between -50 and +50.
+  + Write a R program to create a list of random numbers in normal distribution and count occurrences of each value.
