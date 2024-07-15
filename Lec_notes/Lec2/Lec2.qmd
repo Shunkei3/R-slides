@@ -20,7 +20,7 @@ format:
       data-background-color: "#447099"
     fig-dpi: 400
 webr:
-  packages: ['ggplot2', 'dplyr']
+  packages: ["data.table", "tidyverse", "rio", "curl"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -28,22 +28,129 @@ filters:
 ---
 
 
-## Objective of this Lecture {.center}
+### Learning Objectives {.center}
 
-+ Do basic mathematical oeprations
-+ Define objects in R
-+ learn different object types 
++ Get familiar with the `data.table` syntax to 
+  + minupulate data (select columns, filter rows by conditions, create a new column, reshape data, merge two data)
++ Learn how to use `%>%` operator.
+
+<br>
+
+:::{.fragment .center}
+### Today's outline: {.center}
+1. [Introduction to data.table](#intro-data-table)
+2. Let's use `%>%` operator to more clear code. 
+3. Appendix: Use multiple cores for computation with data.table [[Here](https://github.com/Rdatatable/data.table/wiki/Installation)]
+:::
+
+<br>
+
+:::{.fragment .center}
+### Reference {.center}
++ [Introduction to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
+:::
+
+:::{.notes}
++ Today, we will learn how to minuplate data, so called data wrangling.
+  + Data wrangling is a process of cleaning and transforming raw data into a useful format for analysis, which is a crucial step in data analysis.
++ There are two popular packages in R for data wrangling: `data.table` and `dplyr`.
+
++ Although `dplyr` is a bit easier to learn, I will introduce `data.table` package today  because I believe, in long run, `data.table` is superior to `dplyr`.  
+  + Specifically, `data.table`is faster than `dplyr` especially for large data, and memory efficient.
+:::
+
+
+## Before starting {.center}
+
+<!-- + If you are already familiar with functions in `dplyr` package (e.g., `filter()`, `select()`, `group_by()`), you can stick with `dplyr` package.
++ But, if you are interested in speed, I recommend that you use `data.table` package. -->
 
 
 
-## Today's outline: {.center}
+# Introduction to data.table {#intro-data-table}
 
-+ Types of R-object
-  + 
-+ Basisc of R operation:
-  + calculation
-  + select row and columns 
-  + create a new column
+---
+
+## Basics
+
+:::{.panel-tabset}
+
+### What is it?
++ `data.table` is a package in R that provides an enhanced version of `data.frame`.
+  + It is designed to be fast and memory efficient.
+
+<br>
+
+Another package called `dplyr` is also popular for data wrangling.
+
+::: {.callout-tip title="data.table vs dplyr"}
+
+There is another package called `dplyr` that is also popular for data wrangling. But `data.table` is much faster than `dplyr` especially for large-scale data manipulation tasks.
+
+For example, see:
+
++ See [this](https://github.com/Rdatatable/data.table/wiki/Benchmarks-%3A-Grouping) for the speed comparison of dplyr and data.table.
++ [This website](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/) compares dply vs data.table side by side.
+  + If you already know `dplyr` syntax, this website would be helpful to understand `data.table` syntax.
+:::
+
+
+### Before Starting
+
+
+1. Load the data.table package.
+```{webr-r}
+library(data.table)
+```
+
+<br>
+
+1. Let's use `flights` data, which is obtained from `nycflights13` package.
+
+```{webr-r}
+# Load nycflights13 package and get flights data`
+library(nycflights13)
+data(flights, package = "nycflights13") 
+# Check the class of object
+class(flights)
+```
+
+<br>
+
+3. To use the functionalities of the `data.table` package, we need to convert the data class to `data.table` class.
+
++ use `setDT()` function to convert data.frame to data.table.
+
+```{webr-r}
+setDT(flights) # same as, flights <- as.data.table(flights)
+# Now, flights is a data.table object.
+class(flights)
+```
+
+
+### data.table syntax
+
+The general form of `data.table` syntax is
+
+```{webr-r}
+#| eval: false
+# Don't run this code
+DT[i, j, by]
+```
+
++ `i`: specify which rows (like dplyr::filter)
++ `j`: specify the operations on selected columns
++ `by`: specify the variable to be used as groups by which operations specified in `j` are implemented
+
+<br>
+
+**The way to read this aloud is**
+
+Take data.table (named `DT`), subset/reorder rows using `i`, then calculate `j`, grouped by `by`.
+
+:::
+
+
 
 ## data.table vs dplyr {.center}
 
