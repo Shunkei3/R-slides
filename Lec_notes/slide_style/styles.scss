@@ -9,7 +9,64 @@ $font-family-monospace: 'Fira Mono', monospace;
 $presentation-title-slide-text-align: left;
 
 /*-- scss:rules --*/
-
 h2 {
   color: #447099 !important;
+}
+
+
+// Header ----------------------------
+
+// .reveal h2 {
+//   font-size: 1.8rem;
+//   color: #447099 !important;
+// }
+
+// .reveal h2 code {
+//   font-size: 1.8rem;
+// }
+
+// .reveal h3 {
+//   font-size: 1.4rem;
+// }
+
+
+// call-out box configurations
+.reveal .callout.callout-style-default div.callout-title {
+  font-size: 1.5rem;
+}
+
+.reveal .callout.callout-style-default div.callout-content {
+  font-size: 1.5rem;
+}
+
+.content-box-blue {
+  background-color: #F0F8FF;
+}
+
+.content-box-gray {
+  background-color: #e2e2e2;
+}
+
+.content-box-grey {
+  background-color: #F5F5F5;
+}
+
+.content-box-army {
+  background-color: #737a36;
+}
+
+.content-box-green {
+  background-color: #d9edc2;
+}
+
+.content-box-purple {
+  background-color: #e2e2f9;
+}
+
+.content-box-red {
+  background-color: #ffcccc;
+}
+
+.content-box-yellow {
+  background-color: #fef5c4;
 }

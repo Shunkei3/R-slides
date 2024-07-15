@@ -14,14 +14,19 @@
 + Day1: Introduction to R: Basic operation of R
   + To get familiar with the feature of RStudio (lecture 0)
   + To get familiar with the basic operation of R
-  + To understand how to create vector, list, matrix, and data.frame in R, and how to access to the elements in those objects.
+  + To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.
   + To get familiar with base R functions to do mathematical calculations.
   + To get familiar with be able to base plotting functions to visualize data.
- 
+
+
 + Day2: Data warngling with `data.table`(and `dplyr` package)
   + To get familiar with the basic operation of `data.table` package
-  + To be able to 
+  + Pipes with magrittr
+  + To get familar with basic skills for data wrangling
+
+
 + Day3: Data visualization with ggplot2
+
 
 + Day4: Econometric analysis with R, and Monte Calro simulation
   + conduct descriptive analysis, reporte the table
@@ -29,9 +34,21 @@
   + loop functions
   + introduction to Monte Calro simulation
 
-+ Day5: Write functions for more complicated Monte Carlo simulation
-  + 
 
++ Day5: Write functions for more complicated Monte Carlo simulation
+  + When should you write a function?
+
+# Exercise problems: Idea
+
++ Ideas for Monte Calro Simulation
+  + Derive pi 
+  + Measurement error problem
+  + (Weak) law of large numbers
+  + Unbiased estimator for the population mean
+  + Central limit theorem
+  + Heteroskedasticity robust estimator
+
++ Download data from USDA-NASS using `rnassqs`
 
 
 # Extra:
@@ -90,10 +107,32 @@
 + run the following code: `r <- sample(1:5, 100, replace = TRUE)`
   + find the value of mean and SD without using `mean()` and `sd()`
   + find the median value of `r`
+  + Find the index of the maximum value of a vector `x`.
+  + Exclue some elements from a vector `x`
 
+  + select elements using "or" and "and" (e.g., %in%)
+  + find the NA 
+  + replace NA to 0
+
+
+## A list of functions:
++ c()
++ seq()
++ rep()
++ sample()
++ head()
 
 ---
-# Plan: Day2
+# Plan: Day2 - Data warngling with `data.table`(and `dplyr` package)
+
+# To do:
+  + Piping operator with magrittr
+  + To get familiar with the basic operation of `data.table` package
+    + select columns
+    + filter rows by conditions
+    + define a new variable
+    + 
+
 
 
 
