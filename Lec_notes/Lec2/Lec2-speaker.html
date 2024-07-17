@@ -611,7 +611,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","read-only":"false","comment":"","classes":"","warning":"true","autorun":"false","editor-max-height":"","editor-quick-suggestions":"false","output":"true","editor-word-wrap":"true","message":"true","dpi":72,"fig-height":5,"fig-width":7,"results":"markup","out-width":"700px","context":"interactive","editor-font-scale":"0.8","label":"unnamed-chunk-1","out-height":""},"code":"library(data.table)","id":1},{"options":{"fig-cap":"","read-only":"false","comment":"","classes":"","warning":"true","autorun":"false","editor-max-height":"","editor-quick-suggestions":"false","output":"true","editor-word-wrap":"true","message":"true","dpi":72,"fig-height":5,"fig-width":7,"results":"markup","out-width":"700px","context":"interactive","editor-font-scale":"0.8","label":"unnamed-chunk-2","out-height":""},"code":"# Load nycflights13 package and get flights data`\nlibrary(nycflights13)\ndata(flights, package = \"nycflights13\") \n# Check the class of object\nclass(flights)","id":2},{"options":{"fig-cap":"","read-only":"false","comment":"","classes":"","warning":"true","autorun":"false","editor-max-height":"","editor-quick-suggestions":"false","output":"true","editor-word-wrap":"true","message":"true","dpi":72,"fig-height":5,"fig-width":7,"results":"markup","out-width":"700px","context":"interactive","editor-font-scale":"0.8","label":"unnamed-chunk-3","out-height":""},"code":"setDT(flights) # same as, flights <- as.data.table(flights)\n# Now, flights is a data.table object.\nclass(flights)","id":3},{"options":{"fig-cap":"","read-only":"false","eval":"false","comment":"","classes":"","warning":"true","autorun":"false","editor-max-height":"","editor-quick-suggestions":"false","output":"true","editor-word-wrap":"true","message":"true","dpi":72,"fig-height":5,"fig-width":7,"results":"markup","out-width":"700px","context":"interactive","editor-font-scale":"0.8","label":"unnamed-chunk-4","out-height":""},"code":"# Don't run this code\nDT[i, j, by]","id":4}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-1","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"library(data.table)"},{"id":2,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-2","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# Load nycflights13 package and get flights data`\nlibrary(nycflights13)\ndata(flights, package = \"nycflights13\") \n# Check the class of object\nclass(flights)"},{"id":3,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-3","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"setDT(flights) # same as, flights <- as.data.table(flights)\n# Now, flights is a data.table object.\nclass(flights)"},{"id":4,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"eval":"false","message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-4","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# Don't run\nDT[i, j, by]"},{"id":5,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"eval":"false","message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-5","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# Don't run\nDT[i, j, by]"},{"id":6,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-6","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# Subset rows where carrier is \"AA\" (American Airlines)\nflights[carrier == \"AA\",]"},{"id":7,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-7","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# Subset rows where carrier is \"AA\" and month is 1 (January)\nflights[carrier == \"AA\" & month == 1,]\n\n# Subset rows where carrier is \"AA\" and origin is all the airports except \"JFK\"\nflights[carrier == \"AA\" & origin != \"JFK\",]"},{"id":8,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-8","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# --- Select dep_time column as vector` --- #\nflights[, dep_time]\n\n# --- Select dep_time column as data.table --- #\nflights[, list(dep_time)]\n# or\nflights[, .(dep_time)]\n# or you can also select a column in the data.frame way\nflights[, \"dep_time\"]"},{"id":9,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-9","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# --- Select dep_time and arr_time as data.table --- #\nflights[, .(dep_time, arr_time)]\n\n# --- Deselect columns using - or ! --- #\nflights[, !c(\"dep_time\", \"arr_time\")]\n# flights[, -c(\"dep_time\", \"arr_time\")]"},{"id":10,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-10","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"flights[, sum( (arr_delay + dep_delay) < 0 )]"},{"id":11,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-11","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"# first three columns\nselect_cols <- c(\"year\", \"month\", \"day\")\nflights[ , select_cols, with = FALSE]\nflights[ , ..select_cols]\n\n# flights[,year:day]"},{"id":12,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-12","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":"flights[carrier == \"AA\", .(.N), by = .(origin, month)] %>% head()"},{"id":13,"options":{"comment":"","editor-word-wrap":"true","fig-cap":"","output":"true","editor-quick-suggestions":"false","dpi":72,"message":"true","editor-max-height":"","results":"markup","label":"unnamed-chunk-13","out-height":"","warning":"true","context":"interactive","read-only":"false","classes":"","fig-width":7,"autorun":"false","editor-font-scale":"0.8","fig-height":5,"out-width":"700px"},"code":""}];
 
   </script>
   <script type="module">
@@ -2161,11 +2161,6 @@ Shunkei Kakimoto
           display:block!important;
       }</style></aside>
 </section>
-<section id="before-starting" class="slide level2 center">
-<h2>Before starting</h2>
-<!-- + If you are already familiar with functions in `dplyr` package (e.g., `filter()`, `select()`, `group_by()`), you can stick with `dplyr` package.
-+ But, if you are interested in speed, I recommend that you use `data.table` package. -->
-</section>
 <section>
 <section id="intro-data-table" class="title-slide slide level1 center">
 <h1>Introduction to data.table</h1>
@@ -2184,7 +2179,6 @@ Shunkei Kakimoto
 </ul></li>
 </ul>
 <p><br></p>
-<p>Another package called <code>dplyr</code> is also popular for data wrangling.</p>
 <div title="data.table vs dplyr">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2200,6 +2194,10 @@ Shunkei Kakimoto
 <ul>
 <li>If you already know <code>dplyr</code> syntax, this website would be helpful to understand <code>data.table</code> syntax.</li>
 </ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>Also see the Appendix for the comparison of <code>data.table</code> and <code>dplyr</code>.</li>
 </ul>
 </div>
 </div>
@@ -2239,13 +2237,128 @@ Shunkei Kakimoto
 </ul>
 <p><br></p>
 <p><strong>The way to read this aloud is</strong></p>
-<p>Take data.table (named <code>DT</code>), subset/reorder rows using <code>i</code>, then calculate <code>j</code>, grouped by <code>by</code>.</p>
+<p><span style="color: red;">Take data.table (named <code>DT</code>), subset/reorder rows using <code>i</code>, then calculate <code>j</code>, grouped by <code>by</code>.</span></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>unlike <code>dplyr</code>, you don’t need to use a specific function to do a specific task.
+<ul>
+<li><code>data.table</code> syntax is more compact and efficient than <code>dplyr</code>.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="basics-of-data.table" class="slide level2">
+<h2>Basics of data.table</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Basic Operations</a></li><li><a href="#tabset-2-2">Subset rows</a></li><li><a href="#tabset-2-3">Select columns</a></li><li><a href="#tabset-2-4">Compute on columns</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>Again,</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ul>
+<li><code>i</code>: specify which rows (like dplyr::filter)</li>
+<li><code>j</code>: specify the operations on selected columns</li>
+<li><code>by</code>: specify the variable to be used as groups by which operations specified in <code>j</code> are implemented</li>
+</ul>
+<p><br></p>
+<p>The goals of this section are to learn:</p>
+<ul>
+<li>how to subset rows</li>
+<li>select and compute on columns</li>
+<li>how to create a new column</li>
+<li>perform aggregations by group</li>
+</ul>
+</div>
+<div id="tabset-2-2">
+<ul>
+<li><span style="color: blue;"><code>data.table</code> syntax: <code>DT[i, j, by]</code></span></li>
+<li><span style="color: blue;">To subset rows, use <code>i</code> argument.</span></li>
+</ul>
+<p>For example,</p>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>In this code, we used <code>i</code> to subset rows where <code>carrier</code> is “AA”;</p>
+<ul>
+<li><code>i</code>: <code>origin == "JFK" &amp; month == 6L</code></li>
+<li><code>j</code>: no action (all columns)</li>
+<li><code>by</code>: non</li>
+</ul>
+<p><br></p>
+<p>A little bit more complex example:</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-3">
+<ul>
+<li><span style="color: blue;"><code>data.table</code> syntax: <code>DT[i, j, by]</code></span></li>
+<li><span style="color: blue;">To select columns, use <code>j</code> argument</span></li>
+</ul>
+<p>For example, suppose we want to select <code>dep_time</code> column. Since we don’t subset rows, we leave <code>i</code> argument blank.</p>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ul>
+<li>If we wrap the variables (column names) within <code>list()</code>, which ensures that a <code>data.table</code> is returned.</li>
+<li><code>.()</code> is a shorthand for <code>list()</code> in <code>data.table</code> syntax.</li>
+</ul>
+<p><br></p>
+<p>Let’s select multiple columns as <code>data.table</code>.</p>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-2-4">
+<ul>
+<li><span style="color: blue;"><code>data.table</code> syntax: <code>DT[i, j, by]</code></span></li>
+<li><span style="color: blue;"><code>j</code> argument not only arrows you to select columns but also to compute on columns</span></li>
+</ul>
+<p>For example, How many trips have had total delay &lt; 0?. (total day = <code>dep_delay</code> + <code>arr_delay</code>)</p>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 </section>
+<section id="useful-knowledge-for-data.table" class="slide level2">
+<h2>Useful knowledge for data.table</h2>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise 1</h2>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise 2</h2>
+</section></section>
+<section>
+<section id="apendix" class="title-slide slide level1 center">
+<h1>Apendix</h1>
+
+</section>
 <section id="data.table-vs-dplyr" class="slide level2 center">
 <h2>data.table vs dplyr</h2>
+<h3 id="key-difference-form-dplyr">Key difference form dplyr</h3>
+<p>You can implement all the three main actions (filter, calculate, group) in a single statement unlike dplyr:</p>
+<p>For example, the following set of codes below will give the same results (the number of flights by American Airline by origin-month):</p>
+<p><strong><code>data.table</code> way</strong></p>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong><code>dplyr</code> way</strong></p>
+<div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>data.table
 <ul>

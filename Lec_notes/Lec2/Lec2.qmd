@@ -60,13 +60,6 @@ filters:
 :::
 
 
-## Before starting {.center}
-
-<!-- + If you are already familiar with functions in `dplyr` package (e.g., `filter()`, `select()`, `group_by()`), you can stick with `dplyr` package.
-+ But, if you are interested in speed, I recommend that you use `data.table` package. -->
-
-
-
 # Introduction to data.table {#intro-data-table}
 
 ---
@@ -81,8 +74,6 @@ filters:
 
 <br>
 
-Another package called `dplyr` is also popular for data wrangling.
-
 ::: {.callout-tip title="data.table vs dplyr"}
 
 There is another package called `dplyr` that is also popular for data wrangling. But `data.table` is much faster than `dplyr` especially for large-scale data manipulation tasks.
@@ -92,11 +83,15 @@ For example, see:
 + See [this](https://github.com/Rdatatable/data.table/wiki/Benchmarks-%3A-Grouping) for the speed comparison of dplyr and data.table.
 + [This website](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/) compares dply vs data.table side by side.
   + If you already know `dplyr` syntax, this website would be helpful to understand `data.table` syntax.
+  
+<br>
+
++ Also see the Appendix for the comparison of `data.table` and `dplyr`.
 :::
 
 
-### Before Starting
 
+### Before Starting
 
 1. Load the data.table package.
 ```{webr-r}
@@ -110,7 +105,9 @@ library(data.table)
 ```{webr-r}
 # Load nycflights13 package and get flights data`
 library(nycflights13)
-data(flights, package = "nycflights13") 
+data(flights, package = "nycflights13")
+# Remove rows with missing values (just for convenience)
+flights <- na.omit(flights)
 # Check the class of object
 class(flights)
 ```
@@ -120,13 +117,11 @@ class(flights)
 3. To use the functionalities of the `data.table` package, we need to convert the data class to `data.table` class.
 
 + use `setDT()` function to convert data.frame to data.table.
-
 ```{webr-r}
 setDT(flights) # same as, flights <- as.data.table(flights)
 # Now, flights is a data.table object.
 class(flights)
 ```
-
 
 ### data.table syntax
 
@@ -134,7 +129,7 @@ The general form of `data.table` syntax is
 
 ```{webr-r}
 #| eval: false
-# Don't run this code
+# Don't run
 DT[i, j, by]
 ```
 
@@ -146,13 +141,185 @@ DT[i, j, by]
 
 **The way to read this aloud is**
 
-Take data.table (named `DT`), subset/reorder rows using `i`, then calculate `j`, grouped by `by`.
+[Take data.table (named `DT`), subset/reorder rows using `i`, then calculate `j`, grouped by `by`.]{style="color: red;"}
+
+<br>
+:::
+
+
+:::{.notes}
++ unlike `dplyr`, you don't need to use a specific function to do a specific task.
+  + `data.table` syntax is more compact and efficient than `dplyr`.
+:::
+
+## Basics of data.table
+
+:::{.panel-tabset}
+### Basic Operations
+
+Again, 
+```{webr-r}
+#| eval: false
+# Don't run
+DT[i, j, by]
+```
+
++ `i`: specify which rows (like dplyr::filter)
++ `j`: specify the operations on selected columns
++ `by`: specify the variable to be used as groups by which operations specified in `j` are implemented
+
+<br>
+
+The goals of this section are to learn:
+
++ how to subset rows
++ select and compute on columns
++ how to create a new column
++ perform aggregations by group
+
+### Subset rows 
+
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [To subset rows, use `i` argument.]{style="color: blue;"}
+
+For example,
+```{webr-r}
+# Subset rows where carrier is "AA" (American Airlines)
+flights[carrier == "AA",]
+```
+In this code, we used `i` to subset rows where `carrier` is "AA";
+
++ `i`: `origin == "JFK" & month == 6L`
++ `j`: no action (all columns)
++ `by`: non
+
+<br>
+
+A little bit more complex example:
+```{webr-r}
+# Subset rows where carrier is "AA" and month is 1 (January)
+flights[carrier == "AA" & month == 1,]
+
+# Subset rows where carrier is "AA" and origin is all the airports except "JFK"
+flights[carrier == "AA" & origin != "JFK",]
+```
+
+### Select columns {.center}
+
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [To select columns, use `j` argument]{style="color: blue;"}
+
+For example, suppose we want to select `dep_time` column. Since we don't subset rows, we leave `i` argument blank.
+
+```{webr-r}
+# --- Select dep_time column as vector` --- #
+flights[, dep_time]
+
+# --- Select dep_time column as data.table --- #
+flights[, list(dep_time)]
+# or
+flights[, .(dep_time)]
+# or you can also select a column in the data.frame way
+flights[, "dep_time"]
+```
+
++ If we wrap the variables (column names) within `list()`, which ensures that a `data.table` is returned.
++ `.()` is a shorthand for `list()` in `data.table` syntax.
+
+
+<br>
+
+Let's select multiple columns as `data.table`.
+```{webr-r}
+# --- Select dep_time and arr_time as data.table --- #
+flights[, .(dep_time, arr_time)]
+
+# --- Deselect columns using - or ! --- #
+flights[, !c("dep_time", "arr_time")]
+# flights[, -c("dep_time", "arr_time")]
+```
+
+
+### Compute on columns
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [`j` argument not only arrows you to select columns but also to compute on columns]{style="color: blue;"}
+
+For example: How many trips have had total delay < 0?. (total day = `dep_delay` + `arr_delay`)
+
+```{webr-r}
+# count the number of trips with total delay < 0
+flights[, sum((arr_delay + dep_delay) < 0)]
+```
+
+
+
+### Grouped operations
+
+
+<br>
+
+
+
 
 :::
 
 
+## Useful knowledge for data.table
+
+
+```{webr-r}
+# first three columns
+select_cols <- c("year", "month", "day")
+flights[ , select_cols, with = FALSE]
+flights[ , ..select_cols]
+
+# flights[,year:day]
+```
+
+
+In a `data.frame` way?
+```{r}
+flights_df <- as.data.frame(flights)
+  with(
+    flights, 
+     mean(arr_delay + dep_delay)
+  )
+
+```
+
+
+
+## Exercise 1
+
+
+
+
+## Exercise 2
+
+
+
+
+# Apendix
 
 ## data.table vs dplyr {.center}
+
+### Key difference form dplyr
+You can implement all the three main actions (filter, calculate, group) in a single statement unlike dplyr:
+
+For example, the following set of codes below will give the same results (the number of flights by American Airline by origin-month):
+
+
+**`data.table` way**
+```{webr-r}
+flights[carrier == "AA", .(.N), by = .(origin, month)] %>% head()
+```
+
+**`dplyr` way**
+
+```{webr-r}
+
+```
+
 
 + data.table 
   + pros:
