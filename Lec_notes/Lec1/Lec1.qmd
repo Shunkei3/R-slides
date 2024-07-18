@@ -791,8 +791,9 @@ t(mat_a)
 ## Setting the working directory
 
 
-
-
++ Other options:
+  + `here()`
+  + `file.path()`
 
 ## Loading the data
 
@@ -847,6 +848,9 @@ Let's try
 + nrow(), ncol()
 + colMeans(), rowMeans()
 
++ with and within functions()
+  + You don't need to use `$` every time you access to the column of the data.frame.
+  
 
 ## Exercise problems
 ```{r}

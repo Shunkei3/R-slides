@@ -70,3 +70,37 @@ h2 {
 .content-box-yellow {
   background-color: #fef5c4;
 }
+
+
+// Code configurations ----------------------------
+
+// Code configurations ----------------------------
+
+// code in a regular R code chunk
+code.sourceCode.r {
+  font-size: 1.2rem;
+  background-color: #F0F8FF;
+}
+
+
+code in an webr code chunk 
+.reveal .mtk1{
+  font-size: 0.8rem;
+}
+
+// results of running codes
+pre div code {
+  font-size: 1rem;
+}
+
+// results of running codes in a regular r code chunk
+div.cell-output.cell-output-stdout pre code {
+  font-size: 1rem;
+  background-color: #f8f2f6;
+}
+
+
+// results of running codes in an webr code chunk
+div.qwebr-output-code-area pre {
+  background-color: #f8f2f6;
+}

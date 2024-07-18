@@ -2,6 +2,12 @@
 title: "Exercise Idea"
 ---
 
+
+# Source:
++ https://rpubs.com/Nasif/929745
+
+
+
 # data.frame 
 
 1. Load the file nscg17tiny.dta into a data.frame using import() from the rio package.

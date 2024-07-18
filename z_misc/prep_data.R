@@ -27,10 +27,44 @@ write_dta(flights, here("Data/flight.dta"))
 saveRDS(flights, here("Data/flight.rds"))
 
 
+#/*--------------------------------*/
+#' ## flight data from nycflights13
+#/*--------------------------------*/
+data(flights, package = "nycflights13")
+flights <- na.omit(flights)
+setDT(flights)
+flights[dest=="MSP", ]
 
 
+
+ibrary(tidyverse)
+library(openintro)
+ls("package:openintro")
+nycflights
 
 
 # /*===========================================*/
 #'= Weather data  =
 # /*===========================================*/
+
+
+
+# /*===========================================*/
+#'=  USDA-NASS =
+# /*===========================================*/
+#' See Taro's slides
+#' First, get an API key from this (https://quickstats.nass.usda.gov/api)
+
+
+library(tidyUSDA)
+
+IL_NE_ir_corn_yield <-
+  tidyUSDA::getQuickstat(
+    key = nass_api_key, # you need to replace it with your API key
+    program = "SURVEY",
+    data_item = "CORN, GRAIN, IRRIGATED - YIELD, MEASURED IN BU / ACRE",
+    geographic_level = "COUNTY",
+    state = c("ILLINOIS", "NEBRASKA"),
+    year = as.character(2000:2005),
+    geometry = TRUE
+  )

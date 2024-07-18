@@ -4,6 +4,11 @@
     + [quarto-reporting/quarto-reporting.qmd](https://github.com/jthomasmock/quarto-reporting/blob/main/quarto-reporting.qmd)
 
 
+
+# Useful websites for ideas
++ [Working with data table - EconR](http://www.econr.org/DataTable.html)
++ 
+
 # Package:
 + Data analysis: `data.table`, `dplyr`, `tidyr`, `ggplot2`
 + Econometric analysis: `sandwich`, `plm`
@@ -40,6 +45,11 @@
 
 # Exercise problems: Idea
 
+
++ Run first difference regression
+  + Point:
+    + create a lag variable and take a FD
+
 + Ideas for Monte Calro Simulation
   + Derive pi 
   + Measurement error problem
@@ -49,6 +59,8 @@
   + Heteroskedasticity robust estimator
 
 + Download data from USDA-NASS using `rnassqs`
+
+
 
 
 # Extra:
@@ -121,6 +133,9 @@
 + rep()
 + sample()
 + head()
++ unique()
++ length()
++ 
 
 ---
 # Plan: Day2 - Data warngling with `data.table`(and `dplyr` package)
