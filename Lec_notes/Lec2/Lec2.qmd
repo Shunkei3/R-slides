@@ -1,5 +1,6 @@
 ---
 title: "Day 2: Data wrangling with data.table (and tidyverse package)"
+subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
   revealjs:
@@ -20,7 +21,7 @@ format:
       data-background-color: "#447099"
     fig-dpi: 400
 webr:
-  packages: ["data.table", "tidyverse", "rio", "curl"]
+  packages: ["data.table", "tidyverse", "rio", "nycflights13", "openintro"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -28,7 +29,9 @@ filters:
 ---
 
 
-### Learning Objectives {.center}
+## {.center}
+
+### Learning Objectives
 
 + Get familiar with the `data.table` syntax to 
   + minupulate data (select columns, filter rows by conditions, create a new column, reshape data, merge two data)
@@ -36,14 +39,6 @@ filters:
 
 <br>
 
-:::{.fragment .center}
-### Today's outline: {.center}
-1. [Introduction to data.table](#intro-data-table)
-2. Let's use `%>%` operator to more clear code. 
-3. Appendix: Use multiple cores for computation with data.table [[Here](https://github.com/Rdatatable/data.table/wiki/Installation)]
-:::
-
-<br>
 
 :::{.fragment .center}
 ### Reference {.center}
@@ -60,9 +55,33 @@ filters:
 :::
 
 
+## Today's outline: {.center}
+1. [Introduction to data.table](#intro-data-table)
+2. Let's use `%>%` operator to more clear code. 
+3. Appendix: Use multiple cores for computation with data.table [[Here](https://github.com/Rdatatable/data.table/wiki/Installation)]
+
+
+
+
 # Introduction to data.table {#intro-data-table}
 
 ---
+
+## {.center}
+
+::: {.callout-important}
+## Objectivs:
+
+After this section, you will be able to the folloing operations with `data.table`:
+
+1. Subset rows
+2. Select columns 
+3. Compute on columns
+4. Create a new column
+5. Perform aggregations by group
+7. Merge two data.tables
+6. Reshape data
+:::
 
 ## Basics
 
@@ -93,19 +112,21 @@ For example, see:
 
 ### Before Starting
 
-1. Load the data.table package.
+1. Let's use `flights` data, which is obtained from `nycflights13` package^{"data(data_name, package="package_name")" loads data attached to the package.}.
+
+
 ```{webr-r}
-library(data.table)
+#| autorun: true
+library(openintro)
+dim(nycflights)
 ```
 
-<br>
-
-1. Let's use `flights` data, which is obtained from `nycflights13` package.
-
 ```{webr-r}
+#| autorun: true
 # Load nycflights13 package and get flights data`
 library(nycflights13)
 data(flights, package = "nycflights13")
+
 # Remove rows with missing values (just for convenience)
 flights <- na.omit(flights)
 # Check the class of object
@@ -114,16 +135,26 @@ class(flights)
 
 <br>
 
-3. To use the functionalities of the `data.table` package, we need to convert the data class to `data.table` class.
+2. To use the functionalities of the `data.table` package, we need to convert the data class to `data.table` class.
 
-+ use `setDT()` function to convert data.frame to data.table.
++ use `setDT()` function from `data.table` package to convert `data.frame` class to `data.table` class.
 ```{webr-r}
+#| autorun: true
+# Load data.table package
+library(data.table)
 setDT(flights) # same as, flights <- as.data.table(flights)
 # Now, flights is a data.table object.
 class(flights)
 ```
+:::
 
-### data.table syntax
+:::{.notes}
++ unlike `dplyr`, you don't need to use a specific function to do a specific task.
+  + `data.table` syntax is more compact and efficient than `dplyr`.
+:::
+
+
+## General data.table syntax {.center}
 
 The general form of `data.table` syntax is
 
@@ -144,77 +175,74 @@ DT[i, j, by]
 [Take data.table (named `DT`), subset/reorder rows using `i`, then calculate `j`, grouped by `by`.]{style="color: red;"}
 
 <br>
+
+::: {.callout-tip title="Note"}
++ You can do lots of tasks by combining `i`, `j`, and `by` arguments!
++ This is a stark difference from `dplyr` syntax, which requires you to use a specific function for a specific task.
 :::
 
 
-:::{.notes}
-+ unlike `dplyr`, you don't need to use a specific function to do a specific task.
-  + `data.table` syntax is more compact and efficient than `dplyr`.
-:::
 
-## Basics of data.table
+## 1. Subset rows 
 
 :::{.panel-tabset}
-### Basic Operations
 
-Again, 
-```{webr-r}
-#| eval: false
-# Don't run
-DT[i, j, by]
-```
-
-+ `i`: specify which rows (like dplyr::filter)
-+ `j`: specify the operations on selected columns
-+ `by`: specify the variable to be used as groups by which operations specified in `j` are implemented
-
-<br>
-
-The goals of this section are to learn:
-
-+ how to subset rows
-+ select and compute on columns
-+ how to create a new column
-+ perform aggregations by group
-
-### Subset rows 
+### Basics
 
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
-+ [To subset rows, use `i` argument.]{style="color: blue;"}
++ [To subset rows, use `i` argument. (e.g., `DT[colA == condition1,]`)]{style="color: blue;"}
 
-For example,
+For example, Let's subet rows where carrier is "AA" (American Airlines)
 ```{webr-r}
-# Subset rows where carrier is "AA" (American Airlines)
 flights[carrier == "AA",]
 ```
 In this code, we used `i` to subset rows where `carrier` is "AA";
 
 + `i`: `origin == "JFK" & month == 6L`
 + `j`: no action (all columns)
-+ `by`: non
++ `by`: none
 
-<br>
 
-A little bit more complex example:
+### Quize
 ```{webr-r}
-# Subset rows where carrier is "AA" and month is 1 (January)
-flights[carrier == "AA" & month == 1,]
+# 1. Subset rows where carrier is "AA" and month is 1 (January)
 
-# Subset rows where carrier is "AA" and origin is all the airports except "JFK"
-flights[carrier == "AA" & origin != "JFK",]
+# 2. Subset rows where carrier is "AA" and origin is all the airports except "JFK"
+
+# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for "or" condition)
+
 ```
 
-### Select columns {.center}
+
+### Answers
+
+```{webr-r}
+# 1. Subset rows where carrier is "AA" and month is 1 (January)
+flights[carrier == "AA" & month == 1,]
+
+# 2. Subset rows where carrier is "AA" and origin is all the airports except "JFK"
+flights[carrier == "AA" & origin != "JFK",]
+
+# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for "or" condition)
+flights[dep_delay < 0 | arr_delay < 0,]
+```
+:::
+
+
+## 2. Select columns {.center}
+
+:::{.panel-tabset}
+
+### Basics
 
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
 + [To select columns, use `j` argument]{style="color: blue;"}
 
-For example, suppose we want to select `dep_time` column. Since we don't subset rows, we leave `i` argument blank.
+**Example**: Suppose we want to select `dep_time` column. Since we don't subset rows, we leave `i` argument blank.
 
 ```{webr-r}
-# --- Select dep_time column as vector` --- #
+# --- Select dep_time column as vector --- #
 flights[, dep_time]
-
 # --- Select dep_time column as data.table --- #
 flights[, list(dep_time)]
 # or
@@ -226,9 +254,14 @@ flights[, "dep_time"]
 + If we wrap the variables (column names) within `list()`, which ensures that a `data.table` is returned.
 + `.()` is a shorthand for `list()` in `data.table` syntax.
 
+::: {.callout-important}
+## Important Rule: 
+As long as `j`-expression returns a list, each element of the list will be converted to a column in the resulting data.table.
+:::
 
 <br>
 
+### Multiple columns
 Let's select multiple columns as `data.table`.
 ```{webr-r}
 # --- Select dep_time and arr_time as data.table --- #
@@ -236,32 +269,675 @@ flights[, .(dep_time, arr_time)]
 
 # --- Deselect columns using - or ! --- #
 flights[, !c("dep_time", "arr_time")]
+# or
 # flights[, -c("dep_time", "arr_time")]
 ```
+:::
 
 
-### Compute on columns
+## 3. Compute on columns
+
+:::{.panel-tabset}
+
+### Basics
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
 + [`j` argument not only arrows you to select columns but also to compute on columns]{style="color: blue;"}
 
-For example: How many trips have had total delay < 0?. (total day = `dep_delay` + `arr_delay`)
+<br>
+
+**Example**: How many trips have had total delay < 0?. 
+
++ total day = `dep_delay` + `arr_delay`
 
 ```{webr-r}
 # count the number of trips with total delay < 0
 flights[, sum((arr_delay + dep_delay) < 0)]
 ```
 
+<br>
+
+In the code above, three calculations are being performaed in the `j` argument:
+
++ 1. compute `arr_delay + dep_delay`
++ 2. compute `arr_delay + dep_delay < 0`
++ 3. compute `sum(arr_delay + dep_delay < 0)`
 
 
-### Grouped operations
+### Subset and compute
 
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [Using `i` and `j` argument together, you can perform calculaton on columns of the subsetted rows.]{style="color: blue;"}
+
+<br>
+
+:::{.panel-tabset}
+
+### Example 1
+**Example 1**: How many flights with “JFK” as the origin airport in June?
+
+```{webr-r}
+flights[origin == "JFK" & month == 6L, .N]
+# NOTE: `.N` is a special variable that holds the number of rows in the current group.
+# So, this code is equivalent to:
+# nrow(flights[origin == "JFK" & month == 6L,])
+```
+
+Here, I used
+
++ `i` to select rows where origin airport equals “JFK”, and month equals 6.
++ `j` to count the number of rows in the subsetted data.
++ `by`: none
+
+### Example 2
+
+**Example 2**: How many flights with “JFK” as the origin airport in June?
+
+[You can provide names to the value we calculated if you want.]{style="color: blue;"}
+
+```{webr-r}
+flights[origin == "JFK" & month == 6L, .(Count = .N, avg_dep_delay = mean(dep_delay))]
+```
+
+:::
+
+### Quiz
+
+:::{.panel-tabset}
+
+### Quiz
+1. Calculate the average arrival and departure delay for all flights with "JFK" as the origin airport in the month of August.
+
++ Hint: variables to be used are:
+  + `origin`, `month`, `arr_delay`, `dep_delay` 
+
+```{webr-r}
+# You can write your code here
+```
+
+### Answers
+
+1. Calculate the average arrival and departure delay for all flights with "JFK" as the origin airport in the month of August.
+```{webr-r}
+flights[origin == "JFK" & month == 8L, .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]
+```
+:::
+
+:::
+
+## 4. Create a new column
+
+:::{.panel-tabset}
+
+### Basics
+
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [With `j` argument, you can add a new column to an existing data table using `:=` operator.]{style="color: blue;"}
+  + Here, `:` represents the fixed values and `=` represents the assignment of values. So, they together represent the assignment of fixed values.
+
+<br>
+
+**Example:** Create a new column `total_delay` that is the sum of `dep_delay` and `arr_delay`.
+
+```{webr-r}
+flights[, total_delay := dep_delay + arr_delay]
+```
+
+<br>
+
+::: {.callout-important title="Important Rule:"}
+`:=` creates new columns by updating the data in-place (by reference). Thus, the original data is altered.
+:::
+
+### Multiple new columns
+
+Here are how you define multiple variables at the same time.
+
+```{webr-r}
+#| autorun: true
+#| 
+flights[, `:=`(
+  total_delay = arr_delay + dep_delay,
+  speed = distance/air_time
+  )]
+```
+
+<br>
+
+::: {.callout-caution}
++ data.table's `:=` operator doesn't allow referencing recently-added/changed variables within the same `[`-expression. To do what you want, you need another `[`.
+
+```{r}
+#| eval: false
+
+# This code does not work
+flights[, `:=`(
+  total_delay = arr_delay + dep_delay,
+  delay_rate = total_delay/air_time,
+]
+# the problem in the code above is that newly defined variable `total_dely` is reffered in the same [] expression.
+
+# Instead do this 
+flights[, total_delay := arr_delay + dep_delay]
+flights[, delay_rate := total_delay/air_time]
+```
+:::
+
+
+### Selective update
+
+[You can update column values for some rows that satisfy certain conditions by using logical evaluations in `i` and `:=` in `j`.]{style="color: blue;"}
+
+<br>
+
+**Example:** Let's update `total_delay` by adding 10 minutes for all flights in April.
+
+
+::: {.columns}
+::: {.column width="50%"}
+**Before**
+
+```{webr-r}
+#| autorun: true
+
+# Before updating
+head(flights[month == 4, .(month, total_delay)], 3)
+```
+:::
+
+::: {.column width="50%"}
+**After**
+```{webr-r}
+#| autorun: true
+
+flights2 <- copy(flights)[month == 4, total_delay := total_delay + 10]
+
+head(flights2[month == 4, .(month, arr_delay)], 3)
+```
+:::
+
+:::
+
+<br>
+
+::: {.callout-tip title="Tip: copy() function"}
++ If you have a reason to now wanting the original data to be altered after `:=` operations. You can create a deep copy of the dataset using `data.table::copy()` function.
+
++ The object created by copy() is independent of the original dataset in the sense that actions on one of them do not affect the other.
+
+:::
+
+
+### Quiz
+
+:::{.panel-tabset}
+
+### Quiz
+1. Let's create a new column `speed` by deviding `distance` by `air_time`.
+
+```{webr-r}
+# You can write your code here
+
+```
+
+### Answers
+
+```{webr-r}
+#| autorun: true
+flights[, speed := distance / air_time]
+
+# take a look at the head of the data
+head(flights[, .(speed)])
+```
+:::
+
+:::
+
+
+
+## 5. Perform aggregations by group (Grouped operations)
+
+
+:::{.panel-tabset}
+
+### Basics  
+
++ [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
++ [To perform grouped operations, use `by` argument.]{style="color: blue;"}
+```{r}
+#| eval: false
+DT[, .(new_column = function(column)), by = .(group_variable)]
+```
 
 <br>
 
 
+**Example**: Let's find the number of flights by `origin`.
+```{webr-r}
+flights[, .(.N), by = .(origin)]
+```
 
+In this code, we used
+
++ `i`: no action (all rows) 
++ `j`: count the number of rows in each group defined by `by` argument
++ `by`: group the data by `origin`
+
+<br>
+
+::: {.callout-important}
+## Important Rule:
+Do you remember the rule? `data.table` recognizes each element of the list as a column. (`.()` is a shorthand for `list()` in `data.table` syntax.)
+:::
+
+
+###  Group by multiple columns
+
+Nothing special. Just provide multiple columns to `by` argument.
+
+<br>
+
+**Example**: Find the average time of departure delay and arrival delay by `carrier` and `origin`.
+```{webr-r}
+flights[, .(avg_dep_delay = mean(dep_delay), avg_arr_delay = mean(arr_delay)), by = .(carrier, origin)]
+```
+
+
+
+
+### Grouped operations for select observations
+
+[Togeher with `i` argumnent, you can perform grouped operations for select observations.]{style="color: blue;"}
+
+<br>
+
+**Example 1**: Get the number of flights for each origin airport for carrier code "AA" (American Airlines).
+```{webr-r}
+flights[carrier == "AA", .N, by = .(origin)]
+```
+
+In this code, we used
+
++ `i`: subset rows where `carrier` is "AA"
++ `j`: count the number of rows in each group defined by `by` argument
++ `by`: group the data by `origin`
+
+<br>
+
+**Example 2**: Find the number of flights by `origin` and `month` for carrier code "AA" (American Airlines).
+```{webr-r}
+flights[carrier == "AA", .N, by = .(origin, month)] %>% head()
+```
+
+
+### Quiz
+
+:::{.panel-tabset}
+
+### Quiz
+
+1. For each `month` and each `carrier`, calculate the total number of flights, average departure delay, and average arrival delay.
+
+
+```{webr-r}
+# You can write your code here
+
+```
+
+<br>
+
+2. (Optional) Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov) and summarize the total number of flights, average departure delay, and average arrival delay for each season and each carrier.
+
+
+```{webr-r}
+# You can write your code here
+
+```
+
+
+### Answers
+
+1. For each month and each carrier, calculate the total number of flights, average departure delay, and average arrival delay.
+.
+
+```{webr-r}
+flights[,.(
+  n_flights = .N,
+  avg_dep_delay = mean(dep_delay),
+  avg_arr_delay = mean(arr_delay)
+), by = .(month, carrier)]
+```
+
+<br>
+
+2. (Optional) Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov) and summarize the total number of flights, average departure delay, and average arrival delay for each season and each carrier.
+
+Note: I used `fcase()` function of `data.table` package to define seasons. `fcase()` is like `case_when()` in `dplyr`. It is useful when you want to define a variable that takes different values based on conditions.
+
+
+```{webr-r}
+# --- Define season --- #
+flights[,season := fcase(
+  month %in% c(12, 1, 2), "Winter",
+  month %in% c(3, 4, 5), "Spring",
+  month %in% c(6, 7, 8), "Summer",
+  default = "Fall" #otherwise, "Fall`"
+)]
+
+# --- Summarize by season and carrier --- #
+flights[, .(
+  total_flights = .N,
+  avg_dep_delay = mean(dep_delay, na.rm = TRUE),
+  avg_arr_delay = mean(arr_delay, na.rm = TRUE)
+), by = .(season, carrier)]
+```
 
 :::
+:::
+
+:::{.notes}
++ In words, this code is saying, "Take the `flights` data, make groups by `origin`, and count the number of rows in each group.
+:::
+
+## 6. Reshape data
+
+:::{.panel-tabset}
+
+
+### Basics
+
+[Data often comes in two formats: wide or long.]{style="color: blue;"}
+
+
+**Example:**
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Long data**: 
+
+Here, each state (observational unit) is repeated several times in the first column. 
+
+```{r}
+#| echo: false
+
+library(data.table)
+library(dplyr)
+
+yield_data_long <- 
+  data.table(
+    state = c("Kansas", "Nebraska", "Iowa", "Illinois") %>% rep(each = 2),
+      year = c(2019, 2020) %>% rep(4),
+      yield = c(200, 240, 210, 220, 220, 230, 190, 150),
+      rainfall = c(14, 15, 15, 16, 20, 21, 24, 15)
+  )
+
+yield_data_long
+```
+
+:::
+
+::: {.column width="50%"}
+**Wide data**
+
+Here, each state (observational unit) is appears only once in the first column, and their annual record of yield and rainfall are spread across the columns.
+
+
+```{r}
+#| echo: false
+yield_data_wide <- 
+  dcast(yield_data_long, state ~ year, value.var = c("yield", "rainfall"))
+
+yield_data_wide
+```
+:::
+
+:::
+
+
++ We can convert one format to another using `dcast()` and `melt()` functions of `data.table` package.
+
+### Preparation
+
+Let's use the folling small data to understand how `dcas()` and `melt()` work.
+
+```{webr-r}
+yield_data_long <- 
+  data.table(
+    state = c("Kansas", "Nebraska", "Iowa", "Illinois") %>% rep(each = 2),
+      year = c(2019, 2020) %>% rep(4),
+      yield = c(200, 240, 210, 220, 220, 230, 190, 150),
+      rainfall = c(14, 15, 15, 16, 20, 21, 24, 15)
+  )
+```
+
+
+### long to wide
+
+[We can convert long data to wide data using `dcast()` function.]{style="color: blue;"}
+
+**Syntax**
+```{r}
+#| eval: false
+dcast(data, LHS ~ RHS , value.var = c("var1", "var2"))
+```
++ `LHS`: the variable to be used as the row index
++ `RHS`: the variable to be used as the column index
++ `value.var`: Name of the column whose values will be filled to cast
+
+
+**Example**
+
+Suppose that  we want to collect all yield and rainfall observations corresponding to each state under the same row. 
+
+```{webr-r}
+#| autorun: true
+dcast(yield_data_long, state ~ year , value.var = c("yield", "rainfall"))
+```
+
+
+### wide to long
+
+[We can convert wide data to long data using `melt()` function.]{style="color: blue;"}
+
+### When to reshpae data?
+
+In my personal experience, I often need to reshape data when I want to plot data using `ggplot2` package.
+
+**Example**
+
+```{webr-r}
+#| autorun: true
+
+# Let's use iris data
+data(iris)
+head(iris)
+```
+
+
+
+
+### Quiz
+
+:::{.panel-tabset}
+
+### Quiz
+
+Let's use the follwing small data:
+```{webr-r}
+flights_mini <- 
+  flights[,head(.SD, 1), by = month] %>% 
+  .[, .(carrier, month, dep_delay, arr_delay)]
+
+# take a look at the data
+head(flights_mini)
+```
+
+1. 
+
+:::
+## 7. Merge two data
+
+
+
+
+**Example:**
+
+Let's traslate two letter carrier codes (`carrier`) in `flights` to the full name of airline. 
+
+
+```{webr-r}
+#| autorun: true
+# Get airlines data from `nycflights13` package
+data(airlines, package = "nycflights13")
+setDT(airlines)
+
+head(airlines)
+```
+
+<br>
+
+Merge `flights` and `airlines` data by `carrier` column.
+
+```{webr-r}
+flights_merged <- airlines[flights, on = "carrier"]
+
+# Check whether `name` column is added to `flights` data
+head(flights_merged)
+```
+
+
+
+
+
+## Key takeaways:
+
+1. **Understnad the general data.table syntax: `DT[i, j, by]`**
+
++ `i`: subset rows by conditions
++ `j`: select columns, create a new column, compute on columns
++ `by`: variable to be used as groups by which operations specified in `j` are implemented
+
+
+2. **Understand that you can do various data wrangling tasks by combining `i`, `j`, and `by` arguments.**
+
+Specifically, you should be abel to the follwoing tasks:
+
++ 1. Subset rows
++ 2. Select columns 
++ 3. Compute on columns
++ 4. Create a new column
++ 5. Perform aggregations by group
+
+3. **Understand how to merge data**
+
+4. **Undestand how to reshape long-to-wide and wide-to-long using `dcast()` and `melt()`**
+
+
+
+## Useful functions
+
++ `.N`
++ `copy()`
++ `setnames()`
++ `order()`
++ `shift()`
++ `duplicated()`: find duplicates
++ `unique()`: find unique observations
++ `fcase()` is like `case_when()` in dplyr.
++ 
+
+<br>
+
+:::{.panel-tabset}
+
+### fcase()
+
++ `fcase()` is like `case_when()` in `dplyr`. It is useful when you want to define a variable that takes different values based on conditions.
+
++ `fcase()` function returns the first value for which the corresponding condition is `TRUE`. If no condition is `TRUE`, it returns the default value.
+
+```{webr-r}
+x = 1:10
+fcase(
+	x < 5L, 1L,
+	x > 5L, 3L
+)
+```
+
+
+**Example:** Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov)
+
+```{webr-r}
+# --- Define season --- #
+flights[,season := fcase(
+  month %in% c(12, 1, 2), "Winter",
+  month %in% c(3, 4, 5), "Spring",
+  month %in% c(6, 7, 8), "Summer",
+  default = "Fall" #otherwise, "Fall`"
+)]
+```
+
+# Some useful functions in `dplyr` packages
+
+
+## Piping operator (`%>%`)
+
+```{webr-r}
+#| autorun: true
+library(dplyr)
+
+```
+
+# Exercise Problems 
+<!-- https://rpubs.com/Nasif/929745 -->
+---
+
+## Exercise 1
+
+1. Find the flight companny with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
+
+```{webr-r}
+flights[dep_delay == max(dep_delay), .(carrier)]
+```
+
+2. Subset the infromation of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
+   
+```{webr-r, eval=FALSE, includ=FALSE}
+msp_feb_flights <- flights[dest=="MSP" & month==2L]
+nrow(msp_feb_flights)
+```
+
+3. Calculate the median, interquartile rangen ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` data and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
+
++ Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use `quantile()` function to calculate the quantiles.
+
+```{webr-r}
+msp_feb_flights[,.(
+  median = median(arr_delay),
+  IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),
+  n_flights = .N
+  ), by = carrier]
+```
+
+
+
+## Exercise 2
+
+Which month would we expect to have the highest average delay departing from an NYC airport?
+
+
+## Exercise 3
+
+If you were selecting an airport simply based on on time departure percentage, which NYC airport would you choose to fly out of?
+
+
+## Exercise 4
+
+For each hour of the day and each origin airport, calculate the total number of flights, average departure delay, and average arrival delay.	For each origin airport, identify the hour with the highest total number of flights.
+
+
+
+
 
 
 ## Useful knowledge for data.table
@@ -278,7 +954,7 @@ flights[ , ..select_cols]
 
 
 In a `data.frame` way?
-```{r}
+```{webr-r}
 flights_df <- as.data.frame(flights)
   with(
     flights, 
@@ -289,7 +965,7 @@ flights_df <- as.data.frame(flights)
 
 
 
-## Exercise 1
+
 
 
 
@@ -297,9 +973,50 @@ flights_df <- as.data.frame(flights)
 ## Exercise 2
 
 
-
-
 # Apendix
+
+## .SD
+
+:::{.panel-tabset}
+
+### Before starting
+
+Let's use small `data.table` object that will help us understand what `.SD` does.
+
+```{webr-r}
+#| autorun: true
+
+# Don't worry about this code. It just creates a small data.table object.
+flights_mini <- 
+  flights[,head(.SD, 2), by = month] %>% 
+  .[, .(year, month, dep_delay, arr_delay)]
+
+head(flights_mini)
+```
+
+
+### What is .SD?
+
+`.SD` (which stands for Subset Data) is a special symbol that allows you to do many cool things.
+
+Without grouping specified in `by`, `.SD` is the `data.table` itself. So, `flights_mini[, .SD]` is the same as `flights_mini`.
+
+But, when grouped, it becomes the subset (grouped) of the data.table.
+
+
+**Example:**
+```{webr-r}
+flights_mini[, print(.SD), by = month]
+```
+
+::: {.callout-note}
++ `.SD` contains all the columns except the grouping columns by default.
++ The original order is preserved by origin
+:::
+
+
+
+:::
 
 ## data.table vs dplyr {.center}
 
