@@ -5,7 +5,7 @@ title: "Exercise Idea"
 
 # Source:
 + https://rpubs.com/Nasif/929745
-
++ use data from this: library(openintro)
 
 
 # data.frame 

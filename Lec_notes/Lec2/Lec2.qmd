@@ -57,8 +57,8 @@ filters:
 
 ## Today's outline: {.center}
 1. [Introduction to data.table](#intro-data-table)
-2. Let's use `%>%` operator to more clear code. 
-3. Appendix: Use multiple cores for computation with data.table [[Here](https://github.com/Rdatatable/data.table/wiki/Installation)]
+2. [Let's use `%>%` operator to more clear code.](#piping)
+3. [Appendix](#appendix)
 
 
 
@@ -112,21 +112,12 @@ For example, see:
 
 ### Before Starting
 
-1. Let's use `flights` data, which is obtained from `nycflights13` package^{"data(data_name, package="package_name")" loads data attached to the package.}.
-
-
-```{webr-r}
-#| autorun: true
-library(openintro)
-dim(nycflights)
-```
+1. Let's use `flights` data, which is obtained from `nycflights13`.
 
 ```{webr-r}
 #| autorun: true
-# Load nycflights13 package and get flights data`
-library(nycflights13)
-data(flights, package = "nycflights13")
-
+# Load flights data from nycflights13 package.
+flights <- nycflights13::flights
 # Remove rows with missing values (just for convenience)
 flights <- na.omit(flights)
 # Check the class of object
@@ -679,7 +670,7 @@ yield_data_long
 ::: {.column width="50%"}
 **Wide data**
 
-Here, each state (observational unit) is appears only once in the first column, and their annual record of yield and rainfall are spread across the columns.
+Here, each state (observational unit) appears only once in the first column, and their annual record of yield and rainfall are spread across the columns.
 
 
 ```{r}
@@ -693,14 +684,16 @@ yield_data_wide
 
 :::
 
+<br>
 
 + We can convert one format to another using `dcast()` and `melt()` functions of `data.table` package.
 
 ### Preparation
 
-Let's use the folling small data to understand how `dcas()` and `melt()` work.
+Let's use the following small data to understand how `dcast()` and `melt()` work.
 
 ```{webr-r}
+#| autorun: true
 yield_data_long <- 
   data.table(
     state = c("Kansas", "Nebraska", "Iowa", "Illinois") %>% rep(each = 2),
@@ -713,46 +706,109 @@ yield_data_long <-
 
 ### long to wide
 
-[We can convert long data to wide data using `dcast()` function.]{style="color: blue;"}
++ [Use `dcast()` function converts long form to wide form]{style="color: blue;"}
 
-**Syntax**
+**Basic Syntax:**
 ```{r}
 #| eval: false
 dcast(data, LHS ~ RHS , value.var = c("var1", "var2"))
 ```
-+ `LHS`: the variable to be used as the row index
-+ `RHS`: the variable to be used as the column index
-+ `value.var`: Name of the column whose values will be filled to cast
++ `LHS`: set of id variables (variables (columns) that you don’t want change).
++ `RHS`: set of variables to be used as the column index.
++ `value.var`: set of variables whose values will be filled to cast.
 
+<br>
 
-**Example**
+**Example:**
 
 Suppose that  we want to collect all yield and rainfall observations corresponding to each state under the same row. 
 
+
 ```{webr-r}
 #| autorun: true
-dcast(yield_data_long, state ~ year , value.var = c("yield", "rainfall"))
+yield_data_wide <- dcast(yield_data_long, state ~ year , value.var = c("yield", "rainfall"))
+yield_data_wide
 ```
+
+<br>
+
+::: {.callout-tip}
++ Before wrting your code to reshape the data, it is important to imagine what your desired data format looks like.
++ I often sketch out an example.
+  + This helps me to understand what variables I need to use as `LHS`, `RHS`, and `value.var`.
+:::
 
 
 ### wide to long
 
-[We can convert wide data to long data using `melt()` function.]{style="color: blue;"}
++ [Use `melt()` function to convert wide form to long form]{style="color: blue;"}
+
+**Basic Syntax**:
+```{r}
+#| eval: false
+melt(data, id.var = c("id_var1", "id_var2"), measure.vars = c("var1", "var2"))
+```
++ `id.vars`: the set of id variables (variables (columns) that you don’t want change).
++ `measure.vars`: the set of columns you want to collapse (or combine) together.
++ `value.name`: (optional) the name of the new column that will store the values of the variables in `measure.vars`, the default is `value`
+
+<br>
+
+**Example:**
+
+Let's get back to the original data format `yield_data_long` from `yield_data_wide`.
+
+```{webr-r}
+# yield columns
+col_yields <- paste0("yield_", 2019:2020)
+# rainfall columns
+col_rainfalls <- paste0("rainfall_", 2019:2020)
+
+yield_data_long_2 <- 
+  melt(
+    yield_data_wide, 
+    id.vars = "state", 
+    measure.vars = list(col_yields, col_rainfalls), 
+    value.name = c("yield", "rainfall")
+  )
+
+yield_data_long_2
+
+# If you are familiar with regular expressions, you can do:
+# melt(yield_data_wide, id.vars = "state", measure.vars = patterns("^yield", "^rainfall"), value.name = c("yield", "rainfall"))
+```
+
+Note however that year information from the variable names are lost. In the resulting dataset, variable == 1 and variable == 2 correspond to 2019 and 2020, respectively. So, you need an additional step to recover the original long data format.
+
 
 ### When to reshpae data?
 
-In my personal experience, I often need to reshape data when I want to plot data using `ggplot2` package.
+In my personal experience, I often need to reshape data when:
 
-**Example**
+**1. I want to aggregate and summarize data efficiently.**
 
++ Example: `yield_data_long` is easier to calculate the average yield and rainfall by state than `yield_data_wide`.
+  
 ```{webr-r}
-#| autorun: true
+# --- using long-form --- #
+yield_data_long[,.(
+  avg_yield = mean(yield),
+  avg_rainfall = mean(rainfall)
+  ), by = .(state)]
 
-# Let's use iris data
-data(iris)
-head(iris)
+# --- using wide-form --- #
+yield_data_wide[,`:=`(
+  avg_yield = sum(yield_2019 + yield_2020)/2,
+  avg_rainfall = sum(rainfall_2019 + rainfall_2020)/2
+)]
+yield_data_wide[,.(state, avg_yield, avg_rainfall)]
 ```
 
+<br>
+
+**2. I want to visualize data efficiently.**
+
++ We will see some examples when we learn data visualization with `ggplot2` package.
 
 
 
@@ -760,56 +816,421 @@ head(iris)
 
 :::{.panel-tabset}
 
-### Quiz
+### Quiz (difficult)
 
-Let's use the follwing small data:
+Using the following long-form data named `long_dt`, can you get `yield_data_long`?
+
 ```{webr-r}
-flights_mini <- 
-  flights[,head(.SD, 1), by = month] %>% 
-  .[, .(carrier, month, dep_delay, arr_delay)]
-
-# take a look at the data
-head(flights_mini)
+# === create long_dt (run this code) === #
+yield_data_wide <- dcast(yield_data_long, state ~ year, value.var = c("yield", "rainfall"))
+long_data <- melt(yield_data_wide, id.var = "state")
 ```
 
-1. 
+<br>
+
+```{r}
+# You can write your code here
+```
+
+
+### Answers
+
+```{webr-r}
+# First, I would create two columns: `year` and `type` (to denote year or rainfall) by splitting the `variable` column of long_data.
+# use `tstrsplit()` function to split the variable column by "_"
+long_data[, c("type", "year") := tstrsplit(variable, "_", fixed = TRUE)]
+
+# Now, I don't need the variable column. So, remove it.
+long_data[, variable := NULL]
+
+
+# Finally, I would cast the data to the original long form.
+dcast(long_data, state + year ~ type, value.var = "value")
+```
+
 
 :::
+
+:::
+
 ## 7. Merge two data
 
+:::{.panel-tabset}
+
+### Motivation
+
+It is very common that you have data stored in separate files, and you need to combine them before you conduct any statistical analysis.
+
+For example, if you are interested in how weather affects the crop yield, you want to have weather and production data in a single dataset. However, since weather and production data are usually obtained from the different source of data (e.g., yield data from USDA-NASS, and weather data from NASS), they are stored in two separate data files.
+
+<br>
+
+### Basics
+
+You can use the `merge()` function from the `data.table` package to merge two datasets.
+
+**Basic Syntax**:
+```{r}
+#| eval: false
+# Merge data2 to data1 keeping all rows from data1
+merge(x, y, by = "key_column", all.x = TRUE)
+```
++ `x`, `y`: data tables.
++ `by`, which specifies variables that let you merge two datasets.
++ `all.x = TRUE` means that all rows from `data1` are mainteined in the merged dataset, and only matching rows from `data2` are included (this is equivalent to `left_join()` in `dplyr`).
+
+Note: [The order of datasets matter]{style="color: red;"}.
 
 
+### Example
 
-**Example:**
+:::{.panel-tabset}
 
-Let's traslate two letter carrier codes (`carrier`) in `flights` to the full name of airline. 
+### Data
 
+Let's play around with `merge()` function using the following small data.
+<!-- Let's use simple small data so that we can see whether the merge operation works correctly. -->
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+**Data 1**
+```{webr-r}
+#| autorun: true
+# --- Yield data --- #
+yield_data <- 
+  data.table(
+    state = c("Nebraska", "Iowa", "Minnesota", "Illinois", "Kansas"),
+    yield = runif(n = 5, min = 180, max = 280)
+  )
+```
+:::
+
+::: {.column width="50%"}
+**Data2**
+```{webr-r}
+#| autorun: true
+# --- Weather data --- #
+weather_data <-
+  data.table(
+    state = c("Iowa", "Minnesota", "Nebraska", "Illinois", "Wisconsin"),
+    total_precip = runif(5, min = 10, max = 20)
+  )
+```
+:::
+:::
++ Note that states included in `yield_data` and `weather_data` are slightly different. This is to show how `merge()` function works when there are unmatched rows in the two datasets.
++ To merge these two datasets, `state` works because we need to use `state` as a key column.
+<br>
+
+
+### Merge
+
+**(1) merge `weather_data` to `yield_data`, keeping all rows from `yield_data`.**
+
+```{webr-r}
+yield_weather_data <- merge(yield_data, weather_data, by = "state", all.x = TRUE)
+# check the merged data
+yield_weather_data
+```
+
+<br>
+
+**(2) merge `yield_data` to `weather_data`, keeping all rows from `weather_data`.**
+```{webr-r}
+weather_yield_data <- merge(weather_data, yield_data , by = "state", all.x = TRUE)
+# check the merged data
+weather_yield_data
+```
+
+
+<br>
+
+**(3) If you want to keep all rows from both datasets, you can set `all = TRUE`.**
+
+```{webr-r}
+weather_yield_data_all <- merge(weather_data, yield_data , by = "state", all = TRUE)
+# check the merged data
+weather_yield_data_all
+```
+
+:::
+
+### Quiz 1
+
+:::{.panel-tabset}
+
+### Quiz
+
+(1) In the `flights` data, the `carrier` column contains two-letter codes for airlines. Let's translate these codes into the full name of the airline. 
+
+Airlines data from `nycflights13` package contains the full name of the airline corresponding to the two-letter code. The following code loads the airlines data.
 
 ```{webr-r}
 #| autorun: true
-# Get airlines data from `nycflights13` package
-data(airlines, package = "nycflights13")
-setDT(airlines)
-
+airlines <- nycflights13::airlines
 head(airlines)
 ```
 
 <br>
 
-Merge `flights` and `airlines` data by `carrier` column.
+Merge `flights` and `airlines` data, keeping all rows from the `flights` data. Which variable should be used as a key column?
 
 ```{webr-r}
-flights_merged <- airlines[flights, on = "carrier"]
+# You can write your code here
+```
 
-# Check whether `name` column is added to `flights` data
-head(flights_merged)
+### Answers
+
++ Obviously, `flight` data is the main data, so we should keep all rows from the `flights` data.
+
++ The key column should be `carrier` because it is the common variable in both datasets, and it gives one-to-one correspondence between the two datasets.
+
+```{webr-r}
+flights_merged <- merge(flights, airlines, by = "carrier", all.x = TRUE)
+
+# using dplyr, this is equivalent to
+# flights_merged <- left_join(flights, airlines, by = "carrier")
+```
+:::
+
+### Quiz 2
+
+:::{.panel-tabset}
+
+### Quiz
+
+Run the following code to create two datasets: `yield_data` and `weather_data`.
+```{webr-r}
+#| autorun: true
+yield_data <- 
+  data.table(
+    state = rep(c("Iowa", "Minnesota", "Illinois", "Kansas", "Wisconsin"), each = 2),
+    year = rep(2010:2011, times = 5),
+    yield = runif(n = 10, min = 180, max = 280)
+  )
+
+weather_data <- 
+  data.table(
+    state = rep(c("Iowa", "Minnesota", "Illinois", "Kansas", "Ohio"), each = 4),
+    year = rep(2010:2013, times = 5),
+    total_precip = runif(20, min = 10, max = 20)
+  )
+```
+
+<br>
+
+Merge these two datasets, keeping all rows from `yield_data`. Which variable should be used as a key column?
+
+```{webr-r}
+# you can write your code here
+```
+
+### Answers
+
++ Here you should use `state` and `year` as key columns. 
+
+```{webr-r}
+yield_weather_data <- merge(yield_data, weather_data, by = c("state", "year"), all.x = TRUE)
+```
+
+:::
+:::
+
+
+
+## Let's use `%>%` operator to write more clear code {#piping}
+
+:::{.panel-tabset}
+
+### Motivation
+
++ In R, you need to assign the result of each operation to a new object if you want to use the result in the subsequent process.
++ But sometimes, some objects are just intermediate results that you don't need to keep.
+
+
+**Example** 
+
+Let's create `flights_mini` data from `flights` data of `nycflights13` package. Look at the following codes:
+
+```{webr-r}
+flights <- nycflights13::flights # Load flights data from nycflights13
+flights_dt <- as.data.table(flights) # change the data to data.table class 
+flights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] # select some columns
+flights_mini <- na.omit(flights_mini) # remove rows with missing values
+```
+
+The first three lines yields intermediate results to make the final `flight_mini`, and you don't need to keep those.
+
+<br>
+
+If you don't want to save the intermediate step every time, you can do like this, but it's hard to read.
+
+```{r}
+flights_mini <- na.omit(data.table(nycflights13::flights)[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)])
 ```
 
 
 
+### Introduction
 
 
-## Key takeaways:
+:::{.panel-tabset}
+
+### What is `%>%`?
+
++ `%>%` a special symbol in R, called a pipe operator. It comes from the `magrittr` package.
++ It's a powerful tool to write linear sequence of operations in a more readable way.
+
+<br>
+
+
+::: {.callout-note}
+when you load the `dplyr` package, `magrittr` package is automatically loaded as well. So, you don't need to load the `magrittr` package separately to use `%>%`.
+:::
+
+
+### Basics
+
+[`%>%` takes the output of the code on its left and feeds it as the first argument to the function on its right.]{style="color: blue;"}
+
+<br>
+
+**Example 1**
+```{r}
+#| eval: false
+fun1(input1) 
+```
+is the same as 
+```{r}
+#| eval: false
+input1 %>% fun1()
+```
+
+**Example 2**
+
+```{r}
+#| eval: false
+output1 <- fun1(input1)
+output2 <- fun2(output1)
+```
+is the same as 
+```{r}
+#| eval: false
+output2 <- fun1(input1) %>% fun2()
+```
+
+<br>
+
+::: {.callout-tip}
+## Shortcut for the pipe operator `%>%`
++ In RStudio, hit `Ctrl` + `Shift` + `M` (Windows) or `Cmd` + `Shift` + `M` (Mac)
+:::
+
+
+### More generally
+
+Suppose you have more than one arguments to the function like this:
+```{r}
+#| eval: false
+fun(x1, x2, x3)
+```
+
+Then
+```{r}
+#| eval: false
+z %>% fun(x2, x3)
+```
+
+is equivalent to
+
+```{r}
+#| eval: false
+fun(z, x2, x3)
+```
+
+<br>
+
+
+::: {.callout-important}
+That is, in general, an R object that precedes the piping operator (`%>%`) becomes the first argument of the function that comes after the piping operator.
+:::
+
+### Refer to the preceding object
+
+What if you want to use the object defined before `%>%` as the second or third argument of the subsequent function?
+
+[Use `.` to the preceding object by]{style="color: red;"}
+
+**Example**
+
+```{webr-r}
+# Let's use this function
+print_three_words <- function(x, y, z) paste(c(x, y, z),collapse = " ")
+# For example, this function print three words with space between them
+print_three_words(x="I", y="love", z="R")
+
+# pass the input to the first argument
+"I" %>% print_three_words(x=., y="love", z="R")
+
+# pass the input to the second argument
+"love" %>% print_three_words(x="I", y=., z="R")
+
+# pass the input to the third argument
+"R" %>% print_three_words(x="I", y="love", z=.)
+```
+
+::: {.callout-tip}
++ Always use `.` in the subsequent function to explicitly denote the desitination of the object defined before `%>%` even if it is the first argument.
+:::
+
+:::
+
+
+### Example
+
+**Without `%>%`**
+```{webr-r}
+#| auto-run: true
+flights <- nycflights13::flights #load flights datas
+flights_dt <- as.data.table(flights)  # to data.table class
+flights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] #select some columns
+flights_mini <- na.omit(flights_mini) #remove rows with missing values
+```
+
+**WIth `%>%`**
+```{webr-r}
+#| auto-run: true
+library(dplyr)
+
+flights_mini <- 
+  nycflights13::flights %>% #load flights data
+  as.data.table(.) %>% # to data.table class
+  .[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] %>% #select some columns
+  na.omit(.) #remove rows with missing values
+```
+
+<br>
+
+::: {.callout-important}
+Note that the order of execution is the same as the order in which the functions are written.
+:::
+
+## Quiz
+
+
+
+
+:::
+
+
+
+
+
+## Summary: 
+
+You don't need to completely understand what we have learned today. 
 
 1. **Understnad the general data.table syntax: `DT[i, j, by]`**
 
@@ -818,19 +1239,32 @@ head(flights_merged)
 + `by`: variable to be used as groups by which operations specified in `j` are implemented
 
 
-2. **Understand that you can do various data wrangling tasks by combining `i`, `j`, and `by` arguments.**
+2. **Understand that you can do various data wrangling tasks by using combinations of `i`, `j`, and `by` arguments.**
 
-Specifically, you should be abel to the follwoing tasks:
++ Specifically, you learned the follwoing tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
 
-+ 1. Subset rows
-+ 2. Select columns 
-+ 3. Compute on columns
-+ 4. Create a new column
-+ 5. Perform aggregations by group
 
-3. **Understand how to merge data**
+1. **Undestand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
 
-4. **Undestand how to reshape long-to-wide and wide-to-long using `dcast()` and `melt()`**
+2. **Understand you can merge data with `merge()` function.**
+
+
+:::{.notes}
++ Let's look back what we have learned today. We did a lot of things, right?  
+
+:::
+
+# Appendix {#appendix}
+
+
+---
+
+## Appendix: Table of Contents
+
++ A.1. A list of useful functions
++ [A.2. Let's get used to .SD](#SD)
++ A.3. Exercise Problems 
++ A.4. Use multiple cores for computation with data.table [[Here](https://github.com/Rdatatable/data.table/wiki/Installation)]
 
 
 
@@ -877,16 +1311,48 @@ flights[,season := fcase(
 )]
 ```
 
-# Some useful functions in `dplyr` packages
 
+## .SD {.}
 
-## Piping operator (`%>%`)
+:::{.panel-tabset}
+
+### Before starting
+
+Let's use small `data.table` object that will help us understand what `.SD` does.
 
 ```{webr-r}
 #| autorun: true
-library(dplyr)
 
+# Don't worry about this code. It just creates a small data.table object.
+flights_mini <- 
+  flights[,head(.SD, 2), by = month] %>% 
+  .[, .(year, month, dep_delay, arr_delay)]
+
+head(flights_mini)
 ```
+
+
+### What is .SD?
+
+`.SD` (which stands for Subset Data) is a special symbol that allows you to do many cool things.
+
+Without grouping specified in `by`, `.SD` is the `data.table` itself. So, `flights_mini[, .SD]` is the same as `flights_mini`.
+
+But, when grouped, it becomes the subset (grouped) of the data.table.
+
+
+**Example:**
+```{webr-r}
+flights_mini[, print(.SD), by = month]
+```
+
+::: {.callout-note}
++ `.SD` contains all the columns except the grouping columns by default.
++ The original order is preserved by origin
+:::
+
+:::
+
 
 # Exercise Problems 
 <!-- https://rpubs.com/Nasif/929745 -->
@@ -975,48 +1441,7 @@ flights_df <- as.data.frame(flights)
 
 # Apendix
 
-## .SD
 
-:::{.panel-tabset}
-
-### Before starting
-
-Let's use small `data.table` object that will help us understand what `.SD` does.
-
-```{webr-r}
-#| autorun: true
-
-# Don't worry about this code. It just creates a small data.table object.
-flights_mini <- 
-  flights[,head(.SD, 2), by = month] %>% 
-  .[, .(year, month, dep_delay, arr_delay)]
-
-head(flights_mini)
-```
-
-
-### What is .SD?
-
-`.SD` (which stands for Subset Data) is a special symbol that allows you to do many cool things.
-
-Without grouping specified in `by`, `.SD` is the `data.table` itself. So, `flights_mini[, .SD]` is the same as `flights_mini`.
-
-But, when grouped, it becomes the subset (grouped) of the data.table.
-
-
-**Example:**
-```{webr-r}
-flights_mini[, print(.SD), by = month]
-```
-
-::: {.callout-note}
-+ `.SD` contains all the columns except the grouping columns by default.
-+ The original order is preserved by origin
-:::
-
-
-
-:::
 
 ## data.table vs dplyr {.center}
 

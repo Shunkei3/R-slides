@@ -675,7 +675,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(openintro)\ndim(nycflights)","id":1,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-1","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Load nycflights13 package and get flights data`\nlibrary(nycflights13)\ndata(flights, package = \"nycflights13\")\n\n# Remove rows with missing values (just for convenience)\nflights <- na.omit(flights)\n# Check the class of object\nclass(flights)","id":2,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-2","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Load data.table package\nlibrary(data.table)\nsetDT(flights) # same as, flights <- as.data.table(flights)\n# Now, flights is a data.table object.\nclass(flights)","id":3,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-3","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Don't run\nDT[i, j, by]","id":4,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-4","eval":"false","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[carrier == \"AA\",]","id":5,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-5","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# 1. Subset rows where carrier is \"AA\" and month is 1 (January)\n\n# 2. Subset rows where carrier is \"AA\" and origin is all the airports except \"JFK\"\n\n# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for \"or\" condition)","id":6,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-6","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# 1. Subset rows where carrier is \"AA\" and month is 1 (January)\nflights[carrier == \"AA\" & month == 1,]\n\n# 2. Subset rows where carrier is \"AA\" and origin is all the airports except \"JFK\"\nflights[carrier == \"AA\" & origin != \"JFK\",]\n\n# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for \"or\" condition)\nflights[dep_delay < 0 | arr_delay < 0,]","id":7,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-7","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# --- Select dep_time column as vector --- #\nflights[, dep_time]\n# --- Select dep_time column as data.table --- #\nflights[, list(dep_time)]\n# or\nflights[, .(dep_time)]\n# or you can also select a column in the data.frame way\nflights[, \"dep_time\"]","id":8,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-8","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# --- Select dep_time and arr_time as data.table --- #\nflights[, .(dep_time, arr_time)]\n\n# --- Deselect columns using - or ! --- #\nflights[, !c(\"dep_time\", \"arr_time\")]\n# or\n# flights[, -c(\"dep_time\", \"arr_time\")]","id":9,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-9","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# count the number of trips with total delay < 0\nflights[, sum((arr_delay + dep_delay) < 0)]","id":10,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-10","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[origin == \"JFK\" & month == 6L, .N]\n# NOTE: `.N` is a special variable that holds the number of rows in the current group.\n# So, this code is equivalent to:\n# nrow(flights[origin == \"JFK\" & month == 6L,])","id":11,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-11","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[origin == \"JFK\" & month == 6L, .(Count = .N, avg_dep_delay = mean(dep_delay))]","id":12,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-12","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# You can write your code here","id":13,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-13","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[origin == \"JFK\" & month == 8L, .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]","id":14,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-14","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[, total_delay := dep_delay + arr_delay]","id":15,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-15","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"#| \nflights[, `:=`(\n  total_delay = arr_delay + dep_delay,\n  speed = distance/air_time\n  )]","id":16,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-16","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Before updating\nhead(flights[month == 4, .(month, total_delay)], 3)","id":17,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-17","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights2 <- copy(flights)[month == 4, total_delay := total_delay + 10]\n\nhead(flights2[month == 4, .(month, arr_delay)], 3)","id":18,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-18","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# You can write your code here","id":19,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-19","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[, speed := distance / air_time]\n\n# take a look at the head of the data\nhead(flights[, .(speed)])","id":20,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-20","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[, .(.N), by = .(origin)]","id":21,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-21","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[, .(avg_dep_delay = mean(dep_delay), avg_arr_delay = mean(arr_delay)), by = .(carrier, origin)]","id":22,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-22","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[carrier == \"AA\", .N, by = .(origin)]","id":23,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-23","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[carrier == \"AA\", .N, by = .(origin, month)] %>% head()","id":24,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-24","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# You can write your code here","id":25,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-25","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# You can write your code here","id":26,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-26","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[,.(\n  n_flights = .N,\n  avg_dep_delay = mean(dep_delay),\n  avg_arr_delay = mean(arr_delay)\n), by = .(month, carrier)]","id":27,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-27","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# --- Define season --- #\nflights[,season := fcase(\n  month %in% c(12, 1, 2), \"Winter\",\n  month %in% c(3, 4, 5), \"Spring\",\n  month %in% c(6, 7, 8), \"Summer\",\n  default = \"Fall\" #otherwise, \"Fall`\"\n)]\n\n# --- Summarize by season and carrier --- #\nflights[, .(\n  total_flights = .N,\n  avg_dep_delay = mean(dep_delay, na.rm = TRUE),\n  avg_arr_delay = mean(arr_delay, na.rm = TRUE)\n), by = .(season, carrier)]","id":28,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-28","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"yield_data_long <- \n  data.table(\n    state = c(\"Kansas\", \"Nebraska\", \"Iowa\", \"Illinois\") %>% rep(each = 2),\n      year = c(2019, 2020) %>% rep(4),\n      yield = c(200, 240, 210, 220, 220, 230, 190, 150),\n      rainfall = c(14, 15, 15, 16, 20, 21, 24, 15)\n  )","id":29,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-29","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"dcast(yield_data_long, state ~ year , value.var = c(\"yield\", \"rainfall\"))","id":30,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-30","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Let's use iris data\ndata(iris)\nhead(iris)","id":31,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-31","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights_mini <- \n  flights[,head(.SD, 1), by = month] %>% \n  .[, .(carrier, month, dep_delay, arr_delay)]\n\n# take a look at the data\nhead(flights_mini)","id":32,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-32","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Get airlines data from `nycflights13` package\ndata(airlines, package = \"nycflights13\")\nsetDT(airlines)\n\nhead(airlines)","id":33,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-33","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights_merged <- airlines[flights, on = \"carrier\"]\n\n# Check whether `name` column is added to `flights` data\nhead(flights_merged)","id":34,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-34","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"x = 1:10\nfcase(\n    x < 5L, 1L,\n    x > 5L, 3L\n)","id":35,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-35","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# --- Define season --- #\nflights[,season := fcase(\n  month %in% c(12, 1, 2), \"Winter\",\n  month %in% c(3, 4, 5), \"Spring\",\n  month %in% c(6, 7, 8), \"Summer\",\n  default = \"Fall\" #otherwise, \"Fall`\"\n)]","id":36,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-36","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"library(dplyr)","id":37,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-37","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[dep_delay == max(dep_delay), .(carrier)]","id":38,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-38","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"msp_feb_flights[,.(\n  median = median(arr_delay),\n  IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),\n  n_flights = .N\n  ), by = carrier]","id":39,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-39","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# first three columns\nselect_cols <- c(\"year\", \"month\", \"day\")\nflights[ , select_cols, with = FALSE]\nflights[ , ..select_cols]\n\n# flights[,year:day]","id":40,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-40","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights_df <- as.data.frame(flights)\n  with(\n    flights, \n     mean(arr_delay + dep_delay)\n  )","id":41,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-41","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"# Don't worry about this code. It just creates a small data.table object.\nflights_mini <- \n  flights[,head(.SD, 2), by = month] %>% \n  .[, .(year, month, dep_delay, arr_delay)]\n\nhead(flights_mini)","id":42,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"true","editor-max-height":"","label":"unnamed-chunk-42","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights_mini[, print(.SD), by = month]","id":43,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-43","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"flights[carrier == \"AA\", .(.N), by = .(origin, month)] %>% head()","id":44,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-44","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}},{"code":"","id":45,"options":{"classes":"","read-only":"false","dpi":72,"message":"true","fig-height":5,"comment":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","autorun":"false","editor-max-height":"","label":"unnamed-chunk-45","warning":"true","editor-word-wrap":"true","context":"interactive","fig-width":7,"out-height":"","output":"true","fig-cap":"","out-width":"700px","results":"markup"}}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-1","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Load flights data from nycflights13 package.\nflights <- nycflights13::flights\n# Remove rows with missing values (just for convenience)\nflights <- na.omit(flights)\n# Check the class of object\nclass(flights)"},{"id":2,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-2","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Load data.table package\nlibrary(data.table)\nsetDT(flights) # same as, flights <- as.data.table(flights)\n# Now, flights is a data.table object.\nclass(flights)"},{"id":3,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-3","comment":"","editor-quick-suggestions":"false","eval":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Don't run\nDT[i, j, by]"},{"id":4,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-4","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[carrier == \"AA\",]"},{"id":5,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-5","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# 1. Subset rows where carrier is \"AA\" and month is 1 (January)\n\n# 2. Subset rows where carrier is \"AA\" and origin is all the airports except \"JFK\"\n\n# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for \"or\" condition)"},{"id":6,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-6","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# 1. Subset rows where carrier is \"AA\" and month is 1 (January)\nflights[carrier == \"AA\" & month == 1,]\n\n# 2. Subset rows where carrier is \"AA\" and origin is all the airports except \"JFK\"\nflights[carrier == \"AA\" & origin != \"JFK\",]\n\n# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for \"or\" condition)\nflights[dep_delay < 0 | arr_delay < 0,]"},{"id":7,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-7","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Select dep_time column as vector --- #\nflights[, dep_time]\n# --- Select dep_time column as data.table --- #\nflights[, list(dep_time)]\n# or\nflights[, .(dep_time)]\n# or you can also select a column in the data.frame way\nflights[, \"dep_time\"]"},{"id":8,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-8","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Select dep_time and arr_time as data.table --- #\nflights[, .(dep_time, arr_time)]\n\n# --- Deselect columns using - or ! --- #\nflights[, !c(\"dep_time\", \"arr_time\")]\n# or\n# flights[, -c(\"dep_time\", \"arr_time\")]"},{"id":9,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-9","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# count the number of trips with total delay < 0\nflights[, sum((arr_delay + dep_delay) < 0)]"},{"id":10,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-10","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[origin == \"JFK\" & month == 6L, .N]\n# NOTE: `.N` is a special variable that holds the number of rows in the current group.\n# So, this code is equivalent to:\n# nrow(flights[origin == \"JFK\" & month == 6L,])"},{"id":11,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-11","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[origin == \"JFK\" & month == 6L, .(Count = .N, avg_dep_delay = mean(dep_delay))]"},{"id":12,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-12","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# You can write your code here"},{"id":13,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-13","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[origin == \"JFK\" & month == 8L, .(m_arr = mean(arr_delay), m_dep = mean(dep_delay))]"},{"id":14,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-14","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[, total_delay := dep_delay + arr_delay]"},{"id":15,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-15","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"#| \nflights[, `:=`(\n  total_delay = arr_delay + dep_delay,\n  speed = distance/air_time\n  )]"},{"id":16,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-16","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Before updating\nhead(flights[month == 4, .(month, total_delay)], 3)"},{"id":17,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-17","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights2 <- copy(flights)[month == 4, total_delay := total_delay + 10]\n\nhead(flights2[month == 4, .(month, arr_delay)], 3)"},{"id":18,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-18","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# You can write your code here"},{"id":19,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-19","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[, speed := distance / air_time]\n\n# take a look at the head of the data\nhead(flights[, .(speed)])"},{"id":20,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-20","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[, .(.N), by = .(origin)]"},{"id":21,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-21","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[, .(avg_dep_delay = mean(dep_delay), avg_arr_delay = mean(arr_delay)), by = .(carrier, origin)]"},{"id":22,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-22","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[carrier == \"AA\", .N, by = .(origin)]"},{"id":23,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-23","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[carrier == \"AA\", .N, by = .(origin, month)] %>% head()"},{"id":24,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-24","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# You can write your code here"},{"id":25,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-25","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# You can write your code here"},{"id":26,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-26","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[,.(\n  n_flights = .N,\n  avg_dep_delay = mean(dep_delay),\n  avg_arr_delay = mean(arr_delay)\n), by = .(month, carrier)]"},{"id":27,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-27","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Define season --- #\nflights[,season := fcase(\n  month %in% c(12, 1, 2), \"Winter\",\n  month %in% c(3, 4, 5), \"Spring\",\n  month %in% c(6, 7, 8), \"Summer\",\n  default = \"Fall\" #otherwise, \"Fall`\"\n)]\n\n# --- Summarize by season and carrier --- #\nflights[, .(\n  total_flights = .N,\n  avg_dep_delay = mean(dep_delay, na.rm = TRUE),\n  avg_arr_delay = mean(arr_delay, na.rm = TRUE)\n), by = .(season, carrier)]"},{"id":28,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-28","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"yield_data_long <- \n  data.table(\n    state = c(\"Kansas\", \"Nebraska\", \"Iowa\", \"Illinois\") %>% rep(each = 2),\n      year = c(2019, 2020) %>% rep(4),\n      yield = c(200, 240, 210, 220, 220, 230, 190, 150),\n      rainfall = c(14, 15, 15, 16, 20, 21, 24, 15)\n  )"},{"id":29,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-29","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"yield_data_wide <- dcast(yield_data_long, state ~ year , value.var = c(\"yield\", \"rainfall\"))\nyield_data_wide"},{"id":30,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-30","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# yield columns\ncol_yields <- paste0(\"yield_\", 2019:2020)\n# rainfall columns\ncol_rainfalls <- paste0(\"rainfall_\", 2019:2020)\n\nyield_data_long_2 <- \n  melt(\n    yield_data_wide, \n    id.vars = \"state\", \n    measure.vars = list(col_yields, col_rainfalls), \n    value.name = c(\"yield\", \"rainfall\")\n  )\n\nyield_data_long_2\n\n# If you are familiar with regular expressions, you can do:\n# melt(yield_data_wide, id.vars = \"state\", measure.vars = patterns(\"^yield\", \"^rainfall\"), value.name = c(\"yield\", \"rainfall\"))"},{"id":31,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-31","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- using long-form --- #\nyield_data_long[,.(\n  avg_yield = mean(yield),\n  avg_rainfall = mean(rainfall)\n  ), by = .(state)]\n\n# --- using wide-form --- #\nyield_data_wide[,`:=`(\n  avg_yield = sum(yield_2019 + yield_2020)/2,\n  avg_rainfall = sum(rainfall_2019 + rainfall_2020)/2\n)]\nyield_data_wide[,.(state, avg_yield, avg_rainfall)]"},{"id":32,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-32","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# === create long_dt (run this code) === #\nyield_data_wide <- dcast(yield_data_long, state ~ year, value.var = c(\"yield\", \"rainfall\"))\nlong_data <- melt(yield_data_wide, id.var = \"state\")"},{"id":33,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-33","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# First, I would create two columns: `year` and `type` (to denote year or rainfall) by splitting the `variable` column of long_data.\n# use `tstrsplit()` function to split the variable column by \"_\"\nlong_data[, c(\"type\", \"year\") := tstrsplit(variable, \"_\", fixed = TRUE)]\n\n# Now, I don't need the variable column. So, remove it.\nlong_data[, variable := NULL]\n\n\n# Finally, I would cast the data to the original long form.\ndcast(long_data, state + year ~ type, value.var = \"value\")"},{"id":34,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-34","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Yield data --- #\nyield_data <- \n  data.table(\n    state = c(\"Nebraska\", \"Iowa\", \"Minnesota\", \"Illinois\", \"Kansas\"),\n    yield = runif(n = 5, min = 180, max = 280)\n  )"},{"id":35,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-35","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Weather data --- #\nweather_data <-\n  data.table(\n    state = c(\"Iowa\", \"Minnesota\", \"Nebraska\", \"Illinois\", \"Wisconsin\"),\n    total_precip = runif(5, min = 10, max = 20)\n  )"},{"id":36,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-36","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"yield_weather_data <- merge(yield_data, weather_data, by = \"state\", all.x = TRUE)\n# check the merged data\nyield_weather_data"},{"id":37,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-37","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"weather_yield_data <- merge(weather_data, yield_data , by = \"state\", all.x = TRUE)\n# check the merged data\nweather_yield_data"},{"id":38,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-38","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"weather_yield_data_all <- merge(weather_data, yield_data , by = \"state\", all = TRUE)\n# check the merged data\nweather_yield_data_all"},{"id":39,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-39","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"airlines <- nycflights13::airlines\nhead(airlines)"},{"id":40,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-40","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# You can write your code here"},{"id":41,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-41","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights_merged <- merge(flights, airlines, by = \"carrier\", all.x = TRUE)\n\n# using dplyr, this is equivalent to\n# flights_merged <- left_join(flights, airlines, by = \"carrier\")"},{"id":42,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-42","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"yield_data <- \n  data.table(\n    state = rep(c(\"Iowa\", \"Minnesota\", \"Illinois\", \"Kansas\", \"Wisconsin\"), each = 2),\n    year = rep(2010:2011, times = 5),\n    yield = runif(n = 10, min = 180, max = 280)\n  )\n\nweather_data <- \n  data.table(\n    state = rep(c(\"Iowa\", \"Minnesota\", \"Illinois\", \"Kansas\", \"Ohio\"), each = 4),\n    year = rep(2010:2013, times = 5),\n    total_precip = runif(20, min = 10, max = 20)\n  )"},{"id":43,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-43","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# you can write your code here"},{"id":44,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-44","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"yield_weather_data <- merge(yield_data, weather_data, by = c(\"state\", \"year\"), all.x = TRUE)"},{"id":45,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-45","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights <- nycflights13::flights # Load flights data from nycflights13\nflights_dt <- as.data.table(flights) # change the data to data.table class \nflights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] # select some columns\nflights_mini <- na.omit(flights_mini) # remove rows with missing values"},{"id":46,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-46","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Let's use this function\nprint_three_words <- function(x, y, z) paste(c(x, y, z),collapse = \" \")\n# For example, this function print three words with space between them\nprint_three_words(x=\"I\", y=\"love\", z=\"R\")\n\n# pass the input to the first argument\n\"I\" %>% print_three_words(x=., y=\"love\", z=\"R\")\n\n# pass the input to the second argument\n\"love\" %>% print_three_words(x=\"I\", y=., z=\"R\")\n\n# pass the input to the third argument\n\"R\" %>% print_three_words(x=\"I\", y=\"love\", z=.)"},{"id":47,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-47","comment":"","editor-quick-suggestions":"false","auto-run":"true","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights <- nycflights13::flights #load flights datas\nflights_dt <- as.data.table(flights)  # to data.table class\nflights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] #select some columns\nflights_mini <- na.omit(flights_mini) #remove rows with missing values"},{"id":48,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-48","comment":"","editor-quick-suggestions":"false","auto-run":"true","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"library(dplyr)\n\nflights_mini <- \n  nycflights13::flights %>% #load flights data\n  as.data.table(.) %>% # to data.table class\n  .[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] %>% #select some columns\n  na.omit(.) #remove rows with missing values"},{"id":49,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-49","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"x = 1:10\nfcase(\n    x < 5L, 1L,\n    x > 5L, 3L\n)"},{"id":50,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-50","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# --- Define season --- #\nflights[,season := fcase(\n  month %in% c(12, 1, 2), \"Winter\",\n  month %in% c(3, 4, 5), \"Spring\",\n  month %in% c(6, 7, 8), \"Summer\",\n  default = \"Fall\" #otherwise, \"Fall`\"\n)]"},{"id":51,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-51","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"true","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# Don't worry about this code. It just creates a small data.table object.\nflights_mini <- \n  flights[,head(.SD, 2), by = month] %>% \n  .[, .(year, month, dep_delay, arr_delay)]\n\nhead(flights_mini)"},{"id":52,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-52","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights_mini[, print(.SD), by = month]"},{"id":53,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-53","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[dep_delay == max(dep_delay), .(carrier)]"},{"id":54,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-54","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"msp_feb_flights[,.(\n  median = median(arr_delay),\n  IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),\n  n_flights = .N\n  ), by = carrier]"},{"id":55,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-55","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"# first three columns\nselect_cols <- c(\"year\", \"month\", \"day\")\nflights[ , select_cols, with = FALSE]\nflights[ , ..select_cols]\n\n# flights[,year:day]"},{"id":56,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-56","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights_df <- as.data.frame(flights)\n  with(\n    flights, \n     mean(arr_delay + dep_delay)\n  )"},{"id":57,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-57","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":"flights[carrier == \"AA\", .(.N), by = .(origin, month)] %>% head()"},{"id":58,"options":{"dpi":72,"out-height":"","context":"interactive","warning":"true","label":"unnamed-chunk-58","comment":"","editor-quick-suggestions":"false","read-only":"false","message":"true","fig-width":7,"editor-word-wrap":"true","results":"markup","fig-cap":"","classes":"","autorun":"false","out-width":"700px","editor-max-height":"","output":"true","fig-height":5,"editor-font-scale":"0.8"},"code":""}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2208,8 +2208,8 @@ Shunkei Kakimoto
       }</style></aside></section><section id="todays-outline" class="slide level2 center scrollable"><h2>Today’s outline:</h2>
 <ol type="1">
 <li><a href="#/intro-data-table">Introduction to data.table</a></li>
-<li>Let’s use <code>%&gt;%</code> operator to more clear code.</li>
-<li>Appendix: Use multiple cores for computation with data.table [<a href="https://github.com/Rdatatable/data.table/wiki/Installation">Here</a>]</li>
+<li><a href="#/piping">Let’s use <code>%&gt;%</code> operator to more clear code.</a></li>
+<li><a href="#/appendix">Appendix</a></li>
 </ol></section><section><section id="intro-data-table" class="title-slide slide level1 center"><h1>Introduction to data.table</h1>
 
 </section><section id="section-1" class="slide level2 center scrollable"><h2></h2>
@@ -2278,11 +2278,9 @@ Shunkei Kakimoto
 </div>
 <div id="tabset-1-2">
 <ol type="1">
-<li>Let’s use <code>flights</code> data, which is obtained from <code>nycflights13</code> package^{“data(data_name, package=”package_name”)” loads data attached to the package.}.</li>
+<li>Let’s use <code>flights</code> data, which is obtained from <code>nycflights13</code>.</li>
 </ol>
 <div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <ol start="2" type="1">
@@ -2291,7 +2289,7 @@ Shunkei Kakimoto
 <ul>
 <li>use <code>setDT()</code> function from <code>data.table</code> package to convert <code>data.frame</code> class to <code>data.table</code> class.</li>
 </ul>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2315,7 +2313,7 @@ Shunkei Kakimoto
           display:block!important;
       }</style></aside></section><section id="general-data.table-syntax" class="slide level2 center"><h2>General data.table syntax</h2>
 <p>The general form of <code>data.table</code> syntax is</p>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>
@@ -2358,7 +2356,7 @@ Shunkei Kakimoto
 <li><span style="color: blue;">To subset rows, use <code>i</code> argument. (e.g., <code>DT[colA == condition1,]</code>)</span></li>
 </ul>
 <p>For example, Let’s subet rows where carrier is “AA” (American Airlines)</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In this code, we used <code>i</code> to subset rows where <code>carrier</code> is “AA”;</p>
 <ul>
@@ -2372,11 +2370,11 @@ Shunkei Kakimoto
 </ul>
 </div>
 <div id="tabset-2-2">
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-2-3">
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2394,7 +2392,7 @@ Shunkei Kakimoto
 <li><span style="color: blue;">To select columns, use <code>j</code> argument</span></li>
 </ul>
 <p><strong>Example</strong>: Suppose we want to select <code>dep_time</code> column. Since we don’t subset rows, we leave <code>i</code> argument blank.</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>If we wrap the variables (column names) within <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>, which ensures that a <code>data.table</code> is returned.</li>
@@ -2415,7 +2413,7 @@ Shunkei Kakimoto
 </div>
 <div id="tabset-3-2">
 <p>Let’s select multiple columns as <code>data.table</code>.</p>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2439,7 +2437,7 @@ Shunkei Kakimoto
 <li>total day = <code>dep_delay</code> + <code>arr_delay</code>
 </li>
 </ul>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <p>In the code above, three calculations are being performaed in the <code>j</code> argument:</p>
@@ -2472,7 +2470,7 @@ Shunkei Kakimoto
 <div class="tab-content">
 <div id="tabset-4-1">
 <p><strong>Example 1</strong>: How many flights with “JFK” as the origin airport in June?</p>
-<div id="qwebr-insertion-location-11"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Here, I used</p>
 <ul>
@@ -2487,7 +2485,7 @@ Shunkei Kakimoto
 <div id="tabset-4-2">
 <p><strong>Example 2</strong>: How many flights with “JFK” as the origin airport in June?</p>
 <p><span style="color: blue;">You can provide names to the value we calculated if you want.</span></p>
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2513,14 +2511,14 @@ Shunkei Kakimoto
 </ul>
 </li>
 </ul>
-<div id="qwebr-insertion-location-13"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-5-2">
 <ol type="1">
 <li>Calculate the average arrival and departure delay for all flights with “JFK” as the origin airport in the month of August.</li>
 </ol>
-<div id="qwebr-insertion-location-14"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2549,7 +2547,7 @@ Shunkei Kakimoto
 </ul>
 <p><br></p>
 <p><strong>Example:</strong> Create a new column <code>total_delay</code> that is the sum of <code>dep_delay</code> and <code>arr_delay</code>.</p>
-<div id="qwebr-insertion-location-15"></div>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <div title="Important Rule:">
@@ -2567,7 +2565,7 @@ Shunkei Kakimoto
 </div>
 <div id="tabset-8-2">
 <p>Here are how you define multiple variables at the same time.</p>
-<div id="qwebr-insertion-location-16"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
@@ -2602,11 +2600,11 @@ Shunkei Kakimoto
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Before</strong></p>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div><div class="column" style="width:50%;">
 <p><strong>After</strong></p>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div></div>
 <p><br></p>
@@ -2637,11 +2635,11 @@ Shunkei Kakimoto
 <ol type="1">
 <li>Let’s create a new column <code>speed</code> by deviding <code>distance</code> by <code>air_time</code>.</li>
 </ol>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-7-2">
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2668,7 +2666,7 @@ Shunkei Kakimoto
 </div>
 <p><br></p>
 <p><strong>Example</strong>: Let’s find the number of flights by <code>origin</code>.</p>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In this code, we used</p>
 <ul>
@@ -2696,14 +2694,14 @@ Shunkei Kakimoto
 <p>Nothing special. Just provide multiple columns to <code>by</code> argument.</p>
 <p><br></p>
 <p><strong>Example</strong>: Find the average time of departure delay and arrival delay by <code>carrier</code> and <code>origin</code>.</p>
-<div id="qwebr-insertion-location-22"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-10-3">
 <p><span style="color: blue;">Togeher with <code>i</code> argumnent, you can perform grouped operations for select observations.</span></p>
 <p><br></p>
 <p><strong>Example 1</strong>: Get the number of flights for each origin airport for carrier code “AA” (American Airlines).</p>
-<div id="qwebr-insertion-location-23"></div>
+<div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In this code, we used</p>
 <ul>
@@ -2717,7 +2715,7 @@ Shunkei Kakimoto
 </ul>
 <p><br></p>
 <p><strong>Example 2</strong>: Find the number of flights by <code>origin</code> and <code>month</code> for carrier code “AA” (American Airlines).</p>
-<div id="qwebr-insertion-location-24"></div>
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-10-4">
@@ -2731,27 +2729,27 @@ Shunkei Kakimoto
 <ol type="1">
 <li>For each <code>month</code> and each <code>carrier</code>, calculate the total number of flights, average departure delay, and average arrival delay.</li>
 </ol>
-<div id="qwebr-insertion-location-25"></div>
+<div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <ol start="2" type="1">
 <li>(Optional) Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov) and summarize the total number of flights, average departure delay, and average arrival delay for each season and each carrier.</li>
 </ol>
-<div id="qwebr-insertion-location-26"></div>
+<div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-9-2">
 <ol type="1">
 <li>For each month and each carrier, calculate the total number of flights, average departure delay, and average arrival delay. .</li>
 </ol>
-<div id="qwebr-insertion-location-27"></div>
+<div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
 <ol start="2" type="1">
 <li>(Optional) Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov) and summarize the total number of flights, average departure delay, and average arrival delay for each season and each carrier.</li>
 </ol>
 <p>Note: I used <code>fcase()</code> function of <code>data.table</code> package to define seasons. <code>fcase()</code> is like <code>case_when()</code> in <code>dplyr</code>. It is useful when you want to define a variable that takes different values based on conditions.</p>
-<div id="qwebr-insertion-location-28"></div>
+<div id="qwebr-insertion-location-27"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2771,18 +2769,18 @@ Shunkei Kakimoto
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="reshape-data" class="slide level2 scrollable"><h2>6. Reshape data</h2>
+      }</style></aside></section><section id="reshape-data" class="slide level2"><h2>6. Reshape data</h2>
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-14-1">Basics</a></li>
-<li><a href="#tabset-14-2">Preparation</a></li>
-<li><a href="#tabset-14-3">long to wide</a></li>
-<li><a href="#tabset-14-4">wide to long</a></li>
-<li><a href="#tabset-14-5">When to reshpae data?</a></li>
-<li><a href="#tabset-14-6">Quiz</a></li>
+<ul id="tabset-12" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-12-1">Basics</a></li>
+<li><a href="#tabset-12-2">Preparation</a></li>
+<li><a href="#tabset-12-3">long to wide</a></li>
+<li><a href="#tabset-12-4">wide to long</a></li>
+<li><a href="#tabset-12-5">When to reshpae data?</a></li>
+<li><a href="#tabset-12-6">Quiz</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-14-1">
+<div id="tabset-12-1">
 <p><span style="color: blue;">Data often comes in two formats: wide or long.</span></p>
 <p><strong>Example:</strong></p>
 <div class="columns">
@@ -2805,7 +2803,7 @@ Shunkei Kakimoto
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Wide data</strong></p>
-<p>Here, each state (observational unit) is appears only once in the first column, and their annual record of yield and rainfall are spread across the columns.</p>
+<p>Here, each state (observational unit) appears only once in the first column, and their annual record of yield and rainfall are spread across the columns.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Key: &lt;state&gt;
@@ -2818,67 +2816,407 @@ Shunkei Kakimoto
 </div>
 </div>
 </div></div>
+<p><br></p>
 <ul>
 <li>We can convert one format to another using <code>dcast()</code> and <code>melt()</code> functions of <code>data.table</code> package.</li>
 </ul>
 </div>
-<div id="tabset-14-2">
-<p>Let’s use the folling small data to understand how <code>dcas()</code> and <code>melt()</code> work.</p>
-<div id="qwebr-insertion-location-29"></div>
+<div id="tabset-12-2">
+<p>Let’s use the following small data to understand how <code>dcast()</code> and <code>melt()</code> work.</p>
+<div id="qwebr-insertion-location-28"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-14-3">
-<p><span style="color: blue;">We can convert long data to wide data using <code>dcast()</code> function.</span></p>
-<p><strong>Syntax</strong></p>
+<div id="tabset-12-3">
+<ul>
+<li><span style="color: blue;">Use <code>dcast()</code> function converts long form to wide form</span></li>
+</ul>
+<p><strong>Basic Syntax:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">dcast</span>(data, LHS <span class="sc">~</span> RHS , <span class="at">value.var =</span> <span class="fu">c</span>(<span class="st">"var1"</span>, <span class="st">"var2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>
-<code>LHS</code>: the variable to be used as the row index</li>
+<code>LHS</code>: set of id variables (variables (columns) that you don’t want change).</li>
 <li>
-<code>RHS</code>: the variable to be used as the column index</li>
+<code>RHS</code>: set of variables to be used as the column index.</li>
 <li>
-<code>value.var</code>: Name of the column whose values will be filled to cast</li>
+<code>value.var</code>: set of variables whose values will be filled to cast.</li>
 </ul>
-<p><strong>Example</strong></p>
-<p>Suppose that we want to collect all yield and rainfall observations corresponding to each state under the same row.</p>
-<div id="qwebr-insertion-location-30"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-14-4">
-<p><span style="color: blue;">We can convert wide data to long data using <code>melt()</code> function.</span></p>
-</div>
-<div id="tabset-14-5">
-<p>In my personal experience, I often need to reshape data when I want to plot data using <code>ggplot2</code> package.</p>
-<p><strong>Example</strong></p>
-<div id="qwebr-insertion-location-31"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div id="tabset-14-6">
-<div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Quiz</a></li></ul>
-<div class="tab-content">
-<div id="tabset-11-1">
-<p>Let’s use the follwing small data:</p>
-<div id="qwebr-insertion-location-32"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol type="1">
-<li>
-</li></ol>
-</div>
-</div>
-</div>
-<section id="merge-two-data" class="slide level2"><h2>7. Merge two data</h2>
+<p><br></p>
 <p><strong>Example:</strong></p>
-<p>Let’s traslate two letter carrier codes (<code>carrier</code>) in <code>flights</code> to the full name of airline.</p>
-<div id="qwebr-insertion-location-33"></div>
+<p>Suppose that we want to collect all yield and rainfall observations corresponding to each state under the same row.</p>
+<div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
-<p>Merge <code>flights</code> and <code>airlines</code> data by <code>carrier</code> column.</p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Before wrting your code to reshape the data, it is important to imagine what your desired data format looks like.</li>
+<li>I often sketch out an example.
+<ul>
+<li>This helps me to understand what variables I need to use as <code>LHS</code>, <code>RHS</code>, and <code>value.var</code>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-12-4">
+<ul>
+<li><span style="color: blue;">Use <code>melt()</code> function to convert wide form to long form</span></li>
+</ul>
+<p><strong>Basic Syntax</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">melt</span>(data, <span class="at">id.var =</span> <span class="fu">c</span>(<span class="st">"id_var1"</span>, <span class="st">"id_var2"</span>), <span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">"var1"</span>, <span class="st">"var2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code>id.vars</code>: the set of id variables (variables (columns) that you don’t want change).</li>
+<li>
+<code>measure.vars</code>: the set of columns you want to collapse (or combine) together.</li>
+<li>
+<code>value.name</code>: (optional) the name of the new column that will store the values of the variables in <code>measure.vars</code>, the default is <code>value</code>
+</li>
+</ul>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p>Let’s get back to the original data format <code>yield_data_long</code> from <code>yield_data_wide</code>.</p>
+<div id="qwebr-insertion-location-30"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Note however that year information from the variable names are lost. In the resulting dataset, variable == 1 and variable == 2 correspond to 2019 and 2020, respectively. So, you need an additional step to recover the original long data format.</p>
+</div>
+<div id="tabset-12-5">
+<p>In my personal experience, I often need to reshape data when:</p>
+<p><strong>1. I want to aggregate and summarize data efficiently.</strong></p>
+<ul>
+<li>Example: <code>yield_data_long</code> is easier to calculate the average yield and rainfall by state than <code>yield_data_wide</code>.</li>
+</ul>
+<div id="qwebr-insertion-location-31"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p><strong>2. I want to visualize data efficiently.</strong></p>
+<ul>
+<li>We will see some examples when we learn data visualization with <code>ggplot2</code> package.</li>
+</ul>
+</div>
+<div id="tabset-12-6">
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-11-1">Quiz (difficult)</a></li>
+<li><a href="#tabset-11-2">Answers</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p>Using the following long-form data named <code>long_dt</code>, can you get <code>yield_data_long</code>?</p>
+<div id="qwebr-insertion-location-32"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># You can write your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-11-2">
+<div id="qwebr-insertion-location-33"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="merge-two-data" class="slide level2 scrollable"><h2>7. Merge two data</h2>
+<div class="panel-tabset">
+<ul id="tabset-16" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-16-1">Motivation</a></li>
+<li><a href="#tabset-16-2">Basics</a></li>
+<li><a href="#tabset-16-3">Example</a></li>
+<li><a href="#tabset-16-4">Quiz 1</a></li>
+<li><a href="#tabset-16-5">Quiz 2</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-16-1">
+<p>It is very common that you have data stored in separate files, and you need to combine them before you conduct any statistical analysis.</p>
+<p>For example, if you are interested in how weather affects the crop yield, you want to have weather and production data in a single dataset. However, since weather and production data are usually obtained from the different source of data (e.g., yield data from USDA-NASS, and weather data from NASS), they are stored in two separate data files.</p>
+<p><br></p>
+</div>
+<div id="tabset-16-2">
+<p>You can use the <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> function from the <code>data.table</code> package to merge two datasets.</p>
+<p><strong>Basic Syntax</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Merge data2 to data1 keeping all rows from data1</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">merge</span>(x, y, <span class="at">by =</span> <span class="st">"key_column"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code>x</code>, <code>y</code>: data tables.</li>
+<li>
+<code>by</code>, which specifies variables that let you merge two datasets.</li>
+<li>
+<code>all.x = TRUE</code> means that all rows from <code>data1</code> are mainteined in the merged dataset, and only matching rows from <code>data2</code> are included (this is equivalent to <code>left_join()</code> in <code>dplyr</code>).</li>
+</ul>
+<p>Note: <span style="color: red;">The order of datasets matter</span>.</p>
+</div>
+<div id="tabset-16-3">
+<div class="panel-tabset">
+<ul id="tabset-13" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-13-1">Data</a></li>
+<li><a href="#tabset-13-2">Merge</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-13-1">
+<p>Let’s play around with <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> function using the following small data. <!-- Let's use simple small data so that we can see whether the merge operation works correctly. --></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Data 1</strong></p>
 <div id="qwebr-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section id="key-takeaways" class="slide level2 scrollable"><h2>Key takeaways:</h2>
+</div><div class="column" style="width:50%;">
+<p><strong>Data2</strong></p>
+<div id="qwebr-insertion-location-35"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></div>
+<ul>
+<li>Note that states included in <code>yield_data</code> and <code>weather_data</code> are slightly different. This is to show how <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> function works when there are unmatched rows in the two datasets.</li>
+<li>To merge these two datasets, <code>state</code> works because we need to use <code>state</code> as a key column. <br>
+</li>
+</ul>
+</div>
+<div id="tabset-13-2">
+<p><strong>(1) merge <code>weather_data</code> to <code>yield_data</code>, keeping all rows from <code>yield_data</code>.</strong></p>
+<div id="qwebr-insertion-location-36"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p><strong>(2) merge <code>yield_data</code> to <code>weather_data</code>, keeping all rows from <code>weather_data</code>.</strong></p>
+<div id="qwebr-insertion-location-37"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p><strong>(3) If you want to keep all rows from both datasets, you can set <code>all = TRUE</code>.</strong></p>
+<div id="qwebr-insertion-location-38"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-4">
+<div class="panel-tabset">
+<ul id="tabset-14" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-14-1">Quiz</a></li>
+<li><a href="#tabset-14-2">Answers</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-14-1">
+<ol type="1">
+<li>In the <code>flights</code> data, the <code>carrier</code> column contains two-letter codes for airlines. Let’s translate these codes into the full name of the airline.</li>
+</ol>
+<p>Airlines data from <code>nycflights13</code> package contains the full name of the airline corresponding to the two-letter code. The following code loads the airlines data.</p>
+<div id="qwebr-insertion-location-39"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p>Merge <code>flights</code> and <code>airlines</code> data, keeping all rows from the <code>flights</code> data. Which variable should be used as a key column?</p>
+<div id="qwebr-insertion-location-40"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-14-2">
+<ul>
+<li><p>Obviously, <code>flight</code> data is the main data, so we should keep all rows from the <code>flights</code> data.</p></li>
+<li><p>The key column should be <code>carrier</code> because it is the common variable in both datasets, and it gives one-to-one correspondence between the two datasets.</p></li>
+</ul>
+<div id="qwebr-insertion-location-41"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-16-5">
+<div class="panel-tabset">
+<ul id="tabset-15" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-15-1">Quiz</a></li>
+<li><a href="#tabset-15-2">Answers</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-15-1">
+<p>Run the following code to create two datasets: <code>yield_data</code> and <code>weather_data</code>.</p>
+<div id="qwebr-insertion-location-42"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p>Merge these two datasets, keeping all rows from <code>yield_data</code>. Which variable should be used as a key column?</p>
+<div id="qwebr-insertion-location-43"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-15-2">
+<ul>
+<li>Here you should use <code>state</code> and <code>year</code> as key columns.</li>
+</ul>
+<div id="qwebr-insertion-location-44"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="piping" class="slide level2"><h2>Let’s use <code>%&gt;%</code> operator to write more clear code</h2>
+<div class="panel-tabset">
+<ul id="tabset-18" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-18-1">Motivation</a></li>
+<li><a href="#tabset-18-2">Introduction</a></li>
+<li><a href="#tabset-18-3">Example</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-18-1">
+<ul>
+<li>In R, you need to assign the result of each operation to a new object if you want to use the result in the subsequent process.</li>
+<li>But sometimes, some objects are just intermediate results that you don’t need to keep.</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>Let’s create <code>flights_mini</code> data from <code>flights</code> data of <code>nycflights13</code> package. Look at the following codes:</p>
+<div id="qwebr-insertion-location-45"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The first three lines yields intermediate results to make the final <code>flight_mini</code>, and you don’t need to keep those.</p>
+<p><br></p>
+<p>If you don’t want to save the intermediate step every time, you can do like this, but it’s hard to read.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>flights_mini <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">data.table</span>(nycflights13<span class="sc">::</span>flights)[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-18-2">
+<div class="panel-tabset">
+<ul id="tabset-17" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-17-1">What is <code>%&gt;%</code>?</a></li>
+<li><a href="#tabset-17-2">Basics</a></li>
+<li><a href="#tabset-17-3">More generally</a></li>
+<li><a href="#tabset-17-4">Refer to the preceding object</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-17-1">
+<ul>
+<li>
+<code>%&gt;%</code> a special symbol in R, called a pipe operator. It comes from the <code>magrittr</code> package.</li>
+<li>It’s a powerful tool to write linear sequence of operations in a more readable way.</li>
+</ul>
+<p><br></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>when you load the <code>dplyr</code> package, <code>magrittr</code> package is automatically loaded as well. So, you don’t need to load the <code>magrittr</code> package separately to use <code>%&gt;%</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-2">
+<p><span style="color: blue;"><code>%&gt;%</code> takes the output of the code on its left and feeds it as the first argument to the function on its right.</span></p>
+<p><br></p>
+<p><strong>Example 1</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">fun1</span>(input1) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>is the same as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>input1 <span class="sc">%&gt;%</span> <span class="fu">fun1</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Example 2</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>output1 <span class="ot">&lt;-</span> <span class="fu">fun1</span>(input1)</span>
+<span id="cb12-2"><a href=""></a>output2 <span class="ot">&lt;-</span> <span class="fu">fun2</span>(output1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>is the same as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>output2 <span class="ot">&lt;-</span> <span class="fu">fun1</span>(input1) <span class="sc">%&gt;%</span> <span class="fu">fun2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Shortcut for the pipe operator <code>%&gt;%</code></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>In RStudio, hit <code>Ctrl</code> + <code>Shift</code> + <code>M</code> (Windows) or <code>Cmd</code> + <code>Shift</code> + <code>M</code> (Mac)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-3">
+<p>Suppose you have more than one arguments to the function like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">fun</span>(x1, x2, x3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>z <span class="sc">%&gt;%</span> <span class="fu">fun</span>(x2, x3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>is equivalent to</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">fun</span>(z, x2, x3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>That is, in general, an R object that precedes the piping operator (<code>%&gt;%</code>) becomes the first argument of the function that comes after the piping operator.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-17-4">
+<p>What if you want to use the object defined before <code>%&gt;%</code> as the second or third argument of the subsequent function?</p>
+<p><span style="color: red;">Use <code>.</code> to the preceding object by</span></p>
+<p><strong>Example</strong></p>
+<div id="qwebr-insertion-location-46"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Always use <code>.</code> in the subsequent function to explicitly denote the desitination of the object defined before <code>%&gt;%</code> even if it is the first argument.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-18-3">
+<p><strong>Without <code>%&gt;%</code></strong></p>
+<div id="qwebr-insertion-location-47"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>WIth <code>%&gt;%</code></strong></p>
+<div id="qwebr-insertion-location-48"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Note that the order of execution is the same as the order in which the functions are written.</p>
+</div>
+</div>
+</div>
+<section id="quiz-9" class="slide level2"><h2>Quiz</h2>
+</section>
+</div>
+</div>
+</div>
+</section><section id="summary" class="slide level2 scrollable"><h2>Summary:</h2>
+<p>You don’t need to completely understand what we have learned today.</p>
 <ol type="1">
 <li><strong>Understnad the general data.table syntax: <code>DT[i, j, by]</code></strong></li>
 </ol>
@@ -2891,30 +3229,36 @@ Shunkei Kakimoto
 <code>by</code>: variable to be used as groups by which operations specified in <code>j</code> are implemented</li>
 </ul>
 <ol start="2" type="1">
-<li><strong>Understand that you can do various data wrangling tasks by combining <code>i</code>, <code>j</code>, and <code>by</code> arguments.</strong></li>
+<li><strong>Understand that you can do various data wrangling tasks by using combinations of <code>i</code>, <code>j</code>, and <code>by</code> arguments.</strong></li>
 </ol>
-<p>Specifically, you should be abel to the follwoing tasks:</p>
 <ul>
-<li><ol type="1">
-<li>Subset rows</li>
-</ol></li>
-<li><ol start="2" type="1">
-<li>Select columns</li>
-</ol></li>
-<li><ol start="3" type="1">
-<li>Compute on columns</li>
-</ol></li>
-<li><ol start="4" type="1">
-<li>Create a new column</li>
-</ol></li>
-<li><ol start="5" type="1">
-<li>Perform aggregations by group</li>
-</ol></li>
+<li>Specifically, you learned the follwoing tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group</li>
 </ul>
-<ol start="3" type="1">
-<li><p><strong>Understand how to merge data</strong></p></li>
-<li><p><strong>Undestand how to reshape long-to-wide and wide-to-long using <code>dcast()</code> and <code>melt()</code></strong></p></li>
-</ol></section><section id="useful-functions" class="slide level2"><h2>Useful functions</h2>
+<ol type="1">
+<li><p><strong>Undestand you can reshape long-to-wide and wide-to-long using <code>dcast()</code> and <code>melt()</code> function.</strong></p></li>
+<li><p><strong>Understand you can merge data with <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> function.</strong></p></li>
+</ol>
+<aside class="notes"><ul>
+<li>Let’s look back what we have learned today. We did a lot of things, right?</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section></section><section><section id="appendix" class="title-slide slide level1 center"><h1>Appendix</h1>
+
+</section><section id="appendix-table-of-contents" class="slide level2"><h2>Appendix: Table of Contents</h2>
+<ul>
+<li>A.1. A list of useful functions</li>
+<li><a href="#/SD">A.2. Let’s get used to .SD</a></li>
+<li>A.3. Exercise Problems</li>
+<li>A.4. Use multiple cores for computation with data.table [<a href="https://github.com/Rdatatable/data.table/wiki/Installation">Here</a>]</li>
+</ul></section><section id="useful-functions" class="slide level2"><h2>Useful functions</h2>
 <ul>
 <li><code>.N</code></li>
 <li><code>copy()</code></li>
@@ -2931,79 +3275,39 @@ Shunkei Kakimoto
 </li></ul>
 <p><br></p>
 <div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-13-1">fcase()</a></li>
-<li><a href="#tabset-13-2">Key difference form dplyr</a></li>
+<ul id="tabset-20" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-20-1">fcase()</a></li>
+<li><a href="#tabset-20-2">Key difference form dplyr</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-13-1">
+<div id="tabset-20-1">
 <ul>
 <li><p><code>fcase()</code> is like <code>case_when()</code> in <code>dplyr</code>. It is useful when you want to define a variable that takes different values based on conditions.</p></li>
 <li><p><code>fcase()</code> function returns the first value for which the corresponding condition is <code>TRUE</code>. If no condition is <code>TRUE</code>, it returns the default value.</p></li>
 </ul>
-<div id="qwebr-insertion-location-35"></div>
+<div id="qwebr-insertion-location-49"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>Example:</strong> Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov)</p>
-<div id="qwebr-insertion-location-36"></div>
+<div id="qwebr-insertion-location-50"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="some-useful-functions-in-dplyr-packages" class="title-slide slide level1 center"><h1>Some useful functions in <code>dplyr</code> packages</h1>
-
-</section><section id="piping-operator" class="slide level2"><h2>Piping operator (<code>%&gt;%</code>)</h2>
-<div id="qwebr-insertion-location-37"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section id="exercise-problems" class="title-slide slide level1 center"><h1>Exercise Problems</h1>
-<!-- https://rpubs.com/Nasif/929745 -->
-<hr></section><section id="exercise-1" class="slide level2 scrollable"><h2>Exercise 1</h2>
-<ol type="1">
-<li>Find the flight companny with the longest departure delay. (Hint: use <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> function to find the maximum value of <code>dep_delay</code> column)</li>
-</ol>
-<div id="qwebr-insertion-location-38"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="2" type="1">
-<li>Subset the infromation of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let’s name it “msp_feb_flights”. How many flights are there?</li>
-</ol>
-<p><code>{webr-r, eval=FALSE, includ=FALSE} msp_feb_flights &lt;- flights[dest=="MSP" &amp; month==2L] nrow(msp_feb_flights)</code></p>
-<ol start="3" type="1">
-<li>Calculate the median, interquartile rangen (<span class="math inline">\(IQR = Q3 − Q1\)</span>) for <code>arr_delays</code> of flights in in the <code>msp_feb_flights</code> data and the number of flights, grouped by <code>carrier</code>. Which carrier has the most variable arrival delays?</li>
-</ol>
-<ul>
-<li>Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function to calculate the quantiles.</li>
-</ul>
-<div id="qwebr-insertion-location-39"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section id="exercise-2" class="slide level2"><h2>Exercise 2</h2>
-<p>Which month would we expect to have the highest average delay departing from an NYC airport?</p>
-</section><section id="exercise-3" class="slide level2"><h2>Exercise 3</h2>
-<p>If you were selecting an airport simply based on on time departure percentage, which NYC airport would you choose to fly out of?</p>
-</section><section id="exercise-4" class="slide level2"><h2>Exercise 4</h2>
-<p>For each hour of the day and each origin airport, calculate the total number of flights, average departure delay, and average arrival delay. For each origin airport, identify the hour with the highest total number of flights.</p>
-</section><section id="useful-knowledge-for-data.table" class="slide level2"><h2>Useful knowledge for data.table</h2>
-<div id="qwebr-insertion-location-40"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In a <code>data.frame</code> way?</p>
-<div id="qwebr-insertion-location-41"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section id="exercise-2-1" class="slide level2"><h2>Exercise 2</h2>
-</section><section id="apendix" class="title-slide slide level1 center"><h1>Apendix</h1>
-
-</section><section id="sd" class="slide level2"><h2>.SD</h2>
+<section id="sd-." class="slide level2"><h2>.SD {.}</h2>
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-12-1">Before starting</a></li>
-<li><a href="#tabset-12-2">What is .SD?</a></li>
+<ul id="tabset-19" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-19-1">Before starting</a></li>
+<li><a href="#tabset-19-2">What is .SD?</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-19-1">
 <p>Let’s use small <code>data.table</code> object that will help us understand what <code>.SD</code> does.</p>
-<div id="qwebr-insertion-location-42"></div>
+<div id="qwebr-insertion-location-51"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-19-2">
 <p><code>.SD</code> (which stands for Subset Data) is a special symbol that allows you to do many cool things.</p>
 <p>Without grouping specified in <code>by</code>, <code>.SD</code> is the <code>data.table</code> itself. So, <code>flights_mini[, .SD]</code> is the same as <code>flights_mini</code>.</p>
 <p>But, when grouped, it becomes the subset (grouped) of the data.table.</p>
 <p><strong>Example:</strong></p>
-<div id="qwebr-insertion-location-43"></div>
+<div id="qwebr-insertion-location-52"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -3022,17 +3326,52 @@ Shunkei Kakimoto
 </div>
 </div>
 </div>
+</section><section id="exercise-problems" class="title-slide slide level1 center"><h1>Exercise Problems</h1>
+<!-- https://rpubs.com/Nasif/929745 -->
+<hr></section><section id="exercise-1" class="slide level2 scrollable"><h2>Exercise 1</h2>
+<ol type="1">
+<li>Find the flight companny with the longest departure delay. (Hint: use <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> function to find the maximum value of <code>dep_delay</code> column)</li>
+</ol>
+<div id="qwebr-insertion-location-53"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol start="2" type="1">
+<li>Subset the infromation of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let’s name it “msp_feb_flights”. How many flights are there?</li>
+</ol>
+<p><code>{webr-r, eval=FALSE, includ=FALSE} msp_feb_flights &lt;- flights[dest=="MSP" &amp; month==2L] nrow(msp_feb_flights)</code></p>
+<ol start="3" type="1">
+<li>Calculate the median, interquartile rangen (<span class="math inline">\(IQR = Q3 − Q1\)</span>) for <code>arr_delays</code> of flights in in the <code>msp_feb_flights</code> data and the number of flights, grouped by <code>carrier</code>. Which carrier has the most variable arrival delays?</li>
+</ol>
+<ul>
+<li>Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function to calculate the quantiles.</li>
+</ul>
+<div id="qwebr-insertion-location-54"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="exercise-2" class="slide level2"><h2>Exercise 2</h2>
+<p>Which month would we expect to have the highest average delay departing from an NYC airport?</p>
+</section><section id="exercise-3" class="slide level2"><h2>Exercise 3</h2>
+<p>If you were selecting an airport simply based on on time departure percentage, which NYC airport would you choose to fly out of?</p>
+</section><section id="exercise-4" class="slide level2"><h2>Exercise 4</h2>
+<p>For each hour of the day and each origin airport, calculate the total number of flights, average departure delay, and average arrival delay. For each origin airport, identify the hour with the highest total number of flights.</p>
+</section><section id="useful-knowledge-for-data.table" class="slide level2"><h2>Useful knowledge for data.table</h2>
+<div id="qwebr-insertion-location-55"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>In a <code>data.frame</code> way?</p>
+<div id="qwebr-insertion-location-56"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section id="exercise-2-1" class="slide level2"><h2>Exercise 2</h2>
+</section><section id="apendix" class="title-slide slide level1 center"><h1>Apendix</h1>
+
 </section><section id="data.table-vs-dplyr" class="slide level2 center"><h2>data.table vs dplyr</h2>
 </section>
 </div>
-<div id="tabset-13-2">
+<div id="tabset-20-2">
 <p>You can implement all the three main actions (filter, calculate, group) in a single statement unlike dplyr:</p>
 <p>For example, the following set of codes below will give the same results (the number of flights by American Airline by origin-month):</p>
 <p><strong><code>data.table</code> way</strong></p>
-<div id="qwebr-insertion-location-44"></div>
+<div id="qwebr-insertion-location-57"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong><code>dplyr</code> way</strong></p>
-<div id="qwebr-insertion-location-45"></div>
+<div id="qwebr-insertion-location-58"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>data.table
@@ -3084,10 +3423,6 @@ Shunkei Kakimoto
 
 </div>
 </div>
-</div>
-</div>
-</div>
-</section>
 </div>
 </div>
 </div>
