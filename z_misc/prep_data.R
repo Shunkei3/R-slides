@@ -99,7 +99,7 @@ ls_corn_states <- c("Minnesota", "Iowa", "Illinois", "Nebraska", "South Dakota",
 #         year = as.character(2000:2005),
 #         geometry = FALSE
 #       )
-  }
+  # }
 
 # Save raw data
 # saveRDS(
@@ -108,17 +108,35 @@ ls_corn_states <- c("Minnesota", "Iowa", "Illinois", "Nebraska", "South Dakota",
 # )
 
 
+corn_yield_dt <- 
+  foreach(tmp_state = ls_corn_states, .combine = rbind) %do% {
+    corn_yield <-
+      tidyUSDA::getQuickstat(
+        key = nass_api_key, # you need to replace it with your API key
+        program = "SURVEY",
+        data_item = "CORN, GRAIN - YIELD, MEASURED IN BU / ACRE",
+        geographic_level = "COUNTY",
+        state = tmp_state,
+        year = as.character(2000:2005),
+        geometry = FALSE
+      )
+  }
+
 
 #/*--------------------------------*/
 #' ## Modification
 #/*--------------------------------*/
+corn_yield_dt <- readRDS(here("Data0/corn_yield_raw.rds"))
+
 sort(names(corn_yield_dt))
 
+# select some important columns
 corn_yield_simple <- 
   data.table(corn_yield_dt) %>%
   .[,.(
     state_fips_code, county_code, state_alpha, county_name, year, short_desc, Value, agg_level_desc
-    )]
+    )] %>%
+
 
 
 saveRDS(
