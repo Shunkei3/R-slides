@@ -1,5 +1,5 @@
 ---
-title: "Day 2: Data wrangling with data.table (and tidyverse package)"
+title: "Day 2: Data wrangling with data.table"
 subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
@@ -33,16 +33,24 @@ filters:
 
 ### Learning Objectives
 
-+ Get familiar with the `data.table` syntax to 
-  + minupulate data (select columns, filter rows by conditions, create a new column, reshape data, merge two data)
-+ Learn how to use `%>%` operator.
++ 1. Get familiar with the `data.table` package.
+  + basic operations for data manipulation
+  + reshape dataset
+  + merge multiple datasets
++ 2. Learn how to use `%>%` operator of the `magrittr` package.
+
+::: {.callout-note}
++ `%>%` operator is not so important topic, but it is useful if you know. 
+:::
 
 <br>
-
 
 :::{.fragment .center}
 ### Reference {.center}
 + [Introduction to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
+  + I highly recommend to go through this vignette to get a understanding of `data.table` package.
++ [Efficient reshaping using data.tables](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html)
++ [R for Data Science, Ch18: Pipes](https://r4ds.had.co.nz/pipes.html)
 :::
 
 :::{.notes}
@@ -56,34 +64,28 @@ filters:
 
 
 ## Today's outline: {.center}
-1. [Introduction to data.table](#intro-data-table)
-2. [Let's use `%>%` operator to more clear code.](#piping)
+1. [Data manipuration with data.table](#intro-data-table)
+
+   + [What is `data.table`?](#what-is-data-table) 
+   + [General data.table syntax](#syntax-data-table) 
+   + [Subset rows](#subset-rows)
+   + [Select columns](#select-columns)
+   + [Compute on columns](#compute-on-columns)
+   + [Create a new column](#create-a-new-column)
+   + [Perform aggregations by group](#perform-aggregations-by-group)
+   + [Reshape dataset](#reshape-data)
+   + [Merge multiple datasets](#merge-multiple-datasets)
+
+2. [`%>%` operator](#piping)
+
 3. [Appendix](#appendix)
-
-
 
 
 # Introduction to data.table {#intro-data-table}
 
 ---
 
-## {.center}
-
-::: {.callout-important}
-## Objectivs:
-
-After this section, you will be able to the folloing operations with `data.table`:
-
-1. Subset rows
-2. Select columns 
-3. Compute on columns
-4. Create a new column
-5. Perform aggregations by group
-7. Merge two data.tables
-6. Reshape data
-:::
-
-## Basics
+## What is `data.table`? {#what-is-data-table}
 
 :::{.panel-tabset}
 
@@ -145,7 +147,7 @@ class(flights)
 :::
 
 
-## General data.table syntax {.center}
+## General data.table syntax {.center #syntax-data-table}
 
 The general form of `data.table` syntax is
 
@@ -174,7 +176,7 @@ DT[i, j, by]
 
 
 
-## 1. Subset rows 
+## 1. Subset rows {#subset-rows}
 
 :::{.panel-tabset}
 
@@ -220,7 +222,7 @@ flights[dep_delay < 0 | arr_delay < 0,]
 :::
 
 
-## 2. Select columns {.center}
+## 2. Select columns {#select-columns}
 
 :::{.panel-tabset}
 
@@ -266,7 +268,7 @@ flights[, !c("dep_time", "arr_time")]
 :::
 
 
-## 3. Compute on columns
+## 3. Compute on columns {#compute-on-columns}
 
 :::{.panel-tabset}
 
@@ -355,7 +357,7 @@ flights[origin == "JFK" & month == 8L, .(m_arr = mean(arr_delay), m_dep = mean(d
 
 :::
 
-## 4. Create a new column
+## 4. Create a new column {#create-a-new-column}
 
 :::{.panel-tabset}
 
@@ -485,7 +487,7 @@ head(flights[, .(speed)])
 
 
 
-## 5. Perform aggregations by group (Grouped operations)
+## 5. Perform aggregations by group (Grouped operations) {#perform-aggregations-by-group}
 
 
 :::{.panel-tabset}
@@ -629,7 +631,7 @@ flights[, .(
 + In words, this code is saying, "Take the `flights` data, make groups by `origin`, and count the number of rows in each group.
 :::
 
-## 6. Reshape data
+## 6. Reshape data {#reshape-data}
 
 :::{.panel-tabset}
 
@@ -853,7 +855,7 @@ dcast(long_data, state + year ~ type, value.var = "value")
 
 :::
 
-## 7. Merge two data
+## 7. Merge multiple datasets {#merge-multiple-datasets}
 
 :::{.panel-tabset}
 
@@ -1040,7 +1042,7 @@ yield_weather_data <- merge(yield_data, weather_data, by = c("state", "year"), a
 
 
 
-## Let's use `%>%` operator to write more clear code {#piping}
+## `%>%` operator {#piping}
 
 :::{.panel-tabset}
 
@@ -1217,22 +1219,29 @@ flights_mini <-
 Note that the order of execution is the same as the order in which the functions are written.
 :::
 
-## Quiz
+### Quiz
 
+:::{.panel-tabset}
 
+### Quiz
+
+1. 
 
 
 :::
 
+:::
 
 
+## Summary: {.center}
 
+Don’t mind the details for now. You are good as long as you understand the following:
 
-## Summary: 
+<br>
 
-You don't need to completely understand what we have learned today. 
-
-1. **Understnad the general data.table syntax: `DT[i, j, by]`**
+::: {.callout-important}
+## Key Takeaways
+1. **Understand the general data.table syntax: `DT[i, j, by]`**
 
 + `i`: subset rows by conditions
 + `j`: select columns, create a new column, compute on columns
@@ -1244,9 +1253,13 @@ You don't need to completely understand what we have learned today.
 + Specifically, you learned the follwoing tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
 
 
-1. **Undestand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
+3. **Undestand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
 
-2. **Understand you can merge data with `merge()` function.**
+4. **Understand you can merge data with `merge()` function.**
+:::
+
+
+
 
 
 :::{.notes}
@@ -1331,7 +1344,6 @@ flights_mini <-
 head(flights_mini)
 ```
 
-
 ### What is .SD?
 
 `.SD` (which stands for Subset Data) is a special symbol that allows you to do many cool things.
@@ -1346,6 +1358,7 @@ But, when grouped, it becomes the subset (grouped) of the data.table.
 flights_mini[, print(.SD), by = month]
 ```
 
+
 ::: {.callout-note}
 + `.SD` contains all the columns except the grouping columns by default.
 + The original order is preserved by origin
@@ -1358,52 +1371,102 @@ flights_mini[, print(.SD), by = month]
 <!-- https://rpubs.com/Nasif/929745 -->
 ---
 
-## Exercise 1
+:::{.panel-tabset}
 
+### Exercise 1
+
+:::{.panel-tabset}
+### Problem
 1. Find the flight companny with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
 
-```{webr-r}
-flights[dep_delay == max(dep_delay), .(carrier)]
-```
 
 2. Subset the infromation of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
-   
-```{webr-r, eval=FALSE, includ=FALSE}
-msp_feb_flights <- flights[dest=="MSP" & month==2L]
-nrow(msp_feb_flights)
-```
+  
 
 3. Calculate the median, interquartile rangen ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` data and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
 
 + Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use `quantile()` function to calculate the quantiles.
 
-```{webr-r}
+
+### Answers
+
+```{webr-r, eval=FALSE, includ=FALSE}
+# === Part 1 === #
+flights[dep_delay == max(dep_delay), .(carrier)]
+
+# === Part 2 === #
+msp_feb_flights <- flights[dest=="MSP" & month==2L]
+nrow(msp_feb_flights)
+
+# === Part 3 === #
 msp_feb_flights[,.(
   median = median(arr_delay),
   IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),
   n_flights = .N
   ), by = carrier]
 ```
+:::
 
 
+### Exercise 2
 
-## Exercise 2
+:::{.panel-tabset}
+
+### Problem
 
 Which month would we expect to have the highest average delay departing from an NYC airport?
 
+```{webr-r}
+# You can write your code here
+```
+
+### Answer
+
+```{webr-r}
+
+```
+:::
 
 ## Exercise 3
 
+:::{.panel-tabset}
+
+### Problem
+
 If you were selecting an airport simply based on on time departure percentage, which NYC airport would you choose to fly out of?
 
+```{webr-r}
+# You can write your code here
+```
+
+### Answer
+
+```{web-r}
+
+```
+:::
 
 ## Exercise 4
 
+:::{.panel-tabset}
+
+### Problem
+
 For each hour of the day and each origin airport, calculate the total number of flights, average departure delay, and average arrival delay.	For each origin airport, identify the hour with the highest total number of flights.
 
+```{webr-r}
+# You can write your code here
+```
 
 
+### Answer
 
+```{webr-r}
+
+```
+:::
+
+:::
 
 
 ## Useful knowledge for data.table
