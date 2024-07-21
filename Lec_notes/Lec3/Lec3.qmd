@@ -1,0 +1,116 @@
+---
+title: "Day 3: Data visualization with ggplot2 package"
+subtitle: "Department of Applied Economics, University of Minnesota"
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - default 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+webr:
+  packages: ["data.table", "tidyverse", "rio", "nycflights13", "openintro"]
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+
+## {.center}
+
+### Learning Objectives
+
++ 1. Get familiar with the `data.table` package.
+  + basic operations for data manipulation
+  + reshape dataset
+  + merge multiple datasets
++ 2. Learn how to use `%>%` operator of the `magrittr` package.
+
+
+<br>
+
+:::{.fragment .center}
+### Reference {.center}
++ [Introduction to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
+  + I highly recommend to go through this vignette to get a understanding of `data.table` package.
++ [Efficient reshaping using data.tables](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html)
++ [R for Data Science, Ch18: Pipes](https://r4ds.had.co.nz/pipes.html)
+:::
+
+:::{.notes}
++ Today, we will learn how to minuplate data, so called data wrangling.
+  + Data wrangling is a process of cleaning and transforming raw data into a useful format for analysis, which is a crucial step in data analysis.
++ There are two popular packages in R for data wrangling: `data.table` and `dplyr`.
+
++ Although `dplyr` is a bit easier to learn, I will introduce `data.table` package today  because I believe, in long run, `data.table` is superior to `dplyr`.  
+  + Specifically, `data.table`is faster than `dplyr` especially for large data, and memory efficient.
+:::
+
+
+## Today's outline: {.center}
+1. [Data manipuration with data.table](#intro-data-table)
++ What is `data.table`?
++ Subset rows
++ Select columns
++ Compute on columns
++ Create a new column
++ Perform aggregations by group
++ Reshape dataset
++ Merge multiple datasets
+
+2. [Let's use `%>%` operator to more clear code.](#piping)
+3. [Appendix](#appendix)
+
+
+
+
+
+## Exercise Problmes
+
+:::{.panel-tabset}
+
+### Exercise 1
+
+:::{.panel-tabset}
+
+### Problem
+
+For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder. This data contains the county-level corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2001. 
+
+<br>
+1. Load the data, and take a look at the data. 
+2. Convert the data to a `data.table` object. The `value` column contains the corn yield data. Let's rename the column to `yield`. 
+3. 
+
+### Answer
+
+```{webr-r}
+# === Part 1 === #
+yield_dt <- readRDS("Data/corn_yield_dt.rds")
+
+# === Part 2 === #
+yield_dt <- 
+  as.data.table(yield_dt) %>% 
+  setnames("value", "yield")
+
+# === Part 3 === #
+```
+
+
+:::
+
+
+:::
