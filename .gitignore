@@ -3,9 +3,9 @@ Data0
 .DS_Store
 Lec_notes/.DS_Store
 Lec_notes/*/.DS_Store
-*.pdf
+# *.pdf
 
-0_doc
+z_doc/misc
 /.quarto/
 .Rproj.user
 .Rhistory
