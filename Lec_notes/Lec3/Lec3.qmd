@@ -33,47 +33,72 @@ filters:
 
 ### Learning Objectives
 
-+ 1. Get familiar with the `data.table` package.
-  + basic operations for data manipulation
-  + reshape dataset
-  + merge multiple datasets
-+ 2. Learn how to use `%>%` operator of the `magrittr` package.
++ Learn how to create figures with `ggplot2` package.
 
 
 <br>
 
 :::{.fragment .center}
 ### Reference {.center}
-+ [Introduction to data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
-  + I highly recommend to go through this vignette to get a understanding of `data.table` package.
-+ [Efficient reshaping using data.tables](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html)
-+ [R for Data Science, Ch18: Pipes](https://r4ds.had.co.nz/pipes.html)
-:::
-
-:::{.notes}
-+ Today, we will learn how to minuplate data, so called data wrangling.
-  + Data wrangling is a process of cleaning and transforming raw data into a useful format for analysis, which is a crucial step in data analysis.
-+ There are two popular packages in R for data wrangling: `data.table` and `dplyr`.
-
-+ Although `dplyr` is a bit easier to learn, I will introduce `data.table` package today  because I believe, in long run, `data.table` is superior to `dplyr`.  
-  + Specifically, `data.table`is faster than `dplyr` especially for large data, and memory efficient.
++ [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
++ [R for Data Science (2e), Ch1: Data visualization](https://r4ds.had.co.nz/pipes.html)
 :::
 
 
 ## Today's outline: {.center}
-1. [Data manipuration with data.table](#intro-data-table)
-+ What is `data.table`?
-+ Subset rows
-+ Select columns
-+ Compute on columns
-+ Create a new column
-+ Perform aggregations by group
-+ Reshape dataset
-+ Merge multiple datasets
 
-2. [Let's use `%>%` operator to more clear code.](#piping)
-3. [Appendix](#appendix)
 
+
+## {.center}
+
+By the end of the lecture, you will be able to create the following figures with `ggplot2` package.
+
+
+```{r}
+
+```
+
+
+
+## Before starting {.center}
+
+Install the package `ggplot2`if you haven't done so.
+```{r}
+#| eval: false
+install.packages('ggplot2')
+```
+
+Once you have the package in your R, let's load it.
+
+```{webr-r}
+library(ggplot2)
+```
+
+<br>
+
+::: {.callout-note}
++ There is a package called `tidyverse`, which is  a collection of R packages designed for data science.
++ When you load the `tidyverse` package, `ggplot2` package is automatically loaded.
+:::
+
+
+
+## Introduction {.center}
+
+:::{.panel-tabset}
+
+### What is ggplot2?
+
++ There are built-in R functions to create figures (e.g., `plot()` and `hist()`), but functions in `ggplot2` is a more powerful package for creating figures.
++ `ggplot2` is an R package for producing visualizations of data.
+
+
+### What is ggplot2?
+
+
+### 
+
+:::
 
 
 
@@ -108,9 +133,6 @@ yield_dt <-
 
 # === Part 3 === #
 ```
-
-
 :::
-
 
 :::
