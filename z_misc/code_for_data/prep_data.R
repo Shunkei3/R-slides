@@ -3,49 +3,13 @@ library(rio)
 library(data.table)
 library(dplyr)
 
-# /*===========================================*/
-#'=  flight =
-# /*===========================================*/
-library(data.table)
-
-input <- if (file.exists("flights14.csv")) {
-   "flights14.csv"
-} else {
-  "https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights14.csv"
-}
-
-flights <- import(input)
-
-# === Save as .csv === #
-write.csv(flights, here("Data/flight.csv"))
-
-# === Save as .dta === #
-library(haven)
-write_dta(flights, here("Data/flight.dta"))
-
-# === Save as .rds === #
-saveRDS(flights, here("Data/flight.rds"))
-
-
-#/*--------------------------------*/
-#' ## flight data from nycflights13
-#/*--------------------------------*/
-data(flights, package = "nycflights13")
-flights <- na.omit(flights)
-setDT(flights)
-flights[dest=="MSP", ]
-
-
-
-ibrary(tidyverse)
-library(openintro)
-ls("package:openintro")
-nycflights
-
 
 # /*===========================================*/
 #'= Weather data  =
 # /*===========================================*/
+
+
+
 
 
 

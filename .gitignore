@@ -1,14 +1,17 @@
 Data/*
 Data0
 .DS_Store
-*/.DS_Store
-
+Lec_notes/.DS_Store
+Lec_notes/*/.DS_Store
 *.pdf
 
 0_doc
 /.quarto/
 .Rproj.user
 .Rhistory
+
+Lec_notes/Lec*/*.rds
+
 
 R_sumer_2024.html
 R_sumer_2024.qmd
