@@ -57,11 +57,10 @@ print("Let's get started!")
 
 1 + 1
 ```
-## Before you start
 
+## 
 <br>
 
-::: {.fragment .fade-up}
 ### Goals of this lecture
 + To get familiar with the feature of RStudio.
 + To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.
@@ -71,7 +70,11 @@ print("Let's get started!")
 
 <br>
 
-::: {.fragment .fade-up}
+
+### Reference
++ [R for Data Science Ch8 Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html)
+
+
 ### Today's outline: {.center}
 
 1. Explore the features of Rstudio.
@@ -85,7 +88,7 @@ print("Let's get started!")
 7. Appendix: Faster vector calculation for Mac user 
     + [here](https://gist.github.com/nicebread/6920c8287d7bffb03007)
     + [here](https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas)
-:::
+
 
 
 ## Before you start {.center}
@@ -742,8 +745,10 @@ t(mat_a)
 ## R base functions for data import and export
 
 
-+ Like other softwares (e.g., Stata, Excel) do, R has two native data formats: `.Rdata` and `.Rds` (`.rdata` and `.rds`) 
-+ `.Rds` format is more common. So, use `.Rds` extension whenever you save data.
++ Like other softwares (e.g., Stata, Excel) do, R has two native data formats: `.Rdata` (or `.rdata`) and `.Rds` (or `.rds`) 
+  + `.Rdata` is used to save multiple R objects, 
+  + `.Rds` is used to save a single R object
+
 
 <br>
 
@@ -775,29 +780,129 @@ t(mat_a)
 ::::
 
 
+
 :::{.notes}
 + An rds ( r data set) file is a file type that is supported by R.
 :::
 
-<br>
-
-:::{.fragment .fade-up}
-::: {.callout-caution title=""}
-[How to set the path to the data file?]{style="color: red;"}
-:::
-:::
 
 
 ## Setting the working directory
 
+:::{.panel-tabset}
 
-+ Other options:
-  + `here()`
-  + `file.path()`
+### Motivation
+
+[To access to the data file, you need to provide the path to the file (the location of the data file).]{style="color:red;"}
+
+<br>
+
+**Example** 
+
+Suppose that I want to load `flight.rds` in the Data foler. On my local computure, the full path (i.e., aboslute path) to the file is `/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds`.
+
+```{r}
+#| eval: false
+# this code only works in my local machine
+flight_dt <- readRDS(file = "/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds")
+```
+
+<br>
+
+::: {.callout-caution}
+## Problems
+1. I do not want to provide the full path every time I load the data. It's too cumbersome.
+2. If you are working with a team, the path to the data file is different for each person.
+:::
+
+
+
+### Working Directory
+
++ **Working Directory** is a file path on your computer where R looks for files that you ask it to load, and where it will put any files that you ask it to save.
+  + You can check the current working directory using `getwd()` function.
+  + By default, R (`.R` file) uses your home directory as the working directory.
+
+```{r}
+#| eval: false
+# On your Rsdutio, run the following code
+getwd() #wd stands for working directory
+# In my case, this returns my home directory: "/Users/shunkeikakimoto"
+```
+
+
+### setwd()
++ If you expect to import and/or export (save) datasets and R objects often in that particular directory, it would be nice to tell R to look for files in the directory by default.
++ You can use `setwd()` to designate a directory as the working directory:
+
+**Example 1**
+
+In my case, I set the working directory to the `Data` folder. 
+
+```{r}
+#| eval: false
+setwd("/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data")
+```
+
+Now, R will look for the data file in the `Data` folder by default. So, I can load the data using *relative path*, not *absolute path*.
+
+```{r}
+#| eval: false
+flight_dt <- readRDS(file = "flight.rds")
+```
+
+<br>
+
+:::{.fragment .fade-up}
+::: {.callout-caution}
+## Problems
++ Still, `setwd()` relies on an absolute file path, which might vary by person (e.g., some persom save folder in Dropbox, other person uses Google Drive). 
++ So, designating working directory using `setwd()` does not solve the second problme completely (i.e, If you are working with a team, the path to the data file is different for each person.)
+:::
+:::
+
+
+### R project
+
+:::{.panel-tabset}
+
+### What is it?
+
+> "R experts keep all the files associated with a project together — input data, R scripts, analytical results, figures. This is such a wise and common practice that RStudio has built-in support for this via **projects**." - [R for Data Science Ch 8.4](https://r4ds.had.co.nz/workflow-projects.html?q=working%20directory#rstudio-projects)
+
+<br>
+
+::: {.callout-caution}
+## RStudio Projects
+
++ An RStudio project is a way to organize your work.
+
++ Once R project is loaded, it automatically sets current working directory to the folder where that `.Rproj` file is saved (you don't need `setwd()`!).
+
++ As long as the folder structure in the project folder is the same (relative path from the folder containing `.Rproj` file), you can share the code involving data loading with your team members.
+:::
+
+
+
+### Let's create a project!
+
+Follow this steps illustrated in this document: [R for Data Science Ch 8.4](https://r4ds.had.co.nz/workflow-projects.html?q=working%20directory#rstudio-projects)
+
+### Load the data
+
++ On your Rstudio, check the top-right corner of the Rstudio window. You will see the name of the project you created.
+  + Alternatively, you can open the project by clicking the `.Rproj` file via Finder (Mac) or File Explorer (Windows).
+
++ Now, let's check the current working directory using `getwd()` function. You will see the path to the project folder.
++ Let's load `flight.rds` data file with `readRDS()` function.
+:::
+
+:::
+
 
 ## Loading the data
 
-+ R can load data from various sources such as CSV, Excel, and Stata files.
++ R can load data from various formats including `.csv`, `.xls(x)`, and`.dta`.
 + There exists many functions that can help you to load data:
   + `read.csv()` to read a `.csv` file
   +  `read_excel()` from the `readxl` package to read data sheets from an `.xls(x)` file
@@ -805,14 +910,25 @@ t(mat_a)
 
 <br>
 
-+ **But** `import()` function from the `rio` package might the most coveneint one. 
+:::{.fragment .fade-up}
+::: {.callout-important}
+## Use import() function
++ **But** `import()` function from the `rio` package might be the most coveneint one to load various format of data. 
   + Unlike, `read.csv()` and `read.dta13()` which specialize in reading a specific type of file, `import()` can load data from various sources.
+:::
+:::
+
+<br>
+
+
+:::{.fragment .fade-up}
+**Let's do it:**
+
+In `Data` folder, `flight` data is saved with three different formats: `flight.csv`, `flight.dta`, and `flight.xlsx`. Let's load the data using `import()` function on your Rstudio.
 
 ```{webr-r}
 # If you don't have the rio package, install it by running the following code:
 # install.packages("rio")
-
-# To use the package, you need to load the package with library() function.
 library(rio)
 ```
 :::
@@ -820,49 +936,370 @@ library(rio)
 
 ## Saving the data
 
-+ You can save the data with varioius format
-+ Use `.rds` format to save the data in R format.
-  + save: `saveRDS(object_name, path_to_save)`
-  + read: `readRDS(path_to_save)`
++ You can save the data with varioius format.
++ **But**, Unless necessary, it is recommended to save the data in `.rds` format.
+  + how?: `saveRDS(object_name, path_to_save)`
 
 <br>
 
-Let's try
+**Reasons**
++ If you work with R, there is no reason to save the data in other format than `.rds`.
++ `.rds` format is more efficient in terms of saving and loading the data.
+  + Check the size of the `flight` data files in different formats. Which one is the smallest?
+
+<br>
+
+Let's try!
+
++ Load the `flight` data in the `Data` folder.
++ Subset 
 
 ```{webr-r}
-
+flights <- readRDS("Data/flight.rds")
 ```
 
 
 
-## Exercise Problems
+## Summary
 
+Here are the key points you need to know:
+
+**Very Important**
++ how to create `vector`, `matrix`, `data.frame`, and `list` objects in R.
++ how to access and modify the elements in the data.
++ how indices work in R (positional, named, and logical indexing), and understand that you can use them to subset the data.
+  + This is the basic mechanism how R subset rows.
++ How to load and save the data in R.
+
+<br>
+
+**Important**
++ how to select columns and create a new column in the data.frame.
+  + `with` and `within` function
+
+
+
+In the next lecture, we will learn about data manipulation using `data.table` package.
+
+
+# Exercise Problems
 <!-- create a problem related to vector and data.frame -->
 
 
-# Useful Base Function in R
-+ paste0()
-+ length()
-+ dim()
-+ rbind(), cbind()
-+ nrow(), ncol()
-+ colMeans(), rowMeans()
+## Exercise Problems 1: Vector
 
-+ with and within functions()
-  + You don't need to use `$` every time you access to the column of the data.frame.
+:::{.panel-tabset}
+
+### Problems
+
+<!-- From this [webwise](https://www.w3resource.com/r-programming-exercises/) -->
+
+1. Create a sequence of numbers from 20 to 50 and name it `x`. Let's change the numbers that are multiples of 3 to 0.
+
+2. `sample()` is commonly used in Monte Carlo simulation in econometrics. Run the following code to create `r`. What does it do? Use `?sample` to find out what the function does.
+
+```{webr-r}
+#| autorun: true
+setwd(12345) #don't worry about this
+r <- sample(1:100, size=20, replace = TRUE)
+```
+
+3. Find the value of mean and SD of vector `r` without using `mean()` and `sd()`
+4. Figure out which position contains the maximum value of vector `r`. (use `which()` function. Run `?which()` to find out what the function does.)
+5. Exctract the values of `r` that are larger than 50.
+6. Exctract the values of `r` that are larger than 40 and smaller than 60.
+7. Exctract the values of `r` that are smaller than 20 or larger than 70.
+
+
+### Answers
+
+```{webr-r}
+# === Part 1 === #
+x <- 20:50
+# using `:` operator is the most basic way to create a sequence of numbers, but it only works with integer numbers with a step of 1.
+# seq() function is more flexible. For example, you can create a sequence of numbers, , incremented by 0.5.
+# x <- seq(from = 20, to = 50, by = 0.5)
+x[x %% 3 == 0] <- 0
+
+# === Part 2 === #
+# In this code, sample() function creates a random sample of numbers with size 20 (size=20) from a range 1 to 100 (x = 1:100) allowing replacement (replace = TRUE).
+
+# === Part 3 === #
+# mean
+mean_r <- sum(r) / length(r)
+# SD
+sd_r <- sqrt(sum((r - mean_r)^2) / (length(r) - 1))
+
+# === Part 4 === #
+max_index <- which(r == max(r))
+
+# === Part 5 === #
+r_50 <- r[r > 50]
+
+# === Part 6 === #
+r_40_60 <- r[r > 40 & r < 60]
+
+# === Part 7 === #
+r_20_70 <- r[r < 20 | r > 70]
+```
+:::
+
+
+## Exercise Problem 2: Data Frame
   
 
-## Exercise problems
+:::{.panel-tabset}
+
+### Problem 
+
+<!-- I adapted the following problem from the in-class exercise of the course Programming for Econometrics (APEC 8221). -->
+
+<br>
+
+1. Load the file `nscg17small.dta`. You can find the data in the `Data` folder. 
+   + This data is a subset of the National Survey of College Graduates (NSCG) 2017, which collects data on the educational and occupational characteristics of college graduates in the United States.
+2. Each row corresponds to a unique respondent. Let's create a new column called "ID". There are various ways to create an ID column. Here, let's create an ID column that starts from 1 and increments by 1 for each row.
+3. Get the descriptive statistics of the salary (use `summary()` function).
+4. Create a new variable in your data that represents the z-score
+of the hours worked (use `hrswk` variable).
+$$Z = (x - \mu)/\sigma$$
+, where $Z = \text{standard score}$, $x =\text{observed value}$, $\mu = \text{mean of sample}$, and $\sigma = \text{standard deviation of the sample}$.
+5. Calculate the share of observations in your data sample with
+above average hours worked.
+
+
+### Answer
+
+```{webr-r}
+# === Part 1 === #
+nscg17 <- rio::import("Data/nscg17small.dta")
+
+# === Part 2 === #
+nscg17$ID <- 1:nrow(nscg17)
+
+# === Part 3 === #
+summary(nscg17$salary)
+
+# === Part 4 === #
+nscg17$z_hrswk <- (nscg17$hrswk - mean(nscg17$hrswk)) / sd(nscg17$hrswk)
+# or using with() function, you can write the code more concisely
+# nscg17$z_hrswk2 <- with(nscg17, (hrswk - mean(hrswk)) / sd(hrswk))
+
+# Note: For part 2 and 3, you can use within() function to create new columns more concisely.
+# nscg17 <- 
+#   within(
+#     nscg17, {
+#       ID <- 1:nrow(nscg17)
+#       z_hrswk <- (hrswk - mean(hrswk)) / sd(hrswk)
+#     }
+
+# === Part 5 === #
+# create a logical vector that indicates whether the hours worked is above average
+above_avg_hrswk <- with(nscg17, z_hrswk > mean(z_hrswk)) # you can get the same result by using `hrswk`.
+# subset the data
+nscg17_above_avg_hrswk <- nscg17[above_avg_hrswk, ]
+# calculate the share of observations with above average hours worked
+share_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)
+share_above_avg_hrswk
+```
+:::
+
+## Exercise Problems 3 (Adcanced)
+:::{.panel-tabset}
+
+### Problem
+
+Let's use `flight.rds` data in the `Data` folder. Load the data. We will only look at the flights data with "MSP" (Minneapolis–Saint Paul International Airport) as the destination airport. 
+
+[For each airline company (`carrier`), find the proportion of flights that are delayed more than 30 minutes.]{style="color: blue;"}
+
+<br>
+
+::: {.callout-note}
++ You can solve this exercise problme by using only base-R functions. See Hints if you need help.
++ Also, note that googling is one of the most important skills for coding!
+:::
+
+
+### Hints (step by step)
+
+Here are the steps that I took to solve the problem. You do not neccearily need to follow the steps.
+
+1. Load the `flight.rds` data in the `Data` folder.
+2. Select the columns `year`, `month`, `day`, `dep_delay`, `arr_delay`, `dest`, and  `carrier`, and subset rows that have "MSP" as `dest`. Let's name the data `flights_mn`.
+3. In `flights_mn`, create a new column called `total_delay` which is the sum of `dep_delay` and `arr_delay`. Further, create a new column called `delay_type` which takes character `"delay_more_30"` if `total_delay` is more than 30 minutes, and character `"others"` (or 0) otherwise.
+   + You can use `ifelse()` function to create a bianary variable, `delay_type`.
+
+4. Count the binary categoy `delay_type` by `carrier`. Let's name the result `flights_mn_delay_count`.
+   + `table()` is an R base function to create frequency table. For example, `table(data$x)` creates a frequecncy table of `x` in the data. `table(data$x, data$y)` creates a frequency table of each combination of `x` and `y` in the data.
+   + After you create the table, translate the `table` to `data.frame` class using `as.data.frame.matrix()` function to make it easier to manipulate.
+5. Finally, in `flights_mn_delay_count`, derive the proportion of flights that are delayed more than 30 minutes for each airline company.
+
+
+### Answers
+
+There are multiple ways to solve the problem. Here is one of the possible solutions.
+
+```{webr-r}
+#| eval: false
+# === Step 1: Load data === #
+# flights <- readRDS("Data/flight.rds")
+# the data is created with the following code:
+flights <- nycflights13::flights
+flights <-  na.omit(flights)
+flights <-  as.data.frame(flights)
+
+# === Part 2: subset data === #
+# define the columns to select
+select_cols <- c("year", "month", "day", "dep_delay", "arr_delay", "dest", "carrier")
+flights_mn <- flights[flights$dest == "MSP", select_cols]
+
+# === Part 3: Create total_delay and delay_type === #
+# the most basic approach is 
+flights_mn$total_delay <- flights_mn$dep_delay + flights_mn$arr_delay
+flights_mn$delay_type <- 
+  ifelse(flights_mn$total_delay>30, "delay_more_30", "others")
+
+# alternatively, you can use within() function like this:
+flights_mn <- within(
+  flights_mn, {
+    total_delay <- dep_delay + arr_delay
+    delay_type <- ifelse(flights_mn$total_delay>30, "delay_more_30", "others")
+  }
+)
+
+# === Part 4: count === #
+flights_mn_delay_count <- table(flights_mn$carrier, flights_mn$delay_type)
+# same as
+flights_mn_delay_count <- with(flights_mn, table(carrier, delay_type))
+# translate the table to data.frame class to make it easier to manipulate
+flights_mn_delay_count <- as.data.frame.matrix(flights_mn_delay_count)
+
+
+# === Part 5: derive proportion of flights delayed more than 30 mins === #
+# I will only show the code using within() function
+flights_mn_delay_count <- within(
+  flights_mn_delay_count,
+  {
+    total_flights <- others + delay_more_30
+    prop_more_30 <- delay_more_30 / total_flights
+  }
+)
+flights_mn_delay_count
+```
+:::
+
+
+## A List of Useful R Built-in Functions
+
+### For data manipulation
+
+
+| Function                  | Description                                                                     |
+|---------------------------|---------------------------------------------------------------------------------|
+| `length()`                | get the length of the object                                                    |
+| `nrow()`,` ncol()`        | get the number of rows or columns                                               |
+| `dim()`                   | get the dimension of the data                                                   |
+| `rbind()`,` cbind()`      | Combine R Objects by rows or columns                                            |
+| `colMeans()`, `rowMeans()`| calculate the mean of each column or row                                        |
+| `with` and `within()`     | You don't need to use `$` every time you access to the column of the data.frame.|
+| `ifelse()`                | create a binary variable                                                        |
+| `paste()`, `paste0()`     | concatenate strings                                                             |
+
+<br>
+
+### For numerical manipulation
+| Function                                   | Description                                         |
+|--------------------------------------------|-----------------------------------------------------|
+| `sample()`                                 | randomly sample from a vector                       |
+| `rnorm()`                                  | generate random numbers from normal distribution    |
+| `runif()`                                  | generate random numbers from uniformal distribution |
+| `sum(), mean(), var(), sd(), max(), min()` |                                                     |
+
+
+## For mac user: Accelerating R
+
+
++ By default, R uses two libraries for performing common mathematical operations: Basic Linear Algebra Subprograms (BLAS) and LAPACK (Linear Algebra Package). For mac user, instead of the BLAS library that comes with R, you can use Apple's vecLib (libBLAS.dylib), which is optimized for Apple to perform computations on large vectors.
++ I have did this on my local machine. I am not sure if this works on your machine (especially for Windows). But you can try it if you're interested in speeding up R.
+
+
+See this articles:
++ Faster matrix math in R on macOS [here](https://mpopov.com/blog/2019/06/04/faster-matrix-math-in-r-on-macos/)
++ Accelerating R [here](https://higgicd.github.io/posts/accelerating_r/)
++ Even faster matrix math in R on macOS with M1 [here](https://mpopov.com/blog/2021/10/10/even-faster-matrix-math-in-r-on-macos-with-m1/)
+
+
+<br>
+
+On my local machine (Mac Studio, Apple M2 Ultra), I did some benchmarking. Here is the result:
+
+:::{.panel-tabset}
+
+
+### Benchmarking 1
+
+Large matrix computation: 
+
 ```{r}
-?sample
-x <- sample(1:100, size=20, replace = TRUE)
-x
-x > 50
-x[x > 50]
+#| eval: false
+library(microbenchmark)
+d <- 1e3
+x <- matrix(rnorm(d^2), d, d)
+microbenchmark(tcrossprod(x), solve(x), svd(x), times = 10L)
+```
+
+With R's defalt vecLic
+```
+Unit: milliseconds
+          expr       min        lq      mean    median        uq       max neval cld
+ tcrossprod(x)  162.7597  163.4417  164.8034  164.3118  165.0813  170.2188    10 a  
+      solve(x)  499.0541  504.7357  508.1698  508.7415  512.4554  514.0756    10  b 
+        svd(x) 2133.5679 2142.4570 2154.6426 2150.8079 2156.8922 2212.0459    10   c
+```
+
+<br>
+
+With Apple's vecLib (libBLAS.dylib)
+```
+Unit: milliseconds
+          expr        min         lq       mean     median         uq        max neval cld
+ tcrossprod(x)   1.765378   1.838358   2.313618   2.182123   2.669059   3.525303    10 a  
+      solve(x)  17.034680  17.186995  19.042413  18.740895  20.487454  22.760617    10  b 
+        svd(x) 138.515056 140.338654 146.949088 141.768673 145.612115 190.427042    10   c
 ```
 
 
-+ From this [webwise](https://www.w3resource.com/r-programming-exercises/basic/index.php)
-  + Write a R program to create a sequence of numbers from 20 to 50 and find the mean of numbers from 20 to 60 and sum of numbers from 51 to 91.
-  + Write a R program to create a vector which contains 10 random integer values between -50 and +50.
-  + Write a R program to create a list of random numbers in normal distribution and count occurrences of each value.
+### Benchmarking 2
+
+Regression on large data: 
+
+**Code**
+```{r}
+#| eval: false
+library(microbenchmark)
+set.seed(20190604)
+n <- 1e3
+p <- 1e2
+b <- rnorm(p + 1, 0, 10)
+x <- matrix(runif(n * p, -10, 10), ncol = p, nrow = n)
+y <- cbind(1, x) %*% b + rnorm(n, 0, 2)
+microbenchmark(lm(y ~ x))
+```
+
+With R's defalt, 
+```
+Unit: milliseconds
+      expr      min       lq     mean   median       uq      max neval
+ lm(y ~ x) 7.699226 8.078886 8.494211 8.331692 8.541182 10.65077   100
+```
+
+<br>
+
+With Apple's vecLib (libBLAS.dylib)
+```
+Unit: milliseconds
+      expr      min       lq     mean   median       uq      max neval
+ lm(y ~ x) 4.459447 4.578736 4.875943 4.656206 4.732282 10.26915   100
+```
+:::
