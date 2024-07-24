@@ -1,17 +1,21 @@
 Data/*
 Data0
 .DS_Store
-Lec_notes/.DS_Store
-Lec_notes/*/.DS_Store
+/Lec_notes/.DS_Store
+/Lec_notes/*/.DS_Store
 # *.pdf
 
 z_doc/misc
 /.quarto/
 .Rproj.user
 .Rhistory
+.RData
 
-Lec_notes/Lec*/*.rds
+
+/Lec_notes/Lec*/*.rds
 
 
 R_sumer_2024.html
 R_sumer_2024.qmd
+
+# how to 
