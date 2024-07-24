@@ -33,7 +33,7 @@ unique(nscg17$lfstat)
   # •	3 = Not in labor
 
 # salary vs earn
-# salary: he annual salary or wage income that the respondent earns from their main job. This is typically the regular income before taxes and other deductions.
+# salary: the annual salary or wage income that the respondent earns from their main job. This is typically the regular income before taxes and other deductions.
 # earn:  total earnings, which can include a broader range of income sources beyond the base salary. 
 # === Part 1 === #
 nscg17 <- rio::import("Data/nscg17small.dta")
@@ -59,6 +59,13 @@ share_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)
 
 
 
+test_above_avg_hrswk <- nscg17$z_hrswk > mean(nscg17$z_hrswk)
+nrow(nscg17[test_above_avg_hrswk, ])/nrow(nscg17)
+# calculate the share of observations with above average hours worked
+share_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)
+
+
+
 # === Part 5 === #
-summary(nscg17$)
-nscg17[with(nscg17, salary==max(salary))]
+summary(nscg17$salary)
+nscg17[nscg17$salary==median(nscg17$salary),] %>% head()
