@@ -1,0 +1,19 @@
+.code-output-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.code-block, .output-block {
+  width: 48%;
+}
+
+.code-block {
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.output-block {
+  padding-left: 10px;
+}

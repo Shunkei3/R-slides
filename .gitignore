@@ -5,7 +5,7 @@ Data0
 /Lec_notes/*/.DS_Store
 # *.pdf
 
-z_doc/misc
+/z_doc/misc
 /.quarto/
 .Rproj.user
 .Rhistory

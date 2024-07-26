@@ -155,7 +155,11 @@
 
 
 ---
-# Plan: Day3
+# Plan: Day3: Data visualization with ggplot2
+
+## To do:
++ ggplot()
++ 
 
 ---
 # Plan: Day4
