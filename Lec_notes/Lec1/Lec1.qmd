@@ -1209,12 +1209,14 @@ flights_mn_delay_count
 <br>
 
 ### For numerical manipulation
-| Function                                   | Description                                         |
-|--------------------------------------------|-----------------------------------------------------|
-| `sample()`                                 | randomly sample from a vector                       |
-| `rnorm()`                                  | generate random numbers from normal distribution    |
-| `runif()`                                  | generate random numbers from uniformal distribution |
-| `sum(), mean(), var(), sd(), max(), min()` |                                                     |
+| Function                                   | Description                                           |
+|--------------------------------------------|-------------------------------------------------------|
+| `sum(), mean(), var(), sd(), max(), min()` |                                                       |
+| `log()` and `exp()`                        | Logarithms and Exponentials                           |
+| `sqrt()`                                   | Computes the square root of the specified float value.|
+| `sample()`                                 | randomly sample from a vector                         |
+| `rnorm()`                                  | generate random numbers from normal distribution      |
+| `runif()`                                  | generate random numbers from uniformal distribution   |
 
 
 ## For mac user: Accelerating R
