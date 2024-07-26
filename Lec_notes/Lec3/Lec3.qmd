@@ -21,7 +21,7 @@ format:
       data-background-color: "#447099"
     fig-dpi: 400
 webr:
-  packages: ["data.table", "tidyverse", "rio", "nycflights13", "openintro"]
+  packages: ["data.table", "ggplot2", "dplyr", "rio", "nycflights13", "openintro"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -33,7 +33,15 @@ filters:
 
 ### Learning Objectives
 
-+ Learn how to create figures with `ggplot2` package.
++ Learn the basic operations of `ggplot2` package to create figures. 
++ You will be able to create:
+  + scatter plot
+  + line plot
+  + bar plot
+  + histogram
+  + box plot
+  + density plot
+  + facet plot
 
 
 <br>
@@ -47,17 +55,99 @@ filters:
 
 ## Today's outline: {.center}
 
++ 1. Introduction to ggplot2
 
 
-## {.center}
+## Example ggplot figures 
 
 By the end of the lecture, you will be able to create the following figures with `ggplot2` package.
 
+::: {.panel-tabset}
+
+### Example 1
 
 ```{r}
+#| label: demo1
+#| autorun: true
+#| echo: false
 
+
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+
+ggplot(data = airquality, aes(x = Ozone, y = Temp)) +
+  geom_point() +
+  labs(title = "Ozone (ppb) and temperature (degrees F) in New York, May to September 1973.") +
+  geom_smooth(method = "lm") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
+
+### Example 2
+
+```{r}
+#| label: demo2
+#| autorun: true
+#| echo: false
+
+#/*--------------------------------*/
+#' ## Box plot
+#/*--------------------------------*/
+PlantGrowth %>%
+  as.data.table() %>%
+  .[, group := fcase(
+    group == "ctrl", "Control",
+    group == "trt1", "Treatment 1",
+    group == "trt2", "Treatment 2"
+  )] %>%
+  ggplot(data = ., aes(x = group, y = weight)) +
+  geom_boxplot(fill = "blue", alpha =0.5) +
+  labs(
+    title = "Box plot of weight of plants by group",
+    x = "Group",
+    y = "Weight"
+  ) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+# ggplot(data = airquality, aes(x = factor(Month), y = Temp)) +
+#   geom_boxplot() +
+#   theme_bw() +
+#   labs(
+#     title = "Box plot of temperature (degrees F) in New York, May to September 1973",
+#     x = "Month",
+#     y = "Temperature"
+#   ) +
+#   theme(plot.title = element_text(hjust = 0.5))
+```
+
+### Example 3
+```{r}
+#| autorun: true
+#| echo: false
+
+airquality %>%
+  as.data.table() %>%
+  melt(
+    data = .,
+    id.vars = c("Month", "Day", "Ozone")
+  ) %>%
+  ggplot(., aes(x = value, y = Ozone))+
+  geom_point()+
+  facet_wrap(~variable, scales = "free", ncol = 2)+
+  geom_smooth() + 
+  labs(
+    title = "Relationship between ozone and weather conditions in New York, May to September 1973",
+    x = "", y = "Ozone"
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+:::
 
 
 ## Before starting {.center}
@@ -82,18 +172,126 @@ library(ggplot2)
 :::
 
 
+## Introduction to ggplot2 
 
-## Introduction {.center}
 
 :::{.panel-tabset}
 
 ### What is ggplot2?
 
-+ There are built-in R functions to create figures (e.g., `plot()` and `hist()`), but functions in `ggplot2` is a more powerful package for creating figures.
-+ `ggplot2` is an R package for producing visualizations of data.
+
++ As you know, there are already base (built-in) R functions to create figures (e.g., `plot()` and `hist()`)
+  + pros: they are fast (for plotting large datasets).
+  + cons: The plots are difficult to customize.
+
+<br>
+
++ `ggplot2` package provides more flexibility and customization options for creating figures.
+  + It views a single figure as a collection of multiple independent layers:
+
+<!-- Here use Auto Animate -->
+<!-- https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate -->
+
+[Let's see what this exactly mean by looking at the following example.]{style="color: #447099;"}
+
+<br>
+
+::: {.callout-tip}
++ When you look at the simple plot of x and y, the base R functions are sufficient (e.g., `with(data, plot(x, y)`). I do this ofen. 
+:::
 
 
-### What is ggplot2?
+
+### Let's see how ggplot2 creates a figure {.scrollable}
+
+Let's run the following code line by line. Pay attention to the changes in the plot as you run each line.
+
++ Note: There are some redundant lines in the code below for demonstration purposes. Don't immitate this!
+
+<!-- check this out: https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/output-location-column -->
+
+```{webr-r}
+#| label: taste
+#| autorun: false
+#| output-location: column
+
+ggplot(data = airquality) + # Create a canvas for the plot
+  aes(x = Wind) + # Add x-axis
+  aes(y = Ozone) + # Add y-axis
+  # Add a scatter plot
+  geom_point() + 
+  # Add a regression line
+  geom_smooth(method = "lm") + 
+  # Add x label
+  xlab("Wind Speed (mph)") + 
+  # Add y label
+  ylab("Ozone (ppb)") + 
+  # Add title
+  labs(title = "Ozone (ppb) and wind speed (mph) in New York, May to September 1973") + 
+  # Add caption
+  labs(caption = "The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).") + 
+  # Set the theme
+  theme_bw() + 
+  # Set the title position
+  theme(plot.title = element_text(hjust = 0.5))
+```
+:::
+
+
+
+## Basics
+
+::: {.panel-tabset}
+### Core principles
+
+
++ Basic steps
+  + step1: Always start with `ggplot()`
+    + this function prepares a "canvas" for the figure.
+  + step2: use `+` operator to tell R to add another layer (e.g, line plot) to the current canvas.
+  + step3: draw figures with `geom_*()` functions.
+    + depending on the type of the figure, you use different `geom_*()` functions.
+      + Eg. `geom_point()` for scatter plot, `geom_line()` for line plot, etc.
+  + step4: repeat step2 and step3 to add whatever layers you want to add.
+  + Step5 (optional): add labels, titles, and other annotations to the plot with `labs()`, `theme()`, etc.
+
+<br>
+
+::: {.callout-note}
++ layers can be added in any order, but the order of the layers affects the final appearance of the plot.
++ 
+:::
+
+### Step by step
+
+
+
+
+:::
+
+
+
+::: {.callout-note}
+## Basic
+
++ 
+
++ step 1: Always Start with a code `ggplot(data = <DATA>)`
++ step 2: Add layers to the plot with `+` operator. The 
+
+<br>
+
+```{werb-r}
+# Example 
+
+```
+
+:::
+
+
+
+### General Rule
++ 
 
 
 ### 
@@ -120,7 +318,7 @@ For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder
 2. Convert the data to a `data.table` object. The `value` column contains the corn yield data. Let's rename the column to `yield`. 
 3. 
 
-### Answer
+### Solution
 
 ```{webr-r}
 # === Part 1 === #
@@ -136,3 +334,11 @@ yield_dt <-
 :::
 
 :::
+
+
+# Appendix
+
+## Useful packages related to ggplot2
+
++ patchwork
++ 

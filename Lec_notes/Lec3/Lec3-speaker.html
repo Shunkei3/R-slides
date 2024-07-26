@@ -653,7 +653,7 @@
   // Document level settings ----
 
   // Determine if we need to install R packages
-  globalThis.qwebrInstallRPackagesList = ['data.table', 'tidyverse', 'rio', 'nycflights13', 'openintro'];
+  globalThis.qwebrInstallRPackagesList = ['data.table', 'ggplot2', 'dplyr', 'rio', 'nycflights13', 'openintro'];
 
   // Specify possible locations to search for the repository
   globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -675,7 +675,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","comment":"","context":"interactive","editor-font-scale":"0.8","fig-height":5,"autorun":"false","message":"true","output":"true","warning":"true","out-height":"","read-only":"false","fig-width":7,"editor-max-height":"","label":"unnamed-chunk-1","results":"markup","dpi":72,"classes":"","editor-word-wrap":"true","editor-quick-suggestions":"false","out-width":"700px"},"id":1,"code":"library(ggplot2)"},{"options":{"fig-cap":"","comment":"","context":"interactive","editor-font-scale":"0.8","fig-height":5,"autorun":"false","message":"true","output":"true","warning":"true","out-height":"","read-only":"false","fig-width":7,"editor-max-height":"","label":"unnamed-chunk-2","results":"markup","dpi":72,"classes":"","editor-word-wrap":"true","editor-quick-suggestions":"false","out-width":"700px"},"id":2,"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"value\", \"yield\")\n\n# === Part 3 === #"}];
+  globalThis.qwebrCellDetails = [{"code":"library(ggplot2)","id":1,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-1","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}},{"code":"ggplot(data = airquality) + # Create a canvas for the plot\n  aes(x = Wind) + # Add x-axis\n  aes(y = Ozone) + # Add y-axis\n  # Add a scatter plot\n  geom_point() + \n  # Add a regression line\n  geom_smooth(method = \"lm\") + \n  # Add x label\n  xlab(\"Wind Speed (mph)\") + \n  # Add y label\n  ylab(\"Ozone (ppb)\") + \n  # Add title\n  labs(title = \"Ozone (ppb) and wind speed (mph) in New York, May to September 1973\") + \n  # Add caption\n  labs(caption = \"The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).\") + \n  # Set the theme\n  theme_bw() + \n  # Set the title position\n  theme(plot.title = element_text(hjust = 0.5))","id":2,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"output-location":"column","out-width":"700px","label":"taste","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}},{"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"value\", \"yield\")\n\n# === Part 3 === #","id":3,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-3","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2166,20 +2166,74 @@ Shunkei Kakimoto
 </section><section id="section" class="slide level2 center"><h2></h2>
 <h3 id="learning-objectives">Learning Objectives</h3>
 <ul>
-<li>Learn how to create figures with <code>ggplot2</code> package.</li>
+<li>Learn the basic operations of <code>ggplot2</code> package to create figures.</li>
+<li>You will be able to create:
+<ul>
+<li>scatter plot</li>
+<li>line plot</li>
+<li>bar plot</li>
+<li>histogram</li>
+<li>box plot</li>
+<li>density plot</li>
+<li>facet plot</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <div class="fragment center">
 <!-- -->
 <h3 class="center" id="reference">Reference</h3>
 <ul>
-<li>
-</li><li><a href="https://r4ds.had.co.nz/pipes.html">R for Data Science, Ch18: Pipes</a></li>
+<li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (3e)</a></li>
+<li><a href="https://r4ds.had.co.nz/pipes.html">R for Data Science (2e), Ch1: Data visualization</a></li>
 </ul>
 </div>
-</section><section id="todays-outline" class="slide level2 center"><h2>Today’s outline:</h2>
-</section><section id="section-1" class="slide level2 center"><h2></h2>
+</section><section id="todays-outline" class="slide level2 center scrollable"><h2>Today’s outline:</h2>
+<ul>
+<li><ol type="1">
+<li>Introduction to ggplot2</li>
+</ol></li>
+</ul></section><section id="example-ggplot-figures" class="slide level2"><h2>Example ggplot figures</h2>
 <p>By the end of the lecture, you will be able to create the following figures with <code>ggplot2</code> package.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Example 1</a></li>
+<li><a href="#tabset-1-2">Example 2</a></li>
+<li><a href="#tabset-1-3">Example 3</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell" data-autorun="true">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/demo1-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell" data-autorun="true">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/demo2-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell" data-autorun="true">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-3-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section id="before-starting" class="slide level2 center"><h2>Before starting</h2>
 <p>Install the package <code>ggplot2</code>if you haven’t done so.</p>
 <div class="cell">
@@ -2202,45 +2256,163 @@ Shunkei Kakimoto
 </div>
 </div>
 </div>
-</section><section id="introduction" class="slide level2 center"><h2>Introduction</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-1-1">What is ggplot2?</a></li>
-<li><a href="#tabset-1-2">What is ggplot2?</a></li>
-<li><a href="#tabset-1-3"></a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<ul>
-<li>
-<code>ggplot2</code> is an R package for producing visualizations of data.</li>
-</ul>
-</div>
-<div id="tabset-1-2">
-
-</div>
-<div id="tabset-1-3">
-
-</div>
-</div>
-</div>
-</section><section id="exercise-problmes" class="slide level2"><h2>Exercise Problmes</h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Exercise 1</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
+</section><section id="introduction-to-ggplot2" class="slide level2"><h2>Introduction to ggplot2</h2>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-2-1">Problem</a></li>
-<li><a href="#tabset-2-2">Answer</a></li>
+<li><a data-tabby-default="" href="#tabset-2-1">What is ggplot2?</a></li>
+<li><a href="#tabset-2-2">Let’s see how ggplot2 creates a figure</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-2-1">
+<ul>
+<li>As you know, there are already base (built-in) R functions to create figures (e.g., <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code>)
+<ul>
+<li>pros: they are fast (for plotting large datasets).</li>
+<li>cons: The plots are difficult to customize.</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>
+<code>ggplot2</code> package provides more flexibility and customization options for creating figures.
+<ul>
+<li>It views a single figure as a collection of multiple independent layers:</li>
+</ul>
+</li>
+</ul>
+<!-- Here use Auto Animate --><!-- https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate --><p><span style="color: #447099;">Let’s see what this exactly mean by looking at the following example.</span></p>
+<p><br></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>When you look at the simple plot of x and y, the base R functions are sufficient (e.g., <code>with(data, plot(x, y)</code>). I do this ofen.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<p>Let’s run the following code line by line. Pay attention to the changes in the plot as you run each line.</p>
+<ul>
+<li>Note: There are some redundant lines in the code below for demonstration purposes. Don’t immitate this!</li>
+</ul>
+<!-- check this out: https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/output-location-column --><div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</section><section id="step-by-step" class="slide level2"><h2>Step by step</h2>
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-5-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section><section id="step-by-step-1" class="slide level2"><h2>Step by step</h2>
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality)<span class="sc">+</span></span>
+<span id="cb3-2"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-6-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section><section id="core-principles" class="slide level2 scrollable"><h2>Core principles</h2>
+<ol type="1">
+<li>start with a layer that shows the raw data</li>
+<li>add layers of annotations and statistical summeries</li>
+</ol>
+<ul>
+<li>Basic steps
+<ul>
+<li>step1: Always start with <code>ggplot()</code>
+<ul>
+<li>this function prepares a “canvas” for the figure.</li>
+</ul>
+</li>
+<li>step2: use <code>+</code> operator to tell R to add layers (e.g, line plot) to the canvas.</li>
+<li>step3: draw figures with <code>geom_*()</code> functions.
+<ul>
+<li>depending on the type of the figure, you can use different <code>geom_*()</code> functions.
+<ul>
+<li>Eg. <code>geom_point()</code> for scatter plot, <code>geom_line()</code> for line plot, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>step4: repeat step2 and step3 to add more layers to the plot.</li>
+<li>Step5 (optional): add labels, titles, and other annotations to the plot with <code>labs()</code>, <code>theme()</code>, etc.</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>layers can be added in any order, but the order of the layers affects the final appearance of the plot.</li>
+<li>
+</li></ul>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Basic</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>
+</li><li>step 1: Always Start with a code <code>ggplot(data = &lt;DATA&gt;)</code>
+</li>
+<li>step 2: Add layers to the plot with <code>+</code> operator. The</li>
+</ul>
+<p><br></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {werb-r} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a># Example </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<h3 id="general-rule">General Rule</h3>
+<ul>
+<li>
+</li></ul>
+<h3 id="section-1"></h3>
+<p>:::</p>
+</section><section id="exercise-problmes" class="slide level2"><h2>Exercise Problmes</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Exercise 1</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-3-1">Problem</a></li>
+<li><a href="#tabset-3-2">Answer</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1">
 <p>For this exercise problem, you will use “corn_yield_dt.rds” in the “Data” folder. This data contains the county-level corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2001.</p>
 <p><br> 1. Load the data, and take a look at the data. 2. Convert the data to a <code>data.table</code> object. The <code>value</code> column contains the corn yield data. Let’s rename the column to <code>yield</code>. 3.</p>
 </div>
-<div id="tabset-2-2">
-<div id="qwebr-insertion-location-2"></div>
+<div id="tabset-3-2">
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2248,12 +2420,19 @@ Shunkei Kakimoto
 </div>
 </div>
 </div>
+</section><section><section id="appendix" class="title-slide slide level1 center"><h1>Appendix</h1>
+
+</section><section id="useful-packages-related-to-ggplot2" class="slide level2"><h2>Useful packages related to ggplot2</h2>
+<ul>
+<li>patchwork</li>
+<li>
+</li></ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
 </div>
   </div>
 
