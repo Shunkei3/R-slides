@@ -1201,7 +1201,7 @@ flights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_
 flights_mini <- na.omit(flights_mini) #remove rows with missing values
 ```
 
-**WIth `%>%`**
+**With `%>%`**
 ```{webr-r}
 #| auto-run: true
 library(dplyr)
