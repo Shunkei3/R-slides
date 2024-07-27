@@ -15,13 +15,15 @@ format:
     callout-icon: false
     scrollable: true
     echo: true
+    cache: true
     multiplex: true
     code-link: true
     title-slide-attributes:
       data-background-color: "#447099"
     fig-dpi: 400
+    chalkboard: true
 webr:
-  packages: ["data.table", "ggplot2", "dplyr", "rio", "nycflights13", "openintro"]
+  packages: ["data.table", "ggplot2", "dplyr", "rio", "nycflights13", "gapminder"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -60,7 +62,7 @@ filters:
 
 ## Example ggplot figures 
 
-By the end of the lecture, you will be able to create the following figures with `ggplot2` package.
+By the end of the lecture, you will be able to create the figures like the following examples using `ggplot2` package.
 
 ::: {.panel-tabset}
 
@@ -71,12 +73,14 @@ By the end of the lecture, you will be able to create the following figures with
 #| autorun: true
 #| echo: false
 
-
+# /*===== Load package =====*/
 library(ggplot2)
 library(dplyr)
 library(data.table)
 
-
+#/*--------------------------------*/
+#' ## Scatter plot
+#/*--------------------------------*/
 ggplot(data = airquality, aes(x = Ozone, y = Temp)) +
   geom_point() +
   labs(title = "Ozone (ppb) and temperature (degrees F) in New York, May to September 1973.") +
@@ -126,7 +130,50 @@ PlantGrowth %>%
 ```
 
 ### Example 3
+
 ```{r}
+#| label: demo3
+#| autorun: true
+#| echo: false
+
+#/*--------------------------------*/
+#' ## Density plot
+#/*--------------------------------*/
+data(gapminder, package="gapminder")
+
+ggplot(data=gapminder, aes(x=lifeExp, fill=continent)) +
+    geom_density(alpha=0.5) +
+    labs(
+      title = "Density plot of life expectancy by continent",
+      x = "Life expectancy",
+      y = "Density"
+    ) +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+### Example 4
+
+```{r}
+#| label: demo4
+#| autorun: true
+#| echo: false
+
+gapminder %>%
+  filter(country %in% c("United States", "China", "India", "United Kingdom")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country))+
+  geom_line()+
+  labs(
+    title = "Life Expectancy in Selected Countries",
+    x = "Year", y = "Life Expectancy"
+  )+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+### Example 5
+```{r}
+#| label: demo5
 #| autorun: true
 #| echo: false
 
@@ -176,130 +223,505 @@ library(ggplot2)
 
 
 :::{.panel-tabset}
+<!-- start .panel-tabset -->
 
 ### What is ggplot2?
 
-
 + As you know, there are already base (built-in) R functions to create figures (e.g., `plot()` and `hist()`)
-  + pros: they are fast (for plotting large datasets).
+  + pros: they are fast (especially for plotting a large dataset).
   + cons: The plots are difficult to customize.
 
 <br>
 
-+ `ggplot2` package provides more flexibility and customization options for creating figures.
-  + It views a single figure as a collection of multiple independent layers:
-
-<!-- Here use Auto Animate -->
-<!-- https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate -->
-
-[Let's see what this exactly mean by looking at the following example.]{style="color: #447099;"}
++ `ggplot2` package provides more flexibility and customization options for creating figures with a consistet syntax.
+  + `ggplot2` views a figure as the collection of multiple independent layers.
+    + layers for geometric objects (e.g, points, lines, bars), layers for aesthtic attirbutes of the geometric objects (colour, shape, size), layers of annotations and statistical summaries, ... etc.
+  + Then, it combines these layers to create a figure as a final output.
 
 <br>
 
 ::: {.callout-tip}
-+ When you look at the simple plot of x and y, the base R functions are sufficient (e.g., `with(data, plot(x, y)`). I do this ofen. 
++ When you want a quick look of the plot of x and y, the base R functions are sufficient (e.g., `with(data, plot(column_x, column_y)`). I do this ofen. 
 :::
 
 
+### Anatomy of ggplot {.scrollable}
+<!-- You can alternatively use "Code Animations"(https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations) -->
+[Hit your right-arrow key (or down arrow key) to see the code (left column) and the corresponding output (right column). Pay attention to the changes in the plot as a new line is added.]{style="color: blue;"}
 
-### Let's see how ggplot2 creates a figure {.scrollable}
-
-Let's run the following code line by line. Pay attention to the changes in the plot as you run each line.
-
-+ Note: There are some redundant lines in the code below for demonstration purposes. Don't immitate this!
-
-<!-- check this out: https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/output-location-column -->
-
-```{webr-r}
-#| label: taste
-#| autorun: false
+::: {.r-stack}
+<!-- start r-stack -->
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
 #| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "2"
 
-ggplot(data = airquality) + # Create a canvas for the plot
-  aes(x = Wind) + # Add x-axis
-  aes(y = Ozone) + # Add y-axis
-  # Add a scatter plot
-  geom_point() + 
-  # Add a regression line
-  geom_smooth(method = "lm") + 
-  # Add x label
-  xlab("Wind Speed (mph)") + 
-  # Add y label
-  ylab("Ozone (ppb)") + 
-  # Add title
-  labs(title = "Ozone (ppb) and wind speed (mph) in New York, May to September 1973") + 
-  # Add caption
-  labs(caption = "The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).") + 
-  # Set the theme
-  theme_bw() + 
-  # Set the title position
-  theme(plot.title = element_text(hjust = 0.5))
+# Create a canvas for the plot
+ggplot(data = airquality) 
 ```
 :::
 
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "4"
+#| 
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind)
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "6"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis 
+  aes(y = Ozone) 
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "8"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) + 
+  # Add y-axis
+  aes(y = Ozone) +
+  # Add a scatter plot
+  geom_point() 
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "10"
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") 
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "12"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)")
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "14"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") 
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "16,17,18,19"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  )
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "21"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:")
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "23"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:") +
+  # Set the theme
+  theme_bw() 
+```
+:::
+
+::: {.fragment}
+```{r}
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "25,26,27,28"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:") +
+  # Set the theme
+  theme_bw() +
+  # Set the title and subtitle position
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+:::
+
+<!-- end r-stack -->
+:::
+
++ Note: This code is for demonstration purposes. Don't immitate this!
+
+<!-- end .panel-tabset -->
+:::
 
 
 ## Basics
 
 ::: {.panel-tabset}
-### Core principles
+<!-- start .panel-tabset 1-->
 
+### Key components
 
-+ Basic steps
-  + step1: Always start with `ggplot()`
-    + this function prepares a "canvas" for the figure.
-  + step2: use `+` operator to tell R to add another layer (e.g, line plot) to the current canvas.
-  + step3: draw figures with `geom_*()` functions.
-    + depending on the type of the figure, you use different `geom_*()` functions.
-      + Eg. `geom_point()` for scatter plot, `geom_line()` for line plot, etc.
-  + step4: repeat step2 and step3 to add whatever layers you want to add.
-  + Step5 (optional): add labels, titles, and other annotations to the plot with `labs()`, `theme()`, etc.
+::: {.callout-important}
+Every ggplot2 plot has three key components:
+
++ data
++ A set of aesthetic mappings between variables in the data and visual properties, and
++ At least one layer which describes how to render each observation. Layers are usually created with a geom function.
+:::
 
 <br>
 
-::: {.callout-note}
-+ layers can be added in any order, but the order of the layers affects the final appearance of the plot.
-+ 
-:::
+The very basic syntax for creating a plot with `ggplot2` is as follows:
 
-### Step by step
-
-
-
-
-:::
-
-
-
-::: {.callout-note}
-## Basic
-
-+ 
-
-+ step 1: Always Start with a code `ggplot(data = <DATA>)`
-+ step 2: Add layers to the plot with `+` operator. The 
-
-<br>
-
-```{werb-r}
-# Example 
-
+```{r}
+#| eval: false
+ggplot(data = ...) +
+  geom_*(aes( ... ))
 ```
 
++ `aes` stands for aesthetic mappings. It tells `ggplot2` how to map variables in the data to visual properties of the plot (e.g., x-axis, y-axis, color, shape, size, etc.)
++ `+` operator tells R that you're adding another layer (e.g, line plot) to the current "canvas".
++ Depending on the type of the figure you want to plot, use different `geom_*()` functions.
+  + Eg. `geom_point()` for scatter plot, `geom_line()` for line plot, etc.
+
+
+<!-- ::: aside
+Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+::: -->
+
+
+### Example
+
+::: {.panel-tabset}
+<!-- start .panel-tabset 2 -->
+
+
+### Data
+
+Let's use the `airquality` data for this example.
+
++ `airquality` data is a built-in dataset in R. So, you don't need to load it. 
++ Type `airquality` in the console to see the data. (Type`?airquality` in the console for more information.)
+
+```{webr-r}
+?airquality
+
+# Take a look at the first few rows of the data
+head(airquality)
+```
+
+
+### Let's create a scatter plot
+
+We will create a scatter plot of `Ozone` (ozone level in the air) and `Temp` (Maximum daily temperature in degrees $F$) in the `airquality` data. 
+
+The final plot should look like the following:
+
+```{r}
+#| autorun: true
+#| echo: false
+#| fig-dpi: 100
+#| fig-width: 7
+#| fig-height: 6
+#| fig-align: center
+
+ggplot(airquality)+
+  geom_point(aes(x = Temp, y = Ozone))
+```
+
+### Step 1
+
+[**Step 1: Start with `ggplot()`**]{style="color: blue;"}
+
++ `ggplot(data = dataset)` initializes a ggplot object. In other words, [it prepares a "canvas" for the plot]{style="color: blue;"}.
++ Here, let R know the dataset you are trying to visualize.
+
+::: {.panel-tabset}
+### Try it!
+Run the following code. Can you see any output?
+```{webr-r}
+ggplot(data = airquality)
+```
+
+### Why?
+
++ [This code does not produce any output because we haven't told R what to plot with the data yet.]{style="color: blue;"} 
++ [`ggplot()` just prepares a blank "canvas" for you!]{style="color: blue;"}
+
+```{webr-r}
+ggplot(data = airquality)
+```
 :::
 
 
+### Step 2
 
-### General Rule
-+ 
+[**Step 2: Draw figures with `geom_*()` functions, and add to the current canvas use `+` operator**]{style="color: blue;"}
 
++ For example, we use `geom_point()` to create a scatter plot. 
+  + [use `aes()` to specify which variable you want to use for x and y axis]{styl="colur:red"}.
++ Then, add the plot to the current canvas with `+` operator.
 
-### 
+<br>
 
+```{webr-r}
+#| warning: false
+
+# You might see a warning message. Don't worry about it!
+ggplot(data = airquality) +
+  geom_point(aes(x = Temp, y = Ozone))
+```
+<!-- end .panel-tabset 2 -->
 :::
 
 
+### Summary
 
+[These are basic steps to create a figure with `ggplot2` package.]{style="color: blue;"}
+
++ Step1: Start with `ggplot()`
+  + this function prepares a "canvas" for the figure.
++ Step2: Draw figures with `geom_*()` functions, and add to the current canvas using `+` operator. 
++ Step3: Repeat step2 and step3 to add whatever layers you want to add.
++ Step4 (optional): Add labels, titles, and other annotations to the plot with `labs()`, `theme()`, etc.
+
+<br>
+
+::: {.callout-note}
++ In step 3, layers can be added in any order, but the order of the layers affects the final appearance of the plot.
+:::
+
+
+### Your turn
+
+1. Create a scatter plot of `Temp` and `Wind` in the `airquality` data.
+
+2. In the plot you just created, let's change the x-axis label to "Maximum temperature (degrees F)" and the y-axis label to "Wind Speed (mph)". For this, use `labs()` function.
+
+Hint: 
+
++ `labs(x = new_x_label, y = new_y_label)`
++ use `+` to add this layer to the plot.
+
+
+```{webr-r}
+# Your code here
+
+```
+<!-- end .panel-tabset 1 -->
+:::
+
+
+## Different types of plots
+
+::: {.panel-tabset}
+
+### Figure types
+
+[`ggplot2` package provides a variety of functions to create different types of figures.]{style="color: blue;"}
+
++ `geom_point()`: scatter plot
++ `geom_line()`: line plot
++ `geom_bar()`: bar plot
++ `geom_histogram()`: histogram
++ `geom_boxplot()`: box plot
++ `geom_density()`: density plot
+  + This Computes and draws kernel density estimate, which is a smoothed version of the histogram.
+
+
+
+### Your turn
+
+
+
+
+
+
+## 
 
 ## Exercise Problmes
 

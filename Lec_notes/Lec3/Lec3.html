@@ -99,6 +99,8 @@
 <link href="Lec3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="Lec3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="Lec3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="Lec3_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="Lec3_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
 <link href="Lec3_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
 <style type="text/css">
 
@@ -653,7 +655,7 @@
   // Document level settings ----
 
   // Determine if we need to install R packages
-  globalThis.qwebrInstallRPackagesList = ['data.table', 'ggplot2', 'dplyr', 'rio', 'nycflights13', 'openintro'];
+  globalThis.qwebrInstallRPackagesList = ['data.table', 'ggplot2', 'dplyr', 'rio', 'nycflights13', 'gapminder'];
 
   // Specify possible locations to search for the repository
   globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -675,7 +677,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(ggplot2)","id":1,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-1","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}},{"code":"ggplot(data = airquality) + # Create a canvas for the plot\n  aes(x = Wind) + # Add x-axis\n  aes(y = Ozone) + # Add y-axis\n  # Add a scatter plot\n  geom_point() + \n  # Add a regression line\n  geom_smooth(method = \"lm\") + \n  # Add x label\n  xlab(\"Wind Speed (mph)\") + \n  # Add y label\n  ylab(\"Ozone (ppb)\") + \n  # Add title\n  labs(title = \"Ozone (ppb) and wind speed (mph) in New York, May to September 1973\") + \n  # Add caption\n  labs(caption = \"The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).\") + \n  # Set the theme\n  theme_bw() + \n  # Set the title position\n  theme(plot.title = element_text(hjust = 0.5))","id":2,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"output-location":"column","out-width":"700px","label":"taste","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}},{"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"value\", \"yield\")\n\n# === Part 3 === #","id":3,"options":{"context":"interactive","comment":"","dpi":72,"autorun":"false","message":"true","results":"markup","fig-cap":"","editor-font-scale":"0.8","editor-max-height":"","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-3","editor-word-wrap":"true","fig-height":5,"warning":"true","out-height":"","classes":"","read-only":"false","editor-quick-suggestions":"false"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(ggplot2)","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-1","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":1},{"code":"?airquality\n\n# Take a look at the first few rows of the data\nhead(airquality)","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-2","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":2},{"code":"ggplot(data = airquality)","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-3","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":3},{"code":"ggplot(data = airquality)","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-4","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":4},{"code":"# You might see a warning message. Don't worry about it!\nggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone))","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-5","fig-width":7,"warning":"false","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":5},{"code":"# Your code here","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-6","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":6},{"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"value\", \"yield\")\n\n# === Part 3 === #","options":{"fig-cap":"","editor-font-scale":"0.8","label":"unnamed-chunk-7","fig-width":7,"warning":"true","editor-word-wrap":"true","context":"interactive","message":"true","out-width":"700px","editor-quick-suggestions":"false","output":"true","autorun":"false","comment":"","dpi":72,"read-only":"false","editor-max-height":"","results":"markup","fig-height":5,"classes":"","out-height":""},"id":7}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2194,12 +2196,14 @@ Shunkei Kakimoto
 <li>Introduction to ggplot2</li>
 </ol></li>
 </ul></section><section id="example-ggplot-figures" class="slide level2"><h2>Example ggplot figures</h2>
-<p>By the end of the lecture, you will be able to create the following figures with <code>ggplot2</code> package.</p>
+<p>By the end of the lecture, you will be able to create the figures like the following examples using <code>ggplot2</code> package.</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-1-1">Example 1</a></li>
 <li><a href="#tabset-1-2">Example 2</a></li>
 <li><a href="#tabset-1-3">Example 3</a></li>
+<li><a href="#tabset-1-4">Example 4</a></li>
+<li><a href="#tabset-1-5">Example 5</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-1-1">
@@ -2226,7 +2230,27 @@ Shunkei Kakimoto
 <div class="cell" data-autorun="true">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-3-1.png" width="4000"></p>
+<figure><p><img data-src="Lec3_files/figure-revealjs/demo3-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell" data-autorun="true">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/demo4-1.png" width="4000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-5">
+<div class="cell" data-autorun="true">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/demo5-1.png" width="4000"></p>
 </figure>
 </div>
 </div>
@@ -2260,14 +2284,14 @@ Shunkei Kakimoto
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-2-1">What is ggplot2?</a></li>
-<li><a href="#tabset-2-2">Let’s see how ggplot2 creates a figure</a></li>
+<li><a href="#tabset-2-2">Anatomy of ggplot</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <ul>
 <li>As you know, there are already base (built-in) R functions to create figures (e.g., <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code>)
 <ul>
-<li>pros: they are fast (for plotting large datasets).</li>
+<li>pros: they are fast (especially for plotting a large dataset).</li>
 <li>cons: The plots are difficult to customize.</li>
 </ul>
 </li>
@@ -2275,13 +2299,18 @@ Shunkei Kakimoto
 <p><br></p>
 <ul>
 <li>
-<code>ggplot2</code> package provides more flexibility and customization options for creating figures.
+<code>ggplot2</code> package provides more flexibility and customization options for creating figures with a consistet syntax.
 <ul>
-<li>It views a single figure as a collection of multiple independent layers:</li>
+<li>
+<code>ggplot2</code> views a figure as the collection of multiple independent layers.
+<ul>
+<li>layers for geometric objects (e.g, points, lines, bars), layers for aesthtic attirbutes of the geometric objects (colour, shape, size), layers of annotations and statistical summaries, … etc.</li>
+</ul>
+</li>
+<li>Then, it combines these layers to create a figure as a final output.</li>
 </ul>
 </li>
 </ul>
-<!-- Here use Auto Animate --><!-- https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate --><p><span style="color: #447099;">Let’s see what this exactly mean by looking at the following example.</span></p>
 <p><br></p>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2290,74 +2319,441 @@ Shunkei Kakimoto
 </div>
 <div class="callout-content">
 <ul>
-<li>When you look at the simple plot of x and y, the base R functions are sufficient (e.g., <code>with(data, plot(x, y)</code>). I do this ofen.</li>
+<li>When you want a quick look of the plot of x and y, the base R functions are sufficient (e.g., <code>with(data, plot(column_x, column_y)</code>). I do this ofen.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-2-2">
-<p>Let’s run the following code line by line. Pay attention to the changes in the plot as you run each line.</p>
-<ul>
-<li>Note: There are some redundant lines in the code below for demonstration purposes. Don’t immitate this!</li>
-</ul>
-<!-- check this out: https://rstudio-conf-2022.github.io/get-started-quarto/materials/05-presentations.html#/output-location-column --><div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-</div>
-</div>
-</section><section id="step-by-step" class="slide level2"><h2>Step by step</h2>
+<!-- You can alternatively use "Code Animations"(https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations) -->
+<p><span style="color: blue;">Hit your right-arrow key (or down arrow key) to see the code (left column) and the corresponding output (right column). Pay attention to the changes in the plot as a new line is added.</span></p>
+<div class="r-stack">
+<!-- start r-stack -->
+<div class="fragment">
 <div class="cell columns column-output-location" data-autorun="true">
 <div class="column">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-5-1.png" width="4000"></p>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-7-1.png" width="2400"></p>
 </figure>
 </div>
 </div>
 </div></div>
-</section><section id="step-by-step-1" class="slide level2"><h2>Step by step</h2>
+</div>
+<div class="fragment">
 <div class="cell columns column-output-location" data-autorun="true">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality)<span class="sc">+</span></span>
-<span id="cb3-2"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb3-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb3-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb3-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-6-1.png" width="4000"></p>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-8-1.png" width="2400"></p>
 </figure>
 </div>
 </div>
 </div></div>
-</section><section id="core-principles" class="slide level2 scrollable"><h2>Core principles</h2>
-<ol type="1">
-<li>start with a layer that shows the raw data</li>
-<li>add layers of annotations and statistical summeries</li>
-</ol>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb4-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb4-5"><a href=""></a>  <span class="co"># Add y-axis </span></span>
+<span id="cb4-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-9-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb5-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb5-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb5-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span> </span>
+<span id="cb5-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb5-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span></span>
+<span id="cb5-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb5-8"><a href=""></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-10-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb6-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb6-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb6-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb6-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb6-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb6-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-11-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb7-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb7-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb7-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb7-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb7-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb7-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb7-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-12-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb8-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb8-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb8-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb8-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb8-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb8-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb8-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a href=""></a>  <span class="co"># Change y-axis label</span></span>
+<span id="cb8-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Ozone (ppb)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-13-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="16,17,18,19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb9-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb9-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb9-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb9-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb9-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb9-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb9-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb9-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href=""></a>  <span class="co"># Change y-axis label</span></span>
+<span id="cb9-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Ozone (ppb)"</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href=""></a>  <span class="co"># Add title and subtitle</span></span>
+<span id="cb9-16"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-17"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relationship between ozone and wind speed in New York"</span>,</span>
+<span id="cb9-18"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"May to September 1973"</span></span>
+<span id="cb9-19"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-14-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb10-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb10-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb10-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb10-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb10-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb10-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb10-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb10-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href=""></a>  <span class="co"># Change y-axis label</span></span>
+<span id="cb10-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Ozone (ppb)"</span>) <span class="sc">+</span></span>
+<span id="cb10-15"><a href=""></a>  <span class="co"># Add title and subtitle</span></span>
+<span id="cb10-16"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-17"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relationship between ozone and wind speed in New York"</span>,</span>
+<span id="cb10-18"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"May to September 1973"</span></span>
+<span id="cb10-19"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb10-20"><a href=""></a>  <span class="co"># Add caption</span></span>
+<span id="cb10-21"><a href=""></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data source:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-15-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb11-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb11-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb11-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb11-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb11-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb11-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb11-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb11-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb11-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>) <span class="sc">+</span></span>
+<span id="cb11-13"><a href=""></a>  <span class="co"># Change y-axis label</span></span>
+<span id="cb11-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Ozone (ppb)"</span>) <span class="sc">+</span></span>
+<span id="cb11-15"><a href=""></a>  <span class="co"># Add title and subtitle</span></span>
+<span id="cb11-16"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-17"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relationship between ozone and wind speed in New York"</span>,</span>
+<span id="cb11-18"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"May to September 1973"</span></span>
+<span id="cb11-19"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb11-20"><a href=""></a>  <span class="co"># Add caption</span></span>
+<span id="cb11-21"><a href=""></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data source:"</span>) <span class="sc">+</span></span>
+<span id="cb11-22"><a href=""></a>  <span class="co"># Set the theme</span></span>
+<span id="cb11-23"><a href=""></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-16-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="cell columns column-output-location" data-autorun="true">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="25,26,27,28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Create a canvas for the plot</span></span>
+<span id="cb12-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality) <span class="sc">+</span> </span>
+<span id="cb12-3"><a href=""></a>  <span class="co"># Add x-axis</span></span>
+<span id="cb12-4"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> Wind) <span class="sc">+</span></span>
+<span id="cb12-5"><a href=""></a>  <span class="co"># Add y-axis</span></span>
+<span id="cb12-6"><a href=""></a>  <span class="fu">aes</span>(<span class="at">y =</span> Ozone) <span class="sc">+</span> </span>
+<span id="cb12-7"><a href=""></a>  <span class="co"># Add a scatter plot</span></span>
+<span id="cb12-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-9"><a href=""></a>  <span class="co"># Add a regression line</span></span>
+<span id="cb12-10"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb12-11"><a href=""></a>  <span class="co"># Change x-axis label</span></span>
+<span id="cb12-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Wind Speed (mph)"</span>) <span class="sc">+</span></span>
+<span id="cb12-13"><a href=""></a>  <span class="co"># Change y-axis label</span></span>
+<span id="cb12-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Ozone (ppb)"</span>) <span class="sc">+</span></span>
+<span id="cb12-15"><a href=""></a>  <span class="co"># Add title and subtitle</span></span>
+<span id="cb12-16"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-17"><a href=""></a>    <span class="at">title =</span> <span class="st">"Relationship between ozone and wind speed in New York"</span>,</span>
+<span id="cb12-18"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"May to September 1973"</span></span>
+<span id="cb12-19"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb12-20"><a href=""></a>  <span class="co"># Add caption</span></span>
+<span id="cb12-21"><a href=""></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Data source:"</span>) <span class="sc">+</span></span>
+<span id="cb12-22"><a href=""></a>  <span class="co"># Set the theme</span></span>
+<span id="cb12-23"><a href=""></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-24"><a href=""></a>  <span class="co"># Set the title and subtitle position</span></span>
+<span id="cb12-25"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-26"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb12-27"><a href=""></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb12-28"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-17-1.png" width="2400"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+<!-- end r-stack -->
+</div>
 <ul>
-<li>Basic steps
-<ul>
-<li>step1: Always start with <code>ggplot()</code>
-<ul>
-<li>this function prepares a “canvas” for the figure.</li>
+<li>Note: This code is for demonstration purposes. Don’t immitate this!</li>
 </ul>
-</li>
-<li>step2: use <code>+</code> operator to tell R to add layers (e.g, line plot) to the canvas.</li>
-<li>step3: draw figures with <code>geom_*()</code> functions.
+<!-- end .panel-tabset -->
+</div>
+</div>
+</div>
+</section><section id="basics" class="slide level2 scrollable"><h2>Basics</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-5-1">Key components</a></li>
+<li><a href="#tabset-5-2">Example</a></li>
+<li><a href="#tabset-5-3">Summary</a></li>
+<li><a href="#tabset-5-4">Your turn</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Every ggplot2 plot has three key components:</p>
 <ul>
-<li>depending on the type of the figure, you can use different <code>geom_*()</code> functions.
+<li>data</li>
+<li>A set of aesthetic mappings between variables in the data and visual properties, and</li>
+<li>At least one layer which describes how to render each observation. Layers are usually created with a geom function.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>The very basic syntax for creating a plot with <code>ggplot2</code> is as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> ...) <span class="sc">+</span></span>
+<span id="cb13-2"><a href=""></a>  geom_<span class="sc">*</span>(<span class="fu">aes</span>( ... ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>
+<code>aes</code> stands for aesthetic mappings. It tells <code>ggplot2</code> how to map variables in the data to visual properties of the plot (e.g., x-axis, y-axis, color, shape, size, etc.)</li>
+<li>
+<code>+</code> operator tells R that you’re adding another layer (e.g, line plot) to the current “canvas”.</li>
+<li>Depending on the type of the figure you want to plot, use different <code>geom_*()</code> functions.
 <ul>
 <li>Eg. <code>geom_point()</code> for scatter plot, <code>geom_line()</code> for line plot, etc.</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>step4: repeat step2 and step3 to add more layers to the plot.</li>
-<li>Step5 (optional): add labels, titles, and other annotations to the plot with <code>labs()</code>, <code>theme()</code>, etc.</li>
+<!-- ::: aside
+Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+::: -->
+</div>
+<div id="tabset-5-2">
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-4-1">Data</a></li>
+<li><a href="#tabset-4-2">Let’s create a scatter plot</a></li>
+<li><a href="#tabset-4-3">Step 1</a></li>
+<li><a href="#tabset-4-4">Step 2</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>Let’s use the <code>airquality</code> data for this example.</p>
+<ul>
+<li>
+<code>airquality</code> data is a built-in dataset in R. So, you don’t need to load it.</li>
+<li>Type <code>airquality</code> in the console to see the data. (Type<code><a href="https://rdrr.io/r/datasets/airquality.html">?airquality</a></code> in the console for more information.)</li>
+</ul>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-4-2">
+<p>We will create a scatter plot of <code>Ozone</code> (ozone level in the air) and <code>Temp</code> (Maximum daily temperature in degrees <span class="math inline">\(F\)</span>) in the <code>airquality</code> data.</p>
+<p>The final plot should look like the following:</p>
+<div class="cell" data-layout-align="center" data-autorun="true">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="Lec3_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="700"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3">
+<p><span style="color: blue;"><strong>Step 1: Start with <code>ggplot()</code></strong></span></p>
+<ul>
+<li>
+<code>ggplot(data = dataset)</code> initializes a ggplot object. In other words, <span style="color: blue;">it prepares a “canvas” for the plot</span>.</li>
+<li>Here, let R know the dataset you are trying to visualize.</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-3-1">Try it!</a></li>
+<li><a href="#tabset-3-2">Why?</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Run the following code. Can you see any output?</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-3-2">
+<ul>
+<li><span style="color: blue;">This code does not produce any output because we haven’t told R what to plot with the data yet.</span></li>
+<li><span style="color: blue;"><code>ggplot()</code> just prepares a blank “canvas” for you!</span></li>
+</ul>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-4">
+<p><span style="color: blue;"><strong>Step 2: Draw figures with <code>geom_*()</code> functions, and add to the current canvas use <code>+</code> operator</strong></span></p>
+<ul>
+<li>For example, we use <code>geom_point()</code> to create a scatter plot.
+<ul>
+<li>
+<span data-styl="colur:red">use <code>aes()</code> to specify which variable you want to use for x and y axis</span>.</li>
 </ul>
 </li>
+<li>Then, add the plot to the current canvas with <code>+</code> operator.</li>
+</ul>
+<p><br></p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end .panel-tabset 2 -->
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3">
+<p><span style="color: blue;">These are basic steps to create a figure with <code>ggplot2</code> package.</span></p>
+<ul>
+<li>Step1: Start with <code>ggplot()</code>
+<ul>
+<li>this function prepares a “canvas” for the figure.</li>
+</ul>
+</li>
+<li>Step2: Draw figures with <code>geom_*()</code> functions, and add to the current canvas using <code>+</code> operator.</li>
+<li>Step3: Repeat step2 and step3 to add whatever layers you want to add.</li>
+<li>Step4 (optional): Add labels, titles, and other annotations to the plot with <code>labs()</code>, <code>theme()</code>, etc.</li>
 </ul>
 <p><br></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -2367,52 +2763,47 @@ Shunkei Kakimoto
 </div>
 <div class="callout-content">
 <ul>
-<li>layers can be added in any order, but the order of the layers affects the final appearance of the plot.</li>
-<li>
-</li></ul>
-</div>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Basic</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>
-</li><li>step 1: Always Start with a code <code>ggplot(data = &lt;DATA&gt;)</code>
-</li>
-<li>step 2: Add layers to the plot with <code>+</code> operator. The</li>
+<li>In step 3, layers can be added in any order, but the order of the layers affects the final appearance of the plot.</li>
 </ul>
-<p><br></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {werb-r} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a># Example </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<h3 id="general-rule">General Rule</h3>
+</div>
+<div id="tabset-5-4">
+<ol type="1">
+<li><p>Create a scatter plot of <code>Temp</code> and <code>Wind</code> in the <code>airquality</code> data.</p></li>
+<li><p>In the plot you just created, let’s change the x-axis label to “Maximum temperature (degrees F)” and the y-axis label to “Wind Speed (mph)”. For this, use <code>labs()</code> function.</p></li>
+</ol>
+<p>Hint:</p>
 <ul>
-<li>
-</li></ul>
-<h3 id="section-1"></h3>
-<p>:::</p>
-</section><section id="exercise-problmes" class="slide level2"><h2>Exercise Problmes</h2>
+<li><code>labs(x = new_x_label, y = new_y_label)</code></li>
+<li>use <code>+</code> to add this layer to the plot.</li>
+</ul>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end .panel-tabset 1 -->
+</div>
+</div>
+</div>
+</section><section id="test" class="slide level2"><h2>Test</h2>
+
+<img data-src="Lec3_files/figure-revealjs/unnamed-chunk-20-1.png" width="2000" class="r-stretch"></section><section id="exercise-problmes" class="slide level2"><h2>Exercise Problmes</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Exercise 1</a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Exercise 1</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1">
+<div id="tabset-7-1">
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-3-1">Problem</a></li>
-<li><a href="#tabset-3-2">Answer</a></li>
+<ul id="tabset-6" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-6-1">Problem</a></li>
+<li><a href="#tabset-6-2">Solution</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-3-1">
+<div id="tabset-6-1">
 <p>For this exercise problem, you will use “corn_yield_dt.rds” in the “Data” folder. This data contains the county-level corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2001.</p>
 <p><br> 1. Load the data, and take a look at the data. 2. Convert the data to a <code>data.table</code> object. The <code>value</code> column contains the corn yield data. Let’s rename the column to <code>yield</code>. 3.</p>
 </div>
-<div id="tabset-3-2">
-<div id="qwebr-insertion-location-3"></div>
+<div id="tabset-6-2">
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -2436,7 +2827,7 @@ Shunkei Kakimoto
 </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Lec3_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Lec3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Lec3_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Lec3_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Lec3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Lec3_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="Lec3_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="Lec3_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Lec3_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Lec3_files/libs/revealjs/plugin/search/search.js"></script><script src="Lec3_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Lec3_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="Lec3_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="Lec3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="Lec3_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="Lec3_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="Lec3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="Lec3_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="Lec3_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="Lec3_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="Lec3_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="Lec3_files/libs/revealjs/plugin/notes/notes.js"></script><script src="Lec3_files/libs/revealjs/plugin/search/search.js"></script><script src="Lec3_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="Lec3_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -2447,7 +2838,8 @@ Shunkei Kakimoto
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'multiplex': {"secret":null,"id":"e6949daba98d0b04","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
@@ -2619,7 +3011,7 @@ Shunkei Kakimoto
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           

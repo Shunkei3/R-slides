@@ -67,16 +67,19 @@
 #
 #
 #
+#
 #| label: demo1
 #| autorun: true
 #| echo: false
 
-
+# /*===== Load package =====*/
 library(ggplot2)
 library(dplyr)
 library(data.table)
 
-
+#/*--------------------------------*/
+#' ## Scatter plot
+#/*--------------------------------*/
 ggplot(data = airquality, aes(x = Ozone, y = Temp)) +
   geom_point() +
   labs(title = "Ozone (ppb) and temperature (degrees F) in New York, May to September 1973.") +
@@ -127,6 +130,49 @@ PlantGrowth %>%
 #
 #
 #
+#
+#| label: demo3
+#| autorun: true
+#| echo: false
+
+#/*--------------------------------*/
+#' ## Density plot
+#/*--------------------------------*/
+data(gapminder, package="gapminder")
+
+ggplot(data=gapminder, aes(x=lifeExp, fill=continent)) +
+    geom_density(alpha=0.5) +
+    labs(
+      title = "Density plot of life expectancy by continent",
+      x = "Life expectancy",
+      y = "Density"
+    ) +
+    theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5))
+#
+#
+#
+#
+#
+#| label: demo4
+#| autorun: true
+#| echo: false
+
+gapminder %>%
+  filter(country %in% c("United States", "China", "India", "United Kingdom")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country))+
+  geom_line()+
+  labs(
+    title = "Life Expectancy in Selected Countries",
+    x = "Year", y = "Life Expectancy"
+  )+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+#
+#
+#
+#
+#| label: demo5
 #| autorun: true
 #| echo: false
 
@@ -206,102 +252,280 @@ library(ggplot2)
 #
 #
 #
-#
-#
-#
-#
-#
-#| label: taste
 #| autorun: true
+#| warning: false
 #| output-location: column
-#| scro
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "2"
 
-ggplot(data = airquality) + # Create a canvas for the plot
-  aes(x = Wind) + # Add x-axis
-  aes(y = Ozone) + # Add y-axis
-  # Add a scatter plot
-  geom_point() + 
-  # Add a regression line
-  geom_smooth(method = "lm") + 
-  # Add x label
-  xlab("Wind Speed (mph)") + 
-  # Add y label
-  ylab("Ozone (ppb)") + 
-  # Add title
-  labs(title = "Ozone (ppb) and wind speed (mph) in New York, May to September 1973") + 
-  # Add caption
-  labs(caption = "The data were obtained from the New York State Department of Conservation (ozone data) and the National Weather Service (meteorological data).") + 
-  # Set the theme
-  theme_bw() + 
-  # Set the title position
-  theme(plot.title = element_text(hjust = 0.5))
-#
-#
-#
-#
-#
-#
+# Create a canvas for the plot
+ggplot(data = airquality) 
+```
 #
 #
 #
 #
 #| autorun: true
+#| warning: false
 #| output-location: column
-#| code-line-numbers: "1"
-
-ggplot(data = airquality)
-#
-#
-#
-#
-#
-#| autorun: true
-#| output-location: column
-
-ggplot(data = airquality)+
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "4"
+#| 
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
   aes(x = Wind)
+```
 #
 #
 #
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-# Example 
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "6"
 
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis 
+  aes(y = Ozone) 
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "8"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) + 
+  # Add y-axis
+  aes(y = Ozone) +
+  # Add a scatter plot
+  geom_point() 
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "10"
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") 
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "12"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)")
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "14"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") 
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "16,17,18,19"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  )
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "21"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:")
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "23"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:") +
+  # Set the theme
+  theme_bw() 
+```
+#
+#
+#
+#
+#| autorun: true
+#| warning: false
+#| output-location: column
+#| fig-width: 6
+#| fig-height: 4
+#| code-line-numbers: "25,26,27,28"
+
+# Create a canvas for the plot
+ggplot(data = airquality) + 
+  # Add x-axis
+  aes(x = Wind) +
+  # Add y-axis
+  aes(y = Ozone) + 
+  # Add a scatter plot
+  geom_point() +
+  # Add a regression line
+  geom_smooth(method = "lm") +
+  # Change x-axis label
+  labs(x = "Wind Speed (mph)") +
+  # Change y-axis label
+  labs(y = "Ozone (ppb)") +
+  # Add title and subtitle
+  labs(
+    title = "Relationship between ozone and wind speed in New York",
+    subtitle = "May to September 1973"
+  ) +
+  # Add caption
+  labs(caption = "Data source:") +
+  # Set the theme
+  theme_bw() +
+  # Set the title and subtitle position
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
 #
 #
 #
@@ -314,6 +538,90 @@ ggplot(data = airquality)+
 #
 #
 #
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+?airquality
+head(airquality)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| label: basics
+#| autorun: true
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+
+ggplot(airquality)+
+  geom_point(aes(x = Temp, y = Ozone))
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| autorun: true
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+
+ggplot(airquality)+
+  geom_point(aes(x = Temp, y = Ozone))
 #
 #
 #
