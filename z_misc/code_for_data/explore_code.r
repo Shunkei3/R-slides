@@ -236,12 +236,39 @@ ggplot(insurance)+
 
 
 #/*--------------------------------*/
-#' ## 
+#' ## Life Expectancy, GDP per Capita
 #/*--------------------------------*/
-install.packages("gapminder")
+# install.packages("gapminder")
 data(gapminder, package="gapminder")
 
+#' This dataset is used in the book "R for Health Data Science" by Ewen Harrison and Riinu Ots.
+#' see
+#' https://argoshare.is.ed.ac.uk/healthyr_book/chap04-data.html
 
+names(gapminder)
+unique(gapminder$country)
+
+
+gapminder %>%
+  filter(country %in% c("United States", "China", "India", "United Kingdom")) %>%
+  ggplot(aes(x = year, y = lifeExp, color = country))+
+  geom_line()+
+  labs(
+    title = "Life Expectancy in Selected Countries",
+    x = "Year", y = "Life Expectancy"
+  )+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+ggplot(small_gapminder)+
+  geom_line(
+    aes(x = year, y = gdpPercap, group = country, color = country)
+  )
+
+
+ggplot(data=gapminder, aes(x=lifeExp, fill=continent)) +
+    geom_density(alpha=0.5)
 
 
 #/*--------------------------------*/
