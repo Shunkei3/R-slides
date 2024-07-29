@@ -59,7 +59,8 @@ filters:
 
 ## Today's outline: {.center}
 
-+ 1. Introduction to ggplot2
+1. Introduction to ggplot2
+
 
 
 ## Example ggplot figures 
@@ -1097,14 +1098,16 @@ Now, you know
 + how to  modify axis, legend, and plot labels with `labs()` function.
 
 
-## Exercise Problems 1
+## Exercise Problems
+
+<!-- start panel-tabset: Exercise Problems -->
+::: {.panel-tabset}
+### Exercise Problems 1
 
 <!-- start panel-tabset Exercise Problems -->
 :::{.panel-tabset}
 
-### Prerequisites
-
-**Data Description**
+### Data
 
 Let's use the `ecnomics` data, which is a dataset built into the `ggplot2` package. It was produced from US economic time series data available from Federal Reserve Economic Data. This contains the following variables:
 
@@ -1154,7 +1157,7 @@ ggplot(economics_long) +
   )
 ```
 
-### Solution
+### Solutions
 
 ```{webr-r}
 #| output-location: column
@@ -1205,20 +1208,16 @@ ggplot(economics_long) +
     color = "Variable"
   )
 ```
-<!-- end panel-tabset Exercise 1 -->
+<!-- start panel-tabset: Exercise Problems 1 -->
 :::
 
-## Exercise Problems 2 {.scrollable}
+
+### Exercise Problems 2 {.scrollable}
 
 <!-- start panel-tabset: Exercise Problems 2 -->
 :::{.panel-tabset}
 
-### Prerequisites
-
-<!-- start panel-tabset: prerequisites -->
-::: {.panel-tabset}
-
-### Data Description
+### Data
 
 For this exercise problem, we will use [medical cost personal datasets](https://github.com/stedy/Machine-Learning-with-R-datasets/blob/master/insurance.csv) descrived in the book "Machine Learning with R" by Brett Lantz. The dataset provides $1338$ records of medical information and costs billed by health insurance companies in 2013, compiled by the United States Census Bureau.
 
@@ -1233,7 +1232,7 @@ The dataset contains the following variables:
 + `charges`: Individual medical costs billed by health insurance
 
 
-### Download the data
+**Download the data**
 
 ```{webr-r}
 #| autorun: true
@@ -1248,11 +1247,9 @@ insurance <- fread(insurance_url)
 # insurance <- rio::import(insurance_url)
 
 # === Take a look at the data === #
-insurance
+glimpse(insurance)
 ```
 
-<!-- end panel-tabset: prerequisites -->
-:::
 
 ### Instructions 
 
@@ -1324,10 +1321,10 @@ ggplot(data = insurance) +
     title = "Distribution of individual mediacal mosts by sex and region"
   )
 ```
-
 <!-- end panel-tabset: Exercise Problems 2 -->
 :::
 
+:::
 
 # Section 2: Advanced Topics
 ---
@@ -1460,7 +1457,7 @@ base_plot <- ggplot(insurance)+
 facet_grid(rows = vars(var_x), cols = var(var_y)), scales = "fiexed")
 ```
 
-+ Inside `vars()`, speficy variables used for faceting groups.
++ The graph is partitioned by the levels of the groups `var_x` and `var_y` in the rows and columns, respectively.
 + `ncol` and `nrow` control the number of columns and rows in the (You only need to set either one).
 + `scales` controls the scales of the axes in the panel (either `fixed`(the defult), `free_x`, or `free_y`, `free`).
 
@@ -1580,44 +1577,10 @@ ggplot() +
 <!-- end panel-tabset: multiple datasets in one figure (optional) -->
 :::
 
-## theme() function (Optional)
 
-With `theme()` function, you can tweak the the appearance of all non-data related components of a plot. There are so many components you can modify with `theme()` function. See [this](https://ggplot2.tidyverse.org/reference/theme.html) for full list of options.
+## ggplot2 Themes (Optional)
 
-For more information, see
-+ [Chapter 17, ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/themes)
-+ 
-
-
-For exmpale, you can change the position of the title and legend with the following `theme()` options.
-
-```{r}
-#| eval: false
-theme(
-  plot.title = element_text(hjust = 0.5),
-  legend.position = "bottom"
-s)
-```
-
-
-<br>
-
-### Try it!
-```{webr-r}
-ggplot(data = insurance) +
-  geom_point(aes(x = bmi, y = charges, color = region)) +
-  labs(titile = "Scatter plot of BMI and smoke status") +
-  theme(
-    plot.title = element_text(hjust = 0.5),
-    legend.position = "bottom"
-  )
-```
-
-
-
-## Change the background theme (Optional)
-
-[You can change the themes of the plot.]{style="color: blue;"}
+[You can change the theme of the plot.]{style="color: blue;"}
 
 + `ggplot2` ships several pre-made themes that you can apply to your plots. (e.g, `theme_minimal()`, `theme_bw()` (I use this often), `theme_classic()`). See [this](https://ggplot2.tidyverse.org/reference/ggtheme.html).
 
@@ -1636,7 +1599,33 @@ ggplot(data = insurance) +
   theme_stata()
 ```
 
-## Summary 2
+
+## theme() function (Optional)
+
+`theme()` function let you tweak the details of all non-data related components of a plot (e.g., font type in the plot, position of the legend and title, etc.). There are so many components you can modify with `theme()` function. See [this](https://ggplot2.tidyverse.org/reference/theme.html) for full list of options.
+
+For more information, see
+
++ [Chapter 17 Themes, ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/themes)
+
+<br>
+
+### Try it!
+
+For exmpale, you can change the position of the title and legend with the following `theme()` options.
+
+```{webr-r}
+ggplot(data = insurance) +
+  geom_point(aes(x = bmi, y = charges, color = region)) +
+  labs(titile = "Scatter plot of BMI and smoke status") +
+  theme(
+    plot.title = element_text(hjust = 0.5), #center the title
+    legend.position = "bottom" # move the legend to the bottom
+  )
+```
+
+
+## Summary 2 {.center}
 
 For this second section, you learned a few advanced topics in ggplot2. 
 
@@ -1650,18 +1639,188 @@ Now, you know
 That's it!
 
 
-## Exercise Problem {.scrollable}
+## Exercise Problems {.scrollable}
 
-<!-- start panel-tabset: Exercise problems -->
+<!-- start panel-tabset: Exercise problem  -->
 :::{.panel-tabset}
-### Exercise Problem 1 (challenging)
 
-<!-- start panel-tabset: Exercise 1-->
+### Exercise Problem 1 (basic)
+<!-- start panel-tabset: Exercise Problem 1 -->
+::: {.panel-tabset}
+
+### Data
+
+For this exercise problem, you will use the `gapminder` data from the `gapminder` package. 
+
+```{webr-r}
+#| autorun: false
+#| cashe: false
+# install the gapminder package if you haven't done so.
+# install.packages("gapminder")
+
+# Load the data from the gapminder package
+data(gapminder, package="gapminder")
+
+gapminder <- as.data.table(gapminder) # Convert the data to a data.table object
+
+glimpse(gapminder) #grimpse is a function from the dplyr package that provides a concise summary of a data frame. 
+# ?gapminder::gapminder # Check the description of the data
+```
+
+
+### Instructions
+
+1. Find the number of unique countries in the data.
+
+2. Calculate the mean life expectancy for the entire dataset.
+
+3. Create a dataset by subsetting the data for the year 2007. Create a scatter plot of GDP per capita vs. life expectancy for the year 2007, color-coded by continent.
+
+4. Create a bar plot showing the total population for each continent in 2007. Fill the bars with blue color and set the transparency to 0.5.
+
+5. Subset the data for United States, China, India, and United Kingdom. Create a line plot showing the change in life expectancy over time for these countries.
+
+6. Create a scatter plot of GDP per capita vs. life expectancy for the entire gapminder dataset. Use `facet_wrap` to create separate plots for each continent.
+
+7. Group the data by continent and calculate the mean GDP per capita for each continent for each year. Create a line plot showing the trend of mean GDP per capita for each continent over time.
+
+```{webr-r}
+# You can write your code here
+```
+
+
+### Solutions
+
+```{webr-r}
+# === Part 1 === #
+#' There are several approaches.
+#' The most straightforward way is to use the unique() function, and then count the number of unique values.
+length(unique(gapminder$country))
+
+# Alternatively, you could use the uniqueN() function from the data.table package.
+# gapminder[, uniqueN(country)]
+
+# === Part 2 === #
+mean(gapminder$lifeExp)
+# same as
+# gapminder[, mean(lifeExp)]
+
+# === Part 3 === #
+gapminder_2007 <- gapminder[year == 2007,]
+
+ggplot(data = gapminder_2007) +
+  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  labs(
+    x = "GDP per capita",
+    y = "Life expectancy",
+    title = "Scatter plot of GDP per capita vs. life expectancy in 2007"
+  )
+
+# === Part 4 === #
+ggplot(data = gapminder_2007) +
+  geom_bar(aes(x = continent, y = pop), stat = "identity", fill = "blue", alpha = 0.5) +
+  labs(
+    x = "Continent",
+    y = "Total population",
+    title = "Total population by continent in 2007"
+  )
+
+
+# === Part 5 === #
+gapminder[country %in% c("United States", "China", "India", "United Kingdom"),] %>%
+  ggplot(data = .)+
+  geom_line(aes(x = year, y = lifeExp, color = country))+
+  labs(
+    title = "Life Expectancy in the selected countries",
+    x = "Year", y = "Life Expectancy"
+  )+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+
+# === Part 6 === #
+ggplot(data = gapminder) +
+  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  facet_wrap(vars(continent), scales = "fixed") +
+  labs(
+    x = "GDP per capita",
+    y = "Life expectancy",
+    title = "Scatter plot of GDP per capita vs. life expectancy by continent"
+  )
+
+# === Part 7 === #
+gapminder[, .(mean_gdp = mean(gdpPercap)), by = .(continent, year)] %>%
+  ggplot(data = .) +
+  geom_line(aes(x = year, y = mean_gdp, color = continent)) +
+  labs(
+    x = "Year",
+    y = "Mean GDP per capita",
+    title = "Trend of mean GDP per capita by continent"
+  )
+```
+<!-- end panel-tabset: Exercise Problem 1 -->
+:::
+
+### Exercise Problem 2 (basic)
+
+<!-- start pane-tabset: Excercise Problem 2 -->
 :::{.panel-tabset}
+
+
+### Data
+
+For this exercise problem, we will use `economics` dataset from the ggplot2 package. You need to use data manipulation and visualization techniques using the `data.table` and `ggplot2` packages.
+
+```{webr-r}
+# === Loading data === #
+economics <- as.data.table(ggplot2::economics)
+# take a look at the data
+glimpse(economics)
+```
 
 ### Instruction
 
-This exercise problem involves data manipulation and visualization using the `data.table` and `ggplot2` packages.
+1. As you already know by now, the `economics` dataset contains various economic indicators for the United States. We want to create a line plot showing the trends of all economic indicators over time. Each economic indicator is stored in a separate column in the data, and you can visualize each  indicator by creating single line plot, separately. But, there is a better way to do this. It should look like the following plot.
+
+```{r}
+#| autorun: true
+#| echo: false
+#| fig-dpi: 100
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+melt(economics, id.vars = "date") %>%
+  ggplot(.) +
+    geom_line(aes(x = date, y = value)) +
+    facet_wrap(vars(variable), scales = "free_y")
+```
+
+```{webr-r}
+# You can write your code here
+
+```
+
+### Solutions
+
+```{webr-r}
+# Since we want use column names as variable names, we need to convert the data to a long format. We melt all the columns except the date column.
+economics_long <- melt(economics, id.vars = "date")
+
+# Then, create a facet plot where each panel shows the trend of one economic indicator.
+# Since we only have one variable to facet, facet_wrap() function is more appropriate.
+# Also, we set scales = "free_y" to make the y-axis scales free across facets.
+ggplot(data = economics_long) +
+  geom_line(aes(x = date, y = value)) +
+  facet_wrap(vars(variable), scales = "free_y")
+```
+<!-- end pane-tabset: Excercise Problem 2 -->
+:::
+
+### Exercise Problem 3 (challenging)
+
+<!-- start panel-tabset: Exercise 3-->
+:::{.panel-tabset}
+### Instruction
+
 
 For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder. I obtained this from [USDA-NASS Quick Stats database](https://quickstats.nass.usda.gov/). The data contains the **county-level** corn yield data (in BU / ACRE) for each major corn production states in the US Midwest from 2000 to 2022. 
 
@@ -1679,12 +1838,12 @@ For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder
 
 *Hint*: `state_alpha` is the two-letter state abbreviation for each state.
 
-6. Create a new dataset containg the Midwest average corn yield by taking the mean of the `yield` by `year`. Add a line plot of this dataset to the plot you created in the previous step. Use red dashed line to represent this line.
+6. Create a new dataset containg the overall average corn yields across states by taking the mean of the `yield` by `year`. Add a line plot of this dataset to the plot you created in the previous step. Use red dashed line to represent this line.
 
 + If you could add a legend to the plot to indicate what the red dashed line means, that would be great! To do this, you need to use `scale_color_manual()` function.
 
 
-### Solution
+### Solutions
 
 This code does not work on this slide. Copy and paste the code to the your R console.
 
@@ -1774,122 +1933,13 @@ ggplot() +
 #     legend.position = "bottom"
 #   )
 ```
-<!-- end panel-tabset: Exercise 1-->
+<!-- end panel-tabset: Exercise 3-->
 :::
-
-
-<!-- start panel-tabset: Exercise Problems-->
-:::
-
-
-
-##### Exercise Problem 2 (basic)
-<!-- start panel-tabset: Exercise Problem -->
-::: {.panel-tabset}
-
-### Instruction
-
-For this exercise problem, you will use the `gapminder` data from the `gapminder` package. 
-
-```{r}
-#| autorun: true
-# install the gapminder package if you haven't done so.
-# install.packages("gapminder")
-
-# Load the data from the gapminder package
-data(gapminder, package="gapminder")
-
-gapminder <- as.data.table(gapminder) # Convert the data to a data.table object
-
-glimpse(gapminder) #grimpse is a function from the dplyr package that provides a concise summary of a data frame. 
-# ?gapminder::gapminder # Check the description of the data
-```
-
-1. Find the number of unique countries in the data.
-
-2. Calculate the mean life expectancy for the entire dataset.
-
-3. Create a dataset by subsetting the data for the year 2007. Create a scatter plot of GDP per capita vs. life expectancy for the year 2007, color-coded by continent.
-
-4. Create a bar plot showing the total population for each continent in 2007. Fill the bars with blue color and set the transparency to 0.5.
-
-5. Subset the data for United States, China, India, and United Kingdom. Create a line plot showing the change in life expectancy over time for these countries.
-
-6. Create a scatter plot of GDP per capita vs. life expectancy for the entire gapminder dataset. Use `facet_wrap` to create separate plots for each continent.
-
-7. Group the data by continent and calculate the mean GDP per capita for each continent for each year. Create a line plot showing the trend of mean GDP per capita for each continent over time.
-
-
-### Solution
-
-```{webr-r}
-# === Part 1 === #
-#' There are several approaches.
-#' The most straightforward way is to use the unique() function, and then count the number of unique values.
-length(unique(gapminder$country))
-
-# Alternatively, you could use the uniqueN() function from the data.table package.
-# gapminder[, uniqueN(country)]
-
-# === Part 2 === #
-mean(gapminder$lifeExp)
-# same as
-# gapminder[, mean(lifeExp)]
-
-# === Part 3 === #
-gapminder_2007 <- gapminder[year == 2007,]
-
-ggplot(data = gapminder_2007) +
-  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
-  labs(
-    x = "GDP per capita",
-    y = "Life expectancy",
-    title = "Scatter plot of GDP per capita vs. life expectancy in 2007"
-  )
-
-# === Part 4 === #
-ggplot(data = gapminder_2007) +
-  geom_bar(aes(x = continent, y = pop), stat = "identity", fill = "blue", alpha = 0.5) +
-  labs(
-    x = "Continent",
-    y = "Total population",
-    title = "Total population by continent in 2007"
-  )
-
-
-# === Part 5 === #
-gapminder[country %in% c("United States", "China", "India", "United Kingdom"),] %>%
-  ggplot(data = .)+
-  geom_line(aes(x = year, y = lifeExp, color = country))+
-  labs(
-    title = "Life Expectancy in the selected countries",
-    x = "Year", y = "Life Expectancy"
-  )+
-  theme_bw()+
-  theme(plot.title = element_text(hjust = 0.5))
-
-# === Part 6 === #
-ggplot(data = gapminder) +
-  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
-  facet_wrap(vars(continent), scales = "fixed") +
-  labs(
-    x = "GDP per capita",
-    y = "Life expectancy",
-    title = "Scatter plot of GDP per capita vs. life expectancy by continent"
-  )
-
-# === Part 7 === #
-gapminder[, .(mean_gdp = mean(gdpPercap)), by = .(continent, year)] %>%
-  ggplot(data = .) +
-  geom_line(aes(x = year, y = mean_gdp, color = continent)) +
-  labs(
-    x = "Year",
-    y = "Mean GDP per capita",
-    title = "Trend of mean GDP per capita by continent"
-  )
-```
-
-
 
 <!-- end panel-tabset: Exercise Problem -->
 :::
+
+
+
+
+

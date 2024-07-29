@@ -1,0 +1,65 @@
+---
+title: "Lecture 3: Exercise Solutions"
+format:
+  html:
+    fontsize: 1em
+    theme: 
+      - cosmo 
+      - ../slide_style/styles_ex.scss
+engine: knitr
+filters:
+  - webr
+wber:
+  packages: ["data.table", "ggplot2", "dplyr", "gapminder"]
+  cell-options:
+    editor-font-scale: 0.8
+    fig-width: 7
+    fig-height: 4.3
+    out-width: "100%"
+---
+
+Load packages
+
+```{webr-r}
+#| autorun: true
+#| results: "hide"
+library(ggplot2)
+library(data.table)
+library(dplyr)
+```
+
+
+## Exercise 1
+
+```{webr-r}
+
+```
+
+
+
+Modify the code here to show the relationship between health and wealth for 2002 instead of 2007.
+
+::: {.panel-tabset .nav-pills}
+## {{< fa person-chalkboard >}}&ensp;Interactive editor
+
+```{webr-r}
+gapminder_filtered <- gapminder |>
+  filter(year == 2007)
+
+ggplot(data = gapminder_filtered,
+       mapping = aes(x = gdpPercap, y = lifeExp, 
+                     size = pop, color = continent)) +
+  geom_point() + 
+  scale_x_log10(labels = scales::dollar_format(accuracy = 1)) +
+  scale_size_continuous(labels = scales::label_comma()) +
+  scale_color_viridis_d(option = "plasma") +
+  labs(x = "GDP per capita", y = "Life expectancy",
+       title = "Health and wealth are strongly related",
+       subtitle = "142 countries; 2007 only", caption = "Source: The Gapminder Project",
+       color = "Continent", size = "Population") +
+  theme_bw()
+```
+
+## {{< fa lightbulb >}}&ensp;Hint
+
+**Hint:** You'll want to change something in the code that creates `gapminder_filtered`. The text in the subtitle won't change automatically, so you'll want to edit that too.
