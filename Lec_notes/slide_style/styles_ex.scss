@@ -11,15 +11,11 @@ $bright-blue: #0d6efd;
 $cream: #FDFBF7;
 $gray: #64605f;
 $purple: #9158A2;
-$orange: #f99820;
+$orange: #ad7237;
 $white: #FFFFFF;
-// $maroon:#7a0019;
-$maroon:#8B322C;
-$light-maroon: #DD5746;
-$light-yellow:#fffec8;
+$umn-maroon:#7a0019;
+$umn-gold:#ffcc33;
 $black: #000000;
-$grey: #666667;
-$red: #900021;
 
 
 // Base document colors
@@ -34,43 +30,27 @@ $presentation-title-slide-text-align: left;
 $monokai-bg: #2e3440;
 
 
+
 /*-- scss:rules --*/
-// h2 {
-//   color: $blue !important;
-// }
-
-// panel.tabset ----------------------------
-// default tab text color
-a[role="tab"] {
-  color: $grey;
-}
-
-// active tab
-a[aria-selected="true"]{
-  color: $light-maroon;
-}
-
-// fill color of the tab when it's hovered
-a:hover {
-  background-color: $light-yellow;
+h2 {
+  color: #447099 !important;
 }
 
 
 // Header ----------------------------
 
-.reveal h2 {
-  font-size: 2rem;
-  color: $bright-blue !important;
-}
+// .reveal h2 {
+//   font-size: 1.8rem;
+//   color: #447099 !important;
+// }
 
 // .reveal h2 code {
 //   font-size: 1.8rem;
 // }
 
-.reveal h3 {
-  font-size: 1.8rem;
-  color: $light-maroon !important;
-}
+// .reveal h3 {
+//   font-size: 1.4rem;
+// }
 
 
 // call-out box configurations
@@ -113,6 +93,24 @@ a:hover {
 .content-box-yellow {
   background-color: #fef5c4;
 }
+
+// panel.tabset ----------------------------
+// default tab text color
+a[role="tab"] {
+  color: $black;
+}
+
+// active tab
+a[aria-selected="true"] {
+  // color: $light-green;
+  color: $bright-blue;
+}
+
+// fill color of the tab when it's hovered
+a:hover {
+  background-color: white;
+}
+
 
 // Code configurations ----------------------------
 
