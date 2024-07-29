@@ -42,7 +42,9 @@ figcaption {
 }
 ```
 
-## Tips {.center}
+## {.center}
+
+### Tips
 
 + Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see table of contents, and you can jump to the section you want to see.
 + Hitting letter "o" on your keyboard and you will have a panel view of all the slides.
@@ -58,10 +60,10 @@ print("Let's get started!")
 1 + 1
 ```
 
-## 
+## {.center}
 <br>
 
-### Goals of this lecture
+### **Lerning Objectives**
 + To get familiar with the feature of RStudio.
 + To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.
 + To get familiar with base R functions to do mathematical calculations.
@@ -70,12 +72,13 @@ print("Let's get started!")
 
 <br>
 
-
-### Reference
+### **Reference**
 + [R for Data Science Ch8 Workflow: projects](https://r4ds.had.co.nz/workflow-projects.html)
 
 
-### Today's outline: {.center}
+## {.center}
+
+### Today 's outline
 
 1. Explore the features of Rstudio.
 2. R Coding Basics
@@ -120,16 +123,20 @@ These are the things you should know at least:
 + inset the assignment operator (`<-`): [`Option` + `-` for Mac, `Alt` + `-`  for Windows]
 :::
 
-## 
 
-## Before Starting: {.center}
+## Generall rule in R
 
-[R programing language is object-oriented programming (OOP), which basically means: "Everything is an object and everything has a name."]{style="color: red;"}
+::: {.panel-tabset}
 
-### Generall rule in R
+### Basics
+::: {.callout-important}
++ R programing language is object-oriented programming (OOP), which basically means: "Everything is an object and everything has a name."
+
 + You can assign information (numbers, character, data) to an object on R using `<-` or `=` (e.g., `object_name <- value`) and resue it later.
   + If you assign contents to an object of the same name, the object that had the same name will be overwritten.
 + Once objects are created, you can evaluate them on the console to see what is inside.
+:::
+
 
 ```{webr-r}
 # assign value 1 to an object called "x" 
@@ -152,15 +159,12 @@ z
 # use z as an input of square root function
 sqrt(z)
 ```
-<br>
 
-## {.center}
 
-::: {.callout-tip title="Object naming"}
+### Object Naming
 + You can name the object whatever you want, but **it must start with a letter**. 
 + You can use `_` or `.` to in the object name.
 + It is recommended to use a meaningful name for the object so that you can understand what the object contains.
-:::
 
 <br>
 
@@ -172,6 +176,8 @@ sqrt(z)
 test_1 <- 1:3
 test_1
 ```
+
+:::
 
 
 ## Basic data types (i.e., atomic data types) in R {.center}
