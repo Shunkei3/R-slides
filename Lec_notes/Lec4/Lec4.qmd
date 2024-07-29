@@ -1,0 +1,162 @@
+---
+title: "Day 3: Data visualization with ggplot2 package"
+subtitle: "Department of Applied Economics, University of Minnesota"
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - default 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    cache: true
+    warning: false
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+    chalkboard: true
+    preview-links: true
+webr:
+  packages: ["data.table", "ggplot2", "dplyr", "gapminder"]
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+
+## {.center}
+
+### Learning Objectives
+
++ Learn the basic operations of `ggplot2` package to create figures. 
++ You will be able to create:
+  + scatter plot
+  + line plot
+  + bar plot
+  + histogram
+  + box plot
+  + density plot
+  + facet plot
+
+
+<br>
+
+:::{.fragment .center}
+### Reference {.center}
++ [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
++ [R for Data Science (2e), Ch1: Data visualization](https://r4ds.had.co.nz/pipes.html)
+:::
+
+
+## Today's outline: {.center}
+
+1. Introduction to ggplot2
+
+
+
+## Example ggplot figures 
+
+By the end of the lecture, you will be able to create the figures like the following examples using `ggplot2` package.
+
+::: {.panel-tabset}
+
+### Example 1
+
+```{r}
+#| label: demo1
+#| autorun: true
+#| echo: false
+
+# /*===== Load package =====*/
+library(ggplot2)
+library(tidyverse)
+library(data.table)
+
+#/*--------------------------------*/
+#' ## Scatter plot
+#/*--------------------------------*/
+ggplot(data = airquality, aes(x = Ozone, y = Temp)) +
+  geom_point() +
+  labs(title = "Ozone (ppb) and temperature (degrees F) in New York, May to September 1973.") +
+  geom_smooth(method = "lm") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+### Example 2
+
+```{r}
+#| label: demo2
+#| autorun: true
+#| echo: false
+
+#/*--------------------------------*/
+#' ## Box plot
+#/*--------------------------------*/
+PlantGrowth %>%
+  as.data.table() %>%
+  .[, group := fcase(
+    group == "ctrl", "Control",
+    group == "trt1", "Treatment 1",
+    group == "trt2", "Treatment 2"
+  )] %>%
+  ggplot(data = ., aes(x = group, y = weight)) +
+  geom_boxplot(fill = "blue", alpha =0.5) +
+  labs(
+    title = "Box plot of weight of plants by group",
+    x = "Group",
+    y = "Weight"
+  ) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+# ggplot(data = airquality, aes(x = factor(Month), y = Temp)) +
+#   geom_boxplot() +
+#   theme_bw() +
+#   labs(
+#     title = "Box plot of temperature (degrees F) in New York, May to September 1973",
+#     x = "Month",
+#     y = "Temperature"
+#   ) +
+#   theme(plot.title = element_text(hjust = 0.5))
+```
+
+:::
+
+
+## Before starting {.center}
+
+Install the package `ggplot2`if you haven't done so.
+```{r}
+#| eval: false
+install.packages('ggplot2')
+```
+
+Once you have the package in your R, let's load it.
+
+```{webr-r}
+library(ggplot2)
+```
+
+<br>
+
+::: {.callout-note}
++ There is a package called `tidyverse`, which is  a collection of R packages designed for data science.
++ When you load the `tidyverse` package, `ggplot2` package is automatically loaded.
+:::
+
+# Section 1: Introduction to ggplot2
+
+---
+
