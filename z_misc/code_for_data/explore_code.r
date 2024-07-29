@@ -220,7 +220,7 @@ fata_dt[state %in% c("mn", "il")] %>%
 url <- "https://tinyurl.com/mtktm8e5"
 
 insurance <- 
-  read.csv(url) %>%
+  fread(url) %>%
   as.data.table() %>%
   .[, mean_expenses := mean(expenses), by = .(smoker, sex)]
   
@@ -281,3 +281,10 @@ library(ggplot2)
 
 
 
+
+
+
+#/*--------------------------------*/
+#' ## 
+#/*--------------------------------*/
+"https://raw.githubusercontent.com/gonzalodqa/timeseries/main/temp.csv"
