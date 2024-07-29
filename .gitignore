@@ -5,6 +5,8 @@ Lec_notes/.DS_Store
 Lec_notes/*/.DS_Store
 # *.pdf
 
+%
+
 /z_doc/misc
 /.quarto/
 .Rproj.user
