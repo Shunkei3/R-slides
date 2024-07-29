@@ -272,7 +272,12 @@ ggplot(data=gapminder, aes(x=lifeExp, fill=continent)) +
 
 
 #/*--------------------------------*/
-#' ## 
+#' ## Economics: US economic time series
 #/*--------------------------------*/
+library(ggplot2)
+
+# economics
+# ecnomics_long
+
 
 

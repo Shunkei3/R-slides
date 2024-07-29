@@ -1058,13 +1058,14 @@ r_20_70 <- r[r < 20 | r > 70]
 
 1. Load the file `nscg17small.dta`. You can find the data in the `Data` folder. 
    + This data is a subset of the National Survey of College Graduates (NSCG) 2017, which collects data on the educational and occupational characteristics of college graduates in the United States.
+
 2. Each row corresponds to a unique respondent. Let's create a new column called "ID". There are various ways to create an ID column. Here, let's create an ID column that starts from 1 and increments by 1 for each row.
 3. Get the descriptive statistics of the salary (use `summary()` function).
 4. Create a new variable in your data that represents the z-score
 of the hours worked (use `hrswk` variable).
 $$Z = (x - \mu)/\sigma$$
 , where $Z = \text{standard score}$, $x =\text{observed value}$, $\mu = \text{mean of sample}$, and $\sigma = \text{standard deviation of the sample}$.
-5. Calculate the share of observations in your data sample with
+1. Calculate the share of observations in your data sample with
 above average hours worked.
 
 
