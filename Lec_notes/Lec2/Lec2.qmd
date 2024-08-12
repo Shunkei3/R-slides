@@ -20,6 +20,8 @@ format:
     title-slide-attributes:
       data-background-color: "#447099"
     fig-dpi: 400
+    chalkboard: true
+    preview-links: true
 webr:
   packages: ["data.table", "tidyverse", "rio", "nycflights13", "openintro"]
   cell-options:
@@ -1466,6 +1468,42 @@ For each hour of the day and each origin airport, calculate the total number of 
 ```
 :::
 
+:::
+
+## Exercise 5
+
+:::{.panel-tabset}
+### Data
+
+For this exercise problem, we will use `journal` data from `AER` package. After loading the data, type `head(journal)` to see the first few rows of the data. Also, type `?journal` to see the description of the data.
+<!-- (`AER` stands for "Applied Econometrics with R", and the package contains wide variety of data sets used in popular econometric textbooks). -->
+
+```{webr-r}
+#| autorun: true
+# If you have not installed the package, run the following code
+# install.packages("AER")
+
+# load the package
+library(AER)
+# load the data from AER
+data("Journals", package = "AER")
+
+# To see the descriptions of the data, 
+# type `?Journals` in the console
+?Journals
+```
+
+
+
+### Instructions
+
+
+
+### Solutions
+
+```{webr-r}
+
+```
 :::
 
 
