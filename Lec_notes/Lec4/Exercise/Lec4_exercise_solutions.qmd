@@ -1,0 +1,203 @@
+---
+title: "Lectue 4 - Exercise Problems wit Solutions"
+format: 
+  html:
+    toc: true
+    number-sections: true
+    execute:
+      eval: true
+      message: false
+      warning: false
+---
+
+# Exercise Problems
+
+## Exercise 1: Demand for Economics Journal (Stock and Watson (2017), p336-337)
+
+::: panel-tabset
+### Instructions
+
+This exercise problem adapted from the economeric textbook of [ ](). Here using the `Journals` data from `AER` package, we are interested in examining the demand for economics journals. The data contains the information on the subscriptions to 180 economics journals at US libraries for the year 2000.
+
+Load the data with the following code. Check the discription of the data with `?Journals`.
+
+```{r}
+#| label: prep-ex1
+
+library(AER)
+data("Journals")
+# ?Journals
+```
+
+For anything else, exploring the data is the first step in any data analysis. "Data exploration" section contains the exercies to practice the data manipulation and visualization for descriptive data analysis. Now, it's your turn to load the package as needed. (I'm so happy if you would choose to use the packages we leaned before!)
+
+You can skip the "Data exploration" section and move on to the "Regression analysis" section.
+
+### Problems
+
+**Data exploration**
+
+1.  Find the top 10 journals with the highest citations. What about the top 10 journals with the highest price?
+
+2.  This data is taken from the year 2000. That is
+
+3.  Calculate the summary statistics (mean, median, standard deviation) for the `price`, `pages`, `citations`, `subs`, and citations columns.
+
+4.  Using *facet\_* Create a set of scatter plots that compare the relationship between `price` and various `citations`, and `subs`, and. Show them in a grid
+
+**Regression Analysis**
+
+The goal here is to examine the demand for economics journals. Speficically, we want to estimate the price elasticity of demand for economics journals.
+
+1.  First, create the following new variables:
+
+-   `citeprice`: the price per citation . Also, if you haven't create
+-   `age`: the number of years since the journal was first published (`2000 - foundingyear`).
+-   `character_million`: the number of characters in the journal title divided by 1 million.
+
+2.  Estimate the following four regression models ((1)\~(4)), and report the results in a table.
+
+\being{equation}
+
+\begin{align}
+(1) \, log(subs) &= \beta_0 + \beta_1 log(citeprice) + e \\
+(2) \, log(subs) &= \beta_0 + \beta_1 log(citeprice) + \beta_2 log(age) + e \\
+(3) \, log(subs) &= \beta_0 + \beta_1 log(citeprice) + \beta_2 log(age) + \beta_3 log(character_million) + e \\
+(4) \, log(subs) &= \beta_0 + \beta_1 log(citeprice) + \beta_2 log(age) + \beta_3 log(character_million)
+\end{align} \\end{equation}
+:::
+
+## Solutions
+
+```{r}
+#| label: ex1-solutions
+
+# === Load packages === #
+library(data.table)
+library(ggplot2)
+library(dplyr) # For the pipe operator %>%
+
+setDT(Journals)
+
+# === Part 1 === #
+Journals[order(citations),] # order() function sorts 
+
+# === Part 1 === #
+Journals[,.(mean_price = mean(price), median_price = median(price), sd_price = sd(price),
+           mean_cites = mean(citations), median_cites = median(citations), sd_cites = sd(citations))]
+
+# === Part 3 === #
+
+
+
+```
+
+------------------------------------------------------------------------
+
+# Analysis of the Test Score Dataset (Stock and Watson (2017), Chapter 7.6)
+
+::: panel-tabset
+### Instructions
+
+Using the `CASchools` dataset from the `AER` package, let's do some regression analysis to examine the effects on test scores of the studnet-teacher ratio. The dataset contains data on test performance, school characteristics and student demographic backgrounds for school districts in California.
+
+First, let's load the data. See `?CASchools` for the description of variables in the dataset.
+
+```{r}
+#| label: prep-ex2
+
+
+# === Loading Data === #
+data("CASchools")
+```
+
+### Problems
+
+1.  Create the follwing new variables:
+
+-   `stratio`: student-teacher ratio (`students/teachers`)
+-   `score`: the average of math and reading scores (`(math + read)/2`)
+
+2.  Using `datasummary` function, generate a summary table of key descriptive statistics for the CASchools dataset, including variables like `score`, `stratio`, `english`, and `lunch`, `calworks`.
+
+3.  Using `ggplot` functions, Create scastter plots of test scores (`score`) against the percentage of English language lerners (`english`), percentage qualifying for reduced-price lunch (`lunch`), and percentage qualifying for income asistance (`calworks`). (It would be nice if you could use the `facet_wrap()` function to show them at once.)
+
+4.  Estimate the following five regression models and report the results in a table.
+
+```{=tex}
+\begin{align}
+(1) \, score &= \beta_0 + \beta_1 stratio + e \\
+(2) \, score &= \beta_0 + \beta_1 stratio + \beta_2 english + e \\
+(3) \, score &= \beta_0 + \beta_1 stratio + \beta_2 english + \beta_3 lunch + e \\
+(4) \, score &= \beta_0 + \beta_1 stratio + \beta_2 english + \beta_3 calworks + e \\
+(5) \, score &= \beta_0 + \beta_1 stratio + \beta_2 english + \beta_3 lunch + \beta_4 calworks + e \\
+\end{align}
+```
+:::
+
+## Solutions
+
+```{r}
+#| label: solution-ex2
+
+# === Load package === #
+# This is redundant but I am loading the same packages we already used before just for the purpose of showing which package I am using to work on this problem. Note than you need to you load the package only once in your current R session.
+
+library(data.table)
+library(ggplot2)
+library(modelsummary)
+library(AER)
+
+
+# === Data === #
+library(AER)
+data(CASchools)
+setDT(CASchools)
+
+# === Part 1 === #
+CASchools[,`:=`(
+  stratio = students/teachers,
+  score = (math + read)/2
+  )]
+
+# === Part 2 === #
+datasummary(
+  formula = score + stratio + english + lunch + calworks ~ Mean + SD + Min + Max,
+  data = CASchools,
+  )
+
+# === Part 3 === #
+CASchools[,.(score, stratio, english, lunch, calworks)] %>%
+  melt(id.vars = "score") %>%
+  ggplot(aes(x = value, y = score)) +
+  geom_point() +
+  facet_wrap(~variable, scales = "free") +
+  theme_bw() #this part is optional
+
+
+# === Part 4 === #
+rge1 <- lm(score ~ stratio, data = CASchools)
+rge2 <- lm(score ~ stratio + english, data = CASchools)
+reg3 <- lm(score ~ stratio + english + lunch, data = CASchools)
+reg4 <- lm(score ~ stratio + english + calworks, data = CASchools)
+reg5 <- lm(score ~ stratio + english + lunch + calworks, data = CASchools)
+
+modelsummary(
+  models = list(rge1, rge2, reg3, reg4, reg5),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001), 
+  coef_map = c(
+    "stratio" = "Student-teacher ratio",
+    "english" = "Percent Englisch learners",
+    "lunch" = "Percent eligible for subsidiezxed lunch",
+    "calworks" = "Percent qualifying for CalWorks.",
+    "(Intercept)" = "Intercept"
+    ),
+  gof_map = c("nobs", "r.squared",  "adj.r.squared"),
+  fmt = 2,
+  notes = list("Std. Errors in parentheses")
+)
+```
+
+------------------------------------------------------------------------
+
+# FD, FE regression with `lm`

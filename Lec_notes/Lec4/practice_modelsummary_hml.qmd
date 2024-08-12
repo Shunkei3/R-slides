@@ -1,0 +1,179 @@
+---
+title: "Introduction to `Modesummary` package"
+format:
+  html:
+    self-contained: true
+    toc: true
+    number-sections: true
+    mainfont: Times New Roman
+    fig-cap-location: top
+execute: 
+  cache: false
+  message: false #suppress messages on the output file
+  warning: false  #suppress warning on the output file
+editor: source
+---
+
+# Before Starting
+
+**Make sure you are turn on the "Render on Save".** This let you see see changes of the quarto document you are working on without having to re-render the output file every time you save this file (`Cmd + s` for MAC users, `Ctrl+S` for Windows users).
+
+## Lerning Objectives:
++ By the end of this section, you know how to use the `modelsummary` package to create regression and summary tables that are of publication quality.
+
+## Data
+```{r}
+#| label: load-packages
+#| include: false # prevents code and results from appearing in the output file.
+
+# --- For data manipulation and visualization --- #
+library(data.table)
+library(dplyr)
+library(ggplot2)
+# --- For summary table --- #
+library(modelsummary)
+# --- For some data --- #
+library(AER)
+library(wooldridge)
+```
+
+```{r}
+#| label: load-data
+data(CPS1988)
+# I prefer to conver the data to data.table. 
+setDT(CPS1988)
+```
+
+# Introduction to `modelsummary` package
+
+## Intoductoin
+
+[`modelsummary`](https://modelsummary.com/) package let you create a nice summary table to report the discriptive statistics of the data and the regression results.
+
+Today, we mainly use two functions in the `modelsummary` package:
+
++ `datasummary()`: to create a summary table for the descriptive statistics of the data.
++ `modelsummary()`: to create a summary table for the regression results.
+
+
+Check the [documentation](https://modelsummary.com/) for more details.
+
+::: {.callout-note}
++ There is another package called `stargazer` that can create a summary table, but it is not maintained anymore. So, I recommend to use `modelsummary` package.
++ `modelsummary` package is compatible with 
+:::
+
+
+## The Taste of `modelsummary` package
+
+In the below, I show what kind of tables can be created with `modelsummary` package. Don't try to understand the code for now. See the output tables.
+```{r}
+#| label: tbl-ex1-datasummary
+#| code-fold: true
+#| tbl-cap: "Example of Summary Statistics"
+
+datasummary(
+  wage + education + experience ~ Mean + SD + Min + Max,
+  data = CPS1988
+  )
+```
+
+
+```{r}
+#| label: tbl-ex2-datasummary
+#| code-fold: true
+#| tbl-cap: "Example regression results"
+#| text-align: left
+
+# change the base group for ethnicity to "cauc"
+ex_dt <-
+  copy(CPS1988) %>%
+  .[,ethnicity := relevel(as.factor(ethnicity), ref = "cauc")]
+
+ls_regs <- 
+  list(
+    "OLS 1" = lm(log(wage) ~ education, data = ex_dt),
+    "OLS 2" = lm(log(wage) ~ education + experience + I(experience^2), data = ex_dt),
+    "OLS 3" = lm(log(wage) ~ education + experience + I(experience^2) + ethnicity, data = ex_dt)
+  )
+
+modelsummary(
+  models = ls_regs,
+  output = "latex",
+  coef_map = c(
+    "education" = "Education", 
+    "experience" = "Experience", 
+    "I(experience^2)" = "Experience squared",
+    "ethnicityafam" = "White"
+    ),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001), 
+  gof_map = c("nobs", "r.squared",  "adj.r.squared"),
+  notes = list("Std. Errors in parentheses")
+  )
+```
+
+## Regression Tables with `modelsummary()` function
+
+Let's start with the `modelsummary()` function to create a summary table for the regression results.
+
+
+## `modelsummary()` function
+
+### Basics
+
+::: {.callout-important icon=false}
+### Syntax
+The basic argument of the `modelsummary()` function is the list of regression models you want to report in the table.
+
+```{r}
+#| eval: false
+#| echo: true
+modelsummary(models=list(model1, model2, model3))
+```
+:::
+
+
+**Example**
+
+```{r}
+#| resuls: asis
+#| echo: true
+reg1 <- lm(log(wage) ~ education, data = CPS1988)
+reg2 <- lm(log(wage) ~ education + experience + I(experience^2), data = CPS1988)
+
+modelsummary(models=list(reg1, reg2))
+```
+
+
+
+```{r}
+modelsummary(
+  models = list("OLS 1" = reg1, "OLS 2" = reg2),
+  coef_map = c(
+    "education" = "Education", 
+    "experience" = "Experience", 
+    "I(experience^2)" = "Experience squared"
+    ),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001)
+  # coef_omit = 1
+  )
+```
+
+
+```{r}
+msummary(
+  models = list("OLS 1" = reg1, "OLS 2" = reg2),
+  coef_map = c(
+    "education" = "Education", 
+    "experience" = "Experience", 
+    "I(experience^2)" = "Experience squared"
+    ),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001)
+  )
+
+```
+
+
+
+
+

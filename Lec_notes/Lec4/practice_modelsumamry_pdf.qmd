@@ -1,0 +1,107 @@
+---
+title: "Introduction to  `Modesummary` package"
+author: "Your name here"
+format:
+  pdf:
+    documentclass: article
+    mainfont: Times New Roman
+    toc: false
+    number-sections: true
+    colorlinks: true
+    fig-cap-location: top
+    geometry:
+      - top=20mm
+      - left=20mm
+      - heightrounded
+    include-in-header: 
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+          commandchars=\\\{\},
+          breaklines, breaknonspaceingroup, breakanywhere
+        }
+execute:
+  cache: false
+  message: false #suppress messages on the output file
+  warning: false  #suppress warning on the output file
+editor: source
+---
+
+```{r}
+#| label: load-packages
+#| include: false # prevents code and results from appearing in the output file.
+
+# --- For data manipulation and visualization --- #
+library(data.table)
+library(dplyr)
+library(ggplot2)
+# --- For summary table --- #
+library(modelsummary)
+# --- For some data --- #
+library(AER)
+library(wooldridge)
+```
+
+# Data
+```{r}
+data(CPS1988)
+# I prefer to conver the data to data.table. 
+setDT(CPS1988)
+```
+
+
+I created this document to show how summary tables created by `modelsummary`package look like on the PDF output. For more details about the package, see the `practice_modelsummary_html.qmd` file.
+
+
+# Lerning Objectives:
++ By the end of this section, you know how to use the `modelsummary` package to create regression and summary tables that are of publication quality.
+
+# Introduction to `modelsummary` package
+
+## The Taste of `modelsummary` package
+
+Below are the example tables created by `modelsummary` package. Don't try to understand the code for now. See the output tables.
+```{r}
+#| label: tbl-ex1-datasummary
+#| tbl-cap: "Example of Summary Statistics"
+
+datasummary(
+  wage + education + experience ~ Mean + SD + Min + Max,
+  data = CPS1988
+  )
+```
+
+
+```{r}
+#| label: tbl-ex2-datasummary
+#| tbl-cap: "Example regression results"
+
+# change the base group for ethnicity to "cauc"
+ex_dt <-
+  copy(CPS1988) %>%
+  .[,ethnicity := relevel(as.factor(ethnicity), ref = "cauc")]
+
+ls_regs <- 
+  list(
+    "OLS 1" = lm(log(wage) ~ education, data = ex_dt),
+    "OLS 2" = lm(log(wage) ~ education + experience + I(experience^2), data = ex_dt),
+    "OLS 3" = lm(log(wage) ~ education + experience + I(experience^2) + ethnicity, data = ex_dt)
+  )
+
+modelsummary(
+  models = ls_regs,
+  coef_map = c(
+    "education" = "Education", 
+    "experience" = "Experience", 
+    "I(experience^2)" = "Experience squared",
+    "ethnicityafam" = "White"
+    ),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001), 
+  gof_map = c("nobs", "r.squared",  "adj.r.squared"),
+  notes = list("Std. Errors in parentheses")
+  )
+```
+
+
+
+
