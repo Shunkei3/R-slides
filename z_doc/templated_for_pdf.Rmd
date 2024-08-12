@@ -1,0 +1,88 @@
+---
+title: "Example of R Markdown for PDF"
+author: Shunkei Kakimoto
+output:
+  pdf_document:
+    number_sections: no
+    toc: no
+    toc_depth: 3
+geometry: margin=1in
+---
+
+```{r setup, include=FALSE}
+# library(knitr)
+# library(here)
+
+# here::i_am("")
+
+# opts_knit$set(root.dir = "")
+# opts_knit$set(root.dir = here())
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  # cache = FALSE,
+  # comment = NA,
+  message = FALSE,
+  warning = FALSE
+  # tidy = FALSE,
+  # cache.lazy = FALSE
+  #--- figure ---#
+  # dpi = 400,
+  # fig.width = 7.5,
+  # fig.height = 5,
+  # out.width = "750px",
+  # out.height = "500px"
+)
+```
+
+
+
+# Problem 1
+
+\begin{align*}
+\hat{\beta} 
+  &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime}Y)} \\
+  &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime} (X \beta + \mathbf{e}))} \\
+  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta 
+   + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
+  &= \beta + \mathbf{(X^{\prime} X)^{-1} X^{\prime} e}
+\end{align*}
+
+
+# Problem 2
+
+```{r}
+# === Load packages === #
+library(modelsummary)
+
+# === Load Data === #
+data(hprice2, package = "wooldridge")
+
+# === Estimate three models === #
+reg1 <- lm(log(price) ~ log(nox), data = hprice2)
+reg2 <- lm(log(price) ~ log(nox) + rooms, data = hprice2)
+reg3 <- lm(log(price) ~ log(nox) + rooms + I(rooms^2), data = hprice2)
+
+# === Show the Results === #
+ls_models <- 
+  list(
+    "OLS 1" = reg1,
+    "OLS 2" = reg2,
+    "OLS 3" = reg3
+  )
+
+modelsummary(
+  models = ls_models,
+  output = "flextable",
+  fmt = "%.2f",
+  coef_map = c(
+    "log(nox)" = "log(Nox)", 
+    "rooms" = "Rooms", 
+    "I(rooms^2)" = "Rooms sq"
+    ),
+  stars  =  c("*" = .05, "**" = .01, "***" = .001), 
+  gof_map = c("nobs", "r.squared"),
+  title = "Example Regression Results",
+  notes = list("Note: Std. Errors in parentheses")
+  )
+```
