@@ -5,6 +5,8 @@ Lec_notes/.DS_Store
 Lec_notes/*/.DS_Store
 # *.pdf
 
+z_doc/*.xlsx
+
 %
 
 /z_doc/misc
@@ -12,7 +14,6 @@ Lec_notes/*/.DS_Store
 .Rproj.user
 .Rhistory
 .RData
-
 
 /Lec_notes/Lec*/*.rds
 
