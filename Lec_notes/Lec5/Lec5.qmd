@@ -1,0 +1,84 @@
+---
+title: "Day 5: Monte Calro Simulation"
+subtitle: "Department of Applied Economics, University of Minnesota"
+author: "Shunkei Kakimoto"
+format: 
+  revealjs:
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    theme: 
+      - default 
+      - ../slide_style/styles.scss
+    fontsize: 1.5em
+    callout-icon: false
+    scrollable: true
+    echo: true
+    cache: true
+    warning: false
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-color: "#447099"
+    fig-dpi: 400
+    chalkboard: true
+    preview-links: true
+webr:
+  packages: ["data.table", "ggplot2", "dplyr", "gapminder"]
+  cell-options:
+    editor-font-scale: 0.8
+filters:
+  - webr
+---
+
+
+## {.center}
+
+### Learning Objectives
+
++ write a code for simple Monte Carlo simulation using for loop.
++ 
+
+<br>
+
+:::{.fragment .center}
+### Reference {.center}
++ [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
++ [R for Data Science (2e), Ch1: Data visualization](https://r4ds.had.co.nz/pipes.html)
+:::
+
+
+## Today's outline: {.center}
+
+1. Introduction to ggplot2
+
+
+
+## Example ggplot figures 
+
+By the end of the lecture, you will be able to create the figures like the following examples using `ggplot2` package.
+
+
+
+
+
+## Test slide
+
+```{webr-r}
+1+1
+```
+
+
+
+----
+
+
+## Exercise problems
+
+**Idea**
+1. Generate an empty matrix and use a loop to fill in each entry of A
+2. 95% confidence interval?
+3. Omitted variable bias.
+4. Fixed effect estimation with panel data
+5. 
