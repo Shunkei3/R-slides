@@ -77,8 +77,7 @@
   + Explore RStudio:
     + explain the layout of RStudio
     + explain the feature of R studio
-    + code style:
-      + "R is an 
+    + code style
   + Types of R objects:
     + Basic element types
     + Basic object types
@@ -88,6 +87,7 @@
     + Base R functions: log(), abs(), sqrt(), mean(), median(), max(), min(), lm()
     + plot(), density(), hist()
 
++ **Breife intoduction of Quarto and Rmarkdown?**
 
 ## Questions:
 + list vs 
@@ -148,21 +148,32 @@
     + define a new variable
     + 
 
-
-
-
-
-
-
 ---
 # Plan: Day3: Data visualization with ggplot2
 
 ## To do:
-+ ggplot()
-+ 
+
 
 ---
-# Plan: Day4
+# Day4: Regression analysis and Report the 
+
+# Plan: 
+
++ use `lm()` function
+
+
+```{r}
+library(wooldridge)
+data(hprice2)
+setDT(hprice2)
+
+test <- lm(price ~ nox + rooms, data = hprice2)
+
+coef(test)
+
+```
+
+
 
 ---
 # Plan: Day5
