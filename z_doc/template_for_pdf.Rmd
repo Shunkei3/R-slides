@@ -1,41 +1,85 @@
 ---
-title: "Example of R Markdown for PDF output"
+title: Example of R Markdown for PDF output
 author: Your Name
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
+  bookdown::pdf_document2:
     number_sections: no
     toc: no
     toc_depth: 3
-geometry: margin=1in
+geometry: margin=0.75in
 ---
 
 ```{r setup, include=FALSE}
+# /*===== You can define global options here =====*/
 # knitr::opts_knit$set(root.dir = "") # you can set the working directory here
+
 knitr::opts_chunk$set(
-  # here you can set the global options for the code chunks
-  cache = FALSE,
   message = FALSE, # suppress messages on the final document
-  warning = FALSE # suppress warnings on the final document
+  warning = FALSE, # suppress warnings on the final document
+  fig.align = "center" #figure alignment
 )
 ```
 
 
 # Problem 1
 
-\begin{align*}
-\hat{\beta} 
-  &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime}Y)} \\
-  &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime} (X \beta + \mathbf{e}))} \\
-  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta 
-   + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
-  &= \beta + \mathbf{(X^{\prime} X)^{-1} X^{\prime} e}
-\end{align*}
+\begin{equation} 
+\begin{split}
+\mathrm{Var}(\hat{\beta}) & =\mathrm{Var}((X'X)^{-1}X'Y)\\
+ & =(X'X)^{-1}X'\mathrm{Var}(Y)((X'X)^{-1}X')'\\
+ & =(X'X)^{-1}X'\mathrm{Var}(Y)X(X'X)^{-1}\\
+ & =(X'X)^{-1}X'\sigma^{2}IX(X'X)^{-1}\\
+ & =(X'X)^{-1}\sigma^{2}
+\end{split}
+(\#eq:var-beta)
+\end{equation} 
+
+See Equation \@ref(eq:var-beta).
 
 
 # Problem 2
 
-```{r}
+```{r, load-data}
+#| echo: false
+
+# === Load Packages === #
+library(data.table)
+library(ggplot2)
+
+# === Data === #
+# iris is a built-in dataset in R
+data(iris) 
+# Convert the data into data.table
+setDT(iris)
+# Filter for the species "virginica" 
+virginica <- iris[Species == "virginica",]
+```
+
+```{r, fig-scatter-line}
+#| fig.cap: "Relationship between Sepal.Length and Petal.Length"
+#| out.width: 50%
+
+# === Visualization === #
+ggplot(virginica, aes(x=Sepal.Length, y=Petal.Length))+
+  geom_point()+
+  # --- Add a regression line --- #
+  geom_smooth(method = lm, se = FALSE)+
+  # --- Change the background --- #
+  theme_bw()+
+  # --- Center the title --- #
+  theme(plot.title = element_text(hjust = 0.5)) 
+```
+
+Figure \@ref(fig:fig-scatter-line) shows the relationship between Sepal.Length and Petal.Length.
+
+
+
+# Problem 3
+
+```{r, tbl-reg-summary}
+#| tab.cap: "Example Regression Results"
+
 # === Load packages === #
 library(modelsummary)
 
@@ -64,9 +108,12 @@ modelsummary(
     "rooms" = "Rooms", 
     "I(rooms^2)" = "Rooms sq"
     ),
+  vcov = "HC3",
   stars  =  c("*" = .05, "**" = .01, "***" = .001), 
   gof_map = c("nobs", "r.squared"),
-  title = "Example Regression Results",
-  notes = list("Note: Std. Errors in parentheses")
+  notes = list("Note: Robust Std. Errors in parentheses.")
   )
 ```
+
+
+Table \@ref(tab:tbl-reg-summary) shows an example of regression summaty table.

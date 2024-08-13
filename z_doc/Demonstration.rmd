@@ -2,7 +2,7 @@
 title: Latex math notations and Example R codes with PDF output
 author: Shunkei Kakimoto
 output:
-  pdf_document:
+  bookdown::pdf_document2:
     number_sections: no
     toc: true
     toc_depth: 3
@@ -13,6 +13,8 @@ header-includes:
    - \usepackage{bm}
 geometry: margin=2cm
 urlcolor: blue
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +24,8 @@ knitr::opts_chunk$set(
   comment = NA,
   message = FALSE,
   warning = FALSE,
-  tidy = FALSE
+  tidy = FALSE,
+  fig.align = "center"
 )
 ```
 
@@ -302,14 +305,14 @@ In Rmarkdown (and Quarto) document, you write R codes inside a code chunk:
 
 ````markdown
 `r ''````{r}
-write your code inside the chunk. 
+write your code inside the chunk.
 ```
 ````
 
 To insert a code chunk, you can use a shortcut key: `Cmd + Option + I` for Mac users (`Ctrl + Alt + I` for Windows users). Below are examples showing how the R codes and their output look on the output document
 
 ## Example 1
-```{r}
+```{r, load-data}
 # === Load Packages === #
 library(data.table)
 library(ggplot2)
@@ -323,7 +326,7 @@ setDT(iris)
 virginica <- iris[Species == "virginica",]
 ```
 
-```{r}
+```{r, fig-scatter-line}
 #| out.width="70%"
 
 # === Visualization === #
@@ -360,7 +363,8 @@ or
 The following code run regression analysis with the `lm()` function and show the results with the `modelsummary` function from the [`modelsummary` package](https://modelsummary.com/).
 
 
-```{r}
+```{r, tbl-regression}
+
 # === Load packages === #
 library(modelsummary)
 
@@ -397,7 +401,7 @@ modelsummary(
 ```
 
 
-\
+
 
 # Section 4: Insert a picture to a document
 Below is an example R chunk code to insert a picture. 

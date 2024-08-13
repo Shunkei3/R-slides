@@ -177,3 +177,16 @@ coef(test)
 
 ---
 # Plan: Day5
+
++ Monte Calro simulations: 
+
+## Why?
++ "An estimator is a function of random variables and therefore itself a random variable. The properties of an estimator are fully described by its probability distribution (the so-called sampling distribution). The sampling distribution can then be used to perform tests against hypothesis"
+
+
++ Nibte Carlo Simulations: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.schmidheiny.name/teaching/montecarlo2up.pdf
+
++ Kennedy (2003, p. 24) defines a Monte Carlo study as “a simulation exercise designed to shed light on the small-sample properties of competing estimators for a given estimating problem.”
+
+
+
