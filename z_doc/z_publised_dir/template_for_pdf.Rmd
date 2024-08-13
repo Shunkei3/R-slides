@@ -11,19 +11,12 @@ geometry: margin=1in
 ---
 
 ```{r setup, include=FALSE}
-# library(knitr)
-# library(here)
-
-# here::i_am("")
-
-# opts_knit$set(root.dir = "")
-# opts_knit$set(root.dir = here())
-
+# knitr::opts_knit$set(root.dir = "") # you can set the working directory here
 knitr::opts_chunk$set(
-  echo = TRUE,
+  # here you can set the global options for the code chunks
   cache = FALSE,
-  message = FALSE,
-  warning = FALSE
+  message = FALSE, # suppress messages on the final document
+  warning = FALSE # suppress warnings on the final document
 )
 ```
 
