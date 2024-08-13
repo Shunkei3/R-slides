@@ -39,6 +39,7 @@ The objectives of this document are:
 
 Especially, Sections 1 and 2 might be helpful for students unfamiliar with \LaTeX\ commands. These are the most commonly used \LaTeX\ commands when you write assignments for econometrics and microeconomics classes in APEC!
 
+For Section 1, I adapted the content from the document created by Prof. Joe Ritter, my previous Econometrics instructor.
 
 # Section 1: \LaTeX\ Building blocks
 
@@ -198,11 +199,10 @@ X_i, \sigma_{ij}
 Syntax:
 ```{r, eval=F}
 \begin{align*}
-\hat{\beta} 
+\hat{\beta}
   &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime}Y)} \\
   &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime}(X\beta + e))} \\
-  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta 
-      + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
+  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
   &= \beta + \mathbf{(X^{\prime} X)^{-1} X^{\prime} e}
 \end{align*}
 ```
@@ -211,8 +211,7 @@ becomes:
 \hat{\beta} 
   &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime}Y)} \\
   &= \mathbf{(X^{\prime}X)^{-1} (X^{\prime} (X \beta + \mathbf{e}))} \\
-  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta 
-   + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
+  &= \mathbf{(X^{\prime} X)^{-1} X^{\prime}{X} \beta + (X^{\prime} X)^{-1} X^{\prime} e} \\ 
   &= \beta + \mathbf{(X^{\prime} X)^{-1} X^{\prime} e}
 \end{align*}
 
@@ -286,7 +285,7 @@ Syntax:
 ```{r, eval=F}
 \begin{align*}
 \max_{x_1, x_2} \quad & u(x_1, x_2) = \frac{1}{2}log x_1 + \frac{1}{2} log x_2 \\
-\textrm{s.t.} \quad & w=p_1 x_1 + p_2 x_2 \\
+\textrm{s.t.} \quad & w = p_1 x_1 + p_2 x_2 \\
 \end{align*}
 ```
 becomes:
