@@ -1,6 +1,7 @@
 ---
-title: "Example of R Markdown for PDF"
-author: Shunkei Kakimoto
+title: "Example of R Markdown for PDF output"
+author: Your Name
+date: "`r Sys.Date()`"
 output:
   pdf_document:
     number_sections: no
@@ -19,19 +20,10 @@ geometry: margin=1in
 # opts_knit$set(root.dir = here())
 
 knitr::opts_chunk$set(
-  echo = FALSE,
-  # cache = FALSE,
-  # comment = NA,
+  echo = TRUE,
+  cache = FALSE,
   message = FALSE,
   warning = FALSE
-  # tidy = FALSE,
-  # cache.lazy = FALSE
-  #--- figure ---#
-  # dpi = 400,
-  # fig.width = 7.5,
-  # fig.height = 5,
-  # out.width = "750px",
-  # out.height = "500px"
 )
 ```
 
