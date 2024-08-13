@@ -327,15 +327,14 @@ virginica <- iris[Species == "virginica",]
 ```
 
 ```{r, fig-scatter-line}
-#| out.width="70%"
+#| fig.cap: "Relationship between Sepal.Length and Petal.Length"
+#| out.width: 50%
 
 # === Visualization === #
 ggplot(virginica, aes(x=Sepal.Length, y=Petal.Length))+
   geom_point()+
   # --- Add a regression line --- #
   geom_smooth(method = lm, se = FALSE)+
-  # --- Add a title --- #
-  labs(title = "Relationship between Sepal.Length and Petal.Length")+
   # --- Change the background --- #
   theme_bw()+
   # --- Center the title --- #
@@ -356,7 +355,7 @@ or
 ```
 ````
 
-\
+\newpage
 
 ## Example 2: 
 
