@@ -32,46 +32,295 @@ filters:
   - webr
 ---
 
+## Recap
+
+In the previous lecture, we learned how to do regression analysis using R, which is a foundamental skill for econometric analysis.
+
+Today, we will learn how to code Monte Calro simulation in R. Monte Calro simulations are very important tool to understand the properties of estimators and inference techniques. With Monte Calro simulations, you can test any kind of statistical theories, which is very fun and useful!!
+
 
 ## {.center}
 
 ### Learning Objectives
 
-+ write a code for simple Monte Carlo simulation using for loop.
-+ 
++ to be able to write a code for Monte Calro simulation using for loop function.
++ to report the simulation resutls using a table and a graph. 
++ to be able to write a code for your own R functions.
 
 <br>
 
+### Main functions:
++ R built-in `for loop` functon.
++ `foreach()` function from `foreach` package.
+
+<br>
+
+### Sub functions:
++ `rbind()` function (base R functions)
++ `rbindlist()` function (`data.table` package)
+
+
+
+## Outline {.center}
+
++
+
++
+
 :::{.fragment .center}
 ### Reference {.center}
-+ [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
-+ [R for Data Science (2e), Ch1: Data visualization](https://r4ds.had.co.nz/pipes.html)
++ [Section 21.2 For loops](https://r4ds.had.co.nz/iteration.html?q=for%20loo#for-loops) in R for Data Science
 :::
 
 
-## Today's outline: {.center}
 
-1. Introduction to ggplot2
+## Why loop? {.center}
+
+Using Loop is highly useful when you want to repeat the same task over and over again.
+
+<br>
+
+::: {.callout-note}
+## Common situations
++ Downloading the data from the web iteratively
+  + When you want to download the ag-producton data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.
+  + USDA crop scale data, NOAA weather data, etc.
++ Loading the multiple data files in a folder.
++ Running the same regression analysis for multip le datasets.
++ Running simulations or resampling methods, such as bootstrapping or Monte Carlo simulations.
+:::
 
 
 
-## Example ggplot figures 
+## Loop: Intoducton
+<!-- start panel:loop   --> 
+:::{.panel-tabset} 
+ 
+### Basics 
+ 
+The syntax of the `for loop` is very simple.
 
-By the end of the lecture, you will be able to create the figures like the following examples using `ggplot2` package.
+```r
+for (variable in collection_of_objects){
+  the code to be executed in each iteration
+}
+```
+
+<br>
+
+You need to define: (i) `variable`, (ii) `collection of objects`, (iii) `the code to be executed in each iteration.`
+
+<br>
+
+::: {.callout-note}
++ `collection_of_objects` can be a vector or a list object.
+  + e.g., a sequecne of numbers or characters, a list of datasets, etc.
++ In each iteration `variable` takes a value from the `collection_of_objects` in order and the code inside the loop is executed using the value of `variable`.
++ Here, I used , 
+:::
 
 
 
 
+### Examples
 
-## Test slide
+
+**1. Print the numbers from 1 to 5.**
 
 ```{webr-r}
-1+1
+for (i in 1:5){
+  print(i)
+}
+```
+
+**2. Print characters in a list.**
+```{webr-r}
+for (x in list("I", "like", "cats")){
+  print(x)
+}
+```
+
+**3. Calculate the mean of each element in a list.**
+
+Can you tell me what's going on in the following code?
+```{webr-r}
+ls_seq_num <- list(1:3, 4:6, 7:9)
+
+for (seq_num in ls_seq_num){
+  print(mean(seq_num))
+}
+```
+
+:::{.notes}
++ ls_seq_num is a list of three verctors, and each vector is a sequence of values. 
++ As I said before, variable `seq_num` takes each vector in the collection of objects `ls_seq_num` in order.
++ 
+:::
+
+
+### Your Turn
+
+<!-- start panel:Your turn   --> 
+:::{.panel-tabset} 
+### Exercise 1 
+
+In econometric class, we use `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
+
+The basic syntax is `rnorm(n, mean = 0, sd = 1)`, where `n` is the number of random numbers you want to generate, `mean` is the mean of the normal distribution, and `sd` is the standard deviation of the normal distribution. So `rnorm(n, mean =0, sd = 1)` generates `n` random numbers from a standard normal distribution.
+
+<br>
+
+Gerates 1000 random numbers from a standard normal distribution and caluculate the mean the numbers (use `mean()` function), and print the rusult. Repeat this process 10 times using the `for loop`.
+
+```{webr-r}
+for (i in 1:10){
+  # write your code here
+
+}
+```
+
+ 
+### Exercise 2 (nested loop)
+
+You can nest the for loop inside another for loop. For example, 
+
+```{webr-r}
+# Outer loop
+for (i in 1:3) {
+  # Inner loop
+  for (j in 1:2) {
+    print(paste("i =", i, "j =", j))
+  }
+}
+```
+
+Using the above code as a reference, fill in the folling empty 3 x 3 matrix with the sum of the row and column indices.
+
+The output should look like this: 
+
+```{r}
+#| eval: true
+#| echo: false
+empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
+for (i in 1:3){
+  for (j in 1:3){
+    empty_matrix[i, j] <- i + j
+  }
+}
+print(empty_matrix)
+```
+
+<br>
+
+```{webr-r}
+# Here, is the empty 3 x 3 matrix.  
+empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
+
+
 ```
 
 
+<!-- end panel:Your turn  --> 
+:::
 
-----
+
+
+
+<!-- end panel:loop  --> 
+:::
+
+
+
+## Loop: How to Save the Results?
+
+<!-- start panel:save the results   --> 
+:::{.panel-tabset} 
+### Problem 
+
+Unlike R functions we have used so far, `for loop` does not have a return value. 
+
+Let's see the following examples. 
+```{webr-r}
+ls_seq_num <- list(1:3, 4:6, 7:9)
+
+for (seq_num in ls_seq_num){
+  # save the results in x
+  x <- mean(seq_num))
+}
+
+print(x)
+```
+
+Or, can I do like this?
+
+```{webr-r}
+ls_seq_num <- list(1:3, 4:6, 7:9)
+
+x <- for (seq_num in ls_seq_num){
+  # save the results in x
+  mean(seq_num)
+}
+
+print(x)
+```
+
+
+### Soluton
+We can store the output of a for-loop in a new vector by appending the result of each iteration to an initially empty vector, as in the example below:
+
+
+
+
+<!-- end panel:save the results  --> 
+:::
+
+
+
+
+
+
+
+
+
+
+
+## Introduction to Monte Carlo Simulations
+
+What is Monte Carlo simulation in statistics?
+
+Ultimately, we want to know the 
+
+
+Monte Carlo simulation is a way to test econometric theories or statistical procedures in realistic setting via simulation.
+
+Ususally, the data at our hand is a portion of the population. 
+
+:::{.notes}
++ In this world, everything is random and uncertain. In terms of econometric analysis, the data you get is just a realization of the random process. If you have another sample, you will get a different result. Because the data is random, the result of the estimation is also random variable. 
++ This uncertainty, or randomness, is called **sampling variability**.
++ In statistics, any random variable is asssumed to have some probaility distribution.
++ Monte Carlo simulation mimics this randomness utilizing the random number generator, and produces the probability distribution of the estimator. 
+
+:::
+
+
+
+## Monte Carlo Simulation: Steps
+
++ step 1: specify the data generating process
++ step 2: Repeat:
+  + step 2.1: generate data based on the data generating process
+  + step 2.2: get an outcome you are interested in based on the generated data
++ step 3: compare your estimates with the true parameter
+
+## Example: Binomial Distribution
+
+Think about the following example. 
+
+Suppose that we flip a coin $n=9$ times, and count the number of heads (i.e., $X$). The coin is not fair, say, the probability of getting a head is $p= Pr[heads] = 1/3$.
+
+Commonly, this kind of experiemnt is modeled with a binomial distribution.
+
 
 
 ## Exercise problems
