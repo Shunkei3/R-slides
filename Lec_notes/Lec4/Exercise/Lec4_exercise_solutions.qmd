@@ -1,7 +1,8 @@
 ---
-title: "Lectue 4 - Exercise Problems wit Solutions"
+title: "Lectue 4 - Exercise Problems:  Solutions"
 format: 
   html:
+    embed-resources: true
     toc: true
     number-sections: true
     execute:
