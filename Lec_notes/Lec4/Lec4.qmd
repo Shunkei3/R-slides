@@ -1314,8 +1314,8 @@ For this exercise problem, we use `CPSSW3` dataset from the `AER` package. The `
 
 ```{r}
 library(AER)
-data("CPSSW3")
-head(CPSSW3)
+data("CPSSW9204")
+head(CPSSW9204)
 ```
 
 
@@ -1331,8 +1331,8 @@ Let's create the following tables:
 #| echo: false
 datasummary(
   formula = 
-    year * earnings ~ gender * (Mean + SD + Min + Max),
-  data = CPSSW3,
+    year *  (earnings + age) ~ gender * (Mean + SD),
+  data = CPSSW9204,
   output = "gt"
   )
 ```
@@ -1345,12 +1345,11 @@ datasummary(
 #| echo: false
 datasummary(
   formula = 
-    (`Part time job` = parttime) * ((`Wage (dollars/week)` = wage) + (`Education (years)` = education) + (`Work experience (years)` = experience)) ~ ethnicity * (Mean + (`Std.Dev` = SD)),
-  data = CPS1988,
+    (Year = year) * ((`Avg. hourly earnings` = earnings) + (Age = age))~ gender * (Mean + (`Std.Dev` = SD)),
+  data = CPSSW9204,
   output = "gt"
   )
 ```
-
 
 <!-- end panel -->
 :::
