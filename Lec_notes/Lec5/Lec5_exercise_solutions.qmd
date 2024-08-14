@@ -1,0 +1,111 @@
+---
+title: "Lectue 5 - Exercise Problems: Solutions"
+author: "Shunkei Kakimoto"
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    number-sections: true
+    theme: 
+      - default 
+    execute:
+      eval: false
+      message: false
+      warning: false
+---
+
+## Exercise 1: Combining Datasets using Loop
+
+
+:::{.panel-tabset} 
+ <!-- start panel:exerciese1   --> 
+
+### Instruction
+ 
+In the “corn_yield_by_sates” folder, you will find corn yield datasets(2000-2022) by state. Leveraging your expertise in R programming, use the `loop` function (or `foreach()`), load each dataset, and combine them into a single dataset. 
+
+Hint: You can use `list.files ()` function. It is a built-in function in R that returns a character vector of file paths in the specified folder. The syntax is `list.files(path = “path to the folder”, full.names = TRUE)`. The ‘full. names’ argument, when set to TRUE, returns the full file paths instead of just the file names. Then, you can use those file paths to load data. You need to specify the path to the target folder in the path argument. 
+
+Keep in mind there are various ways to approach this problem! 
+
+
+### Solutions 
+
+Make sure that you open the R project fo this course. If so, the following code should work on your computer. 
+
+There are lots of approach. The most easy one is to use `foreach` function (in my opinion).
+
+:::{.panel-tabset}
+
+### {{< fa lightbulb >}} Solution 1: Using loop
+
+```{r}
+# --- Get a list of pathes to the target files --- #
+ls_path_yield <- list.files(path = "Data/corn_yield_by_states", full.names = TRUE)
+
+# --- Create an empty data.frame as a storage --- #
+storage_yield_dt <- data.frame()
+
+# --- for loop --- #
+for (i in 1: length(ls_path_yield)){
+  
+  # Load a datset using i th path in ls_path_yield
+  temp_dt <- readRDS(ls_path_yield[[i]])
+  
+  # Combine temp_dt and storage_yield_dt by row using rbind(). 
+  # This way, storage_yield_dt is updated in each iteration.
+  storage_yield_dt <- rbind(storage_yield_dt, temp_dt)
+}
+```
+
+
+Another similar approach: You can use list() or vector() to store the datasets in the loop.
+
+```{r}
+# --- Get a list of pathes to the target files --- #
+ls_path_yield <- list.files(path = "Data/corn_yield_by_states", full.names = TRUE)
+
+# --- Create an empty storage vector with the same length as  --- #
+ls_yield_dt <- list()
+
+# --- for loop --- #
+for (i in 1: length(ls_path_yield)){
+  
+  # Load a datset using i th path in ls_path_yield
+  temp_dt <- readRDS(ls_path_yield[[i]])
+  
+  # Save in the storage object
+  ls_yield_dt[[i]] <- ls_yield_dt
+}
+
+# To combine the datasets in the list, use rbindlist() function() from data.table package.
+yield_dt <- rbindlist(ls_yield_dt)
+```
+
+
+### {{< fa lightbulb >}} Solution 2: Using foreach
+
+```{r}
+# --- Get a list of pathes to the target files --- #
+ls_path_yield <- list.files(path = "Data/corn_yield_by_states", full.names = TRUE)
+
+# --- for loop --- #
+yield_dt <- foreach(file_path_i = ls_path_yield, .combine = rbind) %do% {
+  # Load a datset
+  temp_dt <- readRDS(file_path_i)
+  
+  return(temp_dt) 
+}
+```
+
+The `foreach` function returns the last value of the loop by default. In this case, the `temp_dt` object is returned in each iteration, so `return(temp_dt)` is unnecessary. Once all iterations are completed, the output datasets are combined by row (because I specified `.combine = rbind`). 
+:::
+
+<!-- end panel:exerciese1  --> 
+:::
+
+
+
+
+
+
