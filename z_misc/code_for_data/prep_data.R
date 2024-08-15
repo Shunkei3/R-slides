@@ -112,5 +112,24 @@ county_mean_corn_yield <-
 corn_yield_simple[year == 2020, .(average_yield = mean(value)), by = .(state_alpha)]
 
 
+#/*--------------------------------*/
+#' ## Splite the yield data by state
+#/*--------------------------------*/
+corn_yield_simple <- 
+  readRDS(here("Data/corn_yield_dt.rds")) %>%
+  as.data.table()
+
+ls_states <- unique(corn_yield_simple$state_alpha)
+
+for (i in ls_states) {
+  # i = ls_states[[1]]
+  tmp_dt <- corn_yield_simple[state_alpha == i]
+  
+  saveRDS(
+    data.frame(tmp_dt),
+    here("Data/corn_yield_by_states/", paste0("corn_yield_", i, ".rds"))
+  )
+}
 
 
+unique(corn_yield_simple$year) %>%sort()

@@ -190,3 +190,25 @@ coef(test)
 
 
 
+# Exercise problems:
+
+## For loop function:
++ Write a function, se( ), that takes a numeric vector as its argument
+and returns the standard error of the mean of the vector.
++
+
+## Create function:
+
+
+## Monte Carlo simulation:
+
+### What is the best way to estimate population mean?
+  + two important properties: unbiasedness and efficiency
+
++ Use only the first element
++ sample mean
++ Theoretically, apprach 1 and 2 are both unbiased estimators. 
+
+### Get pi
+### Omitted variable bias
+### Measurement error problems 
