@@ -25,7 +25,7 @@ format:
     chalkboard: true
     preview-links: true
 webr:
-  packages: ["data.table", "ggplot2", "dplyr", "gapminder"]
+  packages: ["data.table", "ggplot2", "dplyr", "foreach"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -45,8 +45,11 @@ filters:
 ## 
 
 Before we dive into the Monte Carlo simulation, we need to review some key R operations: 
-
 +  `for loop` function
+
+
++ Although we'll not use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
+
 + Although we'll not use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
 
 :::
@@ -67,22 +70,33 @@ Before we dive into the Monte Carlo simulation, we need to review some key R ope
 
 ### {{< fa asterisk >}} Reference {.center}
 
-+ [Section 21.2 For loops](https://r4ds.had.co.nz/iteration.html?q=for%20loo#for-loops) in R for Data Science
++ [Section 19 Functions](https://r4ds.had.co.nz/functions.html)
++ [Section 20 Iteration](https://r4ds.had.co.nz/iteration.html) in R for Data Science
+
 :::
 
 
 ## {{< fa list >}} Outline {.center}
 
-+
++ [User-Defined Functions](#fn)
+  - [Exercise Problems](#fn-ex)
++ [Loops](#loops)
+  - [Basics](#loops-basics)
+    - [Exercise Problems](#loops-basics-ex)
+  - [How to Save the loop output?](#loops-save)
+  - [Multiple Outputs](#loops-multi)
+    - [Exercise Problems](#loops-save-ex)
++ [Introduction to Monte Carlo Simulations](#monte-intro)
+  - [Demonstration](#monte-demo)
+  - [Exercise Problems](#monte-ex)
 
-+
 
 # User-Defined Functions
 
 ---
 
 
-## Introduction to User-Defined Functions
+## Introduction to User-Defined Functions {#fn}
 
 
 <!-- start panel:Functions   --> 
@@ -176,7 +190,7 @@ acre_to_ha(x = 1)
 
 
 
-## Exercise 1
+## Exercise {#fn-ex}
 
 <!-- start panel:Exercise 1   --> 
 :::{.panel-tabset} 
@@ -184,15 +198,14 @@ acre_to_ha(x = 1)
  
 1. Write a function (you can name it whatever you want) to calculate the area of a circle with a given radius. The function should return the area of the circle. Use `pi`, which is a built-in constant for the value of $\pi$ in R.
 
-<br>
-
 2. Write a function to check whether the provided number is an even number or not. The function should return `TRUE` if the number is even, and `FALSE` otherwise.
 
-Hint: Use `ifelse()` function. It's syntax is `ifelse(condition, return_value_if_condition_met, return_value_otherwise)`.
+::: {.callout-tip}
+## Hints:
+Use `ifelse()` function. It's syntax is `ifelse(condition, return_value_if_condition_met, return_value_otherwise)`.
+:::
 
-
-
-3. In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It’s denoted by n!. For example, $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Write a function named `calculate_factorial` that takes a single integer argument `n` (Assume $n \ge 1$).
+1. In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It’s denoted by n!. For example, $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Write a function named `calculate_factorial` that takes a single integer argument `n` (Assume $n \ge 1$).
 
 
 ::: {.callout-tip collapse="true"}
@@ -231,7 +244,7 @@ The function should give back a vector of numbers (or it would be nicer if you c
 
 ---
 
-## Why loop? {.center}
+## Why loop? {.center} 
 
 Using Loop is useful when you want to repeat the same task (but slight change in parameters) over and over again.
 
@@ -247,16 +260,23 @@ Using Loop is useful when you want to repeat the same task (but slight change in
 + Running simulations or resampling methods, such as bootstrapping or Monte Carlo simulations.
 :::
 
+<br>
+
+:::{.fragment .fade-up}
+While there are several looping commands in R (e.g., `foreach`, `lapply`, etc.), we will use the `for loop` function, as it is the most basic and widely used looping function in R.
+:::
 
 
-## For loops: Introduction
+## For loops {#loops-basics}
 <!-- start panel:loop   --> 
 :::{.panel-tabset} 
- 
+
 ### Basics 
  
-The syntax of the `for loop` is very simple.
+The `for loop` function is a built-in R function. The syntax of the `for loop` is very simple.
 
+
+**Syntax:**
 ```r
 for (variable in collection_of_objects){
   the code to be executed in each iteration
@@ -265,7 +285,7 @@ for (variable in collection_of_objects){
 
 <br>
 
-You need to define: (i) `variable`, (ii) `collection of objects`, (iii) `the code to be executed in each iteration.`
+You need to define there components in the function: (i) `variable` (ii) `collection of objects`, (iii) `the code to be executed in each iteration.`
 
 <br>
 
@@ -274,8 +294,6 @@ You need to define: (i) `variable`, (ii) `collection of objects`, (iii) `the cod
 + `collection_of_objects` can be a vector or a list object.
   + e.g., a sequence of numbers or characters, a list of datasets, etc.
 :::
-
-
 
 
 ### Examples
@@ -320,9 +338,15 @@ for (seq_num in ls_seq_num){
 + 
 :::
 
+<!-- end panel:loop  --> 
+:::
 
 
-### Exercise
+## Exercise {#loops-basics-ex}
+
+<!-- start panel:exercise   --> 
+:::{.panel-tabset} 
+### Exercise 1 
 
 In econometric class, we use `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
 
@@ -338,9 +362,8 @@ for (i in 1:10){
 
 }
 ```
-
  
-### Exercise (nested loop)
+### Exercise  2 (nested loop)
 
 You can nest the for loop inside another for loop. For example, 
 
@@ -377,12 +400,12 @@ print(empty_matrix)
 empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
 
 ```
-<!-- end panel:loop  --> 
+
+<!-- end panel:exercise  --> 
 :::
 
 
-
-## For loops: How to Save the loop output?
+## For loops: How to Save the loop output? {#loops-save}
 
 <!-- start panel:save the loop output   --> 
 :::{.panel-tabset} 
@@ -463,8 +486,11 @@ output_storage
 + Since the output of each iteration is a number, vector is a good choice for the storage object. (Alternatively you can use a list object.)
 :::
 
+<!-- end panel:save the results  --> 
+:::
 
-###  Multiple Outputs
+
+## Multiple Outputs {#loops-multi}
 
 What if we want to have multiple outputs from the loop and combine them into a single dataset?
 
@@ -491,8 +517,7 @@ for(i in 1:B){
 ```
 
 
-
-### Exercise
+## Exercise {#loops-save-ex}
 
 <!-- start panel:Exercise 3   --> 
 :::{.panel-tabset} 
@@ -541,8 +566,6 @@ Let’s take this concept further. Suppose Pythagoras challenges you to find all
 <!-- end panel:Exercise 3  --> 
 :::
 
-<!-- end panel:save the results  --> 
-:::
 
 
 ## Check point {.center}
@@ -554,14 +577,18 @@ Up to this point, as long as you understand the following points, you are good t
 + You know that you need to prepare an empty object to save the output of the loop.
 
 
+# Introduction to Monte Carlo Simulations {#monte-intro}
 
-## Introduction to Monte Carlo Simulations {.center}
+---
+
+## Introduction to Monte Carlo Simulations
 
 <br>
 
 ### What is it?
 
-[Monte Carlo simulation is a simulation technique to obtain a likelihood of possible outcomes from some model by iteratively running the model using random sampling from the assumed probability distribution]{style="color: blue;"}.
+[Monte Carlo simulation is a technique to approximate a likelihood of possible outcomes (e.g., predictions, estimates) from a model by iteratively running the model on artificially created datasets. In every iteration, the dataset are randomly sampled from the assumed data generating process, so it varies every iteration.]{style="color: blue;"}
+
 
 + The incorporation of randomness in the simulation is the key feature of Monte Carlo simulation. *It is mimicking the randomness of real-world phenomena.*
 
@@ -596,7 +623,7 @@ Suppose that a researcher came up a new estimator to estimate coefficients of a 
 :::
 
 
-## Example: Binomial Distribution {.center}
+## Example: Binomial Distribution {.center #monte-demo}
 
 Think about the following example. 
 
@@ -674,7 +701,6 @@ sum(seq_x)
 
 
 
-
 ### Multiple iterations
  
 ```{webr-r}
@@ -687,9 +713,8 @@ p <- 1/3 # the probability of getting a head
 n <- 10 # the number of trials
 B <- 1000 # the number of iterations
 
-# Don't forget to create an empty object to save the output
+# Don't forget to create an empty object to save the output!
 X <- rep(0, B)
-
 
 # === Step 2: Iteration === #
 for (i in 1:B){
@@ -710,46 +735,107 @@ mean(X)
 var(X)
 ```
 
-
-
-
 <!-- end panel:Demonstration  --> 
 :::
 
-## Exercise Problem: 
+# Exercise Problem {#monte-ex}
 
+---
+
+## Exercise Problem: (Weak) Low of Large Number
 <!-- start panel:exercise   --> 
 :::{.panel-tabset} 
 ### {{< fa person-chalkboard >}} Instructions
 
+Weak law of large number states that the sample mean converge (in probability) to the population mean as the sample size increase. In other words, the sample means becomes more accurately estimate the population mean as the sample size increases.
+
+$$\bar{X}_n = \frac{1}{n}\sum_{n=1}^{n} X_i E[X] \xrightarrow{p} E[X]$$
+
+Lets check this using Monte Carlo simulation! We compare the distribution of sample mean with different sample size. Lets' compare two sample size: $n=100$ and $n=1000$.
+
+<br>
+
+**Process**
+
+Repeat 1 and 2 for $B=1000$ times.
+
+1. Using a normal distribution with mean $\mu = 5$ and $sd = 10$, generate random numbers for $n=100$ and $n=1000$. e.g. `rnorm(n = 10, mean = 5, sd = 10)`.
+
+2. Compute sample mean for each sample data, and save them.
+
+Finally, 
+
+3. Plot histograms of the sample means obtained from the two sample 
 
 
- 
- 
+### {{< fa lightbulb >}} Solution
+
+```{webr-r}
+set.seed(1843)
+
+# --- Parameters --- #
+mu <- 5
+sd <- 10
+
+B <- 1000
+
+# --- Create an empty object to save the output --- #
+sample_mean_100 <- rep(0, B)
+sample_mean_1000 <- rep(0, B)
+
+# --- for loop --- #
+for (i in 1:B){
+  # --- Generate random numbers --- #
+  sample_100 <- rnorm(n = 100, mean = mu, sd = sd)
+  sample_1000 <- rnorm(n = 1000, mean = mu, sd = sd)
+  
+  # --- Compute sample mean --- #
+  sample_mean_100[i] <- mean(sample_100)
+  sample_mean_1000[i] <- mean(sample_1000)
+}
+
+
+# --- Plot --- #
+ggplot() +
+  geom_histogram(
+    aes(x = sample_mean_100, fill = "Sample size: 100"),
+     alpha = 0.7
+  ) +
+  geom_histogram(
+    aes(x = sample_mean_1000, fill = "Sample size: 1000"),
+    alpha = 0.7
+  ) +
+  geom_vline(
+    xintercept = mu,
+    linetype = "dashed",
+  ) +
+  theme_bw()
+```
+
 <!-- end panel:exercise  --> 
 :::
 
-
-
-## Exercise Problem:What is the best way to estimate the population mean? (Optional)
+## Exercise Problem: Two estimators to estimate the population mean? 
 
 
 <!-- start panel:exercise   --> 
 :::{.panel-tabset} 
 ### {{< fa person-chalkboard >}} Instructions 
 
-Suppose we're interested in estimating the population mean of men's heights (i.e., $\mu$) in the US. We have randomly sampled data with the size of $n=2000$. Let $X_i$ denote the individual $i$'s height.
+Suppose you're interested in estimating the unknown population mean of men's heights (i.e., $\mu$) in the US. We have randomly sampled data with the size of $n=1000$. Let $X_i$ denote the individual $i$'s height in the sample. **How should we use the sample data to estimate the population mean?**
 
-Let's consider two approach for this.
+<br>
 
-Method 1. Use the sample mean: $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$ 
+Your friends suggested two different estimators:
 
-Method 2. Use only the first observation: $X_1$
+Estimator 1. Use the sample mean: $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$ 
+
+Estimator 2. Use only the first observation: $X_1$
 
 <br>
 
 :::{.fragment .fade-up}
-Theoretically, both are unbiased estimators (if we repeat the estimation process many times, the average of the estimates will be equal to the population mean):
+Theoretically, both estimators are unbiased estimators (i.e., if we repeat the estimation process many times on a different sample data every time, the average of the estimates will be equal to the population mean):
 
 <!-- Note that $X_i$ is a random variable, and all $X_i$ for $i = 1,2,...,2000$ belong to the same population with the same mean $\mu$. -->
 
@@ -764,22 +850,25 @@ E[X_1] &= \mu
 ::: {.callout-note}
 ## Questions:
 
-+ Is it true that both methods are correctly estimating the population mean, on average?
-+ Which one is more accurate in estimating the population mean? Compare the variance of the two estimators.
++ Is it true that both estimators are correctly estimating the population mean, on average?
++ Which one is more accurate in estimating the population mean?
 
 Using Monte Carlo simulation, let's examine these questions!
 :::
 :::
 
-### Your Turn
+### {{< fa circle-info >}} Hint
 
-Hint: 
+1. Repeat the following processes 1000 times:
 
-Steps:
+step 1. Draw $n = 1000$ random numbers with known mean $\mu$ and standard deviation $\sigma$. This will the sample data. 
 
-1. Define data generating process: You can use normal distribution with your choice of mean and standard deviation. Note that the value of the mean should be the population mean of height. 
+step 2. Get (1) the mean of the sample and (2) the value of the first observation, and save the results.
 
-2. Generate a 2000 random numbers with 
+1. The   2000 estimates of the population mean for estimator 1 and estimator 2, respectively. Compute the means for each estimator. Are they both close to the true population mean? Compute the variance of the estimates. Which one has a smaller variance?
+
+If you could also visually compare the distribution of estimates from the two estimators, it would be great!
+
 
 ```{webr-r}
 
@@ -787,8 +876,6 @@ Steps:
 
 <!-- end panel:exercise  --> 
 :::
-
-
 
 
 
@@ -802,41 +889,52 @@ Steps:
 :::{.panel-tabset} 
 ### Basics
 
-The `foreach` function is pretty much similar to the `for loop` function. It is used to repeat the same task over and over again with slight variations.
+[The `foreach` function is a function of the `foreach` package. It is used to iterate the same process over and over again, similar to the `for loop` function.]{style="color: blue;"}
 
-The main difference is that `foreach` function has a return value, which is a list of the output of each iteration.
+<br>
 
 **Basic Syntax**
+
+While there are some differences, the basic syntax of the `foreach` function is pretty much similar to the `for loop` function.
 
 ```r
 foreach(variable = collection_of_objects) %do% {
   the code to be executed in each iteration
+
+  return(output)
 }
 ```
 
-::: {.callout-note}
-+ Differences between `for loop` and `foreach` function
-  + use `=` instead of `in` 
-  + you need to use `%do%` operator
-  + `foreach` function returns a list of the output of each iteration, while `for loop` function requires you to create an empty object to store the output.
-:::
+<br>
 
 
 ::: {.callout-note}
-See [this](https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html) for more details.
++ Differences between `for loop` and `foreach` function:
+  + use `=` instead of `in`.
+  + you need to use `%do%` operator. 
+  + `foreach` function has a return value, while `for loop` does not. By default, the output is returned as a list.
 :::
 
+(* `foreach` function also supports parallel processing. (we will not cover this in this class.))
 
-### Example: 
 
-The following codes do the same task using the `for loop` and `foreach` function, respectively. 
+<br>
+
+### Example
+
+Using the `for loop` and `foreach` function, let's calculate the square of the numbers from 1 to 10, respectively. 
 
 ::: {.columns}
 ::: {.column width="50%"}
 **foreach**
+
 ```{webr-r}
+# --- Load the package --- #
+library(foreach)
+
 results <- foreach(i = 1:10) %do% {
-  i^2
+  i_square <- i^2
+  return(i_square)
 }
 
 # see the output
@@ -845,6 +943,7 @@ results
 :::
 ::: {.column width="50%"}
 **for loop**
+
 ```{webr-r}
 # --- Create an empty object  --- #
 results <- rep(0, 10)
@@ -853,6 +952,7 @@ results <- rep(0, 10)
 for (i in 1:10){
   results[i] <- i^2
 }
+
 # see the output
 results
 ```
@@ -861,18 +961,35 @@ results
 
 
 
-### Change the output 
- 
+### Change the output format
+
+By default, `foreach` function returns each iteration's result as a list. But you can choose the format of the output by using the `.combine` argument.
+
++ `.combine = c` combines each iteration's result as as a vector (like `c()` to create a vector).
++ `.combine = rbind` combines each iteration's result by row.
++ `.combine = cbind` combines each iteration's result by column. 
+
+The last two options are used when the output is a `matrix` or a `data.frame` (or `data.table`).
+
+<br>
+
+**Example**
+
++ Try different `.combine` options in the following code.
+
+```{webr-r}
+# --- Load the package --- #
+library(foreach)
+
+results <- foreach(i = 1:10, .combine = c) %do% {
+  i_square <- i^2
+  return(i_square)
+}
+
+# see the output
+results
+```
+
+
 <!-- end panel:foreach  --> 
 :::
-
-
-
-## Exercise problems
-
-**Idea**
-1. Generate an empty matrix and use a loop to fill in each entry of A
-2. 95% confidence interval?
-3. Omitted variable bias.
-4. Fixed effect estimation with panel data
-5. 
