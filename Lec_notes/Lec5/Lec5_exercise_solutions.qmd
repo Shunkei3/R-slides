@@ -14,13 +14,44 @@ format:
       warning: false
 ---
 
-## Exercise 1: Combining Datasets using Loop
+## Loop
+
+<!-- start panel:   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions
+
+1. Using the `for loop`, calculate the sum of the first `n` numbers for `n = 1, 2, ..., 10`. Save the results in a vector object.
+ 
+2. 
+
+### {{< fa lightbulb >}}  Solutons
+
+**Part 1**
+```{r}
+# --- Create an empty vector --- #
+output_storage <- rep(0, 10)
+
+# --- for loop --- #
+for (i in 1:10){
+  output_storage[i] <- sum(1:i)
+}
+```
+
+
+**Part 2**
+
+
+<!-- end panel:  --> 
+:::
+
+
+## Combining Datasets using Loop
 
 
 :::{.panel-tabset} 
  <!-- start panel:exerciese1   --> 
 
-### Instruction
+### {{< fa person-chalkboard >}} Instruction
  
 In the “corn_yield_by_sates” folder, you will find corn yield datasets(2000-2022) by state. Leveraging your expertise in R programming, use the `loop` function (or `foreach()`), load each dataset, and combine them into a single dataset. 
 
@@ -29,7 +60,7 @@ Hint: You can use `list.files ()` function. It is a built-in function in R that
 Keep in mind there are various ways to approach this problem! 
 
 
-### Solutions 
+### {{< fa lightbulb >}} Solutions 
 
 Make sure that you open the R project fo this course. If so, the following code should work on your computer. 
 
@@ -105,7 +136,192 @@ The `foreach` function returns the last value of the loop by default. In this ca
 :::
 
 
+## Functions (Basics)
+
+<!-- start panel:funcions   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions
+
+1. Write a function to calculate the area of a circle with a given radius. The function should return the area of the circle.
+
+
+2. The factorial of a non-negative integer $n$, $n!$ is the product of all positive integers between 1 and $n$(e.g., $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.) Create a function named `calculate_factorial` that takes a single integer argument `n`. The function should return the value of $n!$. Assume that `n` does not take zero for simplicity.
+
+3. Write a function that calculates the sum of the first `n` numbers for `n = 1, 2, ..., 10`. The function should return the results as a vector object.
+
+4. Write a function to count how many odd numbers there are in a provided vector containing a series of integers.
+
+
+### {{< fa lightbulb >}} Solutions
+
+**Part 1**
+```{r}
+# --- Create a function --- #
+circle_area <- function(radius){
+  return(pi * radius^2)
+}
+```
+
+
+```{r}
+# --- Create a function --- #
+calculate_factorial <- function(n){
+  return(prod(1:n))
+}
+
+# --- Test --- #
+calculate_factorial(0)
+
+
+# --- A bit more sophisticated way --- #
+calculate_factorial <- function(n) {
+  if (n %in% c(0, 1) {
+    return(1)
+  } else {
+    return(prod(1:n))
+  }
+}
+
+```
+
+**Part 2**
+```{r}
+# --- Create a function --- #
+sum_n <- function(n){
+  output_storage <- rep(0, n)
+  
+  for (i in 1:n){
+    output_storage[i] <- sum(1:i)
+  }
+  
+  return(output_storage)
+}
+```
+
+**Part 3**
+```{r}
+# --- Using loop --- #
+num.odd <- function(v){
+  count <- 0
+  
+  for (i in 1:length(v)){
+    if (v[i] %% 2 != 0){
+      count <- count + 1
+    }
+  }
+  
+  return(count)
+}
+```
+
+ 
+ 
+<!-- end panel:funcions  --> 
+:::
+
+
+
+### Functions
+
+<!-- start panel:exercise   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions
+
+You're a data expart at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
+
+For sales growth, use the following formula 
+
+$$S_t = S_0 \times (1 + g)^{t-1}$$ 
+
+, where $S_t$ is the sales in month $t$ , $S_0$  is the starting sales, and $g$ is the growth rate.
+
+Create a function called `monthly_sales_growth` with the following three inputs:
+
++ `initial_sales`: Starting sales (in thousands of dollars).
++ `growth_rate`: Monthly growth rate (as a decimal, like 0.03 for 3% growth).
++ `months`: How many months to predict (usually 12 for a year).
+
+The function should give back a vector of numbers (or it would be nicer if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
+
+
+### {{< fa lightbulb >}} Solutions
+
+**Part 1**
+```{r}
+monthly_sales_growth <- function(initial_sales, growth_rate, months, discount_rate = 0){
+  sales <- rep(0, months)
+  
+  for (i in 1:months){
+    sales[i] <- initial_sales * (1 + growth_rate)^(i-1) * (1 - discount_rate)
+  }
+  
+  return(sales)
+}
+``` 
+
+If you don't use `for loop`, you can use the following code:
+
+```{r}
+monthly_sales_growth <- function(initial_sales, growth_rate, months) {
+  # Generate a sequence of months
+  month_seq <- 1:months
+  
+  # Calculate the sales growth for each month
+  sales <- initial_sales * (1 + growth_rate) ^ (month_seq - 1)
+
+  return(sales)
+}
+
+# --- Test --- #
+monthly_sales_growth(initial_sales = 50, growth_rate = 0.03, months = 12)
+```
+ 
+ 
+<!-- end panel:exercise  --> 
+:::
+
+
+
+### Functions and Loops (Advanced)
+
+<!-- start panel:functons and loops   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions 
+
+[Pythagorean triples](https://en.wikipedia.org/wiki/Pythagorean_triple) are sets of three positive integers $(a, b, c)$ that satisfy the equation $a^2 + b^2 = c^2$, who are named after the ancient Greek mathematician Pythagoras.
+
+Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where $a$ and $b$ are less than or equal to a given number $n$. To address this problem, let's create an R function that will produce all such triples.
+
+
+1. Write a function named `find_pythagorean_triples` that takes one argument `n`, an integer, representing the maximum value for `a` and `b`. The function should return a data frame with columns `a`, `b`, and `c`,  containing all Pythagorean triples where `a \leq b \leq n` and `a^2 + b^2 = c^2`.
+
+
+::: {.callout-tip collapse="true"}
+## Hints:
++ Consider using nested loops to iterate through all possible values of a and b up to n.
++	Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.
+:::
+
+
+### {{< fa lightbulb >}} Solutions
+
+```{r}
+find_pythagorean_triples <- function(n){
+  b <- seq()
+}
+
+
+```
+ 
+ 
+<!-- end panel:functons and loops  --> 
+:::
 
 
 
 
+
+
+```{r}
+
+```
