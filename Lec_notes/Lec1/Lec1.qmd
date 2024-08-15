@@ -49,7 +49,7 @@ figcaption {
 + Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see table of contents, and you can jump to the section you want to see.
 + Hitting letter "o" on your keyboard and you will have a panel view of all the slides.
 + You can directly write and run R codes, and see the outputs on slides. 
-+ When you want to execute (run) code, hit `command` + `enter` (Mac) or `Control` + `enter` (Windows) on your keybord. Alternatively, you can click the "Run Code" button on the top left corner of the code chunk.
++ When you want to execute (run) code, hit `command` + `enter` (Mac) or `Control` + `enter` (Windows) on your keyboard. Alternatively, you can click the "Run Code" button on the top left corner of the code chunk.
 
 <br>
 
@@ -63,11 +63,11 @@ print("Let's get started!")
 ## {.center}
 <br>
 
-### **Lerning Objectives**
-+ To get familiar with the feature of RStudio.
+### **Learning Objectives**
++ To get familiar with the features of RStudio.
 + To understand how to create vector, list, matrix, and data.frame in R, and how to access and modify the elements in those objects.
-+ To get familiar with base R functions to do mathematical calculations.
-+ To get familiar with be able to base plotting functions to visualize data.
++ To be able to use base R functions to do mathematical calculations.
++ To be able to use base `plot()` function for quick visualize data.
 :::
 
 <br>
@@ -94,7 +94,7 @@ print("Let's get started!")
 
 
 
-## Before you start {.center}
+## Before you start {.center}      
 
 <br>
 
@@ -109,7 +109,7 @@ print("Let's get started!")
 These are the things you should know at least:
 
 + How to create R script (`.R` files)?
-+ How to open files or folderz in Rstudio?
++ How to open files or folder in Rstudio?
 + How to run the code line by line?
 + How to comment out the code?
 
@@ -130,9 +130,11 @@ These are the things you should know at least:
 
 ### Basics
 ::: {.callout-important}
-+ R programing language is object-oriented programming (OOP), which basically means: "Everything is an object and everything has a name."
++ R programming language is object-oriented programming (OOP), which basically means: "Everything is an object and everything has a name."
 
-+ You can assign information (numbers, character, data) to an object on R using `<-` or `=` (e.g., `object_name <- value`) and resue it later.
++ You can assign information (numbers, character, data) to an object on R using `<-` or `=` (e.g., `object_name <- value`) and reuse it later.
+  + e.g `x <- 1` (globally) assigns 1 to an object called `x`.
+    + In later, when we create functions, we will see that the object created in the function is only available in the function (not globally available).
   + If you assign contents to an object of the same name, the object that had the same name will be overwritten.
 + Once objects are created, you can evaluate them on the console to see what is inside.
 :::
@@ -144,7 +146,7 @@ x <- 1
 # see what's inside object "x"
 x
 
-# assign the result of a product to an objecte called "y"
+# assign the result of a product to an object called "y"
 y <- 2*3
 
 # store sum of x and y in z
@@ -172,7 +174,7 @@ sqrt(z)
 # For example, this is not allowed. You will see an error.
 1_test <- 1:3
 
-# Intead, you can do this.
+# Instead, you can do this.
 test_1 <- 1:3
 test_1
 ```
@@ -215,7 +217,7 @@ is.integer(2L)
 
 ### Data Type Conversion
 
-You can convert one type of data to anoter type of data using `as.XXX()` function.
+You can convert one type of data to another type of data using `as.XXX()` function.
 
 Three conversion functions that are used often are:
 + `as.numeric()`
@@ -235,7 +237,7 @@ class(test_num)
 # convert from numeric to character type
 as.character(test_num)
 
-# conver from numeric to factor type
+# convert from numeric to factor type
 as.factor(test_num)
 ```
 :::
@@ -243,7 +245,7 @@ as.factor(test_num)
 :::{.note}
 + There six "basic types" called atomic data types for data in R:
 + You specify that some information is character data by surrounding it in either single quotes (') or double quotes ("). 
-+ Factor and character are similar but different. Unlike chracter, factor is used to represent categorical data and the number of order is implictly encoded in the data.
++ Factor and character are similar but different. Unlike character, factor is used to represent categorical data and the number of order is implicitly encoded in the data.
 + 
 :::
 
@@ -258,7 +260,7 @@ as.factor(test_num)
 ::: {.callout-important}
 + A Logical value can be either `TRUE` and `FALSE` (and these are not characters!)
 + Logical values are often results of comparison operations such as `<` (less than), `>` (greater than), `<=` (less-than-or-equal), `>=` (greater-than-or-equal), `==` (equal), and `!=` (not-equal).
-+ As we will see latewr, a sequence of logical values (i.e., logical vectors) can be used index vector to subset the data!
++ As we will see later, a sequence of logical values (i.e., logical vectors) can be used index vector to subset the data!
 :::
 
 + Relational operators (or comparison operator): `==`, `!=`, `>`, `<`, `>=`, `<=`.
@@ -330,7 +332,7 @@ Here, we focus on two things:
 
 ### Basics
 + A vectors is a class of object that consists of elements of the **same kind of elements** (All elements in a vector must be of the same data type). You use `c()` to create a vector.
-  + As other functions to create vectore, you can use `seq()`, `rep()`.
+  + As other functions to create vector, you can use `seq()`, `rep()`.
 + You can also combine two vectors using `c()`.
 
 ```{webr-r}
@@ -361,7 +363,7 @@ c(x, z)
 + Vector Indexing: https://thomasleeper.com/Rcourse/Tutorials/vectorindexing.html
 +  -->
 
-+ You can get a single element, or a set of specific elements of a vector by indexing with `[]` blackets. Inside `[]`, you provide anothe vector (i.e. index vector) the position of the element you want to extract 
++ You can get a single element, or a set of specific elements of a vector by indexing with `[]` brackets. Inside `[]`, you provide another vector (i.e. index vector) the position of the element you want to extract 
   + e.g., `x[2]` returns the second element of `x`.
 
 ```{webr-r}
@@ -542,7 +544,7 @@ m_num
 :::
 
 :::{.notes}
-+ While vector is one-dimentional array, matrix is two-dimentional array.
++ While vector is one-dimensional array, matrix is two-dimensional array.
 + 
 :::
 
@@ -653,7 +655,7 @@ yield_data <-
 
 ## Summary {.center}
 
-Don't worry about the details. You'll get used to these data structures as you use R more. Here are the key points you need to knowb at this point:
+Don't worry about the details. You'll get used to these data structures as you use R more. Here are the key points you need to know at this point:
 
 ::: {.callout-important title="key points"}
 + To know that how to create vector, matrix, data.frame, and list object in R.
@@ -805,7 +807,7 @@ t(mat_a)
 
 **Example** 
 
-Suppose that I want to load `flight.rds` in the Data foler. On my local computure, the full path (i.e., aboslute path) to the file is `/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds`.
+Suppose that I want to load `flight.rds` in the Data folder. On my computer, the full path (i.e., absolute path) to the file is `/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds`.
 
 ```{r}
 #| eval: false
@@ -862,8 +864,8 @@ flight_dt <- readRDS(file = "flight.rds")
 :::{.fragment .fade-up}
 ::: {.callout-caution}
 ## Problems
-+ Still, `setwd()` relies on an absolute file path, which might vary by person (e.g., some persom save folder in Dropbox, other person uses Google Drive). 
-+ So, designating working directory using `setwd()` does not solve the second problme completely (i.e, If you are working with a team, the path to the data file is different for each person.)
++ Still, `setwd()` relies on an absolute file path, which might vary by person (e.g., some person save folder in Dropbox, other person uses Google Drive). 
++ So, designating working directory using `setwd()` does not solve the second problem completely (i.e, If you are working with a team, the path to the data file is different for each person.)
 :::
 :::
 
@@ -919,7 +921,7 @@ Follow this steps illustrated in this document: [R for Data Science Ch 8.4](http
 :::{.fragment .fade-up}
 ::: {.callout-important}
 ## Use import() function
-+ **But** `import()` function from the `rio` package might be the most coveneint one to load various format of data. 
++ **But** `import()` function from the `rio` package might be the most convenient one to load various format of data. 
   + Unlike, `read.csv()` and `read.dta13()` which specialize in reading a specific type of file, `import()` can load data from various sources.
 :::
 :::
@@ -942,7 +944,7 @@ library(rio)
 
 ## Saving the data
 
-+ You can save the data with varioius format.
++ You can save the data with various format.
 + **But**, Unless necessary, it is recommended to save the data in `.rds` format.
   + how?: `saveRDS(object_name, path_to_save)`
 
@@ -998,7 +1000,7 @@ In the next lecture, we will learn about data manipulation using `data.table` pa
 
 ### Problems
 
-<!-- From this [webwise](https://www.w3resource.com/r-programming-exercises/) -->
+<!-- From this [website](https://www.w3resource.com/r-programming-exercises/) -->
 
 1. Create a sequence of numbers from 20 to 50 and name it `x`. Let's change the numbers that are multiples of 3 to 0.
 
@@ -1012,9 +1014,9 @@ r <- sample(1:100, size=20, replace = TRUE)
 
 3. Find the value of mean and SD of vector `r` without using `mean()` and `sd()`
 4. Figure out which position contains the maximum value of vector `r`. (use `which()` function. Run `?which()` to find out what the function does.)
-5. Exctract the values of `r` that are larger than 50.
-6. Exctract the values of `r` that are larger than 40 and smaller than 60.
-7. Exctract the values of `r` that are smaller than 20 or larger than 70.
+5. Extract the values of `r` that are larger than 50.
+6. Extract the values of `r` that are larger than 40 and smaller than 60.
+7. Extract the values of `r` that are smaller than 20 or larger than 70.
 
 
 ### Answers
@@ -1123,22 +1125,22 @@ Let's use `flight.rds` data in the `Data` folder. Load the data. We will only lo
 <br>
 
 ::: {.callout-note}
-+ You can solve this exercise problme by using only base-R functions. See Hints if you need help.
++ You can solve this exercise problem by using only base-R functions. See Hints if you need help.
 + Also, note that googling is one of the most important skills for coding!
 :::
 
 
 ### Hints (step by step)
 
-Here are the steps that I took to solve the problem. You do not neccearily need to follow the steps.
+Here are the steps that I took to solve the problem. You do not need to follow the steps.
 
 1. Load the `flight.rds` data in the `Data` folder.
 2. Select the columns `year`, `month`, `day`, `dep_delay`, `arr_delay`, `dest`, and  `carrier`, and subset rows that have "MSP" as `dest`. Let's name the data `flights_mn`.
 3. In `flights_mn`, create a new column called `total_delay` which is the sum of `dep_delay` and `arr_delay`. Further, create a new column called `delay_type` which takes character `"delay_more_30"` if `total_delay` is more than 30 minutes, and character `"others"` (or 0) otherwise.
-   + You can use `ifelse()` function to create a bianary variable, `delay_type`.
+   + You can use `ifelse()` function to create a binary variable, `delay_type`.
 
-4. Count the binary categoy `delay_type` by `carrier`. Let's name the result `flights_mn_delay_count`.
-   + `table()` is an R base function to create frequency table. For example, `table(data$x)` creates a frequecncy table of `x` in the data. `table(data$x, data$y)` creates a frequency table of each combination of `x` and `y` in the data.
+4. Count the binary category `delay_type` by `carrier`. Let's name the result `flights_mn_delay_count`.
+   + `table()` is an R base function to create frequency table. For example, `table(data$x)` creates a frequency table of `x` in the data. `table(data$x, data$y)` creates a frequency table of each combination of `x` and `y` in the data.
    + After you create the table, translate the `table` to `data.frame` class using `as.data.frame.matrix()` function to make it easier to manipulate.
 5. Finally, in `flights_mn_delay_count`, derive the proportion of flights that are delayed more than 30 minutes for each airline company.
 
@@ -1218,19 +1220,19 @@ flights_mn_delay_count
 ### For numerical manipulation
 | Function                                   | Description                                           |
 |--------------------------------------------|-------------------------------------------------------|
-| `sum(), mean(), var(), sd(), max(), min()` |                                                       |
+| `sum(), mean(), var(), sd(), cov(), cor(), max(), min(), abs(), round()`|                                                       |
 | `log()` and `exp()`                        | Logarithms and Exponentials                           |
 | `sqrt()`                                   | Computes the square root of the specified float value.|
 | `sample()`                                 | randomly sample from a vector                         |
 | `rnorm()`                                  | generate random numbers from normal distribution      |
-| `runif()`                                  | generate random numbers from uniformal distribution   |
+| `runif()`                                  | generate random numbers from uniform distribution   |
 
 
 ## For mac user: Accelerating R
 
 
 + By default, R uses two libraries for performing common mathematical operations: Basic Linear Algebra Subprograms (BLAS) and LAPACK (Linear Algebra Package). For mac user, instead of the BLAS library that comes with R, you can use Apple's vecLib (libBLAS.dylib), which is optimized for Apple to perform computations on large vectors.
-+ I have did this on my local machine. I am not sure if this works on your machine (especially for Windows). But you can try it if you're interested in speeding up R.
++ I am not sure if this works on your machine (especially for Windows). But you can try it if you're interested in speeding up R.
 
 
 See this articles:

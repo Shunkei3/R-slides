@@ -18,9 +18,9 @@ format:
 ::: panel-tabset
 ### Instructions
 
-This exercise problem adapted from the economeric textbook of [ ](). Here using the `Journals` data from `AER` package, we are interested in examining the demand for economics journals. The data contains the information on the subscriptions to 180 economics journals at US libraries for the year 2000.
+This exercise problem adapted from the econometric textbook of [ ](). Here using the `Journals` data from `AER` package, we are interested in examining the demand for economics journals. The data contains the information on the subscriptions to 180 economics journals at US libraries for the year 2000.
 
-Load the data with the following code. Check the discription of the data with `?Journals`.
+Load the data with the following code. Check the description of the data with `?Journals`.
 
 ```{r}
 #| label: prep-ex1
@@ -30,7 +30,7 @@ data("Journals")
 # ?Journals
 ```
 
-For anything else, exploring the data is the first step in any data analysis. "Data exploration" section contains the exercies to practice the data manipulation and visualization for descriptive data analysis. Now, it's your turn to load the package as needed. (I'm so happy if you would choose to use the packages we leaned before!)
+For anything else, exploring the data is the first step in any data analysis. "Data exploration" section contains the exercise to practice the data manipulation and visualization for descriptive data analysis. Now, it's your turn to load the package as needed. (I'm so happy if you would choose to use the packages we leaned before!)
 
 You can skip the "Data exploration" section and move on to the "Regression analysis" section.
 
@@ -48,7 +48,7 @@ You can skip the "Data exploration" section and move on to the "Regression analy
 
 **Regression Analysis**
 
-The goal here is to examine the demand for economics journals. Speficically, we want to estimate the price elasticity of demand for economics journals.
+The goal here is to examine the demand for economics journals. Specifically, we want to estimate the price elasticity of demand for economics journals.
 
 1.  First, create the following new variables:
 
@@ -100,7 +100,7 @@ Journals[,.(mean_price = mean(price), median_price = median(price), sd_price = s
 ::: panel-tabset
 ### Instructions
 
-Using the `CASchools` dataset from the `AER` package, let's do some regression analysis to examine the effects on test scores of the studnet-teacher ratio. The dataset contains data on test performance, school characteristics and student demographic backgrounds for school districts in California.
+Using the `CASchools` dataset from the `AER` package, let's do some regression analysis to examine the effects on test scores of the student-teacher ratio. The dataset contains data on test performance, school characteristics and student demographic backgrounds for school districts in California.
 
 First, let's load the data. See `?CASchools` for the description of variables in the dataset.
 
@@ -121,7 +121,7 @@ data("CASchools")
 
 2.  Using `datasummary` function, generate a summary table of key descriptive statistics for the CASchools dataset, including variables like `score`, `stratio`, `english`, and `lunch`, `calworks`.
 
-3.  Using `ggplot` functions, Create scastter plots of test scores (`score`) against the percentage of English language lerners (`english`), percentage qualifying for reduced-price lunch (`lunch`), and percentage qualifying for income asistance (`calworks`). (It would be nice if you could use the `facet_wrap()` function to show them at once.)
+3.  Using `ggplot` functions, Create scanter plots of test scores (`score`) against the percentage of English language learners (`english`), percentage qualifying for reduced-price lunch (`lunch`), and percentage qualifying for income assistance (`calworks`). (It would be nice if you could use the `facet_wrap()` function to show them at once.)
 
 4.  Estimate the following five regression models and report the results in a table.
 

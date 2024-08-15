@@ -43,7 +43,7 @@ So far, we have learned...
 + Data wrangling with `data.table` package.
 + Data visualization with `ggplot2` package.
 
-With the tools we learned so far, you can do a lot of tasks for descriptive deta analysis!
+With the tools we learned so far, you can do a lot of tasks for descriptive data analysis!
 
 Once you have a good understanding of the data, you can move on to the next step: econometric analysis!
 
@@ -53,7 +53,7 @@ Once you have a good understanding of the data, you can move on to the next step
 
 Today's goal is to 
 
-+ create a discriptive summary table for the data.
++ create a descriptive summary table for the data.
 + use `lm` function to estimate a regression model and report the results with publication-ready summary tables.
 + understand how to create a report document (html and PDF) with Quarto. 
 
@@ -86,7 +86,7 @@ Today's goal is to
 
 Total time: 150 minutes
 
-1. Regression analaysis
+1. Regression analysis
 2. Create a summary table
    1. descriptive statistics
    2. regression results
@@ -123,7 +123,7 @@ data(CPS1988)
 # I prefer to conver the data to data.table. 
 setDT(CPS1988)
 
-# For practice, I convert the some facotor variables into character variables.
+# For practice, I convert the some factor variables into character variables.
 CPS1988[,`:=`(
   ethnicity = as.character(ethnicity),
   region = as.character(region),
@@ -143,7 +143,7 @@ data(CPS1988)
 # I prefer to conver the data to data.table. 
 setDT(CPS1988)
 
-# For practice, I convert the some facotor variables into character variables.
+# For practice, I convert the some factor variables into character variables.
 CPS1988[,`:=`(
   ethnicity = as.character(ethnicity),
   region = as.character(region),
@@ -158,7 +158,7 @@ CPS1988[,`:=`(
 :::{.panel-tabset}
 ### Basics of lm()
 
-The most basic function to estimate a liear regression model in R is the `lm` function from `stats` package, which is a buit-in R package.
+The most basic function to estimate a linear regression model in R is the `lm` function from `stats` package, which is a built-in R package.
 
 <br>
 
@@ -274,7 +274,7 @@ Let's get the value of standard error of the coefficient estimate of `education`
 
 ### Basics
 
-+ To include iteraction terms and quadratic term in the formula in `lm()` function, use the `I()` function.
++ To include interaction terms and quadratic term in the formula in `lm()` function, use the `I()` function.
 + For log transformation, use the `log()` function in the formula. 
 + Or you define a new variable with the transformed variable and include it in the formula.
 
@@ -300,7 +300,7 @@ lm(log(wage) ~ education + experience + I(experience^2), data = CPS1988) %>%
 What if we want to include a categorical variable (e.g., `region`, `parttime`, `ethnicity`) in the regression model? 
 
 
-`lm()` function is samrt enough to convert the categocial variable into dummy variables without any additional coding.
+`lm()` function is smart enough to convert the categorical variable into dummy variables without any additional coding.
 
 + Even the variable you want to use as dummy variables are character type, `lm()` function automatically coerced it into a factor variable. 
 
@@ -427,7 +427,7 @@ Here are the kye points you should know at least.
 
 + the basic usage of `lm()` and `summary()` function.
 + how to retrieve the information stored in the outputs of `lm()` and `summary()` function. 
-+ how to include log-transfomed variable, interaction terms and quadratic terms in the formula of `lm()` function.
++ how to include log-transformed variable, interaction terms and quadratic terms in the formula of `lm()` function.
 + how to include categorical variables in the formula of `lm()` function, and how to set the base group.
 + how to do prediction with the estimated model on a new dataset.
 
@@ -440,18 +440,18 @@ That's it!
 
 + After running some regression models, ultimately you want to report the results in a neat table.
 
-+ Ususally, we report the regression results in a formatted document like the Rmarkdown or Quarto document (html or PDF format).
++ Usually, we report the regression results in a formatted document like the Rmarkdown or Quarto document (html or PDF format).
 
 + So, let's practice how to create a summary table for your analysis results in the Quarto document!
 
-+ Downlad and open the document file "practice_modelsummary_html.qmd" under the "Lecture 5" folder. 
++ Downland and open the document file "practice_modelsummary_html.qmd" under the "Lecture 5" folder. 
 
 
 ## Report summary statistics with `modelsummary` package 
 
 :::{.panel-tabset}
 ### Intro
-[`modelsummary` package](https://modelsummary.com/) let you create a nice summary table to report the discriptive statistics of the data and the regression results.
+[`modelsummary` package](https://modelsummary.com/) let you create a nice summary table to report the descriptive statistics of the data and the regression results.
 
 We focus on two functions in the `modelsummary` package:
 
@@ -563,7 +563,7 @@ lm1 <- lm(y ~ x1, data = dataset)
 lm2 <- lm(y ~ x1 + x2, data = dataset)
 lm3 <- lm(y ~ x1 + x2 + x3, data = dataset)
 
-# --- 2. Then, provide those a list of lm objects in the "models" arguement  --- #
+# --- 2. Then, provide those a list of lm objects in the "models" argument  --- #
 modelsummary(models=list(lm1, lm2, lm3))
 ```
 
@@ -601,7 +601,7 @@ modelsummary(models=list(reg1, reg2), output = "gt")
 
 ### List of options
 
-The default table is okay. But you can customize the appearance of the table. Here, I listed the least options you might want to know (There are lots of oter options!).
+The default table is okay. But you can customize the appearance of the table. Here, I listed the least options you might want to know (There are lots of other options!).
 
 + `models`: you can change the name of the models.
 + `coef_map`: to reorder coefficient rows and change their labels.
@@ -658,7 +658,7 @@ modelsummary(
 
 ### coef_map
 
-`coef_map` argument let you subset, rename, and reorder coefficients. In the argument, you specify a named or unamed chracter vector. If named vector is supplied, its values are used as the new names of the variable. 
+`coef_map` argument let you subset, rename, and reorder coefficients. In the argument, you specify a named or unnamed character vector. If named vector is supplied, its values are used as the new names of the variable. 
 
 
 **Example**
@@ -779,7 +779,7 @@ modelsummary(
   vcov = "HC1"
   )
 ```
-In this case, HC1 estiomator is used for all the models. 
+In this case, HC1 estimator is used for all the models. 
 :::
 :::
 
@@ -1251,7 +1251,7 @@ datasummary(
 
 
 
-### Reniming the variables with `=`
+### Renaming the variables with `=`
 <!-- start panel:renaming -->
 
 By default, variable and statistics names are used as the labels in the table. You can rename the default labels with the following syntax: `(label = variable/statistic)`.
@@ -1387,9 +1387,7 @@ datasummary_skim(data = CPS1988[,.(ethnicity, smsa, region, parttime)], type = "
 #| echo: false
 datasummary_skim(data = CPS1988[,.(ethnicity, smsa, region, parttime)], type = "categorical", output = "gt")
 ```
-
 :::
-
 
 
 ## datasummary_balance

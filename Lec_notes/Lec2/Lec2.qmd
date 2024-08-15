@@ -35,7 +35,7 @@ filters:
 
 ### Learning Objectives
 
-+ 1. Get familiar with the `data.table` package.
++ 1. + To be able to use the basic data wrangling skills with the `data.table` package:
   + basic operations for data manipulation
   + reshape dataset
   + merge multiple datasets
@@ -56,7 +56,7 @@ filters:
 :::
 
 :::{.notes}
-+ Today, we will learn how to minuplate data, so called data wrangling.
++ Today, we will learn how to manipulate data, so called data wrangling.
   + Data wrangling is a process of cleaning and transforming raw data into a useful format for analysis, which is a crucial step in data analysis.
 + There are two popular packages in R for data wrangling: `data.table` and `dplyr`.
 
@@ -66,7 +66,7 @@ filters:
 
 
 ## Today's outline: {.center}
-1. [Data manipuration with data.table](#intro-data-table)
+1. [Data manipulation with data.table](#intro-data-table)
 
    + [What is `data.table`?](#what-is-data-table) 
    + [General data.table syntax](#syntax-data-table) 
@@ -187,7 +187,7 @@ DT[i, j, by]
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
 + [To subset rows, use `i` argument. (e.g., `DT[colA == condition1,]`)]{style="color: blue;"}
 
-For example, Let's subet rows where carrier is "AA" (American Airlines)
+For example, Let's subset rows where carrier is "AA" (American Airlines)
 ```{webr-r}
 flights[carrier == "AA",]
 ```
@@ -291,7 +291,7 @@ flights[, sum((arr_delay + dep_delay) < 0)]
 
 <br>
 
-In the code above, three calculations are being performaed in the `j` argument:
+In the code above, three calculations are being performed in the `j` argument:
 
 + 1. compute `arr_delay + dep_delay`
 + 2. compute `arr_delay + dep_delay < 0`
@@ -301,7 +301,7 @@ In the code above, three calculations are being performaed in the `j` argument:
 ### Subset and compute
 
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
-+ [Using `i` and `j` argument together, you can perform calculaton on columns of the subsetted rows.]{style="color: blue;"}
++ [Using `i` and `j` argument together, you can perform calculation on columns of the subsetted rows.]{style="color: blue;"}
 
 <br>
 
@@ -409,7 +409,7 @@ flights[, `:=`(
   total_delay = arr_delay + dep_delay,
   delay_rate = total_delay/air_time,
 ]
-# the problem in the code above is that newly defined variable `total_dely` is reffered in the same [] expression.
+# the problem in the code above is that newly defined variable `total_delay` is referred in the same [] expression.
 
 # Instead do this 
 flights[, total_delay := arr_delay + dep_delay]
@@ -467,7 +467,7 @@ head(flights2[month == 4, .(month, arr_delay)], 3)
 :::{.panel-tabset}
 
 ### Quiz
-1. Let's create a new column `speed` by deviding `distance` by `air_time`.
+1. Let's create a new column `speed` by dividing `distance` by `air_time`.
 
 ```{webr-r}
 # You can write your code here
@@ -541,7 +541,7 @@ flights[, .(avg_dep_delay = mean(dep_delay), avg_arr_delay = mean(arr_delay)), b
 
 ### Grouped operations for select observations
 
-[Togeher with `i` argumnent, you can perform grouped operations for select observations.]{style="color: blue;"}
+[Together with `i` argument, you can perform grouped operations for select observations.]{style="color: blue;"}
 
 <br>
 
@@ -737,7 +737,7 @@ yield_data_wide
 <br>
 
 ::: {.callout-tip}
-+ Before wrting your code to reshape the data, it is important to imagine what your desired data format looks like.
++ Before writing your code to reshape the data, it is important to imagine what your desired data format looks like.
 + I often sketch out an example.
   + This helps me to understand what variables I need to use as `LHS`, `RHS`, and `value.var`.
 :::
@@ -785,7 +785,7 @@ yield_data_long_2
 Note however that year information from the variable names are lost. In the resulting dataset, variable == 1 and variable == 2 correspond to 2019 and 2020, respectively. So, you need an additional step to recover the original long data format.
 
 
-### When to reshpae data?
+### When to reshape data?
 
 In my personal experience, I often need to reshape data when:
 
@@ -879,9 +879,10 @@ You can use the `merge()` function from the `data.table` package to merge two da
 # Merge data2 to data1 keeping all rows from data1
 merge(x, y, by = "key_column", all.x = TRUE)
 ```
+
 + `x`, `y`: data tables.
 + `by`, which specifies variables that let you merge two datasets.
-+ `all.x = TRUE` means that all rows from `data1` are mainteined in the merged dataset, and only matching rows from `data2` are included (this is equivalent to `left_join()` in `dplyr`).
++ `all.x = TRUE` means that all rows from `data1` are maintained in the merged dataset, and only matching rows from `data2` are included (this is equivalent to `left_join()` in `dplyr`).
 
 Note: [The order of datasets matter]{style="color: red;"}.
 
@@ -924,6 +925,7 @@ weather_data <-
 ```
 :::
 :::
+
 + Note that states included in `yield_data` and `weather_data` are slightly different. This is to show how `merge()` function works when there are unmatched rows in the two datasets.
 + To merge these two datasets, `state` works because we need to use `state` as a key column.
 <br>
@@ -1186,7 +1188,7 @@ print_three_words(x="I", y="love", z="R")
 ```
 
 ::: {.callout-tip}
-+ Always use `.` in the subsequent function to explicitly denote the desitination of the object defined before `%>%` even if it is the first argument.
++ Always use `.` in the subsequent function to explicitly denote the destination of the object defined before `%>%` even if it is the first argument.
 :::
 
 :::
@@ -1197,7 +1199,7 @@ print_three_words(x="I", y="love", z="R")
 **Without `%>%`**
 ```{webr-r}
 #| auto-run: true
-flights <- nycflights13::flights #load flights datas
+flights <- nycflights13::flights #load flights dates
 flights_dt <- as.data.table(flights)  # to data.table class
 flights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)] #select some columns
 flights_mini <- na.omit(flights_mini) #remove rows with missing values
@@ -1252,10 +1254,10 @@ Don’t mind the details for now. You are good as long as you understand the fol
 
 2. **Understand that you can do various data wrangling tasks by using combinations of `i`, `j`, and `by` arguments.**
 
-+ Specifically, you learned the follwoing tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
++ Specifically, you learned the following tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
 
 
-3. **Undestand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
+3. **Understand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
 
 4. **Understand you can merge data with `merge()` function.**
 :::
@@ -1379,13 +1381,13 @@ flights_mini[, print(.SD), by = month]
 
 :::{.panel-tabset}
 ### Problem
-1. Find the flight companny with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
+1. Find the flight company with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
 
 
-2. Subset the infromation of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
+2. Subset the information of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
   
 
-3. Calculate the median, interquartile rangen ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` data and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
+3. Calculate the median, interquartile range ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` data and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
 
 + Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use `quantile()` function to calculate the quantiles.
 
@@ -1540,9 +1542,7 @@ flights_df <- as.data.frame(flights)
 ## Exercise 2
 
 
-# Apendix
-
-
+# Appendix
 
 ## data.table vs dplyr {.center}
 
@@ -1574,7 +1574,7 @@ flights[carrier == "AA", .(.N), by = .(origin, month)] %>% head()
 
 + dplyr
   + pros:
-    + the sytax is pretty straightforward 
+    + the syntax is pretty straightforward 
       + e.g., select column with `select()`, filter rows with `filter()`
       + Spatial object such as `sf` package (for vector object) and `terra` package (for raster object) support `dplyr` syntax.
   + cons:
