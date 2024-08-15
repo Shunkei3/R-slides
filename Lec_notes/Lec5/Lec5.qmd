@@ -1,5 +1,5 @@
 ---
-title: "Day 5: Monte Calro Simulation"
+title: "Day 5: Monte Carlo Simulation"
 subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
@@ -32,67 +32,224 @@ filters:
   - webr
 ---
 
-## Recap
+## Introduction {.center}
 
-In the previous lecture, we learned how to do regression analysis using R, which is a foundamental skill for econometric analysis.
++ In the previous lecture, we learned how to do regression analysis using R, which is a fundamental skill for econometric analysis.
 
-Today, we will learn how to code Monte Calro simulation in R. Monte Calro simulations are very important tool to understand the properties of estimators and inference techniques. With Monte Calro simulations, you can test any kind of statistical theories, which is very fun and useful!!
++ Today, we will learn how to code Monte Carlo simulation in R. Monte Carlo simulations are very important tool in leaning econometrics and statistics. With Monte Carlo simulations, you can test any kind of statistical theories or properties, which is very fun and useful!!
+
+<br>
+
+:::{.fragment .fade-up}
+::: {.callout-note}
+## 
+
+Before we dive into the Monte Carlo simulation, we need to review some key R operations: 
+
++  `for loop` function
++ Although we'll not use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
+
+:::
+:::
 
 
 ## {.center}
 
-### Learning Objectives
+### {{< fa bullseye >}} Learning Objectives
 
-+ to be able to write a code for Monte Calro simulation using for loop function.
-+ to report the simulation resutls using a table and a graph. 
 + to be able to write a code for your own R functions.
++ to be able to write a code for Monte Carlo simulation using for loop function.
 
 <br>
 
-### Main functions:
-+ R built-in `for loop` functon.
-+ `foreach()` function from `foreach` package.
-
-<br>
-
-### Sub functions:
-+ `rbind()` function (base R functions)
-+ `rbindlist()` function (`data.table` package)
-
-
-
-## Outline {.center}
-
-+
-
-+
 
 :::{.fragment .center}
-### Reference {.center}
+
+### {{< fa asterisk >}} Reference {.center}
+
 + [Section 21.2 For loops](https://r4ds.had.co.nz/iteration.html?q=for%20loo#for-loops) in R for Data Science
 :::
 
 
+## {{< fa list >}} Outline {.center}
+
++
+
++
+
+# User-Defined Functions
+
+---
+
+
+## Introduction to User-Defined Functions
+
+
+<!-- start panel:Functions   --> 
+:::{.panel-tabset} 
+
+### Intro
+
+[You can define your own functions. The beauty of creating your own functions is that you can reuse the same code over and over again without having to rewrite it. A function is more useful when the task is longer and more complicated]{style="color: blue;"}
+
+<br>
+
+**Example Situations**
+
++ When you want to automate the process of data cleaning.
++ When you do complicated simulation or resampling methods, such as bootstrapping or Monte Carlo simulations.
++ ... etc. 
+
+
+### Basics
+
+You can define your own functions using the `function()` function. 
+
+**General Syntax**
+
+```r
+function_name <- function(arg1, arg2, ...){
+  code to be executed
+
+  return(output)
+}
+```
+
+<br>
+
+::: {.callout-note}
++ You need to define the function name (`function_name`), what kind of inputs the function takes (`arg1`, `arg2`, etc.), and how the function processes using the given input objects.
++ The `return()` function is used to return the output of the function. By default, the output defined in the last line of the function is returned.
+:::
+
+### Examples
+
+**1. A simple function**
+
+```{webr-r}
+# --- Define a function --- #
+sum_of_two_numbers <- function(x, y){
+  x + y
+}
+
+# --- Use the function --- #
+sum_of_two_numbers(x = 3, y = 4)
+```
+
+<br>
+
+**2. A function with multiple outputs**
+
+```{webr-r}
+# --- Define a function --- #
+mean_sd <- function(vec_x){
+  c(mean = mean(vec_x), sd = sd(vec_x))
+}
+
+# --- Use the function --- #
+vec_test <- c(3, 5, 7, 8)
+mean_sd(vec_x = vec_test)
+```
+
+### Default Value
+
+You can set default values for function arguments by `argument = value`.
+
+<br>
+
+**Example:**
+
+```{webr-r}
+# --- Function to convert a Acre of Hectare --- #
+acre_to_ha <- function(x = 1){
+  x * 0.404686
+}
+
+# --- Use the function --- #
+acre_to_ha() # because x = 1 by default
+
+acre_to_ha(x = 1)
+```
+
+<!-- end panel:Functions  --> 
+:::
+
+
+
+## Exercise 1
+
+<!-- start panel:Exercise 1   --> 
+:::{.panel-tabset} 
+### Problem 1 
+ 
+1. Write a function (you can name it whatever you want) to calculate the area of a circle with a given radius. The function should return the area of the circle. Use `pi`, which is a built-in constant for the value of $\pi$ in R.
+
+<br>
+
+2. Write a function to check whether the provided number is an even number or not. The function should return `TRUE` if the number is even, and `FALSE` otherwise.
+
+Hint: Use `ifelse()` function. It's syntax is `ifelse(condition, return_value_if_condition_met, return_value_otherwise)`.
+
+
+
+3. In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It’s denoted by n!. For example, $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Write a function named `calculate_factorial` that takes a single integer argument `n` (Assume $n \ge 1$).
+
+
+::: {.callout-tip collapse="true"}
+## Hints:
++ use the prod() function to multiply all elements of a sequence (see `?prod`).
++ The seq() function can help you generate a sequence of numbers from 1 to n.
+:::
+
+
+### Problem 2 (optional) 
+
+You're a data expert at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
+
+For sales growth, use the following formula:
+
+$$S_t = S_0 \times (1 + g)^{t-1}$$ 
+
+, where $S_t$ is the sales in month $t$ , $S_0$  is the starting sales, and $g$ is the growth rate.
+
+Create a function called `monthly_sales_growth` with the following three inputs:
+
++ `initial_sales`: Starting sales (in thousands of dollars).
++ `growth_rate`: Monthly growth rate (as a decimal, like 0.03 for 3% growth).
++ `months`: How many months to predict (usually 12 for a year).
+
+The function should give back a vector of numbers (or it would be nicer if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
+
+```{webr-r}
+
+```
+<!-- end panel:Exercise 1  --> 
+:::
+
+
+# Loops
+
+---
 
 ## Why loop? {.center}
 
-Using Loop is highly useful when you want to repeat the same task over and over again.
+Using Loop is useful when you want to repeat the same task (but slight change in parameters) over and over again.
 
 <br>
 
 ::: {.callout-note}
 ## Common situations
 + Downloading the data from the web iteratively
-  + When you want to download the ag-producton data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.
+  + When you want to download the ag-production data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.
   + USDA crop scale data, NOAA weather data, etc.
 + Loading the multiple data files in a folder.
-+ Running the same regression analysis for multip le datasets.
++ Running the same regression analysis for multiple datasets.
 + Running simulations or resampling methods, such as bootstrapping or Monte Carlo simulations.
 :::
 
 
 
-## Loop: Intoducton
+## For loops: Introduction
 <!-- start panel:loop   --> 
 :::{.panel-tabset} 
  
@@ -113,10 +270,9 @@ You need to define: (i) `variable`, (ii) `collection of objects`, (iii) `the cod
 <br>
 
 ::: {.callout-note}
-+ `collection_of_objects` can be a vector or a list object.
-  + e.g., a sequecne of numbers or characters, a list of datasets, etc.
 + In each iteration `variable` takes a value from the `collection_of_objects` in order and the code inside the loop is executed using the value of `variable`.
-+ Here, I used , 
++ `collection_of_objects` can be a vector or a list object.
+  + e.g., a sequence of numbers or characters, a list of datasets, etc.
 :::
 
 
@@ -124,8 +280,9 @@ You need to define: (i) `variable`, (ii) `collection of objects`, (iii) `the cod
 
 ### Examples
 
-
 **1. Print the numbers from 1 to 5.**
+
+Variable `i` takes each number in the sequence `1:5` in order and print the value of `i`. 
 
 ```{webr-r}
 for (i in 1:5){
@@ -133,7 +290,11 @@ for (i in 1:5){
 }
 ```
 
+
 **2. Print characters in a list.**
+
+Variable `x` takes each character in the list `list("I", "like", "cats")` in order and print the value of `x`.
+
 ```{webr-r}
 for (x in list("I", "like", "cats")){
   print(x)
@@ -143,6 +304,7 @@ for (x in list("I", "like", "cats")){
 **3. Calculate the mean of each element in a list.**
 
 Can you tell me what's going on in the following code?
+
 ```{webr-r}
 ls_seq_num <- list(1:3, 4:6, 7:9)
 
@@ -151,18 +313,16 @@ for (seq_num in ls_seq_num){
 }
 ```
 
+
 :::{.notes}
-+ ls_seq_num is a list of three verctors, and each vector is a sequence of values. 
++ ls_seq_num is a list of three vectors, and each vector is a sequence of values. 
 + As I said before, variable `seq_num` takes each vector in the collection of objects `ls_seq_num` in order.
 + 
 :::
 
 
-### Your Turn
 
-<!-- start panel:Your turn   --> 
-:::{.panel-tabset} 
-### Exercise 1 
+### Exercise
 
 In econometric class, we use `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
 
@@ -170,7 +330,7 @@ The basic syntax is `rnorm(n, mean = 0, sd = 1)`, where `n` is the number of ran
 
 <br>
 
-Gerates 1000 random numbers from a standard normal distribution and caluculate the mean the numbers (use `mean()` function), and print the rusult. Repeat this process 10 times using the `for loop`.
+Generate 1000 random numbers from a standard normal distribution and calculate the mean the numbers (use `mean()` function), and print the results. Repeat this process 10 times using the `for loop`.
 
 ```{webr-r}
 for (i in 1:10){
@@ -180,7 +340,7 @@ for (i in 1:10){
 ```
 
  
-### Exercise 2 (nested loop)
+### Exercise (nested loop)
 
 You can nest the for loop inside another for loop. For example, 
 
@@ -194,7 +354,7 @@ for (i in 1:3) {
 }
 ```
 
-Using the above code as a reference, fill in the folling empty 3 x 3 matrix with the sum of the row and column indices.
+Using the above code as a reference, fill in the following empty 3 x 3 matrix with the sum of the row and column indices.
 
 The output should look like this: 
 
@@ -216,42 +376,46 @@ print(empty_matrix)
 # Here, is the empty 3 x 3 matrix.  
 empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
 
-
 ```
-
-
-<!-- end panel:Your turn  --> 
-:::
-
-
-
-
 <!-- end panel:loop  --> 
 :::
 
 
 
-## Loop: How to Save the Results?
+## For loops: How to Save the loop output?
 
-<!-- start panel:save the results   --> 
+<!-- start panel:save the loop output   --> 
 :::{.panel-tabset} 
-### Problem 
+### Introduction 
 
-Unlike R functions we have used so far, `for loop` does not have a return value. 
+Unlike R functions we have seen so far, `for loop` does not have a return value. It just iterates the process we defined in the loop. 
 
-Let's see the following examples. 
+<br>
+
+Let's do some experiments:
+
+
+<!-- start panel:experiment   --> 
+:::{.panel-tabset} 
+### Experiment 1
+
 ```{webr-r}
 ls_seq_num <- list(1:3, 4:6, 7:9)
 
 for (seq_num in ls_seq_num){
   # save the results in x
-  x <- mean(seq_num))
+  x <- mean(seq_num)
 }
 
-print(x)
+# What is the value of x?
+x
 ```
 
-Or, can I do like this?
+:::{.fragment .center}
+[Every round of the loop, the variables defined inside the loop are updated.]{style="color: blue;"}
+:::
+
+### Experiment 2
 
 ```{webr-r}
 ls_seq_num <- list(1:3, 4:6, 7:9)
@@ -261,65 +425,446 @@ x <- for (seq_num in ls_seq_num){
   mean(seq_num)
 }
 
-print(x)
+# What is the value of x?
+x
+```
+
+:::{.fragment}
++ You cannot assign loop to a variable directly (e.g `x <- for (i in 1:3){print(i)}` does not work).
+:::
+
+<!-- end panel:experiment  --> 
+:::
+
+
+### Basics
+
++ [To save results of the loop, you need to create an empty object before the loop and save the output in the object in each iteration.]{style="color: blue;"}(You did this in the exercise 2!)
+  + The object can be a vector, a list, a matrix, or a data frame (or data.table), depending on the type of the output you want to save.
+
+**Example**
+
+Suppose you want to cube each number in the sequence `1:5`.
+
+```{webr-r}
+# --- Create an empty vector --- #
+output_storage <-rep(0, 5)
+
+# --- for loop --- #
+for (i in 1:5){
+  output_storage[i] <- i^3
+}
+
+output_storage
 ```
 
 
-### Soluton
-We can store the output of a for-loop in a new vector by appending the result of each iteration to an initially empty vector, as in the example below:
+::: {.callout-note}
++ Since the output of each iteration is a number, vector is a good choice for the storage object. (Alternatively you can use a list object.)
+:::
+
+
+###  Multiple Outputs
+
+What if we want to have multiple outputs from the loop and combine them into a single dataset?
+
+**Example**
+
+Let's generate 100 random numbers from a standard normal distribution and calculate the mean and the standard deviation of numbers. Repeat this process 10 times using the `for loop` and save the results in a dataset.
+
+```{webr-r}
+# --- Number of iterations --- #
+B = 10
+
+# --- Create an empty data.table (or data.frame for matrix) --- #
+output_storage <- data.table(mean = rep(0, B), sd = rep(0, B))
+
+# --- for loop --- #
+for(i in 1:B){
+  # --- Generate random numbers --- #
+  random_numbers <- rnorm(100)
+  
+  # --- Calculate the mean and the standard deviation --- #
+  output_storage[i, mean := mean(random_numbers)]
+  output_storage[i, sd := sd(random_numbers)]
+}
+```
 
 
 
+### Exercise
+
+<!-- start panel:Exercise 3   --> 
+:::{.panel-tabset} 
+### Problem 1
+
+
+1. Using the `for loop`, calculate the sum of the first `n` numbers for `n = 1, 2, ..., 10`. For example, the sum of the first 3 numbers (n=3) is 1 + 2 + 3 = 6. Save the results in a vector object.
+
+<br>
+
+2. Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones (e.g. 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...). Write a function that generates the first `n` numbers in the Fibonacci sequence.
+
+<br>
+
+```{webr-r}
+# You can write your code here
+
+```
+
+
+### Problem 2 (optional)
+
+The ancient Greek mathematician Pythagoras is known for his famous theorem, but he also explored fascinating numerical relationships. One of these involves Pythagorean triples: sets of three positive integers (a, b, c) that satisfy the equation $a^2 + b^2 = c^2$.
+
+Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where $a$ and $b$ are less than or equal to a given number $n$. To make this task easier, you need to create an R function that will generate all such triples.
+
+
+1.	Create a function named `find_pythagorean_triples` that takes a single argument `n`, an integer, representing the maximum value for `a` and `b`.
+2.	The function should return a data frame with columns `a`, `b`, and `c`,  containing all Pythagorean triples where `a \leq b \leq n` and `a^2 + b^2 = c^2`.
+
+
+::: {.callout-tip collapse="true"}
+## Hints:
++ Consider using nested loops to iterate through all possible values of a and b up to n.
++	Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.
+:::
+
+
+```{webr-r}
+
+```
+ 
+ 
+*Reference: [Pythagorean Triples](https://en.wikipedia.org/wiki/Pythagorean_triple)*
+ 
+<!-- end panel:Exercise 3  --> 
+:::
 
 <!-- end panel:save the results  --> 
 :::
 
 
+## Check point {.center}
+
+Up to this point, as long as you understand the following points, you are good to go!
+
++ You know how to use `function()` to define a simple function yourself.
++ You know how to use `for loop` (i.e., syntax, which argument you need to define).
++ You know that you need to prepare an empty object to save the output of the loop.
 
 
 
+## Introduction to Monte Carlo Simulations {.center}
+
+<br>
+
+### What is it?
+
+[Monte Carlo simulation is a simulation technique to obtain a likelihood of possible outcomes from some model by iteratively running the model using random sampling from the assumed probability distribution]{style="color: blue;"}.
+
++ The incorporation of randomness in the simulation is the key feature of Monte Carlo simulation. *It is mimicking the randomness of real-world phenomena.*
 
 
+<br>
+
+:::{.fragment .fade-up}
+### So, how Monte Carlo simulation is used in Econometrics?
+
+In econometrics, Monte Carlo simulation is used to evaluate the performance of the performance of a statistical procedure or the validity of theories in a realistic setting.
 
 
+::: {.callout-tip}
+## For example
 
+Suppose that a researcher came up a new estimator to estimate coefficients of a regression model. 
 
-## Introduction to Monte Carlo Simulations
-
-What is Monte Carlo simulation in statistics?
-
-Ultimately, we want to know the 
-
-
-Monte Carlo simulation is a way to test econometric theories or statistical procedures in realistic setting via simulation.
-
-Ususally, the data at our hand is a portion of the population. 
++ An estimator (e.g, sample mean, standard error, OLS) is a function of a random variable, therefor it is also a random variable. 
++ A random variable has its own probability distribution.
++ So, to understand the performance of the estimator (e.g., unbiasedness and efficiency), we need to examine the properties of the probability distribution of the estimator. 
++ We use Monte Carlo simulation to approximate the probability distribution of the estimator!
+:::
+:::
 
 :::{.notes}
 + In this world, everything is random and uncertain. In terms of econometric analysis, the data you get is just a realization of the random process. If you have another sample, you will get a different result. Because the data is random, the result of the estimation is also random variable. 
 + This uncertainty, or randomness, is called **sampling variability**.
-+ In statistics, any random variable is asssumed to have some probaility distribution.
++ In statistics, any random variable is assumed to have some probability distribution.
 + Monte Carlo simulation mimics this randomness utilizing the random number generator, and produces the probability distribution of the estimator. 
++ step0: The data at your hand is (usually) just a small portion of the whole population.
++ Monte Carlo simulation is used in a variety of fields such as physics, finance, and engineering, as well as in econometrics and statistics.
+:::
 
+
+## Example: Binomial Distribution {.center}
+
+Think about the following example. 
+
+::: {.callout-tip}
+## Example
+
++ Suppose that we flip a coin $n=10$ times and count the number of heads. Let's denote the number of heads $X$. 
++ The coin is not fair, however. The probability of getting a head is $p= Pr[heads] = 1/3$. 
++ Suppose that you repeat this experiment $1000$ times. What is the mean and the variance of $X$?
+:::
+
+<br>
+
+
+:::{.fragment .fade-up}
+
+By theory, this kind of experiment is modeled by the binomial distribution. According to the theory, it is predicted that 
+
++ Mean of $X$ is $E[X] = np = 10 \times 1/3 = 3.33$
++ Variance of $X$ is $Var[X] = np(1-p) = 10 \times 1/3 \times 2/3 = 2.22$
+:::
+
+<br>
+
+:::{.fragment .fade-up}
+[Is it true? Let's check this using Monte Carlo simulation!]{style="color: blue;"}
+:::
+
+
+## {.center}
+
+::: {.callout-important}
+## Monte Carlo Simulation: Steps
+
+step 1: Specify the data generating process.
+
++ You need to pick a specific probability distribution to generate a random number. 
+
+step 2: Repeat:
+
++ step 2.1: generate a (pseudo) random sample data based on the data generating process.
++ step 2.2: get an outcome you are interested in based on the generated data.
+
+step 3: compare your estimates with the true parameter
+:::
+
+
+## Demonstration: Binomial Distribution
+
+<!-- start panel:Demonstration   --> 
+:::{.panel-tabset} 
+### A single iteration
+
+Let's start writing code for a single iteration to get an idea of the Monte Carlo simulation process in R.
+
++ We want to repeat this 1000 times. 
+
+```{webr-r}
+# For the reproducibility purpose, set the seed. 
+set.seed(1843)
+
+# === Step 1: Specify the Data Generating process === #
+# parameters
+p <- 1/3 # the probability of getting a head
+n <- 10 # the number of trials
+
+# === Step 2.1: Generate Data  === #
+# Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.
+seq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)
+
+# === Step 2.2: Get an Outcome You are Interested in === #
+# count the number of heads
+sum(seq_x)
+```
+
+
+
+
+### Multiple iterations
+ 
+```{webr-r}
+# For the reproducibility purpose, set the seed. 
+set.seed(1843)
+
+# === Step 1: Specify the Data Generating process === #
+# parameters
+p <- 1/3 # the probability of getting a head
+n <- 10 # the number of trials
+B <- 1000 # the number of iterations
+
+# Don't forget to create an empty object to save the output
+X <- rep(0, B)
+
+
+# === Step 2: Iteration === #
+for (i in 1:B){
+  # --- Step 2.1: Generate Data --- #
+  # Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.
+  seq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)
+
+  # --- Step 2.2: Get an Outcome You are Interested in --- #
+  # count the number of heads and save the result
+  X[i] <- sum(seq_x)
+}
+
+# === Step 3 === #
+# Compute the mean of X
+mean(X)
+
+# Compute the variance of X
+var(X)
+```
+
+
+
+
+<!-- end panel:Demonstration  --> 
+:::
+
+## Exercise Problem: 
+
+<!-- start panel:exercise   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions
+
+
+
+ 
+ 
+<!-- end panel:exercise  --> 
 :::
 
 
 
-## Monte Carlo Simulation: Steps
+## Exercise Problem:What is the best way to estimate the population mean? (Optional)
 
-+ step 1: specify the data generating process
-+ step 2: Repeat:
-  + step 2.1: generate data based on the data generating process
-  + step 2.2: get an outcome you are interested in based on the generated data
-+ step 3: compare your estimates with the true parameter
 
-## Example: Binomial Distribution
+<!-- start panel:exercise   --> 
+:::{.panel-tabset} 
+### {{< fa person-chalkboard >}} Instructions 
 
-Think about the following example. 
+Suppose we're interested in estimating the population mean of men's heights (i.e., $\mu$) in the US. We have randomly sampled data with the size of $n=2000$. Let $X_i$ denote the individual $i$'s height.
 
-Suppose that we flip a coin $n=9$ times, and count the number of heads (i.e., $X$). The coin is not fair, say, the probability of getting a head is $p= Pr[heads] = 1/3$.
+Let's consider two approach for this.
 
-Commonly, this kind of experiemnt is modeled with a binomial distribution.
+Method 1. Use the sample mean: $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$ 
+
+Method 2. Use only the first observation: $X_1$
+
+<br>
+
+:::{.fragment .fade-up}
+Theoretically, both are unbiased estimators (if we repeat the estimation process many times, the average of the estimates will be equal to the population mean):
+
+<!-- Note that $X_i$ is a random variable, and all $X_i$ for $i = 1,2,...,2000$ belong to the same population with the same mean $\mu$. -->
+
+\begin{align*}
+E[\bar{X}_n] &= E \left[\frac{1}{n} \sum_{i=1}^{n} \right] = \frac{1}{n} E \left[\sum_{i=1}^{n} X_i \right] = \frac{1}{n} \sum_{i=1}^{n} E[X_i] = \frac{1}{n} \cdot n \cdot \mu = \mu \\
+E[X_1] &= \mu
+\end{align*}
+:::
+
+
+:::{.fragment .fade-in}
+::: {.callout-note}
+## Questions:
+
++ Is it true that both methods are correctly estimating the population mean, on average?
++ Which one is more accurate in estimating the population mean? Compare the variance of the two estimators.
+
+Using Monte Carlo simulation, let's examine these questions!
+:::
+:::
+
+### Your Turn
+
+Hint: 
+
+Steps:
+
+1. Define data generating process: You can use normal distribution with your choice of mean and standard deviation. Note that the value of the mean should be the population mean of height. 
+
+2. Generate a 2000 random numbers with 
+
+```{webr-r}
+
+```
+
+<!-- end panel:exercise  --> 
+:::
+
+
+
+
+
+# Appendix
+
+---
+
+## foreach function
+
+<!-- start panel:foreach   --> 
+:::{.panel-tabset} 
+### Basics
+
+The `foreach` function is pretty much similar to the `for loop` function. It is used to repeat the same task over and over again with slight variations.
+
+The main difference is that `foreach` function has a return value, which is a list of the output of each iteration.
+
+**Basic Syntax**
+
+```r
+foreach(variable = collection_of_objects) %do% {
+  the code to be executed in each iteration
+}
+```
+
+::: {.callout-note}
++ Differences between `for loop` and `foreach` function
+  + use `=` instead of `in` 
+  + you need to use `%do%` operator
+  + `foreach` function returns a list of the output of each iteration, while `for loop` function requires you to create an empty object to store the output.
+:::
+
+
+::: {.callout-note}
+See [this](https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html) for more details.
+:::
+
+
+### Example: 
+
+The following codes do the same task using the `for loop` and `foreach` function, respectively. 
+
+::: {.columns}
+::: {.column width="50%"}
+**foreach**
+```{webr-r}
+results <- foreach(i = 1:10) %do% {
+  i^2
+}
+
+# see the output
+results
+```
+:::
+::: {.column width="50%"}
+**for loop**
+```{webr-r}
+# --- Create an empty object  --- #
+results <- rep(0, 10)
+
+# --- for loop --- #
+for (i in 1:10){
+  results[i] <- i^2
+}
+# see the output
+results
+```
+:::
+:::
+
+
+
+### Change the output 
+ 
+<!-- end panel:foreach  --> 
+:::
 
 
 

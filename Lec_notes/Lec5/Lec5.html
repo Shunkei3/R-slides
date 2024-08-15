@@ -7,11 +7,13 @@
 <link href="Lec5_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Lec5_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Lec5_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="Lec5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="Lec5_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Lec5_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="Lec5_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.56">
 <meta name="author" content="Shunkei Kakimoto">
-<title>Day 5: Monte Calro Simulation</title>
+<title>Day 5: Monte Carlo Simulation</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -677,7 +679,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-1","out-width":"700px","context":"interactive"},"code":"for (i in 1:5){\n  print(i)\n}","id":1},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-2","out-width":"700px","context":"interactive"},"code":"for (x in list(\"I\", \"like\", \"cats\")){\n  print(x)\n}","id":2},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-3","out-width":"700px","context":"interactive"},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  print(mean(seq_num))\n}","id":3},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-4","out-width":"700px","context":"interactive"},"code":"for (i in 1:10){\n  # write your code here\n\n}","id":4},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-5","out-width":"700px","context":"interactive"},"code":"# Outer loop\nfor (i in 1:3) {\n  # Inner loop\n  for (j in 1:2) {\n    print(paste(\"i =\", i, \"j =\", j))\n  }\n}","id":5},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-6","out-width":"700px","context":"interactive"},"code":"# Here, is the empty 3 x 3 matrix.  \nempty_matrix <- matrix(NA, nrow = 3, ncol = 3)\n","id":6},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-7","out-width":"700px","context":"interactive"},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  # save the results in x\n  x <- mean(seq_num))\n}\n\nprint(x)","id":7},{"options":{"editor-font-scale":"0.8","autorun":"false","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-width":7,"message":"true","comment":"","output":"true","dpi":72,"editor-word-wrap":"true","results":"markup","classes":"","editor-max-height":"","warning":"true","fig-cap":"","fig-height":5,"label":"unnamed-chunk-8","out-width":"700px","context":"interactive"},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nx <- for (seq_num in ls_seq_num){\n  # save the results in x\n  mean(seq_num)\n}\n\nprint(x)","id":8}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"# --- Define a function --- #\nsum_of_two_numbers <- function(x, y){\n  x + y\n}\n\n# --- Use the function --- #\nsum_of_two_numbers(x = 3, y = 4)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-1","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":2,"code":"# --- Define a function --- #\nmean_sd <- function(vec_x){\n  c(mean = mean(vec_x), sd = sd(vec_x))\n}\n\n# --- Use the function --- #\nvec_test <- c(3, 5, 7, 8)\nmean_sd(vec_x = vec_test)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-2","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":3,"code":"# --- Function to convert a Acre of Hectare --- #\nacre_to_ha <- function(x = 1){\n  x * 0.404686\n}\n\n# --- Use the function --- #\nacre_to_ha() # because x = 1 by default\n\nacre_to_ha(x = 1)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-3","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":4,"code":"","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-4","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":5,"code":"for (i in 1:5){\n  print(i)\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-5","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":6,"code":"for (x in list(\"I\", \"like\", \"cats\")){\n  print(x)\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-6","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":7,"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  print(mean(seq_num))\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-7","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":8,"code":"for (i in 1:10){\n  # write your code here\n\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-8","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":9,"code":"# Outer loop\nfor (i in 1:3) {\n  # Inner loop\n  for (j in 1:2) {\n    print(paste(\"i =\", i, \"j =\", j))\n  }\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-9","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":10,"code":"# Here, is the empty 3 x 3 matrix.  \nempty_matrix <- matrix(NA, nrow = 3, ncol = 3)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-10","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":11,"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  # save the results in x\n  x <- mean(seq_num)\n}\n\n# What is the value of x?\nx","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-11","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":12,"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nx <- for (seq_num in ls_seq_num){\n  # save the results in x\n  mean(seq_num)\n}\n\n# What is the value of x?\nx","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-12","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":13,"code":"# --- Create an empty vector --- #\noutput_storage <-rep(0, 5)\n\n# --- for loop --- #\nfor (i in 1:5){\n  output_storage[i] <- i^3\n}\n\noutput_storage","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-13","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":14,"code":"# --- Number of iterations --- #\nB = 10\n\n# --- Create an empty data.table (or data.frame for matrix) --- #\noutput_storage <- data.table(mean = rep(0, B), sd = rep(0, B))\n\n# --- for loop --- #\nfor(i in 1:B){\n  # --- Generate random numbers --- #\n  random_numbers <- rnorm(100)\n  \n  # --- Calculate the mean and the standard deviation --- #\n  output_storage[i, mean := mean(random_numbers)]\n  output_storage[i, sd := sd(random_numbers)]\n}","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-14","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":15,"code":"# You can write your code here","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-15","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":16,"code":"","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-16","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":17,"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\n\n# === Step 2.1: Generate Data  === #\n# Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\nseq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n# === Step 2.2: Get an Outcome You are Interested in === #\n# count the number of heads\nsum(seq_x)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-17","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":18,"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\nB <- 1000 # the number of iterations\n\n# Don't forget to create an empty object to save the output\nX <- rep(0, B)\n\n\n# === Step 2: Iteration === #\nfor (i in 1:B){\n  # --- Step 2.1: Generate Data --- #\n  # Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\n  seq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n  # --- Step 2.2: Get an Outcome You are Interested in --- #\n  # count the number of heads and save the result\n  X[i] <- sum(seq_x)\n}\n\n# === Step 3 === #\n# Compute the mean of X\nmean(X)\n\n# Compute the variance of X\nvar(X)","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-18","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":19,"code":"","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-19","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":20,"code":"results <- foreach(i = 1:10) %do% {\n  i^2\n}\n\n# see the output\nresults","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-20","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}},{"id":21,"code":"# --- Create an empty object  --- #\nresults <- rep(0, 10)\n\n# --- for loop --- #\nfor (i in 1:10){\n  results[i] <- i^2\n}\n# see the output\nresults","options":{"classes":"","editor-max-height":"","label":"unnamed-chunk-21","out-height":"","fig-width":7,"fig-height":5,"editor-quick-suggestions":"false","message":"true","warning":"true","read-only":"false","fig-cap":"","editor-word-wrap":"true","out-width":"700px","autorun":"false","dpi":72,"output":"true","results":"markup","context":"interactive","comment":"","editor-font-scale":"0.8"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2154,7 +2156,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </script><div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Day 5: Monte Calro Simulation</h1>
+<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Day 5: Monte Carlo Simulation</h1>
   <p class="subtitle">Department of Applied Economics, University of Minnesota</p>
 
 <div class="quarto-title-authors">
@@ -2165,45 +2167,174 @@ Shunkei Kakimoto
 </div>
 </div>
 
-</section><section id="recap" class="slide level2"><h2>Recap</h2>
-<p>In the previous lecture, we learned how to do regression analysis using R, which is a foundamental skill for econometric analysis.</p>
-<p>Today, we will learn how to code Monte Calro simulation in R. Monte Calro simulations are very important tool to understand the properties of estimators and inference techniques. With Monte Calro simulations, you can test any kind of statistical theories, which is very fun and useful!!</p>
-</section><section id="section" class="slide level2 center"><h2></h2>
-<h3 id="learning-objectives">Learning Objectives</h3>
+</section><section id="introduction" class="slide level2 center"><h2>Introduction</h2>
 <ul>
-<li>to be able to write a code for Monte Calro simulation using for loop function.</li>
-<li>to report the simulation resutls using a table and a graph.</li>
+<li><p>In the previous lecture, we learned how to do regression analysis using R, which is a fundamental skill for econometric analysis.</p></li>
+<li><p>Today, we will learn how to code Monte Carlo simulation in R. Monte Carlo simulations are very important tool in leaning econometrics and statistics. With Monte Carlo simulations, you can test any kind of statistical theories or properties, which is very fun and useful!!</p></li>
+</ul>
+<p><br></p>
+<div class="fragment fade-up">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Before we dive into the Monte Carlo simulation, we need to review some key R operations:</p>
+<ul>
+<li>
+<code>for loop</code> function</li>
+<li>Although we’ll not use this in today’s Monte Carlo simulation, we’ll also review how to write your own R functions because it’s a useful skill.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="section-1" class="slide level2 center"><h2></h2>
+<h3 id="learning-objectives">
+<i class="fa-solid fa-bullseye" aria-label="bullseye"></i> Learning Objectives</h3>
+<ul>
 <li>to be able to write a code for your own R functions.</li>
+<li>to be able to write a code for Monte Carlo simulation using for loop function.</li>
 </ul>
 <p><br></p>
-<h3 id="main-functions">Main functions:</h3>
-<ul>
-<li>R built-in <code>for loop</code> functon.</li>
-<li>
-<code>foreach()</code> function from <code>foreach</code> package.</li>
-</ul>
-<p><br></p>
-<h3 id="sub-functions">Sub functions:</h3>
-<ul>
-<li>
-<code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> function (base R functions)</li>
-<li>
-<code>rbindlist()</code> function (<code>data.table</code> package)</li>
-</ul></section><section id="outline" class="slide level2 center"><h2>Outline</h2>
-<ul>
-<li>
-</li><li>
-</li></ul>
 <div class="fragment center">
 <!-- -->
-<h3 class="center" id="reference">Reference</h3>
+<h3 class="center" id="reference">
+<i class="fa-solid fa-asterisk" aria-label="asterisk"></i> Reference</h3>
 <ul>
 <li>
 <a href="https://r4ds.had.co.nz/iteration.html?q=for%20loo#for-loops">Section 21.2 For loops</a> in R for Data Science</li>
 </ul>
 </div>
+</section><section id="outline" class="slide level2 center"><h2>
+<i class="fa-solid fa-list" aria-label="list"></i> Outline</h2>
+<ul>
+<li>
+</li><li>
+</li></ul></section><section><section id="user-defined-functions" class="title-slide slide level1 center"><h1>User-Defined Functions</h1>
+
+</section><section id="introduction-to-user-defined-functions" class="slide level2"><h2>Introduction to User-Defined Functions</h2>
+<!-- start panel:Functions   -->
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Intro</a></li>
+<li><a href="#tabset-1-2">Basics</a></li>
+<li><a href="#tabset-1-3">Examples</a></li>
+<li><a href="#tabset-1-4">Default Value</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><span style="color: blue;">You can define your own functions. The beauty of creating your own functions is that you can reuse the same code over and over again without having to rewrite it. A function is more useful when the task is longer and more complicated</span></p>
+<p><br></p>
+<p><strong>Example Situations</strong></p>
+<ul>
+<li>When you want to automate the process of data cleaning.</li>
+<li>When you do complicated simulation or resampling methods, such as bootstrapping or Monte Carlo simulations.</li>
+<li>… etc.</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<p>You can define your own functions using the <code>function()</code> function.</p>
+<p><strong>General Syntax</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ...){</span>
+<span id="cb1-2"><a href=""></a>  code to be executed</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a>  <span class="fu">return</span>(output)</span>
+<span id="cb1-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>You need to define the function name (<code>function_name</code>), what kind of inputs the function takes (<code>arg1</code>, <code>arg2</code>, etc.), and how the function processes using the given input objects.</li>
+<li>The <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> function is used to return the output of the function. By default, the output defined in the last line of the function is returned.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<p><strong>1. A simple function</strong></p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><br></p>
+<p><strong>2. A function with multiple outputs</strong></p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-1-4">
+<p>You can set default values for function arguments by <code>argument = value</code>.</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end panel:Functions  -->
+</div>
+</div>
+</div>
+</section><section id="exercise-1" class="slide level2 scrollable"><h2>Exercise 1</h2>
+<!-- start panel:Exercise 1   -->
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-2-1">Problem 1</a></li>
+<li><a href="#tabset-2-2">Problem 2 (optional)</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ol type="1">
+<li>Write a function (you can name it whatever you want) to calculate the area of a circle with a given radius. The function should return the area of the circle. Use <code>pi</code>, which is a built-in constant for the value of <span class="math inline">\(\pi\)</span> in R.</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li>Write a function to check whether the provided number is an even number or not. The function should return <code>TRUE</code> if the number is even, and <code>FALSE</code> otherwise.</li>
+</ol>
+<p>Hint: Use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> function. It’s syntax is <code>ifelse(condition, return_value_if_condition_met, return_value_otherwise)</code>.</p>
+<ol start="3" type="1">
+<li>In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n.&nbsp;It’s denoted by n!. For example, <span class="math inline">\(5! = 5 \times 4 \times 3 \times 2 \times 1 = 120\)</span>. Write a function named <code>calculate_factorial</code> that takes a single integer argument <code>n</code> (Assume <span class="math inline">\(n \ge 1\)</span>).</li>
+</ol>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Hints:</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>use the prod() function to multiply all elements of a sequence (see <code><a href="https://rdrr.io/r/base/prod.html">?prod</a></code>).</li>
+<li>The seq() function can help you generate a sequence of numbers from 1 to n.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<p>You’re a data expert at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.</p>
+<p>For sales growth, use the following formula:</p>
+<p><span class="math display">\[S_t = S_0 \times (1 + g)^{t-1}\]</span></p>
+<p>, where <span class="math inline">\(S_t\)</span> is the sales in month <span class="math inline">\(t\)</span> , <span class="math inline">\(S_0\)</span> is the starting sales, and <span class="math inline">\(g\)</span> is the growth rate.</p>
+<p>Create a function called <code>monthly_sales_growth</code> with the following three inputs:</p>
+<ul>
+<li>
+<code>initial_sales</code>: Starting sales (in thousands of dollars).</li>
+<li>
+<code>growth_rate</code>: Monthly growth rate (as a decimal, like 0.03 for 3% growth).</li>
+<li>
+<code>months</code>: How many months to predict (usually 12 for a year).</li>
+</ul>
+<p>The function should give back a vector of numbers (or it would be nicer if you could show in a <code>data.frame</code> or <code>data.table</code> in which two columns, e.g., month and sales, show the expected sales for each month.)</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end panel:Exercise 1  -->
+</div>
+</div>
+</div>
+</section></section><section><section id="loops" class="title-slide slide level1 center"><h1>Loops</h1>
+
 </section><section id="why-loop" class="slide level2 center"><h2>Why loop?</h2>
-<p>Using Loop is highly useful when you want to repeat the same task over and over again.</p>
+<p>Using Loop is useful when you want to repeat the same task (but slight change in parameters) over and over again.</p>
 <p><br></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2214,31 +2345,32 @@ Shunkei Kakimoto
 <ul>
 <li>Downloading the data from the web iteratively
 <ul>
-<li>When you want to download the ag-producton data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.</li>
+<li>When you want to download the ag-production data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.</li>
 <li>USDA crop scale data, NOAA weather data, etc.</li>
 </ul>
 </li>
 <li>Loading the multiple data files in a folder.</li>
-<li>Running the same regression analysis for multip le datasets.</li>
+<li>Running the same regression analysis for multiple datasets.</li>
 <li>Running simulations or resampling methods, such as bootstrapping or Monte Carlo simulations.</li>
 </ul>
 </div>
 </div>
 </div>
-</section><section id="loop-intoducton" class="slide level2"><h2>Loop: Intoducton</h2>
+</section><section id="for-loops-introduction" class="slide level2"><h2>For loops: Introduction</h2>
 <!-- start panel:loop   -->
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-2-1">Basics</a></li>
-<li><a href="#tabset-2-2">Examples</a></li>
-<li><a href="#tabset-2-3">Your Turn</a></li>
+<ul id="tabset-3" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-3-1">Basics</a></li>
+<li><a href="#tabset-3-2">Examples</a></li>
+<li><a href="#tabset-3-3">Exercise</a></li>
+<li><a href="#tabset-3-4">Exercise (nested loop)</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <p>The syntax of the <code>for loop</code> is very simple.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="cf">for</span> (variable <span class="cf">in</span> collection_of_objects){</span>
-<span id="cb1-2"><a href=""></a>  the code to be executed <span class="cf">in</span> each iteration</span>
-<span id="cb1-3"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="cf">for</span> (variable <span class="cf">in</span> collection_of_objects){</span>
+<span id="cb2-2"><a href=""></a>  the code to be executed <span class="cf">in</span> each iteration</span>
+<span id="cb2-3"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <p>You need to define: (i) <code>variable</code>, (ii) <code>collection of objects</code>, (iii) <code>the code to be executed in each iteration.</code></p>
 <p><br></p>
@@ -2249,32 +2381,33 @@ Shunkei Kakimoto
 </div>
 <div class="callout-content">
 <ul>
+<li>In each iteration <code>variable</code> takes a value from the <code>collection_of_objects</code> in order and the code inside the loop is executed using the value of <code>variable</code>.</li>
 <li>
 <code>collection_of_objects</code> can be a vector or a list object.
 <ul>
-<li>e.g., a sequecne of numbers or characters, a list of datasets, etc.</li>
+<li>e.g., a sequence of numbers or characters, a list of datasets, etc.</li>
 </ul>
 </li>
-<li>In each iteration <code>variable</code> takes a value from the <code>collection_of_objects</code> in order and the code inside the loop is executed using the value of <code>variable</code>.</li>
-<li>Here, I used ,</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <p><strong>1. Print the numbers from 1 to 5.</strong></p>
-<div id="qwebr-insertion-location-1"></div>
+<p>Variable <code>i</code> takes each number in the sequence <code>1:5</code> in order and print the value of <code>i</code>.</p>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>2. Print characters in a list.</strong></p>
-<div id="qwebr-insertion-location-2"></div>
+<p>Variable <code>x</code> takes each character in the list <code>list("I", "like", "cats")</code> in order and print the value of <code>x</code>.</p>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>3. Calculate the mean of each element in a list.</strong></p>
 <p>Can you tell me what’s going on in the following code?</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <aside class="notes"><ul>
-<li>ls_seq_num is a list of three verctors, and each vector is a sequence of values.</li>
+<li>ls_seq_num is a list of three vectors, and each vector is a sequence of values.</li>
 <li>As I said before, variable <code>seq_num</code> takes each vector in the collection of objects <code>ls_seq_num</code> in order.</li>
 <li>
 </li></ul><style type="text/css">
@@ -2289,27 +2422,19 @@ Shunkei Kakimoto
           display:block!important;
       }</style></aside>
 </div>
-<div id="tabset-2-3">
-<!-- start panel:Your turn   -->
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-1-1">Exercise 1</a></li>
-<li><a href="#tabset-1-2">Exercise 2 (nested loop)</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-3-3">
 <p>In econometric class, we use <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function a lot! It is a function that generates random numbers from a normal distribution. See <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code> for more details.</p>
 <p>The basic syntax is <code>rnorm(n, mean = 0, sd = 1)</code>, where <code>n</code> is the number of random numbers you want to generate, <code>mean</code> is the mean of the normal distribution, and <code>sd</code> is the standard deviation of the normal distribution. So <code>rnorm(n, mean =0, sd = 1)</code> generates <code>n</code> random numbers from a standard normal distribution.</p>
 <p><br></p>
-<p>Gerates 1000 random numbers from a standard normal distribution and caluculate the mean the numbers (use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function), and print the rusult. Repeat this process 10 times using the <code>for loop</code>.</p>
-<div id="qwebr-insertion-location-4"></div>
+<p>Generate 1000 random numbers from a standard normal distribution and calculate the mean the numbers (use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function), and print the results. Repeat this process 10 times using the <code>for loop</code>.</p>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-3-4">
 <p>You can nest the for loop inside another for loop. For example,</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Using the above code as a reference, fill in the folling empty 3 x 3 matrix with the sum of the row and column indices.</p>
+<p>Using the above code as a reference, fill in the following empty 3 x 3 matrix with the sum of the row and column indices.</p>
 <p>The output should look like this:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -2320,49 +2445,180 @@ Shunkei Kakimoto
 </div>
 </div>
 <p><br></p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<!-- end panel:Your turn  -->
-</div>
-</div>
-</div>
 <!-- end panel:loop  -->
 </div>
 </div>
 </div>
-</section><section id="loop-how-to-save-the-results" class="slide level2"><h2>Loop: How to Save the Results?</h2>
-<!-- start panel:save the results   -->
+</section><section id="for-loops-how-to-save-the-loop-output" class="slide level2 scrollable"><h2>For loops: How to Save the loop output?</h2>
+<!-- start panel:save the loop output   -->
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-3-1">Problem</a></li>
-<li><a href="#tabset-3-2">Soluton</a></li>
+<ul id="tabset-6" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-6-1">Introduction</a></li>
+<li><a href="#tabset-6-2">Basics</a></li>
+<li><a href="#tabset-6-3">Multiple Outputs</a></li>
+<li><a href="#tabset-6-4">Exercise</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-3-1">
-<p>Unlike R functions we have used so far, <code>for loop</code> does not have a return value.</p>
-<p>Let’s see the following examples.</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="tabset-6-1">
+<p>Unlike R functions we have seen so far, <code>for loop</code> does not have a return value. It just iterates the process we defined in the loop.</p>
+<p><br></p>
+<p>Let’s do some experiments:</p>
+<!-- start panel:experiment   -->
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-4-1">Experiment 1</a></li>
+<li><a href="#tabset-4-2">Experiment 2</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Or, can I do like this?</p>
-<div id="qwebr-insertion-location-8"></div>
+<div class="fragment center">
+<p><span style="color: blue;">Every round of the loop, the variables defined inside the loop are updated.</span></p>
+</div>
+</div>
+<div id="tabset-4-2">
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="fragment">
+<ul>
+<li>You cannot assign loop to a variable directly (e.g <code>x &lt;- for (i in 1:3){print(i)}</code> does not work).</li>
+</ul>
+</div>
+<!-- end panel:experiment  -->
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2">
+<ul>
+<li>
+<span style="color: blue;">To save results of the loop, you need to create an empty object before the loop and save the output in the object in each iteration.</span>(You did this in the exercise 2!)
+<ul>
+<li>The object can be a vector, a list, a matrix, or a data frame (or data.table), depending on the type of the output you want to save.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>Suppose you want to cube each number in the sequence <code>1:5</code>.</p>
+<div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Since the output of each iteration is a number, vector is a good choice for the storage object. (Alternatively you can use a list object.)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3">
+<p>What if we want to have multiple outputs from the loop and combine them into a single dataset?</p>
+<p><strong>Example</strong></p>
+<p>Let’s generate 100 random numbers from a standard normal distribution and calculate the mean and the standard deviation of numbers. Repeat this process 10 times using the <code>for loop</code> and save the results in a dataset.</p>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-3-2">
-<p>We can store the output of a for-loop in a new vector by appending the result of each iteration to an initially empty vector, as in the example below:</p>
+<div id="tabset-6-4">
+<!-- start panel:Exercise 3   -->
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-5-1">Problem 1</a></li>
+<li><a href="#tabset-5-2">Problem 2 (optional)</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<ol type="1">
+<li>Using the <code>for loop</code>, calculate the sum of the first <code>n</code> numbers for <code>n = 1, 2, ..., 10</code>. For example, the sum of the first 3 numbers (n=3) is 1 + 2 + 3 = 6. Save the results in a vector object.</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li>Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones (e.g.&nbsp;0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …). Write a function that generates the first <code>n</code> numbers in the Fibonacci sequence.</li>
+</ol>
+<p><br></p>
+<div id="qwebr-insertion-location-15"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-5-2">
+<p>The ancient Greek mathematician Pythagoras is known for his famous theorem, but he also explored fascinating numerical relationships. One of these involves Pythagorean triples: sets of three positive integers (a, b, c) that satisfy the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
+<p>Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are less than or equal to a given number <span class="math inline">\(n\)</span>. To make this task easier, you need to create an R function that will generate all such triples.</p>
+<ol type="1">
+<li>Create a function named <code>find_pythagorean_triples</code> that takes a single argument <code>n</code>, an integer, representing the maximum value for <code>a</code> and <code>b</code>.</li>
+<li>The function should return a data frame with columns <code>a</code>, <code>b</code>, and <code>c</code>, containing all Pythagorean triples where <code>a \leq b \leq n</code> and <code>a^2 + b^2 = c^2</code>.</li>
+</ol>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Hints:</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Consider using nested loops to iterate through all possible values of a and b up to n.</li>
+<li>Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="qwebr-insertion-location-16"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><em>Reference: <a href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triples</a></em></p>
+<!-- end panel:Exercise 3  -->
+</div>
+</div>
+</div>
 <!-- end panel:save the results  -->
 </div>
 </div>
 </div>
-</section><section id="introduction-to-monte-carlo-simulations" class="slide level2"><h2>Introduction to Monte Carlo Simulations</h2>
-<p>What is Monte Carlo simulation in statistics?</p>
-<p>Ultimately, we want to know the</p>
-<p>Monte Carlo simulation is a way to test econometric theories or statistical procedures in realistic setting via simulation.</p>
-<p>Ususally, the data at our hand is a portion of the population.</p>
+</section><section id="check-point" class="slide level2 center"><h2>Check point</h2>
+<p>Up to this point, as long as you understand the following points, you are good to go!</p>
+<ul>
+<li>You know how to use <code>function()</code> to define a simple function yourself.</li>
+<li>You know how to use <code>for loop</code> (i.e., syntax, which argument you need to define).</li>
+<li>You know that you need to prepare an empty object to save the output of the loop.</li>
+</ul></section><section id="introduction-to-monte-carlo-simulations" class="slide level2 center"><h2>Introduction to Monte Carlo Simulations</h2>
+<p><br></p>
+<h3 id="what-is-it">What is it?</h3>
+<p><span style="color: blue;">Monte Carlo simulation is a simulation technique to obtain a likelihood of possible outcomes from some model by iteratively running the model using random sampling from the assumed probability distribution</span>.</p>
+<ul>
+<li>The incorporation of randomness in the simulation is the key feature of Monte Carlo simulation. <em>It is mimicking the randomness of real-world phenomena.</em>
+</li>
+</ul>
+<p><br></p>
+<div class="fragment fade-up">
+<!-- -->
+<h3 id="so-how-monte-carlo-simulation-is-used-in-econometrics">So, how Monte Carlo simulation is used in Econometrics?</h3>
+<p>In econometrics, Monte Carlo simulation is used to evaluate the performance of the performance of a statistical procedure or the validity of theories in a realistic setting.</p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>For example</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose that a researcher came up a new estimator to estimate coefficients of a regression model.</p>
+<ul>
+<li>An estimator (e.g, sample mean, standard error, OLS) is a function of a random variable, therefor it is also a random variable.</li>
+<li>A random variable has its own probability distribution.</li>
+<li>So, to understand the performance of the estimator (e.g., unbiasedness and efficiency), we need to examine the properties of the probability distribution of the estimator.</li>
+<li>We use Monte Carlo simulation to approximate the probability distribution of the estimator!</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <aside class="notes"><ul>
 <li>In this world, everything is random and uncertain. In terms of econometric analysis, the data you get is just a realization of the random process. If you have another sample, you will get a different result. Because the data is random, the result of the estimation is also random variable.</li>
 <li>This uncertainty, or randomness, is called <strong>sampling variability</strong>.</li>
-<li>In statistics, any random variable is asssumed to have some probaility distribution.</li>
+<li>In statistics, any random variable is assumed to have some probability distribution.</li>
 <li>Monte Carlo simulation mimics this randomness utilizing the random number generator, and produces the probability distribution of the estimator.</li>
+<li>step0: The data at your hand is (usually) just a small portion of the whole population.</li>
+<li>Monte Carlo simulation is used in a variety of fields such as physics, finance, and engineering, as well as in econometrics and statistics.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2373,20 +2629,208 @@ Shunkei Kakimoto
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="monte-carlo-simulation-steps" class="slide level2"><h2>Monte Carlo Simulation: Steps</h2>
+      }</style></aside></section><section id="example-binomial-distribution" class="slide level2 center"><h2>Example: Binomial Distribution</h2>
+<p>Think about the following example.</p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>step 1: specify the data generating process</li>
-<li>step 2: Repeat:
+<li>Suppose that we flip a coin <span class="math inline">\(n=10\)</span> times and count the number of heads. Let’s denote the number of heads <span class="math inline">\(X\)</span>.</li>
+<li>The coin is not fair, however. The probability of getting a head is <span class="math inline">\(p= Pr[heads] = 1/3\)</span>.</li>
+<li>Suppose that you repeat this experiment <span class="math inline">\(1000\)</span> times. What is the mean and the variance of <span class="math inline">\(X\)</span>?</li>
+</ul>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<p>By theory, this kind of experiment is modeled by the binomial distribution. According to the theory, it is predicted that</p>
 <ul>
-<li>step 2.1: generate data based on the data generating process</li>
-<li>step 2.2: get an outcome you are interested in based on the generated data</li>
+<li>Mean of <span class="math inline">\(X\)</span> is <span class="math inline">\(E[X] = np = 10 \times 1/3 = 3.33\)</span>
+</li>
+<li>Variance of <span class="math inline">\(X\)</span> is <span class="math inline">\(Var[X] = np(1-p) = 10 \times 1/3 \times 2/3 = 2.22\)</span>
+</li>
+</ul>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<p><span style="color: blue;">Is it true? Let’s check this using Monte Carlo simulation!</span></p>
+</div>
+</section><section id="section-2" class="slide level2 center"><h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Monte Carlo Simulation: Steps</strong></p>
+</div>
+<div class="callout-content">
+<p>step 1: Specify the data generating process.</p>
+<ul>
+<li>You need to pick a specific probability distribution to generate a random number.</li>
+</ul>
+<p>step 2: Repeat:</p>
+<ul>
+<li>step 2.1: generate a (pseudo) random sample data based on the data generating process.</li>
+<li>step 2.2: get an outcome you are interested in based on the generated data.</li>
+</ul>
+<p>step 3: compare your estimates with the true parameter</p>
+</div>
+</div>
+</div>
+</section><section id="demonstration-binomial-distribution" class="slide level2"><h2>Demonstration: Binomial Distribution</h2>
+<!-- start panel:Demonstration   -->
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-7-1">A single iteration</a></li>
+<li><a href="#tabset-7-2">Multiple iterations</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p>Let’s start writing code for a single iteration to get an idea of the Monte Carlo simulation process in R.</p>
+<ul>
+<li>We want to repeat this 1000 times.</li>
+</ul>
+<div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-7-2">
+<div id="qwebr-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end panel:Demonstration  -->
+</div>
+</div>
+</div>
+</section><section id="exercise-problem" class="slide level2"><h2>Exercise Problem:</h2>
+<!-- start panel:exercise   -->
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Instructions</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<!-- end panel:exercise  -->
+</div>
+</div>
+</div>
+</section><section id="exercise-problemwhat-is-the-best-way-to-estimate-the-population-mean-optional" class="slide level2 scrollable"><h2>Exercise Problem:What is the best way to estimate the population mean? (Optional)</h2>
+<!-- start panel:exercise   -->
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-9-1"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Instructions</a></li>
+<li><a href="#tabset-9-2">Your Turn</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>Suppose we’re interested in estimating the population mean of men’s heights (i.e., <span class="math inline">\(\mu\)</span>) in the US. We have randomly sampled data with the size of <span class="math inline">\(n=2000\)</span>. Let <span class="math inline">\(X_i\)</span> denote the individual <span class="math inline">\(i\)</span>’s height.</p>
+<p>Let’s consider two approach for this.</p>
+<p>Method 1. Use the sample mean: <span class="math inline">\(\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i\)</span></p>
+<p>Method 2. Use only the first observation: <span class="math inline">\(X_1\)</span></p>
+<p><br></p>
+<div class="fragment fade-up">
+<p>Theoretically, both are unbiased estimators (if we repeat the estimation process many times, the average of the estimates will be equal to the population mean):</p>
+<!-- Note that $X_i$ is a random variable, and all $X_i$ for $i = 1,2,...,2000$ belong to the same population with the same mean $\mu$. -->
+<p><span class="math display">\[\begin{align*}
+E[\bar{X}_n] &amp;= E \left[\frac{1}{n} \sum_{i=1}^{n} \right] = \frac{1}{n} E \left[\sum_{i=1}^{n} X_i \right] = \frac{1}{n} \sum_{i=1}^{n} E[X_i] = \frac{1}{n} \cdot n \cdot \mu = \mu \\
+E[X_1] &amp;= \mu
+\end{align*}\]</span></p>
+</div>
+<div class="fragment fade-in">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Questions:</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Is it true that both methods are correctly estimating the population mean, on average?</li>
+<li>Which one is more accurate in estimating the population mean? Compare the variance of the two estimators.</li>
+</ul>
+<p>Using Monte Carlo simulation, let’s examine these questions!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2">
+<p>Hint:</p>
+<p>Steps:</p>
+<ol type="1">
+<li><p>Define data generating process: You can use normal distribution with your choice of mean and standard deviation. Note that the value of the mean should be the population mean of height.</p></li>
+<li><p>Generate a 2000 random numbers with</p></li>
+</ol>
+<div id="qwebr-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<!-- end panel:exercise  -->
+</div>
+</div>
+</div>
+</section></section><section><section id="appendix" class="title-slide slide level1 center"><h1>Appendix</h1>
+
+</section><section id="foreach-function" class="slide level2"><h2>foreach function</h2>
+<!-- start panel:foreach   -->
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-10-1">Basics</a></li>
+<li><a href="#tabset-10-2">Example:</a></li>
+<li><a href="#tabset-10-3">Change the output</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p>The <code>foreach</code> function is pretty much similar to the <code>for loop</code> function. It is used to repeat the same task over and over again with slight variations.</p>
+<p>The main difference is that <code>foreach</code> function has a return value, which is a list of the output of each iteration.</p>
+<p><strong>Basic Syntax</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">foreach</span>(<span class="at">variable =</span> collection_of_objects) <span class="sc">%do%</span> {</span>
+<span id="cb4-2"><a href=""></a>  the code to be executed <span class="cf">in</span> each iteration</span>
+<span id="cb4-3"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Differences between <code>for loop</code> and <code>foreach</code> function
+<ul>
+<li>use <code>=</code> instead of <code>in</code>
+</li>
+<li>you need to use <code>%do%</code> operator</li>
+<li>
+<code>foreach</code> function returns a list of the output of each iteration, while <code>for loop</code> function requires you to create an empty object to store the output.</li>
 </ul>
 </li>
-<li>step 3: compare your estimates with the true parameter</li>
-</ul></section><section id="example-binomial-distribution" class="slide level2"><h2>Example: Binomial Distribution</h2>
-<p>Think about the following example.</p>
-<p>Suppose that we flip a coin <span class="math inline">\(n=9\)</span> times, and count the number of heads (i.e., <span class="math inline">\(X\)</span>). The coin is not fair, say, the probability of getting a head is <span class="math inline">\(p= Pr[heads] = 1/3\)</span>.</p>
-<p>Commonly, this kind of experiemnt is modeled with a binomial distribution.</p>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>See <a href="https://cran.r-project.org/web/packages/foreach/vignettes/foreach.html">this</a> for more details.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-2">
+<p>The following codes do the same task using the <code>for loop</code> and <code>foreach</code> function, respectively.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>foreach</strong></p>
+<div id="qwebr-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div><div class="column" style="width:50%;">
+<p><strong>for loop</strong></p>
+<div id="qwebr-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div></div>
+</div>
+<div id="tabset-10-3">
+<!-- end panel:foreach  -->
+</div>
+</div>
+</div>
 </section><section id="exercise-problems" class="slide level2"><h2>Exercise problems</h2>
 <p><strong>Idea</strong> 1. Generate an empty matrix and use a loop to fill in each entry of A 2. 95% confidence interval? 3. Omitted variable bias. 4. Fixed effect estimation with panel data 5.</p>
 <div class="quarto-auto-generated-content">
@@ -2394,7 +2838,7 @@ Shunkei Kakimoto
 
 </div>
 </div>
-</section>
+</section></section>
 </div>
   </div>
 
