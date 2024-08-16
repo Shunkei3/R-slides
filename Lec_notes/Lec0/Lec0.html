@@ -7,8 +7,10 @@
 <link href="Lec0_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="Lec0_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Lec0_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="Lec0_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.554">
+<link href="Lec0_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Lec0_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="Lec0_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Shunkei Kakimoto">
   <title>Day 1: Introduction to R Statistical Analysis Software</title>
@@ -34,6 +36,8 @@
   <link href="Lec0_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="Lec0_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="Lec0_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Lec0_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="Lec0_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="Lec0_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -339,39 +343,8 @@ Shunkei Kakimoto
 </div>
 
 </section>
-<section id="for-myself-.center-delete-this-later" class="slide level2">
-<h2>For myself {.center} (delete this later)</h2>
-<ul>
-<li>show some R work to get an image of goals of this course
-<ul>
-<li>Monte Calro Simulation
-<ul>
-<li>Measurement error simulation</li>
-<li>unbiased estimator</li>
-</ul></li>
-</ul></li>
-<li></li>
-</ul>
-</section>
 <section id="outline" class="slide level2 center">
 <h2>Outline</h2>
-<div title="Objective of this slide deck">
-<div class="callout callout-important no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Objective of this slide deck</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Introduce myself</li>
-<li>Clarify the goal and plan of this course</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<p><br></p>
-<h3 id="table-of-contents">Table of contents</h3>
 <ul>
 <li>Introduction</li>
 <li>Motivation
@@ -388,82 +361,77 @@ Shunkei Kakimoto
 <ul>
 <li><strong>Shunkei Kakimoto</strong>
 <ul>
-<li>Originally from Japan</li>
+<li>from Japan</li>
 <li>3rd year Ph.D.&nbsp;in Applied Economics (from this fall)</li>
-<li>Area of interests: Environmental and Resource Economics, Water Economics, Groundwater Mangement, and Empirical analysis of climate change imapct on agriculture, grondwater management.</li>
+<li>Area of interests: Environmental and Resource Economics, Water Economics, Groundwater Management, and Empirical analysis of climate change impact on agricultural production.</li>
 <li>I was TA in Econometrics I and II (APEC 8211-12) and Micro Economics III and IV (APEC 8003-04)</li>
 </ul></li>
 </ul>
-</section>
-<section id="current-research" class="slide level2 center">
-<h2>Current Research</h2>
-<ul>
-<li>Measurement Error Issues in Gridded Weather Data</li>
-</ul>
-<aside class="notes">
-<p>Speaker notes go here.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section>
 <section id="motivation-to-learn-r" class="title-slide slide level1 center">
 <h1>Motivation to learn R</h1>
 
 </section>
-<section id="what-you-can-do-with-r" class="slide level2 center">
-<h2>What you can do with R?</h2>
+<section id="what-is-r" class="slide level2 center">
+<h2>What is R?</h2>
+<p>It’s a programming language that can be used for a wide range of tasks.</p>
 <ul>
-<li>Data Analysis (of course)
+<li>Data Manipulation: Cleaning, reshaping, merging datasets, etc.</li>
+<li>Various Analysis: Descriptive analysis, regression analysis, GIS, spatial analysis, machine learning, etc.</li>
+<li>Data visualization</li>
+<li>Great tool to communicate your results with others.
 <ul>
-<li>Data type: Tabular data, Spatial data</li>
-<li>Regression analysis, spatial analysis, machine learning</li>
-</ul></li>
-<li>Data Visualization
-<ul>
-<li>ggplot2</li>
-<li>leaflet</li>
+<li>You can write a research paper, presentation slides, and even a book with R.</li>
 </ul></li>
 </ul>
-<p>Once you results, you can easily incorporate the results into your research paper or presentation slides.</p>
+<p><br></p>
+<div class="fragment fade-in">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>Write an academic paper and make presentation slides
-<ul>
-<li>Qarto presentations</li>
-<li>xaringan presentation with Rmarkdown
-<ul>
-<li>Dynamic documents</li>
-</ul></li>
-</ul></li>
+<li>R is said to be slower programming language, but I don’t think that’s a general case. Some R packages (e.g., <code>data.table</code> for data wrangling, <code>sf</code> and <code>terra</code> for handling spatial data, etc.) are primarily written in other language such as C/C++ language, which makes their computation faster.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="how-r-is-used-in-the-course-of-apec" class="slide level2 center">
-<h2>How R is used in the course of APEC?</h2>
+<section id="so-how-r-is-used-in-the-course-of-apec" class="slide level2 center">
+<h2>So, How R is used in the course of APEC?</h2>
 <ul>
-<li>We use R in a serise of Econometric couses (APEC 8211-8214)</li>
+<li>We use R in a series of Econometric courses (APEC 8211-8214)</li>
 </ul>
 <p>Specifically,</p>
 <ul>
 <li>To conduct regression analysis (e.g., OLS, IV, FE, etc.)</li>
-<li>To conduct Monte Calro simulation to understand the property of the statistical tools
+<li>To conduct Monte Carlo simulation.
 <ul>
-<li>e.g., understand the difference in variance estimators in the presence of heteroskedasticity.</li>
-</ul></li>
-<li>Even if you are not familier or not confident in R, that’s okay!
-<ul>
-<li>The required operation of R in these courses is not difficult.</li>
+<li>e.g., understand the difference in variance inference techniques.</li>
 </ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Don’t worry!</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Even if you are not familiar or not confident in R, that’s okay! Basic knowledge of R is enough to conduct the tasks in the course.</li>
+</ul>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>Speaker notes go here.</p>
+<ul>
+<li>That being said, I received various requests from you guys about the R skills that you want to learn.</li>
+<li>and, as my personal opinion, I want you to use R to aid your research and jobs in the future.</li>
+<li>So, I will provide a bit more in depth knowledge of R in this course.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -476,7 +444,7 @@ Shunkei Kakimoto
           display:block!important;
       }</style></aside>
 </section>
-<section id="objective-of-this-course" class="slide level2 center">
+<section id="objective-of-this-course" class="slide level2 center scrollable">
 <h2>Objective of this course</h2>
 <p>The primary goals of this course is to provide you with the basic knowledge of R to conduct the following tasks:</p>
 <div title="Primary Goals">
@@ -486,142 +454,23 @@ Shunkei Kakimoto
 <p><strong>Primary Goals</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li><p>Understand the basic operation of data manupulation</p>
-<ul>
-<li>e.g., selecting row and columns, creating new variables, reshaping data, merging two datasets.</li>
-</ul></li>
-<li><p>Understand how to run regression analsysis and to create the regression table.</p></li>
-<li><p>Understand how to run Monte Calro simulation using your own function and loops.</p></li>
-<li><p>Understand the basic data visualization skill with ggplot2 package.</p></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<p>That’s it!!</p>
-<aside class="notes">
-<ul>
-<li>These tasks might be too easy for some students, so I will provide some additional advanved topics for those students.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="r-and-rstudio" class="slide level2 center">
-<h2>R and Rstudio</h2>
-<p>If you haven’t done so, please install the following software:</p>
-<ul>
-<li>Install R (<a href="https://www.r-project.org/">here</a>)</li>
-<li>Install R studio (<a href="https://posit.co/">here</a>)</li>
-</ul>
-<p><br></p>
-<div title="What is R?">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>What is R?</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>R is a programming language and free software environment for statistical computing and graphics.</li>
-<li>has been and is evolving rapidly by the contributions of its users
-<ul>
-<li>state-of-the-art statistical methods (e.g., machine learning algorithms) written by the developers of the methods</li>
-<li>geographic information system (GIS)</li>
-<li>big data handling and analysis</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<p><br></p>
-<div title="What is Rstudio?">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>What is Rstudio?</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>RStudio is an integrated development environment (IDE) for R.</li>
-<li>by far the most popular graphic user interface of R.</li>
-</ul>
+<ol type="1">
+<li>to create and manipulate the base-R object data</li>
+<li>to do data manipulation with <code>data.table</code> package</li>
+<li>to do data visualization with <code>ggplot2</code> package</li>
+<li>to conduct regression analysis with <code>lm()</code> and make a publish-ready regression table with <code>modelsummary()</code> package</li>
+<li>to write Monte code for Carlo simulations using <code>for loop</code> function.</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <ul>
-<li>So, in summary, R is the programming language itself, while RStudio is the IDE that provides a more user-friendly and efficient environment for working with R.</li>
+<li>I will also provide introduction to Rmarkdown and Quarto documents, to create a report with R codes and outputs.</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>R has a terrible graphic user interface. Rstudio, which is another application built on top of R, provides a more user-friendly and efficient environment for working with R.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="course-details" class="slide level2 center">
-<h2>Course Details</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Day</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Day1</td>
-<td>Introduction to R: Basic operation of R</td>
-</tr>
-<tr class="even">
-<td>Day2</td>
-<td>Data warngling with <code>data.table</code>(and <code>dplyr</code> package)</td>
-</tr>
-<tr class="odd">
-<td>Day3</td>
-<td>Data visualization with ggplot2</td>
-</tr>
-<tr class="even">
-<td>Day4</td>
-<td>Econometric analysis with R, and Monte Calro simulation</td>
-</tr>
-<tr class="odd">
-<td>Day5</td>
-<td>Write functions for more complicated Monte Carlo simulation</td>
-</tr>
-</tbody>
-</table>
-<!-- : Schedule {.striped .hover} -->
-<p><br></p>
-<ul>
-<li>This is a tentative plan for this course. I am frexible to change the plan based on your needs and our progress.</li>
-</ul>
-<!-- + I use slides to proceed my lecture.
-  + On the slides, we can run R codes and see the outputs.
-
-+ After of the each chunk of the lecture, we will do exercise problems together. -->
-<aside class="notes">
-<ul>
+<li>These tasks might be too easy for some students, so I will provide some additional advanced topics for those students.</li>
 <li>These are the plans for this course. Since we only have 5 days, the topics that I can hand with is very limited.</li>
 <li>I will Focusing on the R skills that would be useful for your Eocnometric class.</li>
 </ul>
@@ -637,19 +486,93 @@ Shunkei Kakimoto
           display:block!important;
       }</style></aside>
 </section>
-<section id="for-further-learning-of-r" class="slide level2 center">
-<h2>For Further Learning of R</h2>
-<p>If you want to learn more about R process (e.g., geospatial analysis) and Python, I recommend you to take the following courses:</p>
+<section id="rstudio" class="slide level2">
+<h2>Rstudio</h2>
+<!-- start panel:Rstudio   -->
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">What is it?</a></li><li><a href="#tabset-1-2">Create New R code File</a></li><li><a href="#tabset-1-3">Change the theme (Optional)</a></li><li><a href="#tabset-1-4">Multiple panes (Optional)</a></li><li><a href="#tabset-1-5">Command Palette (Optional)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <ul>
-<li><p>R and Python, Programming for Econometrics (APEC8221)</p></li>
-<li><p>Big Data Methods in Economics (APEC8222)</p></li>
+<li><p>You can use <span style="color:steelblue"><i class="fa-brands fa-r-project" aria-label="r-project"></i></span> app to write and run R codes, but it has a terrible graphic user interface.</p></li>
+<li><p><span style="color:steelblue"><strong>Rstudio</strong></span> is an another app build on top of R. It makes it much easier to edit R codes, see the results and organize the files.</p></li>
+<li><p><span style="color:red">But still, you need R to run Rstudio! R is the engine of Rstudio.</span></p></li>
+<li><p>R studio looks like this:</p></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg" style="width:43.0%"></p>
+<figcaption><a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.">Image Source: Rstudio User Guide</a></figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<p>To create new R script file, click the <code>+</code> button on the top-left corner of the Rstudio, or hit <code>Ctrl</code> + <code>Shift</code> + <code>N</code> (<code>Cmd</code> + <code>Shift</code> + <code>N</code> on mac).</p>
+<p>To save the file, click the floppy disk icon <i class="fa-solid fa-floppy-disk" aria-label="floppy-disk"></i>, or <code>Ctrl</code> + <code>S</code> (<code>Cmd</code> + <code>S</code> on macOS).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://docs.posit.co/ide/user/ide/guide/ui/images/files-menu.png" style="width:35.0%"></p>
+<figcaption><a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.">Image Source: Rstudio User Guide</a></figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3">
+<p>You can change the appearance of Rstudio by going to <code>Tools</code> -&gt; <code>Global Options</code> -&gt; <code>Appearance</code> -&gt; <code>Editor theme</code> and select your favorite theme.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-theme.png" style="width:38.0%"></p>
+<figcaption><a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.">Image Source: Rstudio User Guide</a></figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-4">
+<p>You can have multiple code panes in Rstudio. To create a new pane, go to <code>Tools</code> -&gt; <code>Global Options</code> -&gt; <code>Pane Layout</code> -&gt; <code>Add Column</code>. In the same window, you can also change the layout of the panes.</p>
+<p>In the following image, I have two source panes. Also, I changed the layout of the panes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="image/rstudio.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-5">
+<p>Recent R-studio has a new feature called “Command Palette.”. Hit <code>Ctrl</code> + <code>Shift</code> + <code>P</code> (<code>Cmd</code> + <code>Shift</code> + <code>P</code> on macOS) on your keyboard. (or go to <code>Tools</code> -&gt; <code>Show Command Palette</code>).</p>
+<p>From the command palette, you can do anything!</p>
+<ul>
+<li>create a new script file (R, Rmarkdown, Quarto etc.)</li>
+<li>open an R script file from your folder.</li>
+<li>open R project.</li>
+<li>open new session …. etc.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://docs.posit.co/ide/user/ide/guide/ui/images/command-palette.png" style="width:50.0%"></p>
+<figcaption><a href="https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.">Source: Rstudio User Guide</a></figcaption>
+</figure>
+</div>
+<!-- end panel:Rstudio  -->
+</div>
+</div>
+</div>
 </section>
-<section id="by-the-end-of-this-class" class="slide level2">
-<h2>By the end of this class …</h2>
+<section id="summary" class="slide level2 center">
+<h2>Summary:</h2>
 <ul>
-<li></li>
+<li>Now you know how to use Rstudio. As long as you know how to create and save R script, you are ready to go for the next lecture.</li>
 </ul>
+<p><br></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>See this <a href="https://rstudio.github.io/cheatsheets/html/rstudio-ide.html?_gl=1*4yeznz*_ga*MjA3NjIxNzk0Ny4xNzE1NjIyMzk3*_ga_2C0WZ1JHG0*MTcyMzc2ODk2Ny41Ni4xLjE3MjM3NzM3NzQuMC4wLjA." target="_blank">link</a>. for more information about Rstudio.</p></li>
+<li><p>You don’t necessarily need to use R studio to use R (for example, you can use <a href="https://code.visualstudio.com/docs/languages/r" target="_blank">Visual Studio Code</a> to run R), but, Rstudio is a great starting point to get familiar with R.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -666,6 +589,7 @@ Shunkei Kakimoto
   <script src="Lec0_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="Lec0_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="Lec0_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Lec0_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="Lec0_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
   <script src="Lec0_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="Lec0_files/libs/revealjs/plugin/quarto-support/support.js"></script>
@@ -688,7 +612,8 @@ Shunkei Kakimoto
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'multiplex': {"secret":null,"id":"afe6b20700ee26d5","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
@@ -860,7 +785,7 @@ Shunkei Kakimoto
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           
@@ -901,18 +826,7 @@ Shunkei Kakimoto
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -944,7 +858,29 @@ Shunkei Kakimoto
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -952,7 +888,7 @@ Shunkei Kakimoto
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

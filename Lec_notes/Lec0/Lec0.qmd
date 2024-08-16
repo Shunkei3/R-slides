@@ -4,7 +4,7 @@ subtitle: Summer - 2024, University of Minnesota
 author: "Shunkei Kakimoto"
 format: 
   revealjs:
-    self-contained: false
+    embed-resources: false
     slide-number: c/t
     width: 1600
     height: 900
@@ -20,32 +20,18 @@ format:
     title-slide-attributes:
       data-background-color: "#447099"
     fig-dpi: 400
+    chalkboard: true
+    preview-links: false
 webr:
-  packages: ['ggplot2', 'dplyr']
+  packages: []
   cell-options:
     editor-font-scale: 0.8
 filters:
   - webr
 ---
 
-## For myself {.center} (delete this later)
-+ show some R work to get an image of goals of this course
-  + Monte Calro Simulation 
-    + Measurement error simulation
-    + unbiased estimator
-+ 
-
-
 ## Outline {.center}
 
-::: {.callout-important title="Objective of this slide deck"} 
-+ Introduce myself
-+ Clarify the goal and plan of this course
-:::
-
-<br>
-
-### Table of contents
 + Introduction 
 + Motivation
   + What you can do with R?
@@ -53,61 +39,57 @@ filters:
   + Basic knowledge about R and Rstudio (R 101)
 + Plan for this course
 
-
 ## About myself {.center}
 
 + **Shunkei Kakimoto**
-  + Originally from Japan
+  + from Japan
   + 3rd year Ph.D. in Applied Economics (from this fall)
-  + Area of interests: Environmental and Resource Economics, Water Economics, Groundwater Mangement, and Empirical analysis of climate change imapct on agriculture, grondwater management.
+  + Area of interests: Environmental and Resource Economics, Water Economics, Groundwater Management, and Empirical analysis of climate change impact on agricultural production.
   + I was TA in Econometrics I and II (APEC 8211-12) and Micro Economics III and IV (APEC 8003-04)
-
-
-## Current Research {.center}
-
-+ Measurement Error Issues in Gridded Weather Data
-
-
-::: {.notes}
-Speaker notes go here.
-:::
 
 
 # Motivation to learn R 
 
-## What you can do with R? {.center}
+## What is R? {.center}
 
-+ Data Analysis (of course)
-  + Data type: Tabular data, Spatial data
-  + Regression analysis, spatial analysis, machine learning
+It's a programming language that can be used for a wide range of tasks.
 
-+ Data Visualization
-  + ggplot2
-  + leaflet
++ Data Manipulation: Cleaning, reshaping, merging datasets, etc.
++ Various Analysis: Descriptive analysis, regression analysis, GIS, spatial analysis, machine learning, etc.
++ Data visualization
++ Great tool to communicate your results with others.
+  + You can write a research paper, presentation slides, and even a book with R. 
 
-Once you results, you can easily incorporate the results into your research paper or presentation slides.
+<br>
 
-+ Write an academic paper and make presentation slides
-  + Qarto presentations
-  + xaringan presentation with Rmarkdown
-    + Dynamic documents
+:::{.fragment .fade-in}
+::: {.callout-note}
++ R is said to be slower programming language, but I don't think that's a general case. Some R packages (e.g., `data.table` for data wrangling, `sf` and `terra` for handling spatial data, etc.) are primarily written in other language such as C/C++ language, which makes their computation faster.
+:::
+:::
 
 
-## How R is used in the course of APEC?{.center}
 
-+ We use R in a serise of Econometric couses (APEC 8211-8214)
+## So, How R is used in the course of APEC?{.center}
+
++ We use R in a series of Econometric courses (APEC 8211-8214)
 
 Specifically, 
 
 + To conduct regression analysis (e.g., OLS, IV, FE, etc.)
-+ To conduct Monte Calro simulation to understand the property of the statistical tools
-  + e.g., understand the difference in variance estimators in the presence of heteroskedasticity. 
++ To conduct Monte Carlo simulation.
+  + e.g., understand the difference in variance inference techniques. 
 
-+ Even if you are not familier or not confident in R, that's okay!
-  + The required operation of R in these courses is not difficult.
+
+::: {.callout-note}
+## Don't worry!
++ Even if you are not familiar or not confident in R, that's okay! Basic knowledge of R is enough to conduct the tasks in the course.
+:::
 
 ::: {.notes}
-Speaker notes go here.
++ That being said, I received various requests from you guys about the R skills that you want to learn.
++ and, as my personal opinion, I want you to use R to aid your research and jobs in the future. 
++ So, I will provide a bit more in depth knowledge of R in this course.
 :::
 
 ## Objective of this course {.center}
@@ -115,102 +97,89 @@ Speaker notes go here.
 The primary goals of this course is to provide you with the basic knowledge of R to conduct the following tasks:
 
 ::: {.callout-important title="Primary Goals"}
-+ Understand the basic operation of data manupulation
-  + e.g., selecting row and columns, creating new variables, reshaping data, merging two datasets.
-
-+ Understand how to run regression analsysis and to create the regression table.
-
-+ Understand how to run Monte Calro simulation using your own function and loops.
-
-+ Understand the basic data visualization skill with ggplot2 package.
+1. to create and manipulate the base-R object data 
+2. to do data manipulation with `data.table` package
+3. to do data visualization with `ggplot2` package
+4. to conduct regression analysis with `lm()` and make a publish-ready regression table with `modelsummary()` package
+5. to write Monte code for Carlo simulations using `for loop` function. 
 :::
 
-That's it!!
++ I will also provide introduction to Rmarkdown and Quarto documents, to create a report with R codes and outputs.
 
-::: {.notes}
-+ These tasks might be too easy for some students, so I will provide some additional advanved topics for those students.
-:::
-
-## R and Rstudio {.center}
-
-If you haven't done so, please install the following software:
-
-+ Install R ([here](https://www.r-project.org/))
-+ Install R studio ([here](https://posit.co/))
-
-<br>
-
-::: {.callout-tip title="What is R?"}
-+ R is a programming language and free software environment for statistical computing and graphics.
-+ has been and is evolving rapidly by the contributions of its users
-  + state-of-the-art statistical methods (e.g., machine learning algorithms) written by the developers of the methods
-  + geographic information system (GIS)
-  + big data handling and analysis
-:::
-
-<br>
-
-::: {.callout-tip title="What is Rstudio?"}
-+ RStudio is an integrated development environment (IDE) for R. 
-+ by far the most popular graphic user interface of R.
-:::
-
-+ So, in summary, R is the programming language itself, while RStudio is the IDE that provides a more user-friendly and efficient environment for working with R.
-
-::: {.notes}
-
-+ R has a terrible graphic user interface. Rstudio, which is another application built on top of R, provides a more user-friendly and efficient environment for working with R.
-:::
-
-
-
-## Course Details {.center}
-
-| Day  | Topic  |
-|--------|--------|
-| Day1  | Introduction to R: Basic operation of R   |
-| Day2   | Data warngling with `data.table`(and `dplyr` package)  |
-| Day3 | Data visualization with ggplot2   |
-| Day4 | Econometric analysis with R, and Monte Calro simulation  |
-| Day5 | Write functions for more complicated Monte Carlo simulation
-<!-- : Schedule {.striped .hover} -->
-
-<br>
-
-+ This is a tentative plan for this course. I am frexible to change the plan based on your needs and our progress.
-
-<!-- + I use slides to proceed my lecture.
-  + On the slides, we can run R codes and see the outputs.
-
-+ After of the each chunk of the lecture, we will do exercise problems together. -->
 
 
 ::: {.notes}
++ These tasks might be too easy for some students, so I will provide some additional advanced topics for those students.
 + These are the plans for this course. Since we only have 5 days, the topics that I can hand with is very limited. 
 + I will Focusing on the R skills that would be useful for your Eocnometric class. 
 :::
 
-## For Further Learning of R {.center}
-
-If you want to learn more about R process (e.g., geospatial analysis) and Python, I recommend you to take the following courses:
-
-+ R and Python, Programming for Econometrics (APEC8221) 
-
-+ Big Data Methods in
-Economics (APEC8222)
 
 
-## By the end of this class ...
+## Rstudio
+
+<!-- start panel:Rstudio   --> 
+:::{.panel-tabset}  
+### What is it?
+
++ You can use [{{< fa brands r-project >}}]{style="color:steelblue"} app to write and run R codes, but it has a terrible graphic user interface.
++ [**Rstudio**]{style="color:steelblue"} is an another app build on top of R. It makes it much easier to edit R codes, see the results and organize the files. 
++ [But still, you need R to run Rstudio! R is the engine of Rstudio.]{style="color:red"}
+
++ R studio looks like this: 
+
+![[Image Source: Rstudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.)](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.jpeg){width=43%}
+
+### Create New R code File
+
+To create new R script file, click the `+` button on the top-left corner of the Rstudio, or hit `Ctrl` + `Shift` + `N` (`Cmd` + `Shift` + `N` on mac).
+
+To save the file, click the floppy disk icon {{< fa floppy-disk >}}, or `Ctrl` + `S` (`Cmd` + `S` on macOS).
+
+![[Image Source: Rstudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.)](https://docs.posit.co/ide/user/ide/guide/ui/images/files-menu.png){width=35%}
+
+### Change the theme (Optional)
+
+You can change the appearance of Rstudio by going to `Tools` -> `Global Options` -> `Appearance` -> `Editor theme` and select your favorite theme.
+
+![[Image Source: Rstudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.)](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-theme.png){width=38%}
 
 
+### Multiple panes (Optional)
 
-## Preparation 
+You can have multiple code panes in Rstudio. To create a new pane, go to `Tools` -> `Global Options` -> `Pane Layout` -> `Add Column`. In the same window, you can also change the layout of the panes.
 
+In the following image, I have two source panes. Also, I changed the layout of the panes.
 
-
-
-
-
-
+![](image/rstudio.png){width=60% fig-align=center}
 
 
+### Command Palette (Optional)
+
+Recent R-studio has a new feature called "Command Palette.". Hit `Ctrl` + `Shift` + `P` (`Cmd` + `Shift` + `P` on macOS) on your keyboard. (or go to `Tools` -> `Show Command Palette`). 
+
+From the command palette, you can do anything!
+
++ create a new script file (R, Rmarkdown, Quarto etc.)
++ open an R script file from your folder. 
++ open R project. 
++ open new session .... etc. 
+
+![[Source: Rstudio User Guide](https://docs.posit.co/ide/user/ide/guide/ui/appearance.html#:~:text=To%20switch%20between%20RStudio%20themes,use%20the%20RStudio%20theme%20dropdown.)](https://docs.posit.co/ide/user/ide/guide/ui/images/command-palette.png){width=50%}
+
+<!-- end panel:Rstudio  --> 
+:::
+
+
+## Summary: {.center}
+
++ Now you know how to use Rstudio. As long as you know how to create and save R script, you are ready to go for the next lecture.
+
+<br>
+
+::: {.callout-note}
++ See this [link](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html?_gl=1*4yeznz*_ga*MjA3NjIxNzk0Ny4xNzE1NjIyMzk3*_ga_2C0WZ1JHG0*MTcyMzc2ODk2Ny41Ni4xLjE3MjM3NzM3NzQuMC4wLjA.){target="_blank"}. for more information about Rstudio.
+
++ You don't necessarily need to use R studio to use R (for example, you can use [Visual Studio Code](https://code.visualstudio.com/docs/languages/r){target="_blank"} to run R), but, Rstudio is a great starting point to get familiar with R.
+
+:::
