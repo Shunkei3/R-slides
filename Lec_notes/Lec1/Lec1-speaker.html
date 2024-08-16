@@ -679,7 +679,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-1","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# This is an example of R code chunk you will see in this slide deck.\nprint(\"Let's get started!\")\n\n1 + 1"},{"id":2,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-2","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# assign value 1 to an object called \"x\" \nx <- 1\n# see what's inside object \"x\"\nx\n\n# assign the result of a product to an object called \"y\"\ny <- 2 * 3\n\n# store sum of x and y in z\nz <- x + y\n# see what's inside object \"z\"\nz\n# take z, add 1, and store result back in z\nz <- z + 1\n# Now, the value stored in z is updated.\nz\n\n# calculate the square of z\nz^2"},{"id":3,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-3","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# For example, this is not allowed. You will see an error.\n1_test <- \"R is fun\"\n\n# Instead, you can do this.\ntest_1 <- \"R is fun\"\ntest_1"},{"id":4,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-4","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"class(5.2)\nclass(2L)\nclass(TRUE)"},{"id":5,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-5","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"test_chr <- \"5.2\"\nclass(test_chr)\n\n# convert to numeric\ntest_num <- as.numeric(test_chr)\ntest_num\nclass(test_num)\n\n# convert from numeric to character type\nas.character(test_num)\n\n# convert from numeric to factor type\nas.factor(test_num)"},{"id":6,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-6","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"#--- true or false ---#\n5 == 5\n5 != 4\n5 > 4\n5 >= 4\n5 < 4\n5 <= 4\n\n5 == 5 &  5 != 4\n5 == 5 &  5 < 4\n5 == 5 | 5 < 4\n\nTRUE + TRUE\nTRUE + FALSE"},{"id":7,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-7","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Empty vector\nc()\n\n# Create a numeric vector\nx <- c(1, 2, 3)\nx\n\n# Combine another numeric vector and x\ny <- c(x, c(4, 5))\n\n# Create a character vector\nz <- c(\"a\", \"b\", \"c\")\n\n# See what happens when you combine numeric and character vector\nc(x, z) #numeric is always coerced to character (power relationship, character > numeric > logical, not important)"},{"id":8,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-8","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# --- Create a numeric vector --- #\nx <- c(x1 = 5, x2 = -8, x3 = 2, x4 = -1)\n\n# --- Get the 1nd and 2nd element of x --- #\nindex_vec <- c(1, 2)\nx[index_vec] #or simply you can do x[c(2, 3)]\n\n# --- Get x1 and x2 --- #\nindex_vec <- c(\"x1\", \"x2\")\nx[index_vec] #or simply you can do x[c(\"x1\", \"x2\")]\n\n# --- Modify --- #\nx[c(1, 2)] <- c(100, 200)\nx"},{"id":9,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-9","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# --- Create a numeric vector --- #\nx <- c(5, -8, 2, -1)\n\n# === For example, let's get the positive elements === #\n# create a logical vector (condition)\ny <- x > 0\n# Let's see what's inside y\ny\n\n# subset the data\nx[y] #Or you can simply do x[x>0]"},{"id":10,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-10","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Run this code to work on the exercise problems.\nset.seed(3746)\nx <- runif(n = 30, min = 0, max = 1)\nx # see what's inside x"},{"id":11,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-11","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Create a numeric matrix\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# use dim() to see the dimension of the matrix\ndim(m_num)\n\n# Create a matrix of characters\nm_chr <- matrix(c(\"a\", \"b\" , \"c\", \"d\", \"e\", \"f\"), nrow = 3)\nm_chr"},{"id":12,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-12","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"vec_a <- 1:4\nvec_b <- 4:7\n\nmat1 <- cbind(vec_a, vec_b)\nmat1\n\nmat2 <- rbind(vec_a, vec_b)\nmat2"},{"id":13,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-13","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# --- Create a matrix of numbers --- #\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# --- Get the elements in the 1st row and 2nd column --- #\nm_num[1, 2]\n\n# --- Get the 1st row --- #\nm_num[1, ]\n\n# --- Get the the first two rows --- #\nm_num[1:2, ]\n\n# --- Modify a specific element --- #\nm_num[1, 2] <- 100\nm_num"},{"id":14,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-14","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Create a matrix of numbers\nm_num <- matrix(1:6, nrow = 3)\n\n# Add column names\ncolnames(m_num) <- c(\"A\", \"B\")\nm_num\n# Add row names\nrownames(m_num) <- c(\"a\", \"b\", \"c\")\n\n# --- Get the value of row \"c\" and column \"B\"  --- #\nm_num[\"c\", \"B\"]"},{"id":15,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-15","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"set.seed(3746)\nnum <- runif(n = 30, min = 0, max = 1)\nmat <- matrix(data = num, nrow = 6)\ncolnames(mat) <- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nrownames(mat) <- c(\"a\", \"b\", \"c\", \"d\", \"e\", \"f\")\nmat # see what's inside mat"},{"id":16,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-16","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Write your code here"},{"id":17,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-17","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# create a data.frame \nyield_data <- \n  data.frame(\n    N = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\nyield_data"},{"id":18,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-18","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Get the elements in the 1st row \nyield_data[1, ]\n\n# Get the element in the Nitrogen and Yield column\nyield_data[, c(\"Yield\", \"N\")] #or yield_data[1, \"Yield\"]\n\n# Find states whose yield is more than 225\nyield_data[yield_data$Yield > 225, \"State\"] # yield_data$Yield > 225 returns a logical vector"},{"id":19,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-19","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"yield_data[[\"Yield\"]] #returns a vector\n\nyield_data$Yield #returns a vector"},{"id":20,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-20","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"yield_data$year <- c(2020, 2021, 2022)\n\nyield_data$year<- 2021\nyield_data$month<- \"August\"\n\n# --- Remove the year column --- #\nyield_data$month <-  NULL"},{"id":21,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-21","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# column names\nnames(yield_data) #or colnames(yield_data)\n\n# Change the column names to lower case\nnames(yield_data) <- tolower(names(yield_data))\nyield_data"},{"id":22,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-22","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# --- Load data --- #\ndata(mtcars)\n?mtcars # to see the description of the yield_data\n\n# --- Take a look at the data --- #\n# head() function shows the first several rows of the data\nhead(mtcars)"},{"id":23,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-23","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# Write your code here"},{"id":24,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-24","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# --- Plot --- #\nplot(x = as.factor(yield_data$state), y = yield_data$yield)\n\n# instead, you can do:\nwith(yield_data, plot(x = as.factor(state), y = yield))\n\nwith(yield_data, mean(yield)) # same as mean(yield_data$yield)\n\n# --- Add multiple columns --- #\nyield_data$year <- c(2020, 2021, 2022)\nyield_data$season <- c(\"spring\", \"summer\", \"fall\")\n\n# instead, you can do\nnew_yield_data <- within(yield_data, {\n  year <- c(2020, 2021, 2022)\n  season <- c(\"spring\", \"summer\", \"fall\")\n})"},{"id":25,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-25","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"list_a <- list(1, 2, \"3\", 4)\nlist_a\n\n# You can even store `data.frame` in a list.\nexample_list <- \n  list(\n    num = 1:4,\n    yield_dt  = yield_data\n  )"},{"id":26,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-26","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# note: yield data has two elements: num (vector) and yield_dt (data.frame)\n\n# --- Return as a list of element --- #\nexample_list[1] #same as example_list[\"num\"]\nexample_list[2] #same as example_list[\"num\"]\n\n# --- Return as a single element --- #\nexample_list[[1]] # same as example_list$num\nexample_list[[2]] # same as example_list$yield_dt"},{"id":27,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-27","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"#--- addition ---#\n2 + 3\n#--- subtraction ---#\n6 - 2\n#--- multiplications ---#\n6 * 2\n#--- exponentiation ---#\n2 ^ 3\n#--- division ---#\n6 / 2\n#--- remainder ---#\n9 %% 4\n#--- quotient ---#\n9 %/% 4"},{"id":28,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-28","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"mat_a <- matrix(1:4, nrow = 2)\nmat_b <- matrix(4:7, nrow = 2)\n\n\n#--- Matrix Addition and Subtraction ---#\nmat_a + mat_b\nmat_b - mat_a\n\n# --- Matrix Multiplication using %*% operator --- #\nmat_a %*% mat_b\n\nmat_a * mat_b # element-wise multiplication\n\n# --- Matrix Transpose --- #\nt(mat_a)"},{"id":29,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-29","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# If you don't have the rio package, install it by running the following code:\n# install.packages(\"rio\")\nlibrary(rio)"},{"id":30,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-30","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"flights <- readRDS(\"Data/flight.rds\")"},{"id":31,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-31","autorun":"true","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"setwd(12345) #don't worry about this\nr <- sample(1:100, size=20, replace = TRUE)"},{"id":32,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-32","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# === Part 1 === #\nx <- 20:50\n# using `:` operator is the most basic way to create a sequence of numbers, but it only works with integer numbers with a step of 1.\n# seq() function is more flexible. For example, you can create a sequence of numbers, , incremented by 0.5.\n# x <- seq(from = 20, to = 50, by = 0.5)\nx[x %% 3 == 0] <- 0\n\n# === Part 2 === #\n# In this code, sample() function creates a random sample of numbers with size 20 (size=20) from a range 1 to 100 (x = 1:100) allowing replacement (replace = TRUE).\n\n# === Part 3 === #\n# mean\nmean_r <- sum(r) / length(r)\n# SD\nsd_r <- sqrt(sum((r - mean_r)^2) / (length(r) - 1))\n\n# === Part 4 === #\nmax_index <- which(r == max(r))\n\n# === Part 5 === #\nr_50 <- r[r > 50]\n\n# === Part 6 === #\nr_40_60 <- r[r > 40 & r < 60]\n\n# === Part 7 === #\nr_20_70 <- r[r < 20 | r > 70]"},{"id":33,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","message":"true","label":"unnamed-chunk-33","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# === Part 1 === #\nnscg17 <- rio::import(\"Data/nscg17small.dta\")\n\n# === Part 2 === #\nnscg17$ID <- 1:nrow(nscg17)\n\n# === Part 3 === #\nsummary(nscg17$salary)\n\n# === Part 4 === #\nnscg17$z_hrswk <- (nscg17$hrswk - mean(nscg17$hrswk)) / sd(nscg17$hrswk)\n# or using with() function, you can write the code more concisely\n# nscg17$z_hrswk2 <- with(nscg17, (hrswk - mean(hrswk)) / sd(hrswk))\n\n# Note: For part 2 and 3, you can use within() function to create new columns more concisely.\n# nscg17 <- \n#   within(\n#     nscg17, {\n#       ID <- 1:nrow(nscg17)\n#       z_hrswk <- (hrswk - mean(hrswk)) / sd(hrswk)\n#     }\n\n# === Part 5 === #\n# create a logical vector that indicates whether the hours worked is above average\nabove_avg_hrswk <- with(nscg17, z_hrswk > mean(z_hrswk)) # you can get the same result by using `hrswk`.\n# subset the data\nnscg17_above_avg_hrswk <- nscg17[above_avg_hrswk, ]\n# calculate the share of observations with above average hours worked\nshare_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)\nshare_above_avg_hrswk"},{"id":34,"options":{"context":"interactive","fig-width":7,"warning":"true","classes":"","editor-font-scale":"0.8","comment":"","results":"markup","fig-height":5,"out-height":"","read-only":"false","editor-max-height":"","eval":"false","message":"true","label":"unnamed-chunk-34","autorun":"false","dpi":72,"fig-cap":"","out-width":"700px","output":"true","editor-quick-suggestions":"false","editor-word-wrap":"true"},"code":"# === Step 1: Load data === #\n# flights <- readRDS(\"Data/flight.rds\")\n# the data is created with the following code:\nflights <- nycflights13::flights\nflights <-  na.omit(flights)\nflights <-  as.data.frame(flights)\n\n# === Part 2: subset data === #\n# define the columns to select\nselect_cols <- c(\"year\", \"month\", \"day\", \"dep_delay\", \"arr_delay\", \"dest\", \"carrier\")\nflights_mn <- flights[flights$dest == \"MSP\", select_cols]\n\n# === Part 3: Create total_delay and delay_type === #\n# the most basic approach is \nflights_mn$total_delay <- flights_mn$dep_delay + flights_mn$arr_delay\nflights_mn$delay_type <- \n  ifelse(flights_mn$total_delay>30, \"delay_more_30\", \"others\")\n\n# alternatively, you can use within() function like this:\nflights_mn <- within(\n  flights_mn, {\n    total_delay <- dep_delay + arr_delay\n    delay_type <- ifelse(flights_mn$total_delay>30, \"delay_more_30\", \"others\")\n  }\n)\n\n# === Part 4: count === #\nflights_mn_delay_count <- table(flights_mn$carrier, flights_mn$delay_type)\n# same as\nflights_mn_delay_count <- with(flights_mn, table(carrier, delay_type))\n# translate the table to data.frame class to make it easier to manipulate\nflights_mn_delay_count <- as.data.frame.matrix(flights_mn_delay_count)\n\n\n# === Part 5: derive proportion of flights delayed more than 30 mins === #\n# I will only show the code using within() function\nflights_mn_delay_count <- within(\n  flights_mn_delay_count,\n  {\n    total_flights <- others + delay_more_30\n    prop_more_30 <- delay_more_30 / total_flights\n  }\n)\nflights_mn_delay_count"}];
+  globalThis.qwebrCellDetails = [{"code":"# This is an example of R code chunk you will see in this slide deck.\nprint(\"Let's get started!\")\n\n1 + 1","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-1","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":1},{"code":"# assign value 1 to an object called \"x\" \nx <- 1\n# see what's inside object \"x\"\nx\n\n# assign the result of a product to an object called \"y\"\ny <- 2 * 3\n\n# store sum of x and y in z\nz <- x + y\n# see what's inside object \"z\"\nz\n# take z, add 1, and store result back in z\nz <- z + 1\n# Now, the value stored in z is updated.\nz\n\n# calculate the square of z\nz^2","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-2","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":2},{"code":"# For example, this is not allowed. You will see an error.\n1_test <- \"R is fun\"\n\n# Instead, you can do this.\ntest_1 <- \"R is fun\"\ntest_1","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-3","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":3},{"code":"class(5.2)\nclass(2L)\nclass(TRUE)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-4","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":4},{"code":"test_chr <- \"5.2\"\nclass(test_chr)\n\n# convert to numeric\ntest_num <- as.numeric(test_chr)\ntest_num\nclass(test_num)\n\n# convert from numeric to character type\nas.character(test_num)\n\n# convert from numeric to factor type\nas.factor(test_num)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-5","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":5},{"code":"#--- true or false ---#\n5 == 5\n5 != 4\n5 > 4\n5 >= 4\n5 < 4\n5 <= 4\n\n5 == 5 &  5 != 4\n5 == 5 &  5 < 4\n5 == 5 | 5 < 4\n\nTRUE + TRUE\nTRUE + FALSE","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-6","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":6},{"code":"# Empty vector\nc()\n\n# Create a numeric vector\nx <- c(1, 2, 3)\nx\n\n# Combine another numeric vector and x\ny <- c(x, c(4, 5))\n\n# Create a character vector\nz <- c(\"a\", \"b\", \"c\")\n\n# See what happens when you combine numeric and character vector\nc(x, z) #numeric is always coerced to character (power relationship, character > numeric > logical, not important)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-7","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":7},{"code":"# --- Create a numeric vector --- #\nx <- c(x1 = 5, x2 = -8, x3 = 2, x4 = -1)\n\n# --- Get the 1nd and 2nd element of x --- #\nindex_vec <- c(1, 2)\nx[index_vec] #or simply you can do x[c(2, 3)]\n\n# --- Get x1 and x2 --- #\nindex_vec <- c(\"x1\", \"x2\")\nx[index_vec] #or simply you can do x[c(\"x1\", \"x2\")]\n\n# --- Modify --- #\nx[c(1, 2)] <- c(100, 200)\nx","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-8","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":8},{"code":"# --- Create a numeric vector --- #\nx <- c(5, -8, 2, -1)\n\n# === For example, let's get the positive elements === #\n# create a logical vector (condition)\ny <- x > 0\n# Let's see what's inside y\ny\n\n# subset the data\nx[y] #Or you can simply do x[x>0]","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-9","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":9},{"code":"# Run this code to work on the exercise problems.\nset.seed(3746)\nx <- runif(n = 30, min = 0, max = 1)\nx # see what's inside x","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-10","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":10},{"code":"# Create a numeric matrix\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# use dim() to see the dimension of the matrix\ndim(m_num)\n\n# Create a matrix of characters\nm_chr <- matrix(c(\"a\", \"b\" , \"c\", \"d\", \"e\", \"f\"), nrow = 3)\nm_chr","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-11","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":11},{"code":"vec_a <- 1:4\nvec_b <- 4:7\n\nmat1 <- cbind(vec_a, vec_b)\nmat1\n\nmat2 <- rbind(vec_a, vec_b)\nmat2","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-12","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":12},{"code":"# --- Create a matrix of numbers --- #\nm_num <- matrix(1:6, nrow = 3)\nm_num\n\n# --- Get the elements in the 1st row and 2nd column --- #\nm_num[1, 2]\n\n# --- Get the 1st row --- #\nm_num[1, ]\n\n# --- Get the the first two rows --- #\nm_num[1:2, ]\n\n# --- Modify a specific element --- #\nm_num[1, 2] <- 100\nm_num","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-13","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":13},{"code":"# Create a matrix of numbers\nm_num <- matrix(1:6, nrow = 3)\n\n# Add column names\ncolnames(m_num) <- c(\"A\", \"B\")\nm_num\n# Add row names\nrownames(m_num) <- c(\"a\", \"b\", \"c\")\n\n# --- Get the value of row \"c\" and column \"B\"  --- #\nm_num[\"c\", \"B\"]","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-14","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":14},{"code":"set.seed(3746)\nnum <- runif(n = 30, min = 0, max = 1)\nmat <- matrix(data = num, nrow = 6)\ncolnames(mat) <- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nrownames(mat) <- c(\"a\", \"b\", \"c\", \"d\", \"e\", \"f\")\nmat # see what's inside mat","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-15","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":15},{"code":"# Write your code here","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-16","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":16},{"code":"# create a data.frame \nyield_data <- \n  data.frame(\n    N = c(200, 180, 300),\n    Yield = c(240, 220, 230),\n    State = c(\"Kansas\", \"Nebraska\", \"Iowas\")\n  )\nyield_data","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-17","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":17},{"code":"# extract the elements in the 1st row \nyield_data[1, ]\n\n# extract the element in the Nitrogen and Yield column\nyield_data[, c(\"Yield\", \"N\")] #or yield_data[1, \"Yield\"]\n\n# Find states whose yield is more than 225\nyield_data[yield_data$Yield > 225, \"State\"] # yield_data$Yield > 225 returns a logical vector","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-18","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":18},{"code":"yield_data[[\"Yield\"]] #returns a vector\n\nyield_data$Yield #returns a vector","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-19","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":19},{"code":"yield_data$year <- c(2020, 2021, 2022)\n\nyield_data$year<- 2021\nyield_data$month<- \"August\"\n\n# --- Remove the year column --- #\nyield_data$month <-  NULL","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-20","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":20},{"code":"# column names\nnames(yield_data) #or colnames(yield_data)\n\n# Change the column names to lower case\nnames(yield_data) <- tolower(names(yield_data))\nyield_data","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-21","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":21},{"code":"# --- Load data --- #\ndata(mtcars)\n?mtcars # to see the description of the yield_data\n\n# --- Take a look at the data --- #\n# head() function shows the first several rows of the data\nhead(mtcars)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-22","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":22},{"code":"# Write your code here","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-23","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":23},{"code":"# --- Plot --- #\nplot(x = as.factor(yield_data$state), y = yield_data$yield)\n\n# instead, you can do:\nwith(yield_data, plot(x = as.factor(state), y = yield))\n\nwith(yield_data, mean(yield)) # same as mean(yield_data$yield)\n\n# --- Add multiple columns --- #\nyield_data$year <- c(2020, 2021, 2022)\nyield_data$season <- c(\"spring\", \"summer\", \"fall\")\n\n# instead, you can do\nnew_yield_data <- within(yield_data, {\n  year <- c(2020, 2021, 2022)\n  season <- c(\"spring\", \"summer\", \"fall\")\n})","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-24","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":24},{"code":"list_a <- list(1, 2, \"3\", 4)\nlist_a\n\n# You can even store `data.frame` in a list.\nexample_list <- \n  list(\n    num = 1:4,\n    yield_dt  = yield_data\n  )","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-25","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":25},{"code":"# note: yield data has two elements: num (vector) and yield_dt (data.frame)\n\n# --- Return as a list of element --- #\nexample_list[1] #same as example_list[\"num\"]\nexample_list[2] #same as example_list[\"num\"]\n\n# --- Return as a single element --- #\nexample_list[[1]] # same as example_list$num\nexample_list[[2]] # same as example_list$yield_dt","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-26","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":26},{"code":"#--- addition ---#\n2 + 3\n#--- subtraction ---#\n6 - 2\n#--- multiplications ---#\n6 * 2\n#--- exponentiation ---#\n2 ^ 3\n#--- division ---#\n6 / 2\n#--- remainder ---#\n9 %% 4\n#--- quotient ---#\n9 %/% 4","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-27","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":27},{"code":"a <- c(1, 3, 2)\nb <- c(5, 7, 6)\n\n# --- Addition --- #\na + 1\na + b\n\n# --- Subtraction --- #\na - 1\nb - a\n\n# --- Multiplication --- #\na*2\na*b","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-28","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":28},{"code":"mat_a <- matrix(1:4, nrow = 2)\nmat_b <- matrix(4:7, nrow = 2)\n\n\n#--- Matrix Addition and Subtraction ---#\nmat_a + mat_b\nmat_b - mat_a\n\n# --- Matrix Multiplication using %*% operator --- #\nmat_a %*% mat_b\n\nmat_a * mat_b # element-wise multiplication\n\n# --- Matrix Transpose --- #\nt(mat_a)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-29","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":29},{"code":"# If you don't have the rio package, install it by running the following code:\n# install.packages(\"rio\")\nlibrary(rio)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-30","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":30},{"code":"flights <- readRDS(\"Data/flight.rds\")\n# see the first several rows\nhead(flights)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-31","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":31},{"code":"set.seed(12345) #don't worry about this\nr <- sample(1:100, size=20, replace = TRUE)","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-32","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"true","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":32},{"code":"# === Part 1 === #\nx <- 20:50\n# using `:` operator is the most basic way to create a sequence of numbers, but it only works with integer numbers with a step of 1.\n# seq() function is more flexible. For example, you can create a sequence of numbers, , incremented by 0.5.\n# x <- seq(from = 20, to = 50, by = 0.5)\nx[x %% 3 == 0] <- 0\n\n# === Part 2 === #\n# In this code, sample() function creates a random sample of numbers with size 20 (size=20) from a range 1 to 100 (x = 1:100) allowing replacement (replace = TRUE).\n\n# === Part 3 === #\n# mean\nmean_r <- sum(r) / length(r)\n# SD\nsd_r <- sqrt(sum((r - mean_r)^2) / (length(r) - 1))\n\n# === Part 4 === #\nmax_index <- which(r == max(r))\n\n# === Part 5 === #\nr_50 <- r[r > 50]\n\n# === Part 6 === #\nr_40_60 <- r[r > 40 & r < 60]\n\n# === Part 7 === #\nr_20_70 <- r[r < 20 | r > 70]","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-33","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":33},{"code":"# === Part 1 === #\nnscg17 <- rio::import(\"Data/nscg17small.dta\")\n\n# === Part 2 === #\nnscg17$ID <- 1:nrow(nscg17)\n\n# === Part 3 === #\nsummary(nscg17$salary)\n\n# === Part 4 === #\nnscg17$z_hrswk <- (nscg17$hrswk - mean(nscg17$hrswk)) / sd(nscg17$hrswk)\n# or using with() function, you can write the code more concisely\n# nscg17$z_hrswk2 <- with(nscg17, (hrswk - mean(hrswk)) / sd(hrswk))\n\n# Note: For part 2 and 3, you can use within() function to create new columns more concisely.\n# nscg17 <- \n#   within(\n#     nscg17, {\n#       ID <- 1:nrow(nscg17)\n#       z_hrswk <- (hrswk - mean(hrswk)) / sd(hrswk)\n#     }\n\n# === Part 5 === #\n# create a logical vector that indicates whether the hours worked is above average\nabove_avg_hrswk <- with(nscg17, z_hrswk > mean(z_hrswk)) # you can get the same result by using `hrswk`.\n# subset the data\nnscg17_above_avg_hrswk <- nscg17[above_avg_hrswk, ]\n# calculate the share of observations with above average hours worked\nshare_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)\nshare_above_avg_hrswk","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-34","editor-word-wrap":"true","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":34},{"code":"# === Step 1: Load data === #\n# flights <- readRDS(\"Data/flight.rds\")\n# the data is created with the following code:\nflights <- nycflights13::flights\nflights <-  na.omit(flights)\nflights <-  as.data.frame(flights)\n\n# === Part 2: subset data === #\n# define the columns to select\nselect_cols <- c(\"year\", \"month\", \"day\", \"dep_delay\", \"arr_delay\", \"dest\", \"carrier\")\nflights_mn <- flights[flights$dest == \"MSP\", select_cols]\n\n# === Part 3: Create total_delay and delay_type === #\n# the most basic approach is \nflights_mn$total_delay <- flights_mn$dep_delay + flights_mn$arr_delay\nflights_mn$delay_type <- \n  ifelse(flights_mn$total_delay>30, \"delay_more_30\", \"others\")\n\n# alternatively, you can use within() function like this:\nflights_mn <- within(\n  flights_mn, {\n    total_delay <- dep_delay + arr_delay\n    delay_type <- ifelse(flights_mn$total_delay>30, \"delay_more_30\", \"others\")\n  }\n)\n\n# === Part 4: count === #\nflights_mn_delay_count <- table(flights_mn$carrier, flights_mn$delay_type)\n# same as\nflights_mn_delay_count <- with(flights_mn, table(carrier, delay_type))\n# translate the table to data.frame class to make it easier to manipulate\nflights_mn_delay_count <- as.data.frame.matrix(flights_mn_delay_count)\n\n\n# === Part 5: derive proportion of flights delayed more than 30 mins === #\n# I will only show the code using within() function\nflights_mn_delay_count <- within(\n  flights_mn_delay_count,\n  {\n    total_flights <- others + delay_more_30\n    prop_more_30 <- delay_more_30 / total_flights\n  }\n)\nflights_mn_delay_count","options":{"message":"true","out-height":"","dpi":72,"context":"interactive","classes":"","fig-height":5,"results":"markup","output":"true","label":"unnamed-chunk-35","editor-word-wrap":"true","eval":"false","out-width":"700px","fig-cap":"","autorun":"false","editor-max-height":"","warning":"true","read-only":"false","editor-font-scale":"0.8","editor-quick-suggestions":"false","comment":"","fig-width":7},"id":35}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2168,20 +2168,17 @@ Shunkei Kakimoto
 </div>
 
 </section><section id="section" class="slide level2 center"><h2></h2>
-<h3 id="slide-guides">Slide Guides</h3>
+<h3 id="slide-guide">Slide Guide</h3>
 <ul>
-<li>Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see table of contents, and you can jump to the section you want to see.</li>
+<li>Click on the three horizontally stacked lines at the bottom left corner of the slide, then you will see the table of contents, and you can jump to the section you want to see.</li>
 <li>Hitting letter “o” on your keyboard and you will have a panel view of all the slides.</li>
-<li>You can directly write and run R codes, and see the outputs on slides.</li>
+<li>You can directly write and run R code, and see the output on slides.</li>
 <li>When you want to execute (run) code, hit <code>command</code> + <code>enter</code> (Mac) or <code>Control</code> + <code>enter</code> (Windows) on your keyboard. Alternatively, you can click the “Run Code” button on the top left corner of the code chunk.</li>
 </ul>
 <p><br></p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section><section id="section-1" class="slide level2 center"><h2></h2>
-<p>Today’s lecture is very basic concept of R programming. So, it might be boring for those who are already familiar with R. But, please be patient. This will be helpful if you use advanced functions in the future.</p>
-<p>Instead of leaving the R process as a black box, it’s better to have some knowledge about what’s happening inside the R process!</p>
-</section><section id="section-2" class="slide level2 center"><h2></h2>
 <p><br></p>
 <h3 id="learning-objectives">
 <i class="fa-solid fa-bullseye" aria-label="bullseye"></i> Learning Objectives</h3>
@@ -2190,7 +2187,7 @@ Shunkei Kakimoto
 </li>
 <li>To understand the basic types of data and structure in R, and to be able to manipulate them.</li>
 <li>To be able to use base R functions to do some mathematical calculations.</li>
-<li>To be able to create R project, and to be able to save and load data in R. :::</li>
+<li>To be able to create R projects and save and load data in R.</li>
 </ul>
 <p><br></p>
 <h3 id="reference">
@@ -2198,11 +2195,11 @@ Shunkei Kakimoto
 <ul>
 <li><a href="https://r4ds.had.co.nz/workflow-scripts.html" target="_blank">Section 6: Workflow: scripts, R for Data Science</a></li>
 <li><a href="https://r4ds.had.co.nz/workflow-projects.html" target="_blank">Section 8: Workflow: projects, R for Data Science</a></li>
-</ul></section><section id="section-3" class="slide level2 center scrollable"><h2></h2>
+</ul></section><section id="section-2" class="slide level2 center scrollable"><h2></h2>
 <h3 id="today-s-outline">
 <i class="fa-solid fa-list" aria-label="list"></i> Today ’s outline</h3>
 <ol type="1">
-<li><a href="#/general-rule">General coding rule in R</a></li>
+<li><a href="#/general-rule">General coding rules in R</a></li>
 <li><a href="#/basic-data">Basic data types (i.e., atomic data types) in R</a></li>
 <li>
 <a href="#/data-str">Types of Data Structures in R</a>
@@ -2215,7 +2212,7 @@ Shunkei Kakimoto
 </li>
 <li><a href="#/basic-matrix">Matrix/Linear Algebra in R</a></li>
 <li><a href="#/load-save">Loading and Saving Data</a></li>
-<li><a href="#/exercise">Exercise problems</a></li>
+<li><a href="#/end-exercise">Exercise problems</a></li>
 <li><a href="#/appendix">Appendix: Useful base-R functions</a></li>
 </ol></section><section id="before-you-start" class="slide level2 center"><h2>Before you start</h2>
 <p><br></p>
@@ -2226,15 +2223,16 @@ Shunkei Kakimoto
 </div>
 <div class="callout-content">
 <ul>
+<li>We’ll cover many basic topics today.</li>
 <li>You don’t need to memorize nor completely understand all the contents in this lecture.</li>
-<li>In the end of the each section, I set a summary of the key points you need to know. As long as you understand those key points, you are good to go.</li>
+<li>At the end of each section, I included a summary of the key points you need to know. As long as you understand those key points, you are good to go.</li>
 </ul>
 </div>
 </div>
 </div>
-</section><section><section id="general-rule" class="title-slide slide level1 center"><h1>General coding rule in R</h1>
+</section><section><section id="general-rule" class="title-slide slide level1 center"><h1>General coding rules in R</h1>
 
-</section><section id="general-coding-rule-in-r" class="slide level2"><h2>General coding rule in R</h2>
+</section><section id="general-coding-rules-in-r" class="slide level2"><h2>General coding rules in R</h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-1-1">Basics</a></li>
@@ -2246,7 +2244,7 @@ Shunkei Kakimoto
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Important</strong></p>
+<p><strong>Rules</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -2272,12 +2270,12 @@ Shunkei Kakimoto
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Important</strong></p>
+<p><strong>Rules</strong></p>
 </div>
 <div class="callout-content">
 <ul>
 <li>You can name the object whatever you want, but <strong>it must start with a <span style="color:red;">letter</span></strong>.</li>
-<li>You can use <code>_</code> or <code>.</code> to in the object name.</li>
+<li>You can use <code>_</code> or <code>.</code> in the object name.</li>
 <li>It is recommended to use a meaningful name for the object so that you can understand what the object contains.</li>
 </ul>
 </div>
@@ -2291,7 +2289,7 @@ Shunkei Kakimoto
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Important</strong></p>
+<p><strong>Rules</strong></p>
 </div>
 <div class="callout-content">
 <p>R has a lot of packages that provide additional functions and data. To use the functions in the package:</p>
@@ -2315,7 +2313,7 @@ Shunkei Kakimoto
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-2-1">Data types in R</a></li>
-<li><a href="#tabset-2-2">How to check data type?</a></li>
+<li><a href="#tabset-2-2">How to check data types?</a></li>
 <li><a href="#tabset-2-3">Data Type Conversion</a></li>
 </ul>
 <div class="tab-content">
@@ -2385,7 +2383,7 @@ Shunkei Kakimoto
 <div class="callout-content">
 <ul>
 <li>Don’t worry about the details. <strong>numeric</strong> , <strong>character</strong>, and <strong>logical</strong> are the most common data types you will see in R.</li>
-<li><span style="color:red;">If you uses character type, you alway need to put the text in either single quotes (’) or double quotes (“).</span></li>
+<li><span style="color:red;">If you use character type, you alway need to put the text in either single quotes (’) or double quotes (“).</span></li>
 </ul>
 </div>
 </div>
@@ -2397,7 +2395,7 @@ Shunkei Kakimoto
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-2-3">
-<p>You can convert one type of data to another type of data using <code>as.XXX()</code> function.</p>
+<p>You can convert one type of data to another type of data using the <code>as.XXX()</code> function.</p>
 <p>Three conversion functions that are used often are:</p>
 <ul>
 <li><code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code></li>
@@ -2436,15 +2434,15 @@ Shunkei Kakimoto
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Important</strong></p>
+<p><strong>Rules</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li>A Logical values are <code>TRUE</code>, <code>FALSE</code>, and <code>NA</code> (not available, undefined value).</li>
+<li>A Logical values are <code>TRUE</code>, <code>FALSE</code> (and <code>NA</code>, which means “not available” or “undefined value”).</li>
 <li>Logical values are often results of comparison operations such as <code>&lt;</code> (less than), <code>&gt;</code> (greater than), <code>&lt;=</code> (less-than-or-equal), <code>&gt;=</code> (greater-than-or-equal), <code>==</code> (equal), and <code>!=</code> (not-equal).</li>
-<li>As we will see later, <span style="color:red;">a sequence of logical values (i.e., logical vectors) can be used index vector to subset the data.</span>
+<li>As we will see later, <span style="color:red;">a sequence of logical values (i.e., logical vectors) can be used as an index vector to subset the data.</span>
 </li>
-<li>When logical value is used like numeric, <code>TRUE</code> is treated as 1 and <code>FALSE</code> is treated as 0.</li>
+<li>When a logical value is used like numeric, <code>TRUE</code> is treated as 1 and <code>FALSE</code> is treated as 0.</li>
 </ul>
 </div>
 </div>
@@ -2479,7 +2477,7 @@ Shunkei Kakimoto
 + Logical Indexing: https://bookdown.org/ndphillips/YaRrr/logical-indexing.html
 + Basic Data Types: https://info201.github.io/r-intro.html 
 + -->
-</section><section id="section-4" class="slide level2 center"><h2></h2>
+</section><section id="section-3" class="slide level2 center"><h2></h2>
 <div title="Key points">
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2489,7 +2487,7 @@ Shunkei Kakimoto
 <div class="callout-content">
 <p>At this point,</p>
 <ul>
-<li>There are specific definition of data types in R.
+<li>There are specific definitions of data types in R.
 <ul>
 <li>Specifically, “numeric”, “character”, “logical” are popular.</li>
 </ul>
@@ -2505,7 +2503,7 @@ Shunkei Kakimoto
 </section></section><section><section id="data-str" class="title-slide slide level1 center"><h1>Types of Data Structures in R</h1>
 
 </section><section id="types-of-data-structures-in-r" class="slide level2 center"><h2>Types of Data Structures in R</h2>
-<p>If data are combined in a specific way, it is has a specific form of structure.</p>
+<p>Depending on how the data is stored, R has several types of data structures.</p>
 <p><br></p>
 <table class="caption-top">
 <colgroup>
@@ -2523,7 +2521,7 @@ Shunkei Kakimoto
 <tbody>
 <tr class="odd">
 <td>Vector</td>
-<td>One-dimentional; Holds elements of the <strong>same type</strong>.</td>
+<td>One-dimensional; Holds elements of the <strong>same type</strong>.</td>
 <td><code><a href="https://rdrr.io/r/base/c.html">c()</a></code></td>
 <td><code>c(1, 2, 3, 4)</code></td>
 </tr>
@@ -2567,7 +2565,7 @@ Shunkei Kakimoto
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Here, we focus on how to create and how to each of the data structure.</p>
+<p>Here, we focus on how to create and how to use each of the data structures.</p>
 </div>
 </div>
 </div>
@@ -2595,9 +2593,9 @@ Shunkei Kakimoto
 <div class="tab-content">
 <div id="tabset-4-1">
 <ul>
-<li>A vectors object is a collection of data that are all the same type.</li>
+<li>A vector object is a collection of data that are all the same type.</li>
 <li>It’s a sequence of numbers, characters, or logical values.</li>
-<li>You use <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> to create a vector. (“c” means “combine” or “concatenate”), You can also combine two vectors using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>.</li>
+<li>You use <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> to create a vector. (“c” means “combine”), You can also combine two vectors using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>.</li>
 </ul>
 <p><br></p>
 <p><strong>Basic syntax</strong></p>
@@ -2627,7 +2625,7 @@ Shunkei Kakimoto
 + Vector Indexing: https://thomasleeper.com/Rcourse/Tutorials/vectorindexing.html
 +  -->
 <ul>
-<li><p>You can retrieve a single or a multiple elements of a vector by indexing with <code>[]</code> brackets. Inside <code>[]</code>, you simply provide another vector containing the position of the element you want to extract.</p></li>
+<li><p>You can retrieve single or multiple elements of a vector by indexing with <code>[]</code> brackets. Inside <code>[]</code>, you simply provide another vector containing the position of the element you want to extract.</p></li>
 <li><p>If a vector has names, you can also use the name of the element to extract it.</p></li>
 <li><p>To modify a specific element, you can assign a new value to the position you want to modify. <br></p></li>
 </ul>
@@ -2640,7 +2638,7 @@ Shunkei Kakimoto
 <ul>
 <li>A logical vector is a vector that only contains logical values (TRUE and FALSE values).</li>
 <li>
-<span style="color:red;">You can use logical vector as an index vector to subset elements of the vector. Only the elements that correspond to TRUE values are returned</span>.</li>
+<span style="color:red;">You can use a logical vector as an index vector to subset elements of the vector. Only the elements that correspond to TRUE values are returned</span>.</li>
 </ul>
 <p><strong>Example</strong></p>
 <div id="qwebr-insertion-location-9"></div>
@@ -2657,7 +2655,7 @@ Shunkei Kakimoto
 + You can use this function to assign/extract column names of `data.frame` class object (`tibble` and `data.table`).
 
 
-```nttqzvti
+```geyqmfoh
 x <- 1:5
 
 # Assign names to each of the elements
@@ -2677,9 +2675,9 @@ names(x)
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>Questions</strong></p>
 <ol type="1">
-<li>Get 10th and 15th element of <code>x</code>.</li>
-<li>Get elements larger than <span class="math inline">\(0.5\)</span>.</li>
-<li>Replace 10th and 15th element of <code>x</code> to 0.</li>
+<li>Extract the 10th and the 15th elements of <code>x</code>.</li>
+<li>Extract elements larger than <span class="math inline">\(0.5\)</span>.</li>
+<li>Replace the 10th and the 15th elements of <code>x</code> to 0.</li>
 <li>If an element of <code>x</code> is larger than <span class="math inline">\(0.9\)</span>, replace it with <span class="math inline">\(1\)</span>.</li>
 <li>Count the elements larger than <span class="math inline">\(0.6\)</span>.</li>
 </ol></section><section id="mat" class="slide level2"><h2>Matrix (Two-dimensional array)</h2>
@@ -2692,8 +2690,8 @@ names(x)
 <div class="tab-content">
 <div id="tabset-6-1">
 <ul>
-<li>A matrix is a collection of elements of the same data type. It consists of row and column (It’s essentially a vector with additional dimension attribute).</li>
-<li>I don’t see matrix data structure in the real-world data. It is mainly used to do linear algebra operations.</li>
+<li>A matrix is a collection of elements of the same data type. It consists of rows and columns. (It’s essentially a vector with an additional dimension attribute.)</li>
+<li>I haven’t seen a matrix data structure in real-world data. It is mainly used for linear algebra operations.</li>
 <li>
 <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function is used to create a matrix.</li>
 </ul>
@@ -2733,7 +2731,7 @@ names(x)
 </div>
 </div>
 </div>
-</section><section id="matrix-how-to-manipulate" class="slide level2"><h2>Matrix: How to Manipulate?</h2>
+</section><section id="matrix-how-to-manipulate" class="slide level2"><h2>Matrix: How to Manipulate</h2>
 <!-- start panel:how to manipulate matrix   -->
 <div class="panel-tabset">
 <ul id="tabset-7" class="panel-tabset-tabby">
@@ -2760,8 +2758,8 @@ names(x)
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol type="1">
-<li>Get the element in the 2nd row and 3rd column.</li>
-<li>Get the 2nd row.</li>
+<li>Extract the element in the 2nd row and 3rd column.</li>
+<li>Extract the 2nd row.</li>
 <li>Subset the rows where column “A” is larger than 0.5. (Use logical indexing).</li>
 </ol>
 <p><br></p>
@@ -2772,7 +2770,7 @@ names(x)
 <ul id="tabset-8" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-8-1">Basics</a></li>
 <li><a href="#tabset-8-2">Indexing</a></li>
-<li><a href="#tabset-8-3">$ and [[]] operator</a></li>
+<li><a href="#tabset-8-3">$ and [[ ]] operator</a></li>
 <li><a href="#tabset-8-4">Adding and Removing Columns</a></li>
 <li><a href="#tabset-8-5">Miscellaneous</a></li>
 </ul>
@@ -2780,7 +2778,7 @@ names(x)
 <div id="tabset-8-1">
 <ul>
 <li>
-<code>data.frame</code> class object is like a matrix but it can store any types of data in each column.</li>
+<code>data.frame</code> class object is like a matrix but it can store any type of data in each column.</li>
 <li>It is optimized for tabular data. That’s why we see this data structure in the real-world data.</li>
 </ul>
 <p><strong>Syntax</strong></p>
@@ -2788,27 +2786,27 @@ names(x)
 <p><strong>Example</strong></p>
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If column name are not provided, R will assign column names to those columns automatically.</p>
+<p>If column names are not provided, R will assign column names to those columns automatically.</p>
 </div>
 <div id="tabset-8-2">
-<p>Again, you can access the elements of a data.frame using <code>[]</code> brackets. But you need to specify the row and column index like you did in the matrix.</p>
+<p>Again, you can access the elements of a data.frame using <code>[ ]</code> (brackets) operator. But you need to specify the row and column index like you did in the matrix.</p>
 <p>As an index vector, you can use a vector of logical values, column names, and positional index.</p>
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-8-3">
-<p>You can also get a specific column values using <code>$</code> or <code>[[]]</code> operator.</p>
+<p>You can also extract specific column values using <code>$</code> or <code>[[ ]]</code> operator.</p>
 <ul>
-<li><p><code>$</code> and <code>[[]]</code> can only select one a single and return as a vector, whereas <code>[]</code> can select multiple columns ((see <code><a href="https://rdrr.io/r/base/Extract.html">?"$"</a></code>, <code><a href="https://rdrr.io/r/base/Extract.html">?"["</a></code> and <code><a href="https://rdrr.io/r/base/Extract.html">?"[["</a></code> about the difference in those operators).</p></li>
-<li><p>Inside <code>[[]]</code> you provide the column name as character.</p></li>
-<li><p>Why we need this? As you’ll see later, vector data is the most common input data structure when doing basic linear algebra in R (mean, sum, sqrt, etc.). (and it’s the most fastest way to do the calculation in R!)</p></li>
+<li><p><code>$</code> and <code>[[ ]]</code> can only select a single column and return as a vector, whereas <code>[ ]</code> can select multiple columns ((see <code><a href="https://rdrr.io/r/base/Extract.html">?"$"</a></code>, <code><a href="https://rdrr.io/r/base/Extract.html">?"["</a></code> and <code><a href="https://rdrr.io/r/base/Extract.html">?"[["</a></code> about the difference in those operators).</p></li>
+<li><p>Inside <code>[[ ]]</code> you provide the column name as a character.</p></li>
+<li><p>Why do we need this? As you’ll see later, vector data is the most common input data structure when doing basic linear algebra in R (mean, sum, sqrt, etc.). (and it’s the fastest way to do the calculation in R!)</p></li>
 </ul>
 <p><br></p>
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-8-4">
-<p>You can add a new column to a data.frame using the <code>$</code> operator.</p>
+<p>You can add a new column to a <code>data.frame</code> object using the <code>$</code> operator.</p>
 <p><strong>Syntax</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>data_frame<span class="sc">$</span>new_column <span class="ot">&lt;-</span> vector_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -2843,7 +2841,7 @@ names(x)
 <li><p><code>with(data_frame, function(column1))</code> function allows you to evaluate an expression in the context of a <code>data.frame</code>.</p></li>
 <li><p><code><a href="https://rdrr.io/r/base/with.html">within()</a></code> function is similar to <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, but it allows you to modify the <code>data.frame</code> in place.</p></li>
 </ul>
-<p><span style="color:red;">With these function, you can avoid typing the data frame name and <code>$</code> mark, repeatedly.</span></p>
+<p><span style="color:red;">With these functions, you can avoid typing the data frame name and <code>$</code> mark, repeatedly.</span></p>
 <p><strong>Example</strong></p>
 <div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2858,18 +2856,16 @@ names(x)
 <div id="tabset-9-1">
 <ul>
 <li><p>A list in R can store elements of different types and sizes, including numbers, characters, vectors, matrices, data frames, and even other lists.</p></li>
-<li><p>A <code>list</code> is a collection of data that can have any data and data structure types as its element. You can create a list using <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> function.</p></li>
+<li><p>A <code>list</code> is a collection of data that can have any data and data structure type as its element. You can create a list using <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> function.</p></li>
 </ul>
 <div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-9-2">
-<p>You can access list elements using <code>$</code> amd <code>[]</code> or <code>[[]]</code> brackets.</p>
+<p>You can access list elements using <code>$</code> amd <code>[ ]</code> or <code>[[ ]]</code> brackets.</p>
 <ul>
-<li>
-<code>[]</code> and returns <strong>a list</strong> of the selected elements.</li>
-<li>
-<code>[[]]</code> and <code>$</code> returns any single element as it is. <code>$</code> can be used only when the list has names.</li>
+<li>The <code>[ ]</code> operator returns <strong>a list</strong> of the selected elements.</li>
+<li>The <code>[[ ]]</code> and <code>$</code> operators return any single element as it is. <code>$</code> can be used only when the list has names.</li>
 </ul>
 <div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2904,7 +2900,7 @@ names(x)
 </div>
 </div>
 </section><section id="summary" class="slide level2 center"><h2>Summary</h2>
-<p>Here are the key points I want you to know at least:</p>
+<p>Here are the key points I want you to know:</p>
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2912,14 +2908,14 @@ names(x)
 </div>
 <div class="callout-content">
 <ul>
-<li>To know that how to create vector, matrix, data.frame, and list object in R.
+<li>To know how to create <code>vector</code>, <code>matrix</code>, <code>data.frame</code>, and <code>list</code> in R.
 <ul>
 <li>Vector and matrix stores the same data type, whereas data.frame and list can store different types of data.</li>
 </ul>
 </li>
 <li>To access and subset and modify the elements of the object, use indexing (logical, positional, and named).
 <ul>
-<li>For indexing, you can use <code>[]</code>, <code>$</code>, and <code>[[]]</code> operators.</li>
+<li>For indexing, you can use <code>[ ]</code>, <code>$</code>, and <code>[[ ]]</code> operators.</li>
 </ul>
 </li>
 </ul>
@@ -2946,42 +2942,12 @@ names(x)
 </div>
 <div id="tabset-10-2">
 <p>Arithmetic operations of vectors are performed by element-wise (element by element in the same position).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb6-2"><a href=""></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a><span class="co"># --- Addition --- #</span></span>
-<span id="cb6-5"><a href=""></a>a <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 4 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  6 10  8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># --- Subtraction --- #</span></span>
-<span id="cb10-2"><a href=""></a>a <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0 2 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>b <span class="sc">-</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4 4 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># --- Multiplication --- #</span></span>
-<span id="cb14-2"><a href=""></a>a<span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 6 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>a<span class="sc">*</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  5 21 12</code></pre>
-</div>
-</div>
+<div id="qwebr-insertion-location-28"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-10-3">
 <p>If you want to do matrix multiplication, you need to use <code>%*%</code> operator. Otherwise, it will be element-wise multiplication.</p>
-<div id="qwebr-insertion-location-28"></div>
+<div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -3049,8 +3015,8 @@ names(x)
 <p><strong>Example</strong></p>
 <p>Suppose that I want to load <code>flight.rds</code> in the Data folder. On my computer, the full path (i.e., absolute path) to the file is <code>/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># this code only works in my local machine</span></span>
-<span id="cb18-2"><a href=""></a>flight_dt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># this code only works in my local machine</span></span>
+<span id="cb6-2"><a href=""></a>flight_dt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data/flight.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
@@ -3061,7 +3027,7 @@ names(x)
 <div class="callout-content">
 <ol type="1">
 <li>I do not want to type the full path every time I load the data. It’s too cumbersome.</li>
-<li>If you are working with a team, your code might not work for other person because the path to the data file is different for each person.</li>
+<li>If you are working with a team, your code might not work for other person because the path to the data file is different for each people.</li>
 </ol>
 </div>
 </div>
@@ -3078,9 +3044,9 @@ names(x)
 </li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># On your Rsdutio, run the following code</span></span>
-<span id="cb19-2"><a href=""></a><span class="fu">getwd</span>() <span class="co">#wd stands for working directory</span></span>
-<span id="cb19-3"><a href=""></a><span class="co"># In my case, this returns my home directory: "/Users/shunkeikakimoto"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># On your Rsdutio, run the following code</span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">getwd</span>() <span class="co">#wd stands for working directory</span></span>
+<span id="cb7-3"><a href=""></a><span class="co"># In my case, this returns my home directory: "/Users/shunkeikakimoto"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-12-3">
@@ -3091,11 +3057,11 @@ names(x)
 <p><strong>Example 1</strong></p>
 <p>In my case, I set the working directory to the <code>Data</code> folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">setwd</span>(<span class="st">"/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">setwd</span>(<span class="st">"/Users/shunkeikakimoto/Dropbox/git/R_summer_2024/Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, R will look for the data file in the <code>Data</code> folder by default. So, I can load the data using <em>relative path</em>, not <em>absolute path</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>flight_dt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"flight.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>flight_dt <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"flight.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment fade-up">
@@ -3135,7 +3101,7 @@ names(x)
 <div class="callout-content">
 <ul>
 <li><p>An RStudio project is a way to organize your work.</p></li>
-<li><p>Once R project is loaded, it automatically sets current working directory to the folder where that <code>.Rproj</code> file is saved (you don’t need <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>!).</p></li>
+<li><p>Once an R project is loaded, it automatically sets current working directory to the folder where that <code>.Rproj</code> file is saved (you don’t need to use <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code>!).</p></li>
 <li><p>As long as the folder structure in the project folder is the same (relative path from the folder containing <code>.Rproj</code> file), you can share the code involving data loading with your team members.</p></li>
 </ul>
 </div>
@@ -3161,7 +3127,7 @@ names(x)
 </div>
 </div>
 </div>
-</section><section id="loading-the-data-other-than-.rds-.rds-format" class="slide level2"><h2>Loading the data other than .Rds (.rds) format</h2>
+</section><section id="loading-data-other-than-.rds-.rds-format" class="slide level2"><h2>Loading data other than .Rds (.rds) format</h2>
 <!-- start panel:loading data   -->
 <div class="panel-tabset">
 <ul id="tabset-13" class="panel-tabset-tabby">
@@ -3186,7 +3152,7 @@ names(x)
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Use import() function</strong></p>
+<p><strong>Use import() function of the rio package</strong></p>
 </div>
 <div class="callout-content">
 <ul>
@@ -3203,7 +3169,7 @@ names(x)
 </div>
 <div id="tabset-13-2">
 <p>In <code>Data</code> folder, <code>flight</code> data is saved with three different formats: <code>flight.csv</code>, <code>flight.dta</code>, and <code>flight.xlsx</code>. Let’s load the data using <code>import()</code> function on your Rstudio.</p>
-<div id="qwebr-insertion-location-29"></div>
+<div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:loading data  -->
 </div>
@@ -3211,9 +3177,9 @@ names(x)
 </div>
 </section><section id="saving-the-data" class="slide level2"><h2>Saving the data</h2>
 <ul>
-<li>You can save the data with various format.</li>
+<li>You can save the data with various formats.</li>
 <li>
-<strong>But</strong>, Unless necessary, it is recommended to save the data in <code>.rds</code> format.
+<strong>But</strong>, unless necessary, it is recommended to save the data in <code>.rds</code> format.
 <ul>
 <li>how?: <code>saveRDS(object_name, path_to_save)</code>
 </li>
@@ -3221,14 +3187,13 @@ names(x)
 </li>
 </ul>
 <p><br></p>
-<p><strong>Reasons</strong> + If you work with R, there is no reason to save the data in other format than <code>.rds</code>. + <code>.rds</code> format is more efficient in terms of saving and loading the data. + Check the size of the <code>flight</code> data files in different formats. Which one is the smallest?</p>
+<p><strong>Reasons</strong> + If you work with R, there is no reason to save the data in other formats than <code>.rds</code>. + <code>.rds</code> format is more efficient in terms of saving and loading the data. + Check the size of the <code>flight</code> data files in different formats. Which one is the smallest?</p>
 <p><br></p>
 <p>Let’s try!</p>
 <ul>
 <li>Load the <code>flight</code> data in the <code>Data</code> folder.</li>
-<li>Subset</li>
 </ul>
-<div id="qwebr-insertion-location-30"></div>
+<div id="qwebr-insertion-location-31"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section><section id="summary-1" class="slide level2 center"><h2>Summary</h2>
 <div class="callout callout-important no-icon callout-titled callout-style-default">
@@ -3238,8 +3203,8 @@ names(x)
 </div>
 <div class="callout-content">
 <ul>
-<li>Rstudio project (<code>.Rproj</code>) is a useful to organize your work. As long as the folder structure under the <code>.Rproj</code> is the same, you can share the code involving data loading with your team members.</li>
-<li>To lode data:
+<li>Rstudio project (<code>.Rproj</code>) is a useful tool to organize your work. As long as the folder structure under the <code>.Rproj</code> is the same, you can share the code involving data loading with your team members.</li>
+<li>To load data:
 <ul>
 <li>use <code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code> function for <code>.Rds</code> (<code>.rds</code>) format.</li>
 <li>you can use <code>import()</code> function from the <code>rio</code> package for various format.</li>
@@ -3250,8 +3215,8 @@ names(x)
 </div>
 </div>
 </div>
-</section></section><section><section id="exercise" class="title-slide slide level1 center"><h1>Exercise Problems</h1>
-<!-- create a problem related to vector and data.frame -->
+</section></section><section><section id="end-exercise" class="title-slide slide level1 center"><h1>Exercise Problems</h1>
+
 </section><section id="exercise-problems-1-vector" class="slide level2 scrollable"><h2>Exercise Problems 1: Vector</h2>
 <div class="panel-tabset">
 <ul id="tabset-14" class="panel-tabset-tabby">
@@ -3265,7 +3230,7 @@ names(x)
 <li><p>Create a sequence of numbers from 20 to 50 and name it <code>x</code>. Let’s change the numbers that are multiples of 3 to 0.</p></li>
 <li><p><code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> is commonly used in Monte Carlo simulation in econometrics. Run the following code to create <code>r</code>. What does it do? Use <code><a href="https://rdrr.io/r/base/sample.html">?sample</a></code> to find out what the function does.</p></li>
 </ol>
-<div id="qwebr-insertion-location-31"></div>
+<div id="qwebr-insertion-location-32"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol start="3" type="1">
 <li>Find the value of mean and SD of vector <code>r</code> without using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> and <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>
@@ -3277,7 +3242,7 @@ names(x)
 </ol>
 </div>
 <div id="tabset-14-2">
-<div id="qwebr-insertion-location-32"></div>
+<div id="qwebr-insertion-location-33"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -3299,13 +3264,13 @@ names(x)
 </ul>
 </li>
 <li>Each row corresponds to a unique respondent. Let’s create a new column called “ID”. There are various ways to create an ID column. Here, let’s create an ID column that starts from 1 and increments by 1 for each row.</li>
-<li>Get the descriptive statistics of the salary (use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function).</li>
+<li>To take a quick look at the summary statistics of a specific column, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function is useful. Use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to create a table of the descriptive statistics for salary. You’ll provide salary column to <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> as a vector.</li>
 <li>Create a new variable in your data that represents the z-score of the hours worked (use <code>hrswk</code> variable). <span class="math display">\[Z = (x - \mu)/\sigma\]</span> , where <span class="math inline">\(Z = \text{standard score}\)</span>, <span class="math inline">\(x =\text{observed value}\)</span>, <span class="math inline">\(\mu = \text{mean of sample}\)</span>, and <span class="math inline">\(\sigma = \text{standard deviation of the sample}\)</span>.</li>
 <li>Calculate the share of observations in your data sample with above average hours worked.</li>
 </ol>
 </div>
 <div id="tabset-15-2">
-<div id="qwebr-insertion-location-33"></div>
+<div id="qwebr-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
@@ -3319,7 +3284,7 @@ names(x)
 </ul>
 <div class="tab-content">
 <div id="tabset-16-1">
-<p>Let’s use <code>flight.rds</code> data in the <code>Data</code> folder. Load the data. We will only look at the flights data with “MSP” (Minneapolis–Saint Paul International Airport) as the destination airport.</p>
+<p>Let’s use <code>flight.rds</code> data in the <code>Data</code> folder. Load the data. We will only look at the flight data with “MSP” (Minneapolis–Saint Paul International Airport) as the destination airport.</p>
 <p><span style="color: blue;">For each airline company (<code>carrier</code>), find the proportion of flights that are delayed more than 30 minutes.</span></p>
 <p><br></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -3337,7 +3302,7 @@ names(x)
 </div>
 </div>
 <div id="tabset-16-2">
-<p>Here are the steps that I took to solve the problem. You do not need to follow the steps.</p>
+<p>Here are the steps that I took to solve the problem. You don’t need to follow the steps.</p>
 <ol type="1">
 <li>Load the <code>flight.rds</code> data in the <code>Data</code> folder.</li>
 <li>Select the columns <code>year</code>, <code>month</code>, <code>day</code>, <code>dep_delay</code>, <code>arr_delay</code>, <code>dest</code>, and <code>carrier</code>, and subset rows that have “MSP” as <code>dest</code>. Let’s name the data <code>flights_mn</code>.</li>
@@ -3349,7 +3314,7 @@ names(x)
 <li>Count the binary category <code>delay_type</code> by <code>carrier</code>. Let’s name the result <code>flights_mn_delay_count</code>.
 <ul>
 <li>
-<code><a href="https://rdrr.io/r/base/table.html">table()</a></code> is an R base function to create frequency table. For example, <code>table(data$x)</code> creates a frequency table of <code>x</code> in the data. <code>table(data$x, data$y)</code> creates a frequency table of each combination of <code>x</code> and <code>y</code> in the data.</li>
+<code><a href="https://rdrr.io/r/base/table.html">table()</a></code> is an R base function to create a frequency table. For example, <code>table(data$x)</code> creates a frequency table of <code>x</code> in the data. <code>table(data$x, data$y)</code> creates a frequency table of each combination of <code>x</code> and <code>y</code> in the data.</li>
 <li>After you create the table, translate the <code>table</code> to <code>data.frame</code> class using <code><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame.matrix()</a></code> function to make it easier to manipulate.</li>
 </ul>
 </li>
@@ -3358,7 +3323,7 @@ names(x)
 </div>
 <div id="tabset-16-3">
 <p>There are multiple ways to solve the problem. Here is one of the possible solutions.</p>
-<div id="qwebr-insertion-location-34"></div>
+<div id="qwebr-insertion-location-35"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
