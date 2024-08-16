@@ -14,7 +14,7 @@ format:
     fontsize: 1.5em
     callout-icon: false
     scrollable: true
-    echo: true
+    echo: false
     multiplex: true
     code-link: true
     title-slide-attributes:
@@ -23,7 +23,7 @@ format:
     chalkboard: true
     preview-links: true
 webr:
-  packages: ["data.table", "tidyverse", "rio", "nycflights13", "openintro"]
+  packages: ["data.table", "tidyverse", "rio", "nycflights13", "AER"]
   cell-options:
     editor-font-scale: 0.8
 filters:
@@ -106,9 +106,6 @@ For example, see:
 + See [this](https://github.com/Rdatatable/data.table/wiki/Benchmarks-%3A-Grouping) for the speed comparison of dplyr and data.table.
 + [This website](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/) compares dply vs data.table side by side.
   + If you already know `dplyr` syntax, this website would be helpful to understand `data.table` syntax.
-  
-<br>
-
 + Also see the Appendix for the comparison of `data.table` and `dplyr`.
 :::
 
@@ -178,7 +175,7 @@ DT[i, j, by]
 
 
 
-## 1. Subset rows {#subset-rows}
+## 1. Subset Rows {#subset-rows}
 
 :::{.panel-tabset}
 
@@ -187,7 +184,7 @@ DT[i, j, by]
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
 + [To subset rows, use `i` argument. (e.g., `DT[colA == condition1,]`)]{style="color: blue;"}
 
-For example, Let's subset rows where carrier is "AA" (American Airlines)
+For example, let's subset rows where carrier is "AA" (American Airlines)
 ```{webr-r}
 flights[carrier == "AA",]
 ```
@@ -198,13 +195,13 @@ In this code, we used `i` to subset rows where `carrier` is "AA";
 + `by`: none
 
 
-### Quize
+### Quiz
 ```{webr-r}
 # 1. Subset rows where carrier is "AA" and month is 1 (January)
 
 # 2. Subset rows where carrier is "AA" and origin is all the airports except "JFK"
 
-# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for "or" condition)
+# 3. Subset rows where delay in departure is less than 0 or delay in departure is less than 0. (Hint: use | for "or" condition)
 
 ```
 
@@ -218,13 +215,13 @@ flights[carrier == "AA" & month == 1,]
 # 2. Subset rows where carrier is "AA" and origin is all the airports except "JFK"
 flights[carrier == "AA" & origin != "JFK",]
 
-# 3. Subset rows where delay in departure is les than 0 or delay in departure is les than 0. (Hint: use | for "or" condition)
+# 3. Subset rows where delay in departure is less than 0 or delay in departure is less than 0. (Hint: use | for "or" condition)
 flights[dep_delay < 0 | arr_delay < 0,]
 ```
 :::
 
 
-## 2. Select columns {#select-columns}
+## 2. Select Columns {#select-columns}
 
 :::{.panel-tabset}
 
@@ -276,7 +273,7 @@ flights[, !c("dep_time", "arr_time")]
 
 ### Basics
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
-+ [`j` argument not only arrows you to select columns but also to compute on columns]{style="color: blue;"}
++ [`j` argument not only allows you to select columns but also to compute on columns]{style="color: blue;"}
 
 <br>
 
@@ -359,7 +356,7 @@ flights[origin == "JFK" & month == 8L, .(m_arr = mean(arr_delay), m_dep = mean(d
 
 :::
 
-## 4. Create a new column {#create-a-new-column}
+## 4. Create a New Column {#create-a-new-column}
 
 :::{.panel-tabset}
 
@@ -385,11 +382,10 @@ flights[, total_delay := dep_delay + arr_delay]
 
 ### Multiple new columns
 
-Here are how you define multiple variables at the same time.
+Here is how you define multiple variables at the same time.
 
 ```{webr-r}
 #| autorun: true
-#| 
 flights[, `:=`(
   total_delay = arr_delay + dep_delay,
   speed = distance/air_time
@@ -455,7 +451,7 @@ head(flights2[month == 4, .(month, arr_delay)], 3)
 <br>
 
 ::: {.callout-tip title="Tip: copy() function"}
-+ If you have a reason to now wanting the original data to be altered after `:=` operations. You can create a deep copy of the dataset using `data.table::copy()` function.
++ If you want to keep the original data, you can create a copy of the dataset using `data.table::copy()` function.
 
 + The object created by copy() is independent of the original dataset in the sense that actions on one of them do not affect the other.
 
@@ -564,7 +560,7 @@ flights[carrier == "AA", .N, by = .(origin, month)] %>% head()
 ```
 
 
-### Quiz
+### Your Turn
 
 :::{.panel-tabset}
 
@@ -694,7 +690,7 @@ yield_data_wide
 
 ### Preparation
 
-Let's use the following small data to understand how `dcast()` and `melt()` work.
+Let's use the following small dataset to understand how `dcast()` and `melt()` work.
 
 ```{webr-r}
 #| autorun: true
@@ -816,7 +812,7 @@ yield_data_wide[,.(state, avg_yield, avg_rainfall)]
 
 
 
-### Quiz
+### Your Turn
 
 :::{.panel-tabset}
 
@@ -832,7 +828,7 @@ long_data <- melt(yield_data_wide, id.var = "state")
 
 <br>
 
-```{r}
+```{webr-r}
 # You can write your code here
 ```
 
@@ -865,7 +861,11 @@ dcast(long_data, state + year ~ type, value.var = "value")
 
 It is very common that you have data stored in separate files, and you need to combine them before you conduct any statistical analysis.
 
-For example, if you are interested in how weather affects the crop yield, you want to have weather and production data in a single dataset. However, since weather and production data are usually obtained from the different source of data (e.g., yield data from USDA-NASS, and weather data from NASS), they are stored in two separate data files.
+<br>
+
+**Example**
+
+If you are interested in how weather affects the crop yield, you want to have weather and production data in a single dataset. However, since weather and production data are usually obtained from a different source of data (e.g., yield data from USDA-NASS, and weather data from NASS), they are stored in two separate data files.
 
 <br>
 
@@ -891,7 +891,7 @@ Note: [The order of datasets matter]{style="color: red;"}.
 
 :::{.panel-tabset}
 
-### Data
+### Instructions
 
 Let's play around with `merge()` function using the following small data.
 <!-- Let's use simple small data so that we can see whether the merge operation works correctly. -->
@@ -971,7 +971,7 @@ weather_yield_data_all
 
 (1) In the `flights` data, the `carrier` column contains two-letter codes for airlines. Let's translate these codes into the full name of the airline. 
 
-Airlines data from `nycflights13` package contains the full name of the airline corresponding to the two-letter code. The following code loads the airlines data.
+Airline data from `nycflights13` package contains the full name of the airline corresponding to the two-letter code. The following code loads the airline data.
 
 ```{webr-r}
 #| autorun: true
@@ -989,7 +989,7 @@ Merge `flights` and `airlines` data, keeping all rows from the `flights` data. W
 
 ### Answers
 
-+ Obviously, `flight` data is the main data, so we should keep all rows from the `flights` data.
++ Obviously, `flights` data is the main data, so we should keep all rows from the `flights` data.
 
 + The key column should be `carrier` because it is the common variable in both datasets, and it gives one-to-one correspondence between the two datasets.
 
@@ -1067,11 +1067,11 @@ flights_mini <- flights_dt[,.(year, month, origin, dest, carrier, air_time, dep_
 flights_mini <- na.omit(flights_mini) # remove rows with missing values
 ```
 
-The first three lines yields intermediate results to make the final `flight_mini`, and you don't need to keep those.
+The first three lines yield intermediate results to make the final `flight_mini`, and you don't need to keep those.
 
 <br>
 
-If you don't want to save the intermediate step every time, you can do like this, but it's hard to read.
+If you don't want to do this intermediate step every time, you can do it like this, but it's hard to read!
 
 ```{r}
 flights_mini <- na.omit(data.table(nycflights13::flights)[,.(year, month, origin, dest, carrier, air_time, dep_delay, arr_delay)])
@@ -1093,13 +1093,13 @@ flights_mini <- na.omit(data.table(nycflights13::flights)[,.(year, month, origin
 
 
 ::: {.callout-note}
-when you load the `dplyr` package, `magrittr` package is automatically loaded as well. So, you don't need to load the `magrittr` package separately to use `%>%`.
+When you load the `dplyr` package, `magrittr` package is automatically loaded as well. So, you don't need to load the `magrittr` package separately to use `%>%`.
 :::
 
 
 ### Basics
 
-[`%>%` takes the output of the code on its left and feeds it as the first argument to the function on its right.]{style="color: blue;"}
+[`%>%` takes the output of the code on its left and feed it as the first argument to the function on its right.]{style="color: blue;"}
 
 <br>
 
@@ -1137,7 +1137,7 @@ output2 <- fun1(input1) %>% fun2()
 
 ### More generally
 
-Suppose you have more than one arguments to the function like this:
+Suppose you have more than one argument for the function like this:
 ```{r}
 #| eval: false
 fun(x1, x2, x3)
@@ -1160,12 +1160,12 @@ fun(z, x2, x3)
 
 
 ::: {.callout-important}
-That is, in general, an R object that precedes the piping operator (`%>%`) becomes the first argument of the function that comes after the piping operator.
+That is, by default, an R object that precedes the piping operator (`%>%`) becomes the first argument of the function that comes after the piping operator.
 :::
 
 ### Refer to the preceding object
 
-What if you want to use the object defined before `%>%` as the second or third argument of the subsequent function?
+**What if you want to use the object defined before `%>%` as the second or third argument of the subsequent function?**
 
 [Use `.` to the preceding object by]{style="color: red;"}
 
@@ -1174,7 +1174,7 @@ What if you want to use the object defined before `%>%` as the second or third a
 ```{webr-r}
 # Let's use this function
 print_three_words <- function(x, y, z) paste(c(x, y, z),collapse = " ")
-# For example, this function print three words with space between them
+# For example, this function prints three words with spaces between them
 print_three_words(x="I", y="love", z="R")
 
 # pass the input to the first argument
@@ -1222,16 +1222,6 @@ flights_mini <-
 ::: {.callout-important}
 Note that the order of execution is the same as the order in which the functions are written.
 :::
-
-### Quiz
-
-:::{.panel-tabset}
-
-### Quiz
-
-1. 
-
-
 :::
 
 :::
@@ -1254,22 +1244,152 @@ Don’t mind the details for now. You are good as long as you understand the fol
 
 2. **Understand that you can do various data wrangling tasks by using combinations of `i`, `j`, and `by` arguments.**
 
-+ Specifically, you learned the following tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
+Specifically, you learned the following tasks: Subset rows, Select columns, Compute on columns, Create a new column, Perform aggregations by group
 
 
-3. **Understand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` function.**
+1. **Understand you can reshape long-to-wide and wide-to-long using `dcast()` and `melt()` functions.**
 
-4. **Understand you can merge data with `merge()` function.**
+2. **Understand you can merge data with `merge()` function.**
+:::
+
+
+# Exercise Problems 
+
+---
+
+
+## Exercise 1
+
+:::{.panel-tabset}
+### Instructions
+
+1. Find the flight company with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
+
+2. Subset the information of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
+  
+
+3. Calculate the median, interquartile range ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` dataset and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
+
+<!-- https://rpubs.com/Nasif/929745 -->
+
+::: {.callout-tip}
+## Hints
+IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use `quantile()` function to calculate the quantiles.
+:::
+
+### Answers
+
+```{webr-r}
+#| autorun: false
+# === Part 1 === #
+flights[dep_delay == max(dep_delay), .(carrier)]
+
+# === Part 2 === #
+msp_feb_flights <- flights[dest=="MSP" & month==2L]
+nrow(msp_feb_flights)
+
+# === Part 3 === #
+msp_feb_flights[,.(
+  median = median(arr_delay),
+  IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),
+  n_flights = .N
+  ), by = carrier]
+```
+:::
+
+## Exercise 2
+
+:::{.panel-tabset}
+
+### Instructions
+
+If you were selecting an airport simply based on on-time departure percentage, which NYC airport would you choose to fly out of? To address this question, first, define a new variable which indicates on-time departure. On-time-departure can be defined as a departure delay of less than or equal to 0. Then, calculate the on-time departure rate for each airport.
+
+<br>
+
+```{webr-r}
+# You can write your code here
+```
+
+### Answers
+
+```{webr-r}
+#| autorun: false
+flights <- data.table(nycflights13::flights)
+
+flights[, on_time := dep_delay <= 0] %>%
+  .[, .(on_time_rate = mean(on_time, na.rm = TRUE)), by = origin]
+```
+:::
+
+
+## Exercise 3
+
+:::{.panel-tabset}
+### Data
+
+For this exercise problem, we will use `journal` data from `AER` package. First, load the data and convert it to data.table object using `setDT` function (or. `as.data.table()`). Take a look at the data. Also, type `?journal` to see the description of the data.
+
+<br>
+
+```{webr-r}
+#| autorun: false
+# If you have not installed the package, run the following code
+# install.packages("AER")
+
+# load the package
+library(AER)
+# load the data from AER
+data("Journals")
+
+# To see the descriptions of the data, 
+# type `?Journals` in the console
+?Journals
+
+setDT(Journals)
+```
+
+### Instructions
+
+1. Calculate the average number of pages and submission delay for the entire dataset.
+2. Show the `title`, `citations`, `price`, and `subs` columns for the top 5 journals (`title`) with the highest number of citations (`citations`). (Hint: use `order()` function to sort the data by `citations` in descending order.)
+3. This dataset is created in the year of 2000. Calculate the age (`age`) of each journal by subtracting the start year (`foundingyear`) of the journal from 2000. Select the columns, `price`, `subs`, `citations`, and `pages`, and `age`. Use that data to create a correlation matrix between those variables using the `cor()` function. (Hint: use this syntax: `cor(data)`). Can you find anything interesting from the correlation matrix?
+
+4. `use = "complete.obs"` argument to exclude missing values from the calculation., )
+
+```{webr-r}
+# You can write your code here
+```
+
+### Solutions
+
+```{webr-r}
+#| autorun: false
+# === Part 1 === #
+Journals[, .(
+  avg_pages = mean(pages, na.rm = TRUE),
+  avg_delay = mean(submission_delay, na.rm = TRUE)
+)]
+
+# === Part 2 === #
+Journals[order(-citations),] %>%
+  .[, .(title, citations, price, subs)] %>%
+  .[1:5]
+  
+
+\)
+# === Part 3 === #
+Journals[, age := 2000 - foundingyear] %>%
+  .[, .(price, subs, citations, pages, age)] %>%
+  cor(.)
+```
 :::
 
 
 
 
 
-:::{.notes}
-+ Let's look back what we have learned today. We did a lot of things, right?  
 
-:::
 
 # Appendix {#appendix}
 
@@ -1295,13 +1415,9 @@ Don’t mind the details for now. You are good as long as you understand the fol
 + `duplicated()`: find duplicates
 + `unique()`: find unique observations
 + `fcase()` is like `case_when()` in dplyr.
-+ 
 
-<br>
 
-:::{.panel-tabset}
-
-### fcase()
+## fcase()
 
 + `fcase()` is like `case_when()` in `dplyr`. It is useful when you want to define a variable that takes different values based on conditions.
 
@@ -1310,11 +1426,12 @@ Don’t mind the details for now. You are good as long as you understand the fol
 ```{webr-r}
 x = 1:10
 fcase(
-	x < 5L, 1L,
+	x <= 5L, 1L,
 	x > 5L, 3L
 )
 ```
 
+<br>
 
 **Example:** Define seasons (Winter: Dec-Feb, Spring: Mar-May, Summer: Jun-Aug, Fall: Sep-Nov)
 
@@ -1369,215 +1486,4 @@ flights_mini[, print(.SD), by = month]
 :::
 
 :::
-
-
-# Exercise Problems 
-<!-- https://rpubs.com/Nasif/929745 -->
----
-
-:::{.panel-tabset}
-
-### Exercise 1
-
-:::{.panel-tabset}
-### Problem
-1. Find the flight company with the longest departure delay. (Hint: use `max()` function to find the maximum value of `dep_delay` column)
-
-
-2. Subset the information of flights that headed to MSP (Minneapolis-St Paul International Airport) in February. Let's name it "msp_feb_flights". How many flights are there?
-  
-
-3. Calculate the median, interquartile range ($IQR = Q3 − Q1$) for `arr_delays` of flights in in the `msp_feb_flights` data and the number of flights, grouped by `carrier`. Which carrier has the most variable arrival delays?
-
-+ Hint: IQR = Q3 − Q1 (the difference between the 75th percentile and the 25th percentile.) Use `quantile()` function to calculate the quantiles.
-
-
-### Answers
-
-```{webr-r, eval=FALSE, includ=FALSE}
-# === Part 1 === #
-flights[dep_delay == max(dep_delay), .(carrier)]
-
-# === Part 2 === #
-msp_feb_flights <- flights[dest=="MSP" & month==2L]
-nrow(msp_feb_flights)
-
-# === Part 3 === #
-msp_feb_flights[,.(
-  median = median(arr_delay),
-  IQR = quantile(arr_delay, 0.75) - quantile(arr_delay, 0.25),
-  n_flights = .N
-  ), by = carrier]
-```
-:::
-
-
-### Exercise 2
-
-:::{.panel-tabset}
-
-### Problem
-
-Which month would we expect to have the highest average delay departing from an NYC airport?
-
-```{webr-r}
-# You can write your code here
-```
-
-### Answer
-
-```{webr-r}
-
-```
-:::
-
-## Exercise 3
-
-:::{.panel-tabset}
-
-### Problem
-
-If you were selecting an airport simply based on on time departure percentage, which NYC airport would you choose to fly out of?
-
-```{webr-r}
-# You can write your code here
-```
-
-### Answer
-
-```{web-r}
-
-```
-:::
-
-## Exercise 4
-
-:::{.panel-tabset}
-
-### Problem
-
-For each hour of the day and each origin airport, calculate the total number of flights, average departure delay, and average arrival delay.	For each origin airport, identify the hour with the highest total number of flights.
-
-```{webr-r}
-# You can write your code here
-```
-
-
-### Answer
-
-```{webr-r}
-
-```
-:::
-
-:::
-
-## Exercise 5
-
-:::{.panel-tabset}
-### Data
-
-For this exercise problem, we will use `journal` data from `AER` package. After loading the data, type `head(journal)` to see the first few rows of the data. Also, type `?journal` to see the description of the data.
-<!-- (`AER` stands for "Applied Econometrics with R", and the package contains wide variety of data sets used in popular econometric textbooks). -->
-
-```{webr-r}
-#| autorun: true
-# If you have not installed the package, run the following code
-# install.packages("AER")
-
-# load the package
-library(AER)
-# load the data from AER
-data("Journals", package = "AER")
-
-# To see the descriptions of the data, 
-# type `?Journals` in the console
-?Journals
-```
-
-
-
-### Instructions
-
-
-
-### Solutions
-
-```{webr-r}
-
-```
-:::
-
-
-## Useful knowledge for data.table
-
-
-```{webr-r}
-# first three columns
-select_cols <- c("year", "month", "day")
-flights[ , select_cols, with = FALSE]
-flights[ , ..select_cols]
-
-# flights[,year:day]
-```
-
-
-In a `data.frame` way?
-```{webr-r}
-flights_df <- as.data.frame(flights)
-  with(
-    flights, 
-     mean(arr_delay + dep_delay)
-  )
-
-```
-
-
-
-
-
-
-
-
-## Exercise 2
-
-
-# Appendix
-
-## data.table vs dplyr {.center}
-
-### Key difference form dplyr
-You can implement all the three main actions (filter, calculate, group) in a single statement unlike dplyr:
-
-For example, the following set of codes below will give the same results (the number of flights by American Airline by origin-month):
-
-
-**`data.table` way**
-```{webr-r}
-flights[carrier == "AA", .(.N), by = .(origin, month)] %>% head()
-```
-
-**`dplyr` way**
-
-```{webr-r}
-
-```
-
-
-+ data.table 
-  + pros:
-    + fast computation especially for large data (multi-threads)
-      + if you are interested in speed, use `data.table`
-    + less syntax compared to `dplyr`
-  + cons:
-    + you cannot use the same syntax when you use spatial data (`sf` object and `StatRaster` object)
-
-+ dplyr
-  + pros:
-    + the syntax is pretty straightforward 
-      + e.g., select column with `select()`, filter rows with `filter()`
-      + Spatial object such as `sf` package (for vector object) and `terra` package (for raster object) support `dplyr` syntax.
-  + cons:
-    + slow computation for large data
-    + you need to know lots of functions to do the same thing as `data.table`
 
