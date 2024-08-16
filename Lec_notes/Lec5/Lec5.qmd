@@ -1,5 +1,5 @@
 ---
-title: "Day 5: Monte Carlo Simulation"
+title: "Day 5: Function, Loops, and Monte Carlo Simulation"
 subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
@@ -76,7 +76,7 @@ Before we dive into the Monte Carlo simulation, we need to review some key R ope
 :::
 
 
-## {{< fa list >}} Outline {.center}
+## {{< fa list >}} Today's outline {.center}
 
 + [User-Defined Functions](#fn)
   - [Exercise Problems](#fn-ex)
