@@ -74,7 +74,7 @@ Instead of leaving the R process as a black box, it's better to have some knowle
 ## {.center}
 <br>
 
-### **Learning Objectives**
+### {{< fa bullseye >}} Learning Objectives
 + To understand the R coding rules.  
 + To understand the basic types of data and structure in R, and to be able to manipulate them.
 + To be able to use base R functions to do some mathematical calculations.
@@ -83,26 +83,26 @@ Instead of leaving the R process as a black box, it's better to have some knowle
 
 <br>
 
-### **Reference**
+### {{< fa asterisk >}} Reference
 + [Section 6: Workflow: scripts, R for Data Science](https://r4ds.had.co.nz/workflow-scripts.html){target="_blank"}
 + [Section 8: Workflow: projects, R for Data Science](https://r4ds.had.co.nz/workflow-projects.html){target="_blank"}
 
 
 ## {.center}
 
-### Today 's outline
+### {{< fa list >}} Today 's outline
 
-1. R Coding Basics
-2. Basic Data Types and Data Structures
-   1. Data types
-   2. Data structure
-3. Basic arithmetics with base function
-4. Base plotting functions
-5. Exercise problems
-6. Appendix: Faster vector calculation for Mac user 
-    + [here](https://gist.github.com/nicebread/6920c8287d7bffb03007)
-    + [here](https://statistics.berkeley.edu/computing/faqs/linear-algebra-and-parallelized-linear-algebra-using-blas)
-
+1. [General coding rule in R](#general-rule)
+2. [Basic data types (i.e., atomic data types) in R](#basic-data)
+3. [Types of Data Structures in R](#data-str)
+   1. [Vector (one-dimensional array)](#vec)
+   2. [Matrix (Two-dimensional array)](#mat)
+   3. [Data Frame](#df)
+   4. [List](#list)
+4. [Matrix/Linear Algebra in R](#basic-matrix)
+5. [Loading and Saving Data](#load-save)
+6. [Exercise problems](#exercise)
+7. [Appendix: Useful base-R functions](#appendix)
 
 
 ## Before you start {.center}      
@@ -114,6 +114,7 @@ Instead of leaving the R process as a black box, it's better to have some knowle
 + In the end of the each section, I set a summary of the key points you need to know. As long as you understand those key points, you are good to go.
 :::
 
+# General coding rule in R {#general-rule}
 
 ## General coding rule in R
 
@@ -193,8 +194,9 @@ R has a lot of packages that provide additional functions and data. To use the f
 
 :::
 
+# Basic data types (i.e., atomic data types) in R {#basic-data}
 
-## Basic data types (i.e., atomic data types) in R
+## Overview
 
 ::: {.panel-tabset}
 
@@ -328,8 +330,11 @@ At this point,
 + Remember that logical values can play some important roles in R. 
 :::
 
+# Types of Data Structures in R {#data-str}
 
-## Data Structures in R {.center}
+---
+
+## Types of Data Structures in R {.center}
 
 If data are combined in a specific way, it is has a specific form of structure. 
 
@@ -358,7 +363,7 @@ Here, we focus on how to create and how to each of the data structure.
 + Mainly, 
 :::
 
-## Vector (one-dimensional array)
+## Vector (one-dimensional array) {#vec}
 
 ::: {.panel-tabset}
 
@@ -534,7 +539,7 @@ sum(x > 0.6)
 ```
 
 
-## Matrix (Two-dimensional array)
+## Matrix (Two-dimensional array) {#mat}
 
 :::{.panel-tabset}
 
@@ -683,7 +688,7 @@ mat[vec_index,]
 ```
 
 
-## Data Frame
+## Data Frame {#df}
 
 :::{.panel-tabset}
 
@@ -850,7 +855,7 @@ new_yield_data <- within(yield_data, {
 ```
 
 
-## List
+## List {#list}
 
 <!-- start panel:list   --> 
 :::{.panel-tabset} 
@@ -929,7 +934,7 @@ Here are the key points I want you to know at least:
 ::: -->
 
 
-# Matrix/Linear Algebra in R
+# Matrix/Linear Algebra in R {#basic-matrix}
 
 ---
 
@@ -1007,7 +1012,7 @@ t(mat_a)
 
 
 
-# Loading and Saving Data
+# Loading and Saving Data in R {#load-save}
 
 
 ---
@@ -1239,7 +1244,7 @@ flights <- readRDS("Data/flight.rds")
 :::
 
 
-# Exercise Problems
+# Exercise Problems {#exercise}
 <!-- create a problem related to vector and data.frame -->
 
 
@@ -1448,7 +1453,7 @@ flights_mn_delay_count
 :::
 
 
-## A List of Useful R Built-in Functions
+## Appendix: A List of Useful R Built-in Functions {#useful-functions}
 
 <!-- start panel:functions   --> 
 :::{.panel-tabset} 
