@@ -170,10 +170,34 @@ From the command palette, you can do anything!
 <!-- end panel:Rstudio  --> 
 :::
 
+## Rstudio: Running Code {.center}
+
+
+Let's write some codes. 
+
+```r
+print("Hello, World!")
+
+# This is a comment block.
+```
+<br>
+
+**R code**
+
++ Any thing you write in the source (or console) pane is regarded as R code. 
++ Mainly you use source pane to write the code. 
++ To run (execute) the code, select the code line, and click the "Run" bottom, or use the shortcut key: `Ctrl` + `Enter` (`Cmd` + `Enter` on macOS).
+
+
+**Comment block**
+
+R will not run the code line starting with `#`. It's called comment block. You can use it to write a note for yourself or others.
+
+
 
 ## Summary: {.center}
 
-+ Now you know how to use Rstudio. As long as you know how to create and save R script, you are ready to go for the next lecture.
++ Now you are familiar with Rstudio. As long as you know how to create and save R script, you are ready to go for the next lecture.
 
 <br>
 
