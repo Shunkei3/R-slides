@@ -1,0 +1,336 @@
+---
+title: "Lecture 1: Exercise Problems and Solutions"
+format: 
+  html:
+    theme: 
+      - cosmo
+    embed-resources: true
+    toc: true
+    number-sections: true
+    execute:
+      eval: false
+      message: false
+      warning: false
+---
+
+
+# Exercise: Vector
+
+<!-- start panel:Ex1   --> 
+:::{.panel-tabset .nav-pills} 
+## {{< fa person-chalkboard >}} Instructions 
+
+The following code randomly samples 30 numbers from a uniform distribution between 0 and 1, and stores the result in `x`. 
+
+```{r}
+# Run this code to work on the exercise problems.
+set.seed(3746)
+x <- runif(n = 30, min = 0, max = 1)
+x # see what's inside x
+```
+
+
+**Questions**
+
+1. Extract the 10th and the 15th elements of `x`.
+2. Extract elements larger than $0.5$.
+3. Replace the 10th and the 15th elements of `x` to 0.
+4. If an element of `x` is larger than $0.9$, replace it with $1$.
+5. Count the elements larger than $0.6$. 
+
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+x[c(10, 15)]
+
+# === Part 2 === #
+x[x > 0.5]
+
+# === Part 3 === #
+x[c(10, 15)] <- 0
+
+# === Part 4 === #
+x[x > 0.9] <- 1
+
+# === Part 5 === #
+sum(x > 0.6)
+```
+
+<!-- end panel:Ex1  --> 
+:::
+
+<br>
+
+# Exercise: Matrix
+
+<!-- start panel:matrix   --> 
+:::{.panel-tabset .nav-pills} 
+## Instruction## {{< fa person-chalkboard >}} Instructions 
+
+Use the following matrix:
+
+```{r}
+set.seed(3746)
+num <- runif(n = 30, min = 0, max = 1)
+mat <- matrix(data = num, nrow = 6)
+colnames(mat) <- c("A", "B", "C", "D", "E")
+rownames(mat) <- c("a", "b", "c", "d", "e", "f")
+mat # see what's inside mat
+```
+
+
+1. Extract the element in the 2nd row and 3rd column.
+2. Extract the 2nd row.
+3. Subset the rows where column "A" is larger than 0.5. (Use logical indexing).
+
+
+## {{< fa lightbulb >}} Solutions
+ 
+```{r}
+# === Part 1 === #
+mat[2, 3]
+
+# === Part 2 === #
+mat[2, ]
+
+# === Part 3 === #
+mat[mat[, "A"] > 0.5, ]
+```
+<!-- end panel:matrix  --> 
+:::
+
+<br>
+
+# Exercise: Data Frame
+
+<!-- start panel: ex data.frame   --> 
+:::{.panel-tabset .nav-pills}  
+## {{< fa person-chalkboard >}} Instructions  
+
+
+We will use the built-in dataset `mtcars` for this exercise. Run the following code to load the data.
+
+```{r}
+# --- Load data --- #
+data(mtcars)
+?mtcars # to see the description of the yield_data
+
+# --- Take a look at the data --- #
+# head() function shows the first several rows of the data
+head(mtcars)
+```
+
+
+1. Extract the rows corresponding to the cars with the row numbers 1, 5, and 10 using numeric indexing
+
+2. Add a new column to the `mtcars` data frame called `power_to_weight_ratio`, which is calculated as the ratio of horsepower (`hp`) to weight (`wt`).
+
+3. Create a new data frame called `efficient_cars` that contains cars with `mpg` greater than `20` and power-to-weight ratio less than 5.
+
+4. (Optional) Sort the efficient_cars data frame by the `power_to_weight_ratio` column in ascending order and display the result. [Hints: (1)use `order()` function to sort the data frame. (2) Use `order(efficient_cars$power_to_weight_ratio)` as an index vector.]
+
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+mtcars[c(1, 5, 10), ]
+
+# === Part 2 === #
+mtcars$power_to_weight_ratio <- mtcars$hp / mtcars$wt
+
+# === Part 3 === #
+efficient_cars <- mtcars[mtcars$mpg > 20 & mtcars$power_to_weight_ratio < 5, ]
+
+# === Part 4 === #
+efficient_cars[order(efficient_cars$power_to_weight_ratio), ]
+```
+
+<!-- end panel: ex data.frame  --> 
+:::
+
+<br>
+
+# Exercise: Vector, Comprehensive
+
+<!-- start panel: ex --> 
+:::{.panel-tabset .nav-pills}  
+## {{< fa person-chalkboard >}} Instructions  
+
+1. Create a sequence of numbers from 20 to 50 and name it `x`. Let's change the numbers that are multiples of 3 to 0.
+
+2. `sample()` is commonly used in Monte Carlo simulation in econometrics. Run the following code to create `r`. What does it do? Use `?sample` to find out what the function does.
+
+```{r}
+#| autorun: true
+set.seed(12345) #don't worry about this
+r <- sample(1:100, size=20, replace = TRUE)
+```
+
+3. Find the value of mean and SD of vector `r` without using `mean()` and `sd()`
+4. Figure out which position contains the maximum value of vector `r`. (use `which()` function. Run `?which()` to find out what the function does.)
+5. Extract the values of `r` that are larger than 50.
+6. Extract the values of `r` that are larger than 40 and smaller than 60.
+7. Extract the values of `r` that are smaller than 20 or larger than 70.
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+x <- 20:50
+# using `:` operator is the most basic way to create a sequence of numbers, but it only works with integer numbers with a step of 1.
+# seq() function is more flexible. For example, you can create a sequence of numbers, , incremented by 0.5.
+# x <- seq(from = 20, to = 50, by = 0.5)
+x[x %% 3 == 0] <- 0
+
+# === Part 2 === #
+# In this code, sample() function creates a random sample of numbers with size 20 (size=20) from a range 1 to 100 (x = 1:100) allowing replacement (replace = TRUE).
+
+# === Part 3 === #
+# mean
+mean_r <- sum(r) / length(r)
+# SD
+sd_r <- sqrt(sum((r - mean_r)^2) / (length(r) - 1))
+
+# === Part 4 === #
+max_index <- which(r == max(r))
+
+# === Part 5 === #
+r_50 <- r[r > 50]
+
+# === Part 6 === #
+r_40_60 <- r[r > 40 & r < 60]
+
+# === Part 7 === #
+r_20_70 <- r[r < 20 | r > 70]
+```
+
+<!-- end panel: ex  --> 
+:::
+
+
+<br>
+
+
+# Exercise: Data Frame, Comprehensive
+
+<!-- start panel: ex --> 
+:::{.panel-tabset .nav-pills}  
+## {{< fa person-chalkboard >}} Instructions  
+
+1. Load the file `nscg17small.dta`. You can find the data in the `Data` folder. 
+   + This data is a subset of the National Survey of College Graduates (NSCG) 2017, which collects data on the educational and occupational characteristics of college graduates in the United States.
+
+2. Each row corresponds to a unique respondent. Let's create a new column called "ID". There are various ways to create an ID column. Here, let's create an ID column that starts from 1 and increments by 1 for each row.
+3. To take a quick look at the summary statistics of a specific column, `summary()` function is useful. Use `summary()` to create a table of the descriptive statistics for salary. You'll provide salary column to `summary()` as a vector. 
+4. Create a new variable in your data that represents the z-score
+of the hours worked (use `hrswk` variable).
+$$Z = (x - \mu)/\sigma$$
+, where $Z = \text{standard score}$, $x =\text{observed value}$, $\mu = \text{mean of sample}$, and $\sigma = \text{standard deviation of the sample}$.
+5. Calculate the share of observations in your data sample with
+above average hours worked.
+
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+library(rio)
+nscg17 <- import("Data/nscg17small.dta")
+
+# === Part 2 === #
+nscg17$ID <- 1:nrow(nscg17)
+
+# === Part 3 === #
+summary(nscg17$salary)
+
+# === Part 4 === #
+nscg17$z_hrswk <- (nscg17$hrswk - mean(nscg17$hrswk)) / sd(nscg17$hrswk)
+# or using with() function, you can write the code more concisely
+# nscg17$z_hrswk2 <- with(nscg17, (hrswk - mean(hrswk)) / sd(hrswk))
+
+# Note: For part 2 and 3, you can use within() function to create new columns more concisely.
+# nscg17 <- 
+#   within(
+#     nscg17, {
+#       ID <- 1:nrow(nscg17)
+#       z_hrswk <- (hrswk - mean(hrswk)) / sd(hrswk)
+#     }
+
+# === Part 5 === #
+# create a logical vector that indicates whether the hours worked is above average
+above_avg_hrswk <- with(nscg17, z_hrswk > mean(z_hrswk)) # you can get the same result by using `hrswk`.
+# subset the data
+nscg17_above_avg_hrswk <- nscg17[above_avg_hrswk, ]
+# calculate the share of observations with above average hours worked
+share_above_avg_hrswk <- nrow(nscg17_above_avg_hrswk) / nrow(nscg17)
+share_above_avg_hrswk
+```
+
+<!-- end panel: ex  --> 
+:::
+
+<br>
+
+
+<!-- # Exercise (Advanced) -->
+
+<!-- start panel: ex --> 
+<!-- :::{.panel-tabset .nav-pills}  
+## {{< fa person-chalkboard >}} Instructions  
+
+Let's use `flight.rds` data in the `Data` folder. Load the data. We will only look at the flight data with "MSP" (Minneapolis–Saint Paul International Airport) as the destination airport. 
+
+**Question**
+
+1. Create `flights_mn` data that contains the column `year`, `month`, `day`, `dep_delay`, `arr_delay`, `dest`, `carrier` and subset rows that have "MSP" as `dest`. 
+
+2. Using `flights_mn`, find the proportion of flights that are delayed more than 30 minutes in total for each each airline company (`carrier`).
+
+::: {.callout-note}
++ You can solve this exercise problem by using only base-R functions. See Hints if you need help.
++ Also, note that googling is one of the most important skills for coding!
+:::
+
+## {{< fa message >}} Hints (step by step)
+
+Here are the steps that I took to solve the problem. You don't need to exactly follow these steps.
+
+1. Load the `flight.rds` data in the `Data` folder.
+2. To create `flights_mn`, select the columns `year`, `month`, `day`, `dep_delay`, `arr_delay`, `dest`, and  `carrier`, and subset rows that have "MSP" as `dest`.
+
+
+
+## {{< fa person-chalkboard >}} Solutions
+
+```{r}
+#| eval: false
+# === Step 1: Load data === #
+flights <- readRDS("Data/flight.rds")
+
+# === Part 2: subset data === #
+# define the columns to select
+select_cols <- c("year", "month", "day", "dep_delay", "arr_delay", "dest", "carrier")
+flights_mn <- flights[flights$dest == "MSP", select_cols]
+# or
+# flights_mn <- with(flights, flights[dest == "MSP", select_cols])
+
+flights_mn$total_delay <- flights_mn$dep_delay + flights_mn$arr_delay
+
+delayed <- flights_mn$total_delay > 30
+
+total_flights <- table(flights_mn$carrier)
+
+delayed_flights <- table(flights_mn$carrier[delayed], row.names = unique(flights_mn$carrier))
+
+# Calculate the proportion of delayed flights
+proportions <- delayed_flights / total_flights
+
+# Print the result
+print(proportions)
+``` -->
+
+<!-- end panel: ex  --> 
+<!-- ::: -->
