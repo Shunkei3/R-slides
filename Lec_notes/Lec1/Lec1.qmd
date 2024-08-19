@@ -1368,7 +1368,7 @@ share_above_avg_hrswk
 ```
 :::
 
-## Exercise Problems 3 (Advanced)
+<!-- ## Exercise Problems 3 (Advanced)
 :::{.panel-tabset}
 
 ### Problem
@@ -1451,7 +1451,7 @@ flights_mn_delay_count <- within(
 )
 flights_mn_delay_count
 ```
-:::
+::: -->
 
 
 ## Appendix: A List of Useful R Built-in Functions {#useful-functions}

@@ -60,6 +60,14 @@ c(x=1:2, y=3:4)
 
 class(NA)
 
+
+#/*--------------------------------*/
+#' ## Vector
+#/*--------------------------------*/
+vec_a <- 1:4
+
+vec_a[1]
+
 #/*--------------------------------*/
 #' ## Matrix
 #/*--------------------------------*/
@@ -67,8 +75,7 @@ mat <- matrix(1:12, nrow=3)
 rownames(mat) <- c("row1", "row2", "row3")
 colnames(mat) <- c("col1", "col2", "col3", "col4")
 
-mat[, c("col1", "col2")]
-mat[["col1"]]
+
 
 #/*--------------------------------*/
 #' ## Data Frame
@@ -89,3 +96,6 @@ yield_data[["Yield"]] #vector
 yield_data$Yield #vector
 with(yield_data, Yield)
 
+
+
+yield_data["Yield",]
