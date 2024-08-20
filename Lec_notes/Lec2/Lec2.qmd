@@ -75,8 +75,8 @@ filters:
    + [Merge multiple datasets](#merge-multiple-datasets)
 
 2. [`%>%` operator](#piping)
-
-3. [Appendix](#appendix)
+3. [Exercise Problems](#exercise-problems)
+4. [Appendix](#appendix)
 
 
 # Introduction to data.table {#intro-data-table}
@@ -1394,7 +1394,7 @@ You don't need to use `%>%`operator, but it would be convenient if you know how 
 
 
 
-# Exercise Problems 
+# Exercise Problems {#exercise-problems}
 
 ---
 
