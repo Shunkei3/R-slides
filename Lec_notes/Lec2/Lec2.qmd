@@ -34,7 +34,7 @@ filters:
 
 ### {{< fa bullseye >}} Learning Objectives
 
-+ 1. + To be able to use the basic data wrangling skills with the `data.table` package:
++ 1. To be able to use the basic data wrangling skills with the `data.table` package:
 + 2. Learn how to use `%>%` operator of the `magrittr` package.
 
 <br>
@@ -248,7 +248,7 @@ flights[dep_delay < 0 | arr_delay < 0,]
 :::
 
 
-## Please Note
+## Please Note {.center}
 
 The important thing to remember is that you do any tasks related to rows in `i`.
 
@@ -290,11 +290,13 @@ flights[, "dep_time"]
 
 <br>
 
+:::{.fragment .fade-up}
 ::: {.callout-note}
 + If we wrap the variables (column names) within `list()`, which ensures that a `data.table` is returned.
 + `.()` is a shorthand for `list()` in `data.table` syntax.
 
 + **Important**: [In data.table, each column is internally defiled as a list. As long as you use `.()` (or `list()`) in `j` expression, each element of the list will be converted to a column and results in the resulting data.table.]{style="color: red;"}
+:::
 :::
 
 <br>
@@ -325,7 +327,7 @@ flights[, !c("dep_time", "arr_time")]
 
 ## 3. Compute on Columns {#compute-on-columns}
 
-:::{.panel-tabset}
+<br>
 
 ### Basics
 + [`data.table` syntax: `DT[i, j, by]`]{style="color: blue;"}
@@ -363,9 +365,8 @@ flights[, sum((arr_delay + dep_delay) < 0)] #Let's explore what's going on here.
 + 3. compute `sum(arr_delay + dep_delay < 0)`
 :::
 
-:::
 
-## 3. Compute on Columns (continued)
+## 3. Compute on Columns of the Subsetted Rows
 
 :::{.panel-tabset}
 
@@ -766,7 +767,11 @@ Don't mind the details. Here are the things that I want you to know:
 
 ## {.center}
 
-Next, we will see a few advanced topics: Reshaping Data and Merging Multiple Datasets (and the `%>%` operator if we have time).
+Next, we will see a few advanced topics: 
+
++ Reshaping Data
++ Merging Multiple Datasets 
++ (and the `%>%` operator if we have time).
 
 
 ## 6. Reshape Data {#reshape-data}
@@ -1528,14 +1533,8 @@ Journals[, age := 2000 - foundingyear] %>%
 
 
 
-
-
-
-
 # Appendix {#appendix}
 
-
----
 
 <!-- ## Appendix: Table of Contents
 
