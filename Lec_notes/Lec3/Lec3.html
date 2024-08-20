@@ -677,7 +677,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(ggplot2)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-1","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":1},{"code":"?airquality\n\n# Take a look at the first few rows of the data\nhead(airquality)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-2","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":2},{"code":"ggplot(data = airquality)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-3","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":3},{"code":"ggplot(data = airquality)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-4","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":4},{"code":"# You might see a warning message. Don't worry about it!\nggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone))","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-5","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":5},{"code":"# Your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-6","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":6},{"code":"ggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone), size = 3, color = \"red \", shape = 1)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"false","context":"interactive","results":"markup","label":"unnamed-chunk-7","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":7},{"code":"ggplot(data = airquality) +\n  geom_histogram(aes(x = Temp), fill = \"blue\", alpha = 0.5)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-8","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":8},{"code":"# Calculate the mean ozone level by month\nairquality %>%\n  as.data.table() %>%\n  .[, .(mean_ozone = mean(Ozone, na.rm = TRUE)), by = Month] %>%\nggplot(data = .) +\n  geom_line(\n    aes(x = Month, y = mean_ozone), \n    linewidth = 1.5,\n    color = \"purple\",\n    linetype = \"dotted\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-9","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":9},{"code":"# Your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-10","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":10},{"code":"# Your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-11","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":11},{"code":"# Now, fill color depnds on factor(Month)\nggplot(data = airquality) +\n  geom_density(aes(x = Temp, fill = factor(Month)), alpha = 0.5)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-12","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":12},{"code":"# Your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-13","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":13},{"code":"ggplot(data = airquality, aes(x = Temp, y = Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ x)\n\n# The above code is equivalent to the following code\n# ggplot(data = airquality) +\n#   geom_point(aes(x = Temp, y = Ozone)) +\n#   geom_smooth(aes(x = Temp, y = Ozone), method = \"lm\")","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"false","context":"interactive","results":"markup","label":"unnamed-chunk-14","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":14},{"code":"ggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone, color = factor(Month))) +\n  labs(\n    x = \"Maximum temperature (degrees F)\",\n    y = \"Ozone level (ppb)\",\n    title = \"Relationship between ozone and temperature\",\n    color = \"Month\",\n    subtitle = \"May to September 1973, New York\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"false","context":"interactive","results":"markup","label":"unnamed-chunk-15","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":15},{"code":"#| \nggplot(data = airquality) +\n  geom_density(aes(x = Ozone, fill = factor(Month)), alpha = 0.5) +\n  labs(\n    x = \"Maximum temperature (degrees F)\",\n    y = \"Ozone level (ppb)\",\n    title = \"Distribution of observed ozone by month\",\n    fill = \"Month\",\n    subtitle = \"May to September 1973, New York\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"false","context":"interactive","results":"markup","label":"unnamed-chunk-16","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":16},{"code":"# === Part 1 === #\nggplot(data = economics, aes(x = unemploy, y = psavert)) +\n  geom_point()+\n  geom_smooth(method = \"lm\", formula = y ~ x) +\n  labs(\n    x = \"Unemployment (thousands)\",\n    y = \"Personal savings rate\",\n    title = \"Relationship between unemployment and personal savings rate\"\n  )\n\n# === Part 2 === #\nggplot(data = economics) +\n  geom_bar(aes(x = date, y = psavert, fill = pop), stat = 'identity') +\n  labs(\n    x = \"Date\",\n    y = \"Personal Savings Rate\",\n    fill = 'Population',\n    title = \"Personal Consumption Expenditures by Date\"\n  )\n\n# === Part 3 === #\nggplot(data = economics) +\n  geom_line(aes(x = date, y = psavert, color = \"Personal Savings Rate\")) +\n  geom_line(aes(x = date, y = uempmed, color = \"Median Duration of Unemployment\"))\n\n# In the code above, I used two geom_line() functions to create two lines in the same plot. Although there is no color called \"Personal Savings Rate\", if you use `color=<color_name>` option inside the `aes()` function, ggplot regard <color_name> as a variable and assign color automatically. Also, it will be shown in the legend.\n\n\n# Alternative solution (This is more efficient if you have many variables to plot).\neconomics_long <-\n  as.data.table(economics) %>%\n  melt(\n    id.vars = \"date\",\n    measure.vars = c(\"psavert\", \"uempmed\")\n  ) %>%\n  .[, new_names := ifelse(variable == \"psavert\", \"Personal Savings Rate\", \"Median Duration of Unemployment\")]\n\nggplot(economics_long) +\n  geom_line(\n    aes(x = date, y = value, color = new_names)\n  )+\n  labs(\n    x = \"Date\",\n    y = \"Value\",\n    color = \"Variable\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","output-location":"column","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-17","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":17},{"code":"# === Download Data (Don't worry about this part.) === #\ninsurance_url <- \"https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv\"\ninsurance <- fread(insurance_url)\n\n# fead() is a function from the data.table package used sed for fast and efficient reading of data from text files, particularly large CSV files.\n\n# Of course, you can also use import function from the rio package (this only works in RStudio, not here).\n# insurance <- rio::import(insurance_url)\n\n# === Take a look at the data === #\nglimpse(insurance)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"true","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-18","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":18},{"code":"# === Part 1 === #\nggplot(data = insurance) +\n  geom_histogram(aes(x = charges, fill = sex), alpha = 0.5) +\n  labs(\n    x = \"Medical Charges\",\n    y = \"Frequency\",\n    title = \"Histogram of individual medical costs by sex\"\n  )\n\n\n# === Part 2 === #\nggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges)) +\n  labs(\n    x = \"Body Mass Index (BMI)\",\n    y = \"Scatter plot of BMI vs medical costs\"\n  )\n\n# === Part 3 === #\nggplot(data = insurance, aes(x = bmi, y = charges, color = smoker)) +\n  geom_point()+\n  geom_smooth(method = \"lm\", formula = y ~ x) +\n  labs(\n    x = \"Body Mass Index (BMI)\",\n    y = \"Scatter plot of BMI vs medical costs by smoker Status\",\n    color = \"Smoker\"\n  )\n\n# === Part 4 === #\nggplot(data = insurance) +\n  geom_boxplot(aes(x = sex, y = charges, fill = region)) +\n  labs(\n    x = \"Sex\",\n    y = \"Medical costs\",\n    title = \"Distribution of individual mediacal mosts by sex and region\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-19","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":19},{"code":"base_plot <- ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5) +\n  facet_wrap(vars(region), nrow = 1, scales = \"fixed\")\n\n# try vars(region, sex)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"false","context":"interactive","results":"markup","label":"unnamed-chunk-20","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":20},{"code":"ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5) +\n  facet_grid(rows = vars(sex), cols = vars(region), scales = \"fixed\")","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-21","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":21},{"code":"# Prepare the base hisgram plot\nbase <- ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5)\n\n# === fact_wrap === #\nbase + \n  facet_wrap(vars(region), scales = \"fixed\", nrow = 2)\n\n# === fact_grid === #\nbase + \n  facet_grid(cols = vars(region), scales = \"fixed\") # use vars(region) for the rows\n# Note that you cannot warp the panels into 2d.\n\n\nbase + \n  facet_grid(rows = vars(region), scales = \"fixed\") # use vars(region) for the rows","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-22","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":22},{"code":"insurance_southwest <- insurance[region == \"southwest\",]\ninsurance_northeast <- insurance[region == \"northeast\",]\n\n# === Create economics_month dataset === #\nggplot() +\n  geom_point(\n    data = insurance_southwest,\n    aes(x = bmi, y = charges),\n    color = \"blue\"\n  ) +\n  geom_point(\n    data = insurance_northeast,\n    aes(x = bmi, y = charges),\n    color = \"red\"\n  )\n# How can we make the legend?","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-23","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":23},{"code":"library(ggthemes)\n\nggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges)) +\n  theme_stata()","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-24","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":24},{"code":"ggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges, color = region)) +\n  labs(titile = \"Scatter plot of BMI and smoke status\") +\n  theme(\n    plot.title = element_text(hjust = 0.5), #center the title\n    legend.position = \"bottom\" # move the legend to the bottom\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-25","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":25},{"code":"# install the gapminder package if you haven't done so.\n# install.packages(\"gapminder\")\n\n# Load the data from the gapminder package\ndata(gapminder, package=\"gapminder\")\n\ngapminder <- as.data.table(gapminder) # Convert the data to a data.table object\n\nglimpse(gapminder) #grimpse is a function from the dplyr package that provides a concise summary of a data frame. \n# ?gapminder::gapminder # Check the description of the data","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","cashe":"false","label":"unnamed-chunk-26","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":26},{"code":"# You can write your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-27","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":27},{"code":"# === Part 1 === #\n#' There are several approaches.\n#' The most straightforward way is to use the unique() function, and then count the number of unique values.\nlength(unique(gapminder$country))\n\n# Alternatively, you could use the uniqueN() function from the data.table package.\n# gapminder[, uniqueN(country)]\n\n# === Part 2 === #\nmean(gapminder$lifeExp)\n# same as\n# gapminder[, mean(lifeExp)]\n\n# === Part 3 === #\ngapminder_2007 <- gapminder[year == 2007,]\n\nggplot(data = gapminder_2007) +\n  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  labs(\n    x = \"GDP per capita\",\n    y = \"Life expectancy\",\n    title = \"Scatter plot of GDP per capita vs. life expectancy in 2007\"\n  )\n\n# === Part 4 === #\nggplot(data = gapminder_2007) +\n  geom_bar(aes(x = continent, y = pop), stat = \"identity\", fill = \"blue\", alpha = 0.5) +\n  labs(\n    x = \"Continent\",\n    y = \"Total population\",\n    title = \"Total population by continent in 2007\"\n  )\n\n\n# === Part 5 === #\ngapminder[country %in% c(\"United States\", \"China\", \"India\", \"United Kingdom\"),] %>%\n  ggplot(data = .)+\n  geom_line(aes(x = year, y = lifeExp, color = country))+\n  labs(\n    title = \"Life Expectancy in the selected countries\",\n    x = \"Year\", y = \"Life Expectancy\"\n  )+\n  theme_bw()+\n  theme(plot.title = element_text(hjust = 0.5))\n\n# === Part 6 === #\nggplot(data = gapminder) +\n  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  facet_wrap(vars(continent), scales = \"fixed\") +\n  labs(\n    x = \"GDP per capita\",\n    y = \"Life expectancy\",\n    title = \"Scatter plot of GDP per capita vs. life expectancy by continent\"\n  )\n\n# === Part 7 === #\ngapminder[, .(mean_gdp = mean(gdpPercap)), by = .(continent, year)] %>%\n  ggplot(data = .) +\n  geom_line(aes(x = year, y = mean_gdp, color = continent)) +\n  labs(\n    x = \"Year\",\n    y = \"Mean GDP per capita\",\n    title = \"Trend of mean GDP per capita by continent\"\n  )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-28","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":28},{"code":"# === Loading data === #\neconomics <- as.data.table(ggplot2::economics)\n# take a look at the data\nglimpse(economics)","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-29","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":29},{"code":"# You can write your code here","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-30","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":30},{"code":"# Since we want use column names as variable names, we need to convert the data to a long format. We melt all the columns except the date column.\neconomics_long <- melt(economics, id.vars = \"date\")\n\n# Then, create a facet plot where each panel shows the trend of one economic indicator.\n# Since we only have one variable to facet, facet_wrap() function is more appropriate.\n# Also, we set scales = \"free_y\" to make the y-axis scales free across facets.\nggplot(data = economics_long) +\n  geom_line(aes(x = date, y = value)) +\n  facet_wrap(vars(variable), scales = \"free_y\")","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-31","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":31},{"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"Value\", \"yield\")\n\n# === Part 3 === #\nmean_yield_state_y_dt <- \n  yield_dt %>%\n  .[, .(mean_yield = mean(yield, na.rm = TRUE)), by = .(state_alpha, year)]\n\nmean_yield_state_y_dt %>%\n  .[state_alpha == \"MN\",] %>%\n  ggplot(data = .) +\n    geom_line(aes(x = year, y = mean_yield)) +\n    labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \"Trdn of corn yield produeced in Minnesota\"\n    )\n\n\n# === Part 4 === #\nggplot(data = mean_yield_state_y_dt) +\n  geom_line(aes(x = year, y = mean_yield, color = state_alpha)) +\n  labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \" Corn yield trend in Minnesota\"\n    )\n\n# === Part 5 === #\nggplot(data = mean_yield_state_y_dt) +\n  geom_line(aes(x = year, y = mean_yield)) +\n  facet_wrap(vars(state_alpha), scales = \"fixed\") +\n  labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \"Corn yield trend by state\"\n    )\n\n# === Part 6 === #\nmean_yield_year_dt <- \n  yield_dt %>%\n  .[, .(mean_yield = mean(yield)), by = .(year)]\n\n\nggplot() +\n  geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +\n  facet_wrap(vars(state_alpha), scales = \"fixed\") +\n  geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield), linetype = \"dashed\", color = \"red\") +\n  labs(\n      x = \"Year\",\n      y = \"Corn yield (BU / ACRE)\",\n      title = \"Corn yield trend by state\"\n    ) +\n  scale_color_manual(\n    values = c(\"Average corn yield across states\" = \"red\")\n    ) +\n  theme_bw() +\n  theme(\n    legend.position = \"bottom\"\n  )\n\n\n# Furthermore, you can add a legend to the plot by using the following code.\n# ggplot() +\n#   geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +\n#   facet_wrap(vars(state_alpha), scales = \"fixed\") +\n#   geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield, color = \"Average corn yield across states\"), linetype = \"dashed\") +\n#   labs(\n#       x = \"Year\",\n#       y = \"Corn yield (BU / ACRE)\",\n#       title = \"Corn yield trend by state\"\n#     ) +\n#   scale_color_manual(\n#     values = c(\"Average corn yield across states\" = \"red\")\n#     ) +\n#   theme_bw() +\n#   theme(\n#     legend.position = \"bottom\"\n#   )","options":{"out-height":"","message":"true","editor-max-height":"","fig-width":7,"autorun":"false","fig-cap":"","editor-word-wrap":"true","output":"true","warning":"true","context":"interactive","results":"markup","label":"unnamed-chunk-32","out-width":"700px","fig-height":5,"dpi":72,"classes":"","editor-quick-suggestions":"false","editor-font-scale":"0.8","read-only":"false","comment":""},"id":32}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-1","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"library(ggplot2)"},{"id":2,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-2","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"?airquality\n\n# Take a look at the first few rows of the data\nhead(airquality)"},{"id":3,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-3","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality)"},{"id":4,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-4","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality)"},{"id":5,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-5","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# You might see a warning message. Don't worry about it!\nggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone))"},{"id":6,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-6","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Your code here"},{"id":7,"options":{"out-width":"700px","warning":"false","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-7","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone), size = 3, color = \"red \", shape = 1)"},{"id":8,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-8","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality) +\n  geom_histogram(aes(x = Temp), fill = \"blue\", alpha = 0.5)"},{"id":9,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-9","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Calculate the mean ozone level by month\nairquality %>%\n  as.data.table() %>%\n  .[, .(mean_ozone = mean(Ozone, na.rm = TRUE)), by = Month] %>%\nggplot(data = .) +\n  geom_line(\n    aes(x = Month, y = mean_ozone), \n    linewidth = 1.5,\n    color = \"purple\",\n    linetype = \"dotted\"\n  )"},{"id":10,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-10","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Your code here"},{"id":11,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-11","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Your code here"},{"id":12,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-12","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Now, fill color depends on factor(Month)\nggplot(data = airquality) +\n  geom_density(aes(x = Temp, fill = factor(Month)), alpha = 0.5)"},{"id":13,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-13","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Your code here"},{"id":14,"options":{"out-width":"700px","warning":"false","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-14","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality, aes(x = Temp, y = Ozone)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", formula = y ~ x)\n\n# The above code is equivalent to the following code\n# ggplot(data = airquality) +\n#   geom_point(aes(x = Temp, y = Ozone)) +\n#   geom_smooth(aes(x = Temp, y = Ozone), method = \"lm\")"},{"id":15,"options":{"out-width":"700px","warning":"false","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-15","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = airquality) +\n  geom_point(aes(x = Temp, y = Ozone, color = factor(Month))) +\n  labs(\n    x = \"Maximum temperature (degrees F)\",\n    y = \"Ozone level (ppb)\",\n    title = \"Relationship between ozone and temperature\",\n    color = \"Month\",\n    subtitle = \"May to September 1973, New York\"\n  )"},{"id":16,"options":{"out-width":"700px","warning":"false","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-16","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"#| \nggplot(data = airquality) +\n  geom_density(aes(x = Ozone, fill = factor(Month)), alpha = 0.5) +\n  labs(\n    x = \"Maximum temperature (degrees F)\",\n    y = \"Ozone level (ppb)\",\n    title = \"Distribution of observed ozone by month\",\n    fill = \"Month\",\n    subtitle = \"May to September 1973, New York\"\n  )"},{"id":17,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"output-location":"column","editor-quick-suggestions":"false","label":"unnamed-chunk-17","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Part 1 === #\nggplot(data = economics, aes(x = unemploy, y = psavert)) +\n  geom_point()+\n  geom_smooth(method = \"lm\", formula = y ~ x) +\n  labs(\n    x = \"Unemployment (thousands)\",\n    y = \"Personal savings rate\",\n    title = \"Relationship between unemployment and personal savings rate\"\n  )\n\n# === Part 2 === #\nggplot(data = economics) +\n  geom_bar(aes(x = date, y = psavert, fill = pop), stat = 'identity') +\n  labs(\n    x = \"Date\",\n    y = \"Personal Savings Rate\",\n    fill = 'Population',\n    title = \"Personal Consumption Expenditures by Date\"\n  )\n\n# === Part 3 === #\nggplot(data = economics) +\n  geom_line(aes(x = date, y = psavert, color = \"Personal Savings Rate\")) +\n  geom_line(aes(x = date, y = uempmed, color = \"Median Duration of Unemployment\"))\n\n# In the code above, I used two geom_line() functions to create two lines in the same plot. Although there is no color called \"Personal Savings Rate\", if you use `color=<color_name>` option inside the `aes()` function, ggplot regards <color_name> as a variable and assigns color automatically. Also, it will be shown in the legend.\n\n\n# Alternative solution (This is more efficient if you have many variables to plot).\neconomics_long <-\n  as.data.table(economics) %>%\n  melt(\n    id.vars = \"date\",\n    measure.vars = c(\"psavert\", \"uempmed\")\n  ) %>%\n  .[, new_names := ifelse(variable == \"psavert\", \"Personal Savings Rate\", \"Median Duration of Unemployment\")]\n\nggplot(economics_long) +\n  geom_line(\n    aes(x = date, y = value, color = new_names)\n  )+\n  labs(\n    x = \"Date\",\n    y = \"Value\",\n    color = \"Variable\"\n  )"},{"id":18,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-18","read-only":"false","autorun":"true","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Download Data (Don't worry about this part.) === #\ninsurance_url <- \"https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv\"\ninsurance <- fread(insurance_url)\n\n# fread() is a function from the data.table package used for fast and efficient reading of data from text files, particularly large CSV files.\n\n# Of course, you can also use the import function from the rio package (this only works in RStudio, not here). For example, \n# insurance <- rio::import(insurance_url)\n\n# === Take a look at the data === #\nhead(insurance)"},{"id":19,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-19","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Part 1 === #\nggplot(data = insurance) +\n  geom_histogram(aes(x = charges, fill = sex), alpha = 0.5) +\n  labs(\n    x = \"Medical Charges\",\n    y = \"Frequency\",\n    title = \"Histogram of individual medical costs by sex\"\n  )\n\n\n# === Part 2 === #\nggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges)) +\n  labs(\n    x = \"Body Mass Index (BMI)\",\n    y = \"Scatter plot of BMI vs medical costs\"\n  )\n\n# === Part 3 === #\nggplot(data = insurance, aes(x = bmi, y = charges, color = smoker)) +\n  geom_point()+\n  geom_smooth(method = \"lm\", formula = y ~ x) +\n  labs(\n    x = \"Body Mass Index (BMI)\",\n    y = \"Scatter plot of BMI vs medical costs by smoker Status\",\n    color = \"Smoker\"\n  )\n\n# === Part 4 === #\nggplot(data = insurance) +\n  geom_boxplot(aes(x = sex, y = charges, fill = region)) +\n  labs(\n    x = \"Sex\",\n    y = \"Medical costs\",\n    title = \"Distribution of individual medical mosts by sex and region\"\n  )"},{"id":20,"options":{"out-width":"700px","warning":"false","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-20","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"base_plot <- ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5) +\n  facet_wrap(vars(region), nrow = 1, scales = \"fixed\")\n\n# try vars(region, sex)"},{"id":21,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-21","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5) +\n  facet_grid(rows = vars(sex), cols = vars(region), scales = \"fixed\")"},{"id":22,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-22","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Prepare the base histogram plot\nbase <- ggplot(insurance)+\n  geom_histogram(aes(x = charges), fill = \"blue\", alpha = 0.5)\n\n# === fact_wrap === #\nbase + \n  facet_wrap(vars(region), scales = \"fixed\", nrow = 2)\n\n# === fact_grid === #\nbase + \n  facet_grid(cols = vars(region), scales = \"fixed\") # use vars(region) for the rows\n# Note that you cannot wrap the panels into 2 rows.\n\n\nbase + \n  facet_grid(rows = vars(region), scales = \"fixed\") # use vars(region) for the rows"},{"id":23,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-23","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"insurance_southwest <- insurance[region == \"southwest\",]\ninsurance_northeast <- insurance[region == \"northeast\",]\n\n# === Create economics_month dataset === #\nggplot() +\n  geom_point(\n    data = insurance_southwest,\n    aes(x = bmi, y = charges),\n    color = \"blue\"\n  ) +\n  geom_point(\n    data = insurance_northeast,\n    aes(x = bmi, y = charges),\n    color = \"red\"\n  )\n# How can we make the legend?"},{"id":24,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-24","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"library(ggthemes)\n\nggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges)) +\n  theme_stata()"},{"id":25,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-25","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"ggplot(data = insurance) +\n  geom_point(aes(x = bmi, y = charges, color = region)) +\n  labs(titile = \"Scatter plot of BMI and smoke status\") +\n  theme(\n    plot.title = element_text(hjust = 0.5), #center the title\n    legend.position = \"bottom\" # move the legend to the bottom\n  )"},{"id":26,"options":{"out-width":"700px","cashe":"false","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-26","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# install the gapminder package if you haven't done so.\n# install.packages(\"gapminder\")\n\n# Load the data from the gapminder package\ndata(gapminder, package=\"gapminder\")\n\ngapminder <- as.data.table(gapminder) # Convert the data to a data.table object"},{"id":27,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-27","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# You can write your code here"},{"id":28,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-28","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Part 1 === #\n#' There are several approaches.\n#' The most straightforward way is to use the unique() function, and then count the number of unique values.\nlength(unique(gapminder$country))\n\n# Alternatively, you could use the uniqueN() function from the data.table package.\n# gapminder[, uniqueN(country)]\n\n# === Part 2 === #\nmean(gapminder$lifeExp)\n# same as\n# gapminder[, mean(lifeExp)]\n\n# === Part 3 === #\ngapminder_2007 <- gapminder[year == 2007,]\n\nggplot(data = gapminder_2007) +\n  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  labs(\n    x = \"GDP per capita\",\n    y = \"Life expectancy\",\n    title = \"Scatter plot of GDP per capita vs. life expectancy in 2007\"\n  )\n\n# === Part 4 === #\nggplot(data = gapminder_2007) +\n  geom_bar(aes(x = continent, y = pop), stat = \"identity\", fill = \"blue\", alpha = 0.5) +\n  labs(\n    x = \"Continent\",\n    y = \"Total population\",\n    title = \"Total population by continent in 2007\"\n  )\n\n\n# === Part 5 === #\ngapminder[country %in% c(\"United States\", \"China\", \"India\", \"United Kingdom\"),] %>%\n  ggplot(data = .)+\n  geom_line(aes(x = year, y = lifeExp, color = country))+\n  labs(\n    title = \"Life Expectancy in the selected countries\",\n    x = \"Year\", y = \"Life Expectancy\"\n  )+\n  theme_bw()+\n  theme(plot.title = element_text(hjust = 0.5))\n\n# === Part 6 === #\nggplot(data = gapminder) +\n  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  facet_wrap(vars(continent), scales = \"fixed\") +\n  labs(\n    x = \"GDP per capita\",\n    y = \"Life expectancy\",\n    title = \"Scatter plot of GDP per capita vs. life expectancy by continent\"\n  )\n\n# === Part 7 === #\ngapminder[, .(mean_gdp = mean(gdpPercap)), by = .(continent, year)] %>%\n  ggplot(data = .) +\n  geom_line(aes(x = year, y = mean_gdp, color = continent)) +\n  labs(\n    x = \"Year\",\n    y = \"Mean GDP per capita\",\n    title = \"Trend of mean GDP per capita by continent\"\n  )"},{"id":29,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-29","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Loading data === #\neconomics <- as.data.table(ggplot2::economics)\n# take a look at the data\nglimpse(economics)"},{"id":30,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-30","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# You can write your code here"},{"id":31,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-31","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# Since we want use column names as variable names, we need to convert the data to a long format. We melt all the columns except the date column.\neconomics_long <- melt(economics, id.vars = \"date\")\n\n# Then, create a facet plot where each panel shows the trend of one economic indicator.\n# Since we only have one variable to facet, facet_wrap() function is more appropriate.\n# Also, we set scales = \"free_y\" to make the y-axis scales free across facets.\nggplot(data = economics_long) +\n  geom_line(aes(x = date, y = value)) +\n  facet_wrap(vars(variable), scales = \"free_y\")"},{"id":32,"options":{"out-width":"700px","warning":"true","context":"interactive","fig-cap":"","fig-width":7,"results":"markup","comment":"","fig-height":5,"editor-quick-suggestions":"false","label":"unnamed-chunk-32","read-only":"false","autorun":"false","out-height":"","editor-font-scale":"0.8","classes":"","dpi":72,"editor-max-height":"","output":"true","editor-word-wrap":"true","message":"true"},"code":"# === Part 1 === #\nyield_dt <- readRDS(\"Data/corn_yield_dt.rds\")\n\n# === Part 2 === #\nyield_dt <- \n  as.data.table(yield_dt) %>% \n  setnames(\"Value\", \"yield\")\n\n# === Part 3 === #\nmean_yield_state_y_dt <- \n  yield_dt %>%\n  .[, .(mean_yield = mean(yield, na.rm = TRUE)), by = .(state_alpha, year)]\n\nmean_yield_state_y_dt %>%\n  .[state_alpha == \"MN\",] %>%\n  ggplot(data = .) +\n    geom_line(aes(x = year, y = mean_yield)) +\n    labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \"Average corn yield produced in Minnesota\"\n    )\n\n\n# === Part 4 === #\nggplot(data = mean_yield_state_y_dt) +\n  geom_line(aes(x = year, y = mean_yield, color = state_alpha)) +\n  labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \" Corn yield trend in Minnesota\"\n    )\n\n# === Part 5 === #\nggplot(data = mean_yield_state_y_dt) +\n  geom_line(aes(x = year, y = mean_yield)) +\n  facet_wrap(vars(state_alpha), scales = \"fixed\") +\n  labs(\n      x = \"Year\",\n      y = \"Mean corn yield (BU / ACRE)\",\n      title = \"Corn yield trend by state\"\n    )\n\n# === Part 6 === #\nmean_yield_year_dt <- \n  yield_dt %>%\n  .[, .(mean_yield = mean(yield)), by = .(year)]\n\n\nggplot() +\n  geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +\n  facet_wrap(vars(state_alpha), scales = \"fixed\") +\n  geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield), linetype = \"dashed\", color = \"red\") +\n  labs(\n      x = \"Year\",\n      y = \"Corn yield (BU / ACRE)\",\n      title = \"Corn yield trend by state\"\n    ) +\n  scale_color_manual(\n    values = c(\"Average corn yield across states\" = \"red\")\n    ) +\n  theme_bw() +\n  theme(\n    legend.position = \"bottom\"\n  )\n\n\n# Furthermore, you can add a legend to the plot by using the following code.\n# ggplot() +\n#   geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +\n#   facet_wrap(vars(state_alpha), scales = \"fixed\") +\n#   geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield, color = \"Average corn yield across states\"), linetype = \"dashed\") +\n#   labs(\n#       x = \"Year\",\n#       y = \"Corn yield (BU / ACRE)\",\n#       title = \"Corn yield trend by state\"\n#     ) +\n#   scale_color_manual(\n#     values = c(\"Average corn yield across states\" = \"red\")\n#     ) +\n#   theme_bw() +\n#   theme(\n#     legend.position = \"bottom\"\n#   )"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2187,13 +2187,16 @@ Shunkei Kakimoto
 <h3 class="center" id="reference">Reference</h3>
 <ul>
 <li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (3e)</a></li>
-<li><a href="https://r4ds.had.co.nz/pipes.html">R for Data Science (2e), Ch1: Data visualization</a></li>
+<li><a href="https://r4ds.had.co.nz/pipes.html">R for Data Science (2e), Ch1: Data Visualization</a></li>
 </ul>
 </div>
-</section><section id="todays-outline" class="slide level2 center scrollable"><h2>Today’s outline:</h2>
-<ol type="1">
-<li>Introduction to ggplot2</li>
-</ol></section><section id="example-ggplot-figures" class="slide level2"><h2>Example ggplot figures</h2>
+</section><section id="todays-outline" class="slide level2 center"><h2>Today’s Outline:</h2>
+<!-- 1. [Taste of ggplot2 package]{#taste-of-ggplot2-package}
+
+2. [Introduction to ggplot2]{#introduction-to-ggplot2}
+
++ [Intro](#introduction) -->
+</section><section id="taste-of-ggplot2-package" class="slide level2"><h2>Taste of ggplot2 package</h2>
 <p>By the end of the lecture, you will be able to create the figures like the following examples using <code>ggplot2</code> package.</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby">
@@ -2256,12 +2259,12 @@ Shunkei Kakimoto
 </div>
 </div>
 </div>
-</section><section id="before-starting" class="slide level2 center"><h2>Before starting</h2>
-<p>Install the package <code>ggplot2</code>if you haven’t done so.</p>
+</section><section id="before-starting" class="slide level2 center"><h2>Before Starting</h2>
+<p>Install the package <code>ggplot2</code> if you haven’t already done so.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'ggplot2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Once you have the package in your R, let’s load it.</p>
+<p>Once you have the package in R, let’s load it.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><br></p>
@@ -2273,19 +2276,16 @@ Shunkei Kakimoto
 <div class="callout-content">
 <ul>
 <li>There is a package called <code>tidyverse</code>, which is a collection of R packages designed for data science.</li>
-<li>When you load the <code>tidyverse</code> package, <code>ggplot2</code> package is automatically loaded.</li>
+<li>When you load the <code>tidyverse</code> package, the <code>ggplot2</code> package is automatically loaded.</li>
 </ul>
 </div>
 </div>
 </div>
-</section><section><section id="section-1-introduction-to-ggplot2" class="title-slide slide level1 center"><h1>Section 1: Introduction to ggplot2</h1>
-
-</section><section id="introduction-to-ggplot2" class="slide level2"><h2>Introduction to ggplot2</h2>
+</section><section id="intro" class="slide level2"><h2>Introduction to ggplot 2 Package</h2>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-2-1">What is ggplot2?</a></li>
-<li><a href="#tabset-2-2">Core ideas</a></li>
-<li><a href="#tabset-2-3">Anatomy of ggplot2</a></li>
+<li><a data-tabby-default="" href="#tabset-2-1">What is it?</a></li>
+<li><a href="#tabset-2-2">How does it work?</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-2-1">
@@ -2299,16 +2299,14 @@ Shunkei Kakimoto
 </ul>
 <p><br></p>
 <ul>
-<li>
-<code>ggplot2</code> package provides more flexibility and customization options for creating figures with a consistet syntax.
+<li>The <code>ggplot2</code> package provides more flexibility and customization options for creating figures with consistent syntax.
 <ul>
-<li>check <a href="https://r-graph-gallery.com/">this</a> out to see what kind of figures <code>ggplot2</code> can make.</li>
+<li>Check <a href="https://r-graph-gallery.com/">this</a> out to see what kind of figures <code>ggplot2</code> can make.</li>
 </ul>
 </li>
 <li>Variety of extensional packages built on top of <code>ggplot2</code> (e.g., <code>ggthemes</code>, <code>ggpubr</code>, <code>ggrepel</code>, <code>gganimate</code>, etc.) allows you to create more complex figures.
 <ul>
-<li>see <a href="https://exts.ggplot2.tidyverse.org/gallery/">this</a>
-</li>
+<li>See <a href="https://exts.ggplot2.tidyverse.org/gallery/">this</a> for examples.</li>
 </ul>
 </li>
 </ul>
@@ -2324,7 +2322,7 @@ Shunkei Kakimoto
 <li>
 <code>ggplot2</code> views a figure as the collection of multiple independent layers.
 <ul>
-<li>layers for geometric objects (e.g., points, lines, bars), layers for aesthtic attirbutes of the geometric objects (color, shape, size), layers of annotations and statistical summaries, … etc.</li>
+<li>layers for geometric objects (e.g., points, lines, bars), layers for aesthetic attributes of the geometric objects (color, shape, size), layers of annotations and statistical summaries, … etc.</li>
 </ul>
 </li>
 <li>Then, it combines these layers to create a single figure as a final output.</li>
@@ -2333,8 +2331,11 @@ Shunkei Kakimoto
 </div>
 </div>
 <p>Let’s see what this means with an example next.</p>
+<!-- end .panel-tabset -->
 </div>
-<div id="tabset-2-3">
+</div>
+</div>
+</section><section id="anatomy-of-ggplot2" class="slide level2"><h2>Anatomy of ggplot2</h2>
 <!-- You can alternatively use "Code Animations"(https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations) -->
 <p><span style="color: blue;">Hit your right-arrow key (or down arrow key). Left colum shows the code, and the right column shows the output. Pay attention to the changes in the plot as a new line is added.</span></p>
 <div class="r-stack">
@@ -2620,23 +2621,12 @@ Shunkei Kakimoto
 </div>
 <!-- end r-stack -->
 </div>
+<div class="fragment fade-up">
 <ul>
-<li>Note: This code is for demonstration purposes. Don’t immitate this!</li>
+<li>Note: This code is for demonstration purposes. Don’t imitate this code!</li>
 </ul>
-<!-- end .panel-tabset -->
 </div>
-</div>
-</div>
-</section><section id="basics" class="slide level2 scrollable"><h2>Basics</h2>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-5-1">Key components</a></li>
-<li><a href="#tabset-5-2">Example</a></li>
-<li><a href="#tabset-5-3">Summary</a></li>
-<li><a href="#tabset-5-4">Your turn</a></li>
-</ul>
-<div class="tab-content">
-<div id="tabset-5-1">
+</section><section id="anatomy-of-ggplot2-continued" class="slide level2"><h2>Anatomy of ggplot2 (continued)</h2>
 <div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2645,19 +2635,20 @@ Shunkei Kakimoto
 <div class="callout-content">
 <p>Every ggplot2 plot has three key components:</p>
 <ul>
-<li>data</li>
-<li>A set of aesthetic mappings between variables in the data and visual properties, and</li>
-<li>At least one layer which describes how to render each observation. Layers are usually created with a geom function.</li>
+<li>Data</li>
+<li>A set of aesthetic mappings between variables in the data and visual properties.</li>
+<li>At least one layer which describes how to render each observation. Layers are usually created with a <code>geom</code> function.</li>
 </ul>
 </div>
 </div>
 </div>
 <p><br></p>
-<p>The very basic syntax for creating a plot with <code>ggplot2</code> is as follows:</p>
+<p>The very general syntax for creating a plot with <code>ggplot2</code> is as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> ...) <span class="sc">+</span></span>
 <span id="cb13-2"><a href=""></a>  geom_<span class="sc">*</span>(<span class="fu">aes</span>( ... ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><br></p>
 <ul>
 <li>
 <code>aes</code> stands for aesthetic mappings. It tells <code>ggplot2</code> how to map variables in the data to visual properties of the plot (e.g., x-axis, y-axis, color, shape, size, etc.)</li>
@@ -2670,14 +2661,12 @@ Shunkei Kakimoto
 </li>
 </ul>
 <!-- ::: aside
-Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
-::: -->
-</div>
-<div id="tabset-5-2">
+Reference: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
+::: --></section><section id="example" class="slide level2"><h2>Example</h2>
 <div class="panel-tabset">
 <ul id="tabset-4" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-4-1">Data</a></li>
-<li><a href="#tabset-4-2">Let’s create a scatter plot</a></li>
+<li><a href="#tabset-4-2">Let’s Create a Scatter Plot</a></li>
 <li><a href="#tabset-4-3">Step 1</a></li>
 <li><a href="#tabset-4-4">Step 2</a></li>
 </ul>
@@ -2687,13 +2676,13 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <ul>
 <li>
 <code>airquality</code> data is a built-in dataset in R. So, you don’t need to load it.</li>
-<li>Type <code>airquality</code> in the console to see the data. (Type<code><a href="https://rdrr.io/r/datasets/airquality.html">?airquality</a></code> in the console for more information.)</li>
+<li>Type <code>airquality</code> in the console to see the data. (Type <code><a href="https://rdrr.io/r/datasets/airquality.html">?airquality</a></code> in the console for more information.)</li>
 </ul>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-4-2">
-<p>We will create a scatter plot of <code>Ozone</code> (ozone level in the air) and <code>Temp</code> (Maximum daily temperature in degrees <span class="math inline">\(F\)</span>) in the <code>airquality</code> data.</p>
+<p>We will create a scatter plot of <code>Ozone</code> (ozone level in the air) and <code>Temp</code> (Maximum daily temperature in degrees <span class="math inline">\(F\)</span>) from the <code>airquality</code> data.</p>
 <p>The final plot should look like the following:</p>
 <div class="cell" data-layout-align="center" data-autorun="true">
 <div class="cell-output-display">
@@ -2739,7 +2728,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <li>For example, we use <code>geom_point()</code> to create a scatter plot.
 <ul>
 <li>
-<span data-styl="colur:red">use <code>aes()</code> to specify which variable you want to use for x and y axis</span>.</li>
+<span style="color:red">use <code>aes()</code> to specify which variable you want to use for x and y axis</span>.</li>
 </ul>
 </li>
 </ul>
@@ -2749,9 +2738,9 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p><code>aes()</code> is used to tell R to look for the variables inside the dataset you specified in <code>ggplot()</code>, and use the inforamtion as specified.</p>
+<p><code>aes()</code> is used to tell R to look for the variables inside the dataset you specified in <code>ggplot()</code>, and use the information as specified.</p>
 <ul>
-<li>e.g., <code>aes(x = Temp, y = Ozone)</code> tells R to look for <code>Temp</code> and <code>Ozone</code> in the data, and to map the data to x-axis and y-axis, repectively.</li>
+<li>e.g., <code>aes(x = Temp, y = Ozone)</code> tells R to look for <code>Temp</code> and <code>Ozone</code> in the data, and to map the data to x-axis and y-axis, respectively.</li>
 </ul>
 </div>
 </div>
@@ -2763,19 +2752,19 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-</div>
-<div id="tabset-5-3">
+</section><section id="summary" class="slide level2 center"><h2>Summary</h2>
 <p><span style="color: blue;">These are basic steps to create a figure with <code>ggplot2</code> package.</span></p>
 <ul>
 <li>Step1: Start with <code>ggplot()</code>
 <ul>
-<li>this function prepares a “canvas” for the figure.</li>
+<li>This function prepares a “canvas” for the figure.</li>
 </ul>
 </li>
 <li>Step2: Draw a figure with <code>geom_*()</code> function, and add to the current canvas with <code>+</code> operator.</li>
-<li>Step3: Repeat step2 and step3 to add whatever layers you want to add.</li>
+<li>Step3: Repeat Step2 and Step3 to add whatever layers you want to add.</li>
 <li>Step4 (optional): Add labels, titles, and other annotations to the plot with <code>labs()</code>, <code>theme()</code>, etc.</li>
 </ul>
+<div class="fragment fade-up">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2793,6 +2782,9 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -2800,16 +2792,16 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 <div class="callout-content">
 <ul>
-<li>When you want a quick look of the plot of x and y, the base R functions are sufficient (e.g., <code>with(data, plot(column_x, column_y)</code>). I do this ofen.</li>
+<li>When you want to make a simple x and y plot, the base R functions are sufficient (e.g., <code>with(data, plot(column_x, column_y)</code>). I do this often.</li>
 </ul>
 </div>
 </div>
 </div>
-<p><br></p>
 </div>
-<div id="tabset-5-4">
+<p><br></p>
+</section><section id="exercise-problems" class="slide level2 scrollable"><h2>Exercise Problems</h2>
 <ol type="1">
-<li><p>Create a scatter plot of <code>Temp</code> and <code>Wind</code> in the <code>airquality</code> data.</p></li>
+<li><p>Create a scatter plot of <code>Temp</code> and <code>Wind</code> from the <code>airquality</code> data.</p></li>
 <li><p>In the plot you just created, let’s change the x-axis label to “Maximum temperature (degrees F)” and the y-axis label to “Wind Speed (mph)”. For this, use <code>labs()</code> function.</p></li>
 </ol>
 <p>Hint:</p>
@@ -2820,11 +2812,8 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end .panel-tabset 1 -->
-</div>
-</div>
-</div>
 </section><section id="different-types-of-plot" class="slide level2"><h2>Different Types of Plot</h2>
-<p><span style="color: blue;">You can create various plots with the ggplot2 package by choosing the appropriate geom_*() function for the desired plot type.</span></p>
+<p><span style="color: blue;">You can create various plots with the ggplot2 package by choosing the appropriate <code>geom_*()</code> function for the desired plot type.</span></p>
 <p>Here are some of the most commonly used <code>geom_*()</code> functions.</p>
 <ul>
 <li>
@@ -2840,11 +2829,11 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <li>
 <code>geom_density()</code>: density plot
 <ul>
-<li>This Computes and draws kernel density estimate, which is a smoothed version of the histogram.</li>
+<li>This computes and draws kernel density estimates, and is a smoothed version of the histogram.</li>
 </ul>
 </li>
 <li>
-<code>geom_smooth()</code>: draw an OLS-estimated regression line (other regression methods available) <br>
+<code>geom_smooth()</code>: draws an OLS-estimated regression line (other regression methods available) <br>
 </li>
 </ul>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -2860,13 +2849,13 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </section><section id="modify-aesthetic-attributes" class="slide level2"><h2>Modify Aesthetic Attributes</h2>
 <!-- start panel-tabset: Modify Aesthetic Attributes -->
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-7-1">Basics</a></li>
-<li><a href="#tabset-7-2">Examples</a></li>
+<ul id="tabset-6" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-6-1">Basics</a></li>
+<li><a href="#tabset-6-2">Examples</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-7-1">
-<p><span style="color: blue;">We can use modify how plots look by specifcying color, shape, and size</span></p>
+<div id="tabset-6-1">
+<p><span style="color: blue;">We can modify how plots look by specifying color, shape, and size</span>.</p>
 <p>Here are list of options to control the aesthetics of figures. You use these options inside the <code>geom_*()</code>.</p>
 <ul>
 <li>
@@ -2884,21 +2873,21 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </ul>
 </li>
 <li>
-<code>fill</code>: control color the inside areas of geoms like bars and boxes
+<code>fill</code>: control the color of the inside areas of figures like bars and boxes
 <ul>
-<li>e.g., <code>geom_density(fill = "blue")</code> fills the area under the density curve with blue color.</li>
+<li>e.g., <code>geom_density(fill = "blue")</code> fills the area under the density curve with blue color</li>
 </ul>
 </li>
 <li>
-<code>alpha</code> controls the transparency of the fill color.
+<code>alpha</code> controls the transparency of the fill color
 <ul>
-<li>e.g., <code>alpha=1</code> is opaque, <code>alpha=0</code> is complytery transparent, usually between 0 and 1.</li>
+<li>e.g., <code>alpha=1</code> is opaque, <code>alpha=0</code> is completely transparent, usually between 0 and 1</li>
 </ul>
 </li>
 <li>
-<code>shape</code>: controls the symbols of point. It takes integer values between 0 and 25
+<code>shape</code>: controls the symbols of point, it takes integer values between 0 and 25
 <ul>
-<li>e.g., <code>geom_point(shape = 1)</code> for circle, <code>geom_point(shape = 2)</code> for triangle.</li>
+<li>e.g., <code>geom_point(shape = 1)</code> for circle, <code>geom_point(shape = 2)</code> for triangle</li>
 </ul>
 </li>
 </ul>
@@ -2911,22 +2900,22 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div class="callout-content">
 <ul>
 <li>For point shapes available in R, see <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#sec:shape-spec">this</a>.</li>
-<li>For further information about the options for aesthtics, see <a href="https://ggplot2.tidyverse.org/reference/#aesthetics">this</a>.</li>
+<li>For further information about the options for aesthetics, see <a href="https://ggplot2.tidyverse.org/reference/#aesthetics">this</a>.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-7-2">
-<!-- start .panel-tabset: Modify Aesthetic Attributs - Examples -->
+<div id="tabset-6-2">
+<!-- start .panel-tabset: Modify Aesthetic Attribute - Examples -->
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-6-1">Scatter Plot</a></li>
-<li><a href="#tabset-6-2">Histogram</a></li>
-<li><a href="#tabset-6-3">Line Plot</a></li>
+<ul id="tabset-5" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-5-1">Scatter Plot</a></li>
+<li><a href="#tabset-5-2">Histogram</a></li>
+<li><a href="#tabset-5-3">Line Plot</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-6-1">
+<div id="tabset-5-1">
 <ul>
 <li>
 <code>size = 3</code>: makes the points larger.</li>
@@ -2938,7 +2927,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-6-2">
+<div id="tabset-5-2">
 <ul>
 <li>
 <code>fill = "blue"</code>: fills the bars with blue color.</li>
@@ -2952,7 +2941,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-6-3">
+<div id="tabset-5-3">
 <ul>
 <li>
 <code>linewidth = 1.5</code>: makes the line thicker.</li>
@@ -2963,24 +2952,24 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </ul>
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<!-- end .panel-tabset: Modify Aesthetic Attributs - Examples -->
+<!-- end .panel-tabset: Modify Aesthetic Attributes - Examples -->
 </div>
 </div>
 </div>
-<!-- end .panel-tabset: Modify Aesthetic Attributs -->
+<!-- end .panel-tabset: Modify Aesthetic Attributes -->
 </div>
 </div>
 </div>
-</section><section id="your-turn-1" class="slide level2"><h2>Your turn</h2>
+</section><section id="your-turn" class="slide level2"><h2>Your Turn</h2>
 <!-- start panel-tabset: Exercise Problem -->
 <div class="panel-tabset">
-<ul id="tabset-8" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-8-1">Exercise 1</a></li>
-<li><a href="#tabset-8-2">Exercise 2</a></li>
+<ul id="tabset-7" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-7-1">Exercise 1</a></li>
+<li><a href="#tabset-7-2">Exercise 2</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-8-1">
-<p>Create a density plot of <code>Ozone</code> in the <code>airquality</code> data. Fill the area under the density curve with blue color and make it semi-transparent (usse <code>alpha = 0.5</code>).</p>
+<div id="tabset-7-1">
+<p>Create a density plot of <code>Ozone</code> from the <code>airquality</code> data. Fill the area under the density curve with blue and make it semi-transparent (use <code>alpha = 0.5</code>).</p>
 <p>The figure should look like the following:</p>
 <div class="cell" data-layout-align="center" data-autorun="true">
 <div class="cell-output-display">
@@ -2993,15 +2982,15 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-8-2">
+<div id="tabset-7-2">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Create box plots of monthly <code>Temp</code> in the <code>airquality</code> data. Fill the boxes with green color and make it semi-transparent (use <code>alpha = 0.5</code>).</p>
+<p>Create box plots of monthly <code>Temp</code> from the <code>airquality</code> data. Fill the boxes with green and make it semi-transparent (use <code>alpha = 0.5</code>).</p>
 <p>The figure should look like the following:</p>
 <p><br></p>
 <p><strong>Hint</strong></p>
 <ul>
-<li>This is a bit tricky problem, but highly useful.</li>
+<li>This is a bit of a tricky problem, but very useful!</li>
 <li>We want to use <code>Month</code> as a categorical variable for the x-axis, but <code>Month</code> is a numeric variable in the data. How can we tell R to use it as a categorical (factor) variable?
 <ul>
 <li>Apply <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function to a <code>Month</code> to convert it to a factor variable in <code>aes()</code> in the <code>geom_*()</code> function.</li>
@@ -3027,26 +3016,26 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </section><section id="group-aesthetic" class="slide level2 scrollable"><h2>Group Aesthetic</h2>
 <!-- start panel-tabset: Group aesthetic -->
 <div class="panel-tabset">
-<ul id="tabset-9" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-9-1">Basics</a></li>
-<li><a href="#tabset-9-2">Your turn</a></li>
+<ul id="tabset-8" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-8-1">Basics</a></li>
+<li><a href="#tabset-8-2">Your turn</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-9-1">
+<div id="tabset-8-1">
 <p>So far, we specified aesthetic attributes outside of the <code>aes()</code> function. Consequently, all the geometric objects in the plot have the same color, shape, and size, etc.</p>
 <ul>
 <li>e.g., <code>geom_point(aes(x = var_x, y = var_y), color = "red")</code>.</li>
 </ul>
-<p>If you use those options <span style="color:red;">inside</span> the <code>aes()</code> function like <code>aes(color = var_z)</code>, R will display different colors by</p>
+<p>If you use those options <span style="color:red;">inside</span> the <code>aes()</code> function like <code>aes(color = var_z)</code>, R will display different colors by group based on the value of <code>var_z</code>. Usually <code>var_z</code> is a categorical variable.</p>
 <ul>
-<li>e.g., <code>geom_point(aes(x = var_x, y = var_y, color = var_z))</code> displays a scatter plot where the points are colored differntly based on the value of <code>var_z</code>.</li>
+<li>e.g., <code>geom_point(aes(x = var_x, y = var_y, color = var_z))</code> displays a scatter plot where the points are colored differently based on the value of <code>var_z</code>.</li>
 </ul>
 <p><strong>Example</strong></p>
 <p>Let’s create density plots of <code>Temp</code> for each month, and use different colors (<code>fill</code> in this case) for different <code>Month</code>.</p>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-9-2">
+<div id="tabset-8-2">
 <ol type="1">
 <li>Create a scatter plot of <code>Ozone</code> and <code>Temp</code> in the <code>airquality</code> data. Let’s use different colors for different <code>Month</code>.</li>
 <li>In addition to the previous plot, let’s use different shapes for different <code>Month</code>.</li>
@@ -3061,14 +3050,17 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </section><section id="collective-geoms" class="slide level2"><h2>Collective geoms</h2>
 <!-- start panel-tabset: Collective geoms -->
 <div class="panel-tabset">
-<ul id="tabset-10" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-10-1">Basics</a></li>
-<li><a href="#tabset-10-2">Example</a></li>
+<ul id="tabset-9" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-9-1">Basics</a></li>
+<li><a href="#tabset-9-2">Example</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-10-1">
-<p>So far, we used only one <code>geom_*()</code> function in a plot.</p>
-<p><span style="color:blue;">But you can use multiple <code>geom_*()</code> functions in a single plot</span>. + This just overlays multiple layers of different geometric objects on the same “canvas”. + Use <code>+</code> operator to add multiple <code>geom_*()</code> functions to the plot.</p>
+<div id="tabset-9-1">
+<p>So far, we used only one <code>geom_*()</code> function in a plot. <span style="color:blue;">But you can use multiple <code>geom_*()</code> functions in a single plot</span>.</p>
+<ul>
+<li>This just overlays multiple layers of different geometric objects on the same “canvas”.</li>
+<li>Use <code>+</code> operator to add multiple <code>geom_*()</code> functions to the plot.</li>
+</ul>
 <p><strong>Example Syntax</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> dataset) <span class="sc">+</span></span>
@@ -3077,7 +3069,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <span id="cb14-4"><a href=""></a>  geom_<span class="sc">*</span>(<span class="fu">aes</span>(<span class="at">x =</span> column_x, <span class="at">y =</span> column_y)) <span class="sc">+</span></span>
 <span id="cb14-5"><a href=""></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>If additional layer has the same <code>aes()</code> mapping, you can specify it only once in the <code>ggplot()</code>.</p>
+<p>If an additional layer has the same <code>aes()</code> mapping, you can specify it only once in the <code>ggplot()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co"># The above code is equivalent to the following code</span></span>
 <span id="cb15-2"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> dataset, <span class="fu">aes</span>(<span class="at">x =</span> column_x, <span class="at">y =</span> column_y) <span class="sc">+</span></span>
@@ -3094,15 +3086,15 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div class="callout-content">
 <ul>
 <li>Recall that <code>ggplot()</code> prepares a plot object.</li>
-<li>If you tell <code>ggplot()</code> to use <code>aes()</code> mapping from the begining, you don’t need to specify it again in the <code>geom_*()</code> functions.</li>
+<li>If you tell <code>ggplot()</code> to use <code>aes()</code> mapping from the beginning, you don’t need to specify it again in the <code>geom_*()</code> functions.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-10-2">
+<div id="tabset-9-2">
 <ul>
-<li>Let’s create a scatter plot of <code>Ozone</code> and <code>Temp</code> in the <code>airquality</code> data.</li>
+<li>Let’s create a scatter plot of <code>Ozone</code> and <code>Temp</code> from the <code>airquality</code> data.</li>
 <li>In addition to the scatter plot, let’s add a simple regression line to the plot using <code>geom_smooth()</code> function.</li>
 </ul>
 <div id="qwebr-insertion-location-14"></div>
@@ -3111,15 +3103,15 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-</section><section id="modify-axis-legend-and-plot-labels" class="slide level2"><h2>Modify axis, legend, and plot labels</h2>
+</section><section id="modify-axis-legend-and-plot-labels" class="slide level2"><h2>Modify Axis, Legend, and Plot Labels</h2>
 <!-- start panel-tabset: Modify axis, legend, and plot labels -->
 <div class="panel-tabset">
-<ul id="tabset-12" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-12-1">Basics</a></li>
-<li><a href="#tabset-12-2">Examples</a></li>
+<ul id="tabset-11" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-11-1">Basics</a></li>
+<li><a href="#tabset-11-2">Examples</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-12-1">
+<div id="tabset-11-1">
 <p>By default, x-axis, y-axis, and legend labels are the column names of the data, which are not always informative. Also, you might want to add a title and subtitle to the plot.</p>
 <p><span style="color:blue;">You can modify the labels, titles, and other annotations of the plot using <code>labs()</code> function.</span></p>
 <p><strong>Example Syntax</strong></p>
@@ -3135,19 +3127,19 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <span id="cb16-9"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-12-2">
+<div id="tabset-11-2">
 <!-- start panel-tabset: Examples -->
 <div class="panel-tabset">
-<ul id="tabset-11" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-11-1">Example 1</a></li>
-<li><a href="#tabset-11-2">Example 2</a></li>
+<ul id="tabset-10" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-10-1">Example 1</a></li>
+<li><a href="#tabset-10-2">Example 2</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-11-1">
+<div id="tabset-10-1">
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-11-2">
+<div id="tabset-10-2">
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- start panel-tabset: Examples -->
@@ -3172,33 +3164,33 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </section><section id="summary-1" class="slide level2"><h2>Summary</h2>
 <p>Let’s summarize what we have learned so far.</p>
-<p>Now, you know</p>
+<p>Now, you know:</p>
 <ul>
-<li>the basic syntax of <code>ggplot2</code> package.</li>
+<li>the basic syntax of the <code>ggplot2</code> package.</li>
 <li>how to create a popular types of plots (scatter plot, line plot, bar plot, histogram, box plot, density plot).</li>
 <li>how to modify aesthetic attributes of the plot (color, shape, size, etc.)</li>
-<li>Use group aesthetic to group the data by a variable</li>
+<li>how to use group aesthetic to group the data by a variable</li>
 <li>how to use multiple <code>geom_*()</code> functions in a single plot.</li>
 <li>how to modify axis, legend, and plot labels with <code>labs()</code> function.</li>
-</ul></section><section id="exercise-problems" class="slide level2 scrollable"><h2>Exercise Problems</h2>
+</ul></section><section id="exercise-problems-1" class="slide level2 scrollable"><h2>Exercise Problems</h2>
 <!-- start panel-tabset: Exercise Problems -->
 <div class="panel-tabset">
-<ul id="tabset-15" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-15-1">Exercise Problems 1</a></li>
-<li><a href="#tabset-15-2">Exercise Problems 2</a></li>
+<ul id="tabset-14" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-14-1">Exercise Problems 1</a></li>
+<li><a href="#tabset-14-2">Exercise Problems 2</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-15-1">
+<div id="tabset-14-1">
 <!-- start panel-tabset Exercise Problems -->
 <div class="panel-tabset">
-<ul id="tabset-13" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-13-1">Data</a></li>
-<li><a href="#tabset-13-2">Instructions</a></li>
-<li><a href="#tabset-13-3">Solutions</a></li>
+<ul id="tabset-12" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-12-1">Data</a></li>
+<li><a href="#tabset-12-2">Instructions</a></li>
+<li><a href="#tabset-12-3">Solutions</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-13-1">
-<p>Let’s use the <code>ecnomics</code> data, which is a dataset built into the <code>ggplot2</code> package. It was produced from US economic time series data available from Federal Reserve Economic Data. This contains the following variables:</p>
+<div id="tabset-12-1">
+<p>Let’s use the <code>economics</code> data, which is a dataset built into the <code>ggplot2</code> package. It was produced from US economic time series data available from Federal Reserve Economic Data. This contains the following variables:</p>
 <ul>
 <li>
 <code>date</code>: date in year-month format</li>
@@ -3214,14 +3206,14 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <code>unemploy</code>: number of unemployed in thousands</li>
 </ul>
 </div>
-<div id="tabset-13-2">
-<p><strong>1.</strong> Create a scatter plot of <code>unemploy</code> (x-axis) and <code>psavert</code> (y-axis). Add a simple regression line to the plot.Change the x-axis, y-axis, and fill legend labels to something more informative.</p>
+<div id="tabset-12-2">
+<p><strong>1.</strong> Create a scatter plot of <code>unemploy</code> (x-axis) and <code>psavert</code> (y-axis). Add a simple regression line to the plot. Change the x-axis, y-axis, and fill legend labels to something more informative.</p>
 <p><strong>2.</strong> Create a bar plot of <code>psavert</code> by date. Use <code>pop</code> for fill color. Change the x-axis, y-axis, and fill legend labels to something more informative.</p>
 <ul>
 <li>
 <em>Hint</em>: use <code>stat = 'identity'</code> in the <code>geom_bar()</code> function to plot the actual values of <code>pce</code>.</li>
 </ul>
-<p><strong>3.</strong> (Challenging) Create a multiple line plots taking <code>day</code> as x-axis and <code>psavert</code> and <code>uempmed</code> as y-axis, repectively. The output should look like the following.</p>
+<p><strong>3.</strong> (Challenging) Create a multiple line plot taking <code>day</code> as x-axis and <code>psavert</code> and <code>uempmed</code> as y-axis, respectively. The output should look like the following.</p>
 <ul>
 <li>
 <em>Hint</em>: I think there are multiple ways to do this.</li>
@@ -3235,7 +3227,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-<div id="tabset-13-3">
+<div id="tabset-12-3">
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- start panel-tabset: Exercise Problems 1 -->
@@ -3243,17 +3235,17 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-<div id="tabset-15-2">
+<div id="tabset-14-2">
 <!-- start panel-tabset: Exercise Problems 2 -->
 <div class="panel-tabset">
-<ul id="tabset-14" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-14-1">Data</a></li>
-<li><a href="#tabset-14-2">Instructions</a></li>
-<li><a href="#tabset-14-3">Solutions</a></li>
+<ul id="tabset-13" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-13-1">Data</a></li>
+<li><a href="#tabset-13-2">Instructions</a></li>
+<li><a href="#tabset-13-3">Solutions</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-14-1">
-<p>For this exercise problem, we will use <a href="https://github.com/stedy/Machine-Learning-with-R-datasets/blob/master/insurance.csv">medical cost personal datasets</a> descrived in the book “Machine Learning with R” by Brett Lantz. The dataset provides <span class="math inline">\(1338\)</span> records of medical information and costs billed by health insurance companies in 2013, compiled by the United States Census Bureau.</p>
+<div id="tabset-13-1">
+<p>For this exercise problem, we will use <a href="https://github.com/stedy/Machine-Learning-with-R-datasets/blob/master/insurance.csv">medical cost personal datasets</a> descried in the book “Machine Learning with R” by Brett Lantz. The dataset provides <span class="math inline">\(1,338\)</span> records of medical information and costs billed by health insurance companies in 2013, compiled by the United States Census Bureau.</p>
 <p>The dataset contains the following variables:</p>
 <ul>
 <li>
@@ -3261,21 +3253,21 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <li>
 <code>sex</code>: insurance contractor gender, female, male</li>
 <li>
-<code>bmi</code>: Body mass index, providing an understanding of body, weights that are relatively high or low relative to heigh</li>
+<code>bmi</code>: body mass index, providing an understanding of body, weights that are relatively high or low relative to height</li>
 <li>
-<code>children</code>: Number of children covered by health insurance</li>
+<code>children</code>: number of children covered by health insurance</li>
 <li>
-<code>smoker</code>: Smoking</li>
+<code>smoker</code>: smoking</li>
 <li>
-<code>region</code>: the beneficiary’s residential area in the US, northeast, southeast, southwest, northwest.</li>
+<code>region</code>: the beneficiary’s residential area in the US; northeast, southeast, southwest, northwest.</li>
 <li>
-<code>charges</code>: Individual medical costs billed by health insurance</li>
+<code>charges</code>: individual medical costs billed by health insurance</li>
 </ul>
 <p><strong>Download the data</strong></p>
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-14-2">
+<div id="tabset-13-2">
 <ol type="1">
 <li><p>Create a histogram of <code>charges</code> by <code>sex</code> in the same plot. Fill the boxes with different colors for each <code>sex</code>.</p></li>
 <li><p>Create a scatter plot of <code>bmi</code> (x-axis) and <code>charges</code> (y-axis).</p></li>
@@ -3291,7 +3283,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-<div id="tabset-14-3">
+<div id="tabset-13-3">
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel-tabset: Exercise Problems 2 -->
@@ -3301,30 +3293,30 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-</section></section><section><section id="section-2-advanced-topics" class="title-slide slide level1 center"><h1>Section 2: Advanced Topics</h1>
+</section><section><section id="section-2-advanced-topics" class="title-slide slide level1 center"><h1>Section 2: Advanced Topics</h1>
 
-</section><section id="before-we-start" class="slide level2 center"><h2>Before we start</h2>
+</section><section id="before-we-start" class="slide level2 center"><h2>Before We Start</h2>
 <p>For this section, we will continue to use the <code>economics</code> and <code>insurance</code> data we used in the previous exercise problems.</p>
 </section><section id="facet-plot" class="slide level2 scrollable"><h2>Facet Plot</h2>
 <!-- start panel-tabset: Facet Plot -->
 <div class="panel-tabset">
-<ul id="tabset-18" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-18-1">Intro</a></li>
-<li><a href="#tabset-18-2">facet_wrap()</a></li>
-<li><a href="#tabset-18-3">facet_grid()</a></li>
-<li><a href="#tabset-18-4">facet_wrap() vs facet_grid()</a></li>
+<ul id="tabset-17" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-17-1">Intro</a></li>
+<li><a href="#tabset-17-2">facet_wrap()</a></li>
+<li><a href="#tabset-17-3">facet_grid()</a></li>
+<li><a href="#tabset-17-4">facet_wrap() vs facet_grid()</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-18-1">
+<div id="tabset-17-1">
 <p><span style="color: blue;">You can partition a plot into a matrix of panels and display a different subset of the data in each panel. This is useful when you want to compare patterns in the data by group.</span></p>
 <!-- start .panel-tabset: Intro -->
 <div class="panel-tabset">
-<ul id="tabset-16" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-16-1">Example 1</a></li>
-<li><a href="#tabset-16-2">Example 2</a></li>
+<ul id="tabset-15" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-15-1">Example 1</a></li>
+<li><a href="#tabset-15-2">Example 2</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-16-1">
+<div id="tabset-15-1">
 <!-- Scenario 1: Visualize the trends of multiple variables across times.  -->
 <!-- start columns -->
 <div class="columns">
@@ -3353,7 +3345,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div><!-- end columns -->
 </div>
 </div>
-<div id="tabset-16-2">
+<div id="tabset-15-2">
 <!-- Scenario 2: Visualize the information by group. -->
 <p>Here, I am showing the distribution of <code>charges</code> by <code>sex</code> and <code>region</code> in the same plot.</p>
 <div class="cell" data-layout-align="center" data-autorun="true">
@@ -3369,65 +3361,65 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-<div id="tabset-18-2">
-<p><span style="color: blue;"><code>facet_wrap()</code> makes a long ribbon of panels (generated by any number of variables). You can also wraps it into 2d.</span></p>
+<div id="tabset-17-2">
+<p><span style="color: blue;"><code>facet_wrap()</code> makes a long ribbon of panels (generated by any number of variables). You can also wrap it into 2 rows.</span></p>
 <p><strong>Syntax:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(var_x, var_y), <span class="at">scales =</span> <span class="st">"fiexed"</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(var_x, var_y), <span class="at">scales =</span> <span class="st">"fixed"</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Inside <code>vars()</code>, speficy variables used for faceting groups.</li>
+<li>Inside <code>vars()</code>, specify variables used for faceting groups.</li>
 <li>
-<code>ncol</code> and <code>nrow</code> control the number of columns and rows in the (You only need to set either one).</li>
+<code>ncol</code> and <code>nrow</code> control the number of columns and rows (you only need to set one).</li>
 <li>
-<code>scales</code> controls the scales of the axes in the panel (either <code>"fixed"</code> (the defult), <code>"free_x"</code>, or <code>"free_y"</code>, <code>"free"</code>).</li>
+<code>scales</code> controls the scales of the axes in the panel (either <code>"fixed"</code> (the default), <code>"free_x"</code>, or <code>"free_y"</code>, <code>"free"</code>).</li>
 </ul>
 <p><br></p>
 <p><strong>Try it!</strong></p>
-<p>Play around with the <code>facet_wrap()</code> function in the code below. See how the choise of faceting groups, number of rows and columns and the scales of the axes affect the appearance of the plot.</p>
+<p>Play around with the <code>facet_wrap()</code> function in the code below. See how the choice of faceting groups, number of rows and columns and the scales of the axes affect the appearance of the plot.</p>
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-18-3">
-<p><span style="color: blue;"><code>facet_grid()</code>produces a 2d grid of panels defined by variables which form the rows and columns.</span></p>
+<div id="tabset-17-3">
+<p><span style="color: blue;"><code>facet_grid()</code> produces a 2 row grid of panels defined by variables which form the rows and columns.</span></p>
 <p><strong>Syntax:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(var_x), <span class="at">cols =</span> <span class="fu">var</span>(var_y)), scales <span class="ot">=</span> <span class="st">"fiexed"</span><span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">facet_grid</span>(<span class="at">rows =</span> <span class="fu">vars</span>(var_x), <span class="at">cols =</span> <span class="fu">var</span>(var_y)), scales <span class="ot">=</span> <span class="st">"fixed"</span><span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>The graph is partitioned by the levels of the groups <code>var_x</code> and <code>var_y</code> in the rows and columns, respectively.</li>
 <li>
-<code>ncol</code> and <code>nrow</code> control the number of columns and rows in the (You only need to set either one).</li>
+<code>ncol</code> and <code>nrow</code> control the number of columns and rows (you only need to set one).</li>
 <li>
-<code>scales</code> controls the scales of the axes in the panel (either <code>fixed</code>(the defult), <code>free_x</code>, or <code>free_y</code>, <code>free</code>).</li>
+<code>scales</code> controls the scales of the axes in the panel (either <code>fixed</code> (the default), <code>free_x</code>, or <code>free_y</code>, <code>free</code>).</li>
 </ul>
 <p><br></p>
 <p><strong>Try it!</strong></p>
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-18-4">
+<div id="tabset-17-4">
 <p><span style="color: blue;">So, when should you use <code>facet_wrap()</code> and <code>facet_grid()</code>?</span></p>
 <ol type="1">
-<li><p>In my opinin, if you have a single variable to make a facet, you should use <code>facet_wrap()</code>. Unlike <code>facet_grid()</code>, <code>facet_wrap()</code> can control the number of rows and columns the panel.</p></li>
-<li><p>If you have two vairables to make a facet, you should use <code>facet_grid()</code>.</p></li>
-<li><p>In <code>facet_grid()</code>, you don’t always need to peovide both <code>rows</code> and <code>columns</code> variables. If only either is specified, the produced plot will look like the one from <code>facet_wrap()</code> but you cannot wrap the panels into 2d.</p></li>
+<li><p>In my opinion, if you have a single variable to make a facet, you should use <code>facet_wrap()</code>. Unlike <code>facet_grid()</code>, <code>facet_wrap()</code> can control the number of rows and columns in the panel.</p></li>
+<li><p>If you have two variables to make a facet, you should use <code>facet_grid()</code>.</p></li>
+<li><p>In <code>facet_grid()</code>, you don’t always need to provide both <code>rows</code> and <code>columns</code> variables. If only one is specified, the produced plot will look like the one from <code>facet_wrap()</code> but you cannot wrap the panels into 2 rows.</p></li>
 </ol>
 <p><strong>Example</strong></p>
 <!-- start panel-tabset: Example -->
 <div class="panel-tabset">
-<ul id="tabset-17" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-17-1">One faceting variables</a></li>
-<li><a href="#tabset-17-2">Two faceting variables</a></li>
+<ul id="tabset-16" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-16-1">One Faceting Variables</a></li>
+<li><a href="#tabset-16-2">Two Faceting Variables</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-17-1">
+<div id="tabset-16-1">
 <div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-17-2">
+<div id="tabset-16-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># Prepare the base hisgram plot</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># Prepare the base histogram plot</span></span>
 <span id="cb19-2"><a href=""></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(insurance)<span class="sc">+</span></span>
 <span id="cb19-3"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> charges), <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
 <span id="cb19-4"><a href=""></a></span>
@@ -3458,15 +3450,15 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-</section><section id="multiple-datasets-in-one-figure-optional" class="slide level2"><h2>Multiple datasets in one figure (optional)</h2>
+</section><section id="multiple-datasets-in-one-figure-optional" class="slide level2"><h2>Multiple Datasets in One Figure (Optional)</h2>
 <!-- start panel-tabset: multiple datasets in one figure (optional) -->
 <div class="panel-tabset">
-<ul id="tabset-19" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-19-1">Basics</a></li>
-<li><a href="#tabset-19-2">Example</a></li>
+<ul id="tabset-18" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-18-1">Basics</a></li>
+<li><a href="#tabset-18-2">Example</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-19-1">
+<div id="tabset-18-1">
 <p><span style="color: blue;">So far, we have been using the same dataset for each layer of the plot. But you can use multiple datasets in a single plot.</span></p>
 <p><br></p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -3476,7 +3468,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 <div class="callout-content">
 <ul>
-<li>If you specificy data in <code>ggplot()</code> at the begining (e.g., <code>ggplot(data = dataset)</code>), the data applies to ALL the subsequent <code>geom_*()</code>s unless overwritten locally inside individual <code>geom_*()</code>s.</li>
+<li>If you specify data in <code>ggplot()</code> at the beginning (e.g., <code>ggplot(data = dataset)</code>), the data applies to ALL the subsequent <code>geom_*()</code>s unless overwritten locally inside individual <code>geom_*()</code>s.</li>
 <li>To use multiple datasets in a single plot, you just need to specify what dataset to use locally inside individual <code>geom_*()</code>s.</li>
 </ul>
 </div>
@@ -3484,7 +3476,7 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 <p><br></p>
 </div>
-<div id="tabset-19-2">
+<div id="tabset-18-2">
 <ul>
 <li>
 <code>insurance_southwest</code> is a subset of the <code>insurance</code> data where <code>region</code> is <code>southwest</code>.</li>
@@ -3501,26 +3493,26 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <p><span style="color: blue;">You can change the theme of the plot.</span></p>
 <ul>
 <li><p><code>ggplot2</code> ships several pre-made themes that you can apply to your plots. (e.g, <code>theme_minimal()</code>, <code>theme_bw()</code> (I use this often), <code>theme_classic()</code>). See <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">this</a>.</p></li>
-<li><p><code>ggthemes</code> pakcage providws additional ggplot themes, See <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">this</a> for full list of available themes.</p></li>
+<li><p><code>ggthemes</code> package provides additional ggplot themes. See <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">this</a> for full list of available themes.</p></li>
 </ul>
 <p><br></p>
 <h3 id="try-it-1">Try it!</h3>
 <div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section id="theme-function-optional" class="slide level2"><h2>theme() function (Optional)</h2>
-<p><code>theme()</code> function let you tweak the details of all non-data related components of a plot (e.g., font type in the plot, position of the legend and title, etc.). There are so many components you can modify with <code>theme()</code> function. See <a href="https://ggplot2.tidyverse.org/reference/theme.html">this</a> for full list of options.</p>
-<p>For more information, see</p>
+</section><section id="theme-function-optional" class="slide level2"><h2>theme() Function (Optional)</h2>
+<p><code>theme()</code> function let you tweak the details of all non-data related components of a plot (e.g., font type in the plot, position of the legend and title, etc.). There are so many components you can modify with the <code>theme()</code> function. See <a href="https://ggplot2.tidyverse.org/reference/theme.html">this</a> for full list of options.</p>
+<p>For more information, see:</p>
 <ul>
 <li><a href="https://ggplot2-book.org/themes">Chapter 17 Themes, ggplot2: Elegant Graphics for Data Analysis (3e)</a></li>
 </ul>
 <p><br></p>
 <h3 id="try-it-2">Try it!</h3>
-<p>For exmpale, you can change the position of the title and legend with the following <code>theme()</code> options.</p>
+<p>For example, you can change the position of the title and legend with the following <code>theme()</code> options.</p>
 <div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section><section id="summary-2" class="slide level2 center"><h2>Summary 2</h2>
 <p>For this second section, you learned a few advanced topics in ggplot2.</p>
-<p>Now, you know</p>
+<p>Now, you know;</p>
 <ul>
 <li>how to create facet plots with <code>facet_wrap()</code> and <code>facet_grid()</code>.</li>
 <li>when to use <code>facet_wrap()</code> and <code>facet_grid()</code>.</li>
@@ -3530,40 +3522,40 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </section><section id="exercise-problems-3" class="slide level2 scrollable"><h2>Exercise Problems</h2>
 <!-- start panel-tabset: Exercise problem  -->
 <div class="panel-tabset">
-<ul id="tabset-23" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-23-1">Exercise Problem 1 (basic)</a></li>
-<li><a href="#tabset-23-2">Exercise Problem 2 (basic)</a></li>
-<li><a href="#tabset-23-3">Exercise Problem 3 (challenging)</a></li>
+<ul id="tabset-22" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-22-1">Exercise Problem 1 (basic)</a></li>
+<li><a href="#tabset-22-2">Exercise Problem 2 (basic)</a></li>
+<li><a href="#tabset-22-3">Exercise Problem 3 (challenging)</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-23-1">
+<div id="tabset-22-1">
 <!-- start panel-tabset: Exercise Problem 1 -->
 <div class="panel-tabset">
-<ul id="tabset-20" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-20-1">Data</a></li>
-<li><a href="#tabset-20-2">Instructions</a></li>
-<li><a href="#tabset-20-3">Solutions</a></li>
+<ul id="tabset-19" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-19-1">Data</a></li>
+<li><a href="#tabset-19-2">Instructions</a></li>
+<li><a href="#tabset-19-3">Solutions</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-20-1">
+<div id="tabset-19-1">
 <p>For this exercise problem, you will use the <code>gapminder</code> data from the <code>gapminder</code> package.</p>
 <div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-20-2">
+<div id="tabset-19-2">
 <ol type="1">
 <li><p>Find the number of unique countries in the data.</p></li>
 <li><p>Calculate the mean life expectancy for the entire dataset.</p></li>
 <li><p>Create a dataset by subsetting the data for the year 2007. Create a scatter plot of GDP per capita vs.&nbsp;life expectancy for the year 2007, color-coded by continent.</p></li>
-<li><p>Create a bar plot showing the total population for each continent in 2007. Fill the bars with blue color and set the transparency to 0.5.</p></li>
-<li><p>Subset the data for United States, China, India, and United Kingdom. Create a line plot showing the change in life expectancy over time for these countries.</p></li>
+<li><p>Create a bar plot showing the total population for each continent in 2007. Fill the bars with blue and set the transparency to 0.5.</p></li>
+<li><p>Subset the data for the United States, China, India, and the United Kingdom. Create a line plot showing the change in life expectancy over time for these countries.</p></li>
 <li><p>Create a scatter plot of GDP per capita vs.&nbsp;life expectancy for the entire gapminder dataset. Use <code>facet_wrap</code> to create separate plots for each continent.</p></li>
 <li><p>Group the data by continent and calculate the mean GDP per capita for each continent for each year. Create a line plot showing the trend of mean GDP per capita for each continent over time.</p></li>
 </ol>
 <div id="qwebr-insertion-location-27"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-20-3">
+<div id="tabset-19-3">
 <div id="qwebr-insertion-location-28"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel-tabset: Exercise Problem 1 -->
@@ -3571,23 +3563,23 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </div>
 </div>
 </div>
-<div id="tabset-23-2">
-<!-- start pane-tabset: Excercise Problem 2 -->
+<div id="tabset-22-2">
+<!-- start pane-tabset: Exercise Problem 2 -->
 <div class="panel-tabset">
-<ul id="tabset-21" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-21-1">Data</a></li>
-<li><a href="#tabset-21-2">Instruction</a></li>
-<li><a href="#tabset-21-3">Solutions</a></li>
+<ul id="tabset-20" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-20-1">Data</a></li>
+<li><a href="#tabset-20-2">Instruction</a></li>
+<li><a href="#tabset-20-3">Solutions</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-21-1">
+<div id="tabset-20-1">
 <p>For this exercise problem, we will use <code>economics</code> dataset from the ggplot2 package. You need to use data manipulation and visualization techniques using the <code>data.table</code> and <code>ggplot2</code> packages.</p>
 <div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-21-2">
+<div id="tabset-20-2">
 <ol type="1">
-<li>As you already know by now, the <code>economics</code> dataset contains various economic indicators for the United States. We want to create a line plot showing the trends of all economic indicators over time. Each economic indicator is stored in a separate column in the data, and you can visualize each indicator by creating single line plot, separately. But, there is a better way to do this. It should look like the following plot.</li>
+<li>As you already know by now, the <code>economics</code> dataset contains various economic indicators for the United States. We want to create a line plot showing the trends of all economic indicators over time. Each economic indicator is stored in a separate column in the data, and you can visualize each indicator by creating a single line plot, separately. But, there is a better way to do this. It should look like the following plot.</li>
 </ol>
 <div class="cell" data-layout-align="center" data-autorun="true">
 <div class="cell-output-display">
@@ -3600,24 +3592,24 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 <div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-<div id="tabset-21-3">
+<div id="tabset-20-3">
 <div id="qwebr-insertion-location-31"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<!-- end pane-tabset: Excercise Problem 2 -->
+<!-- end pane-tabset: Exercise Problem 2 -->
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-23-3">
+<div id="tabset-22-3">
 <!-- start panel-tabset: Exercise 3-->
 <div class="panel-tabset">
-<ul id="tabset-22" class="panel-tabset-tabby">
-<li><a data-tabby-default="" href="#tabset-22-1">Instruction</a></li>
-<li><a href="#tabset-22-2">Solutions</a></li>
+<ul id="tabset-21" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-21-1">Instruction</a></li>
+<li><a href="#tabset-21-2">Solutions</a></li>
 </ul>
 <div class="tab-content">
-<div id="tabset-22-1">
-<p>For this exercise problem, you will use “corn_yield_dt.rds” in the “Data” folder. I obtained this from <a href="https://quickstats.nass.usda.gov/">USDA-NASS Quick Stats database</a>. The data contains the <strong>county-level</strong> corn yield data (in BU / ACRE) for each major corn production states in the US Midwest from 2000 to 2022.</p>
+<div id="tabset-21-1">
+<p>For this exercise problem, you will use “corn_yield_dt.rds” in the “Data” folder. I obtained this from <a href="https://quickstats.nass.usda.gov/">USDA-NASS Quick Stats database</a>. The data contains the <strong>county-level</strong> corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2022.</p>
 <p><br></p>
 <ol type="1">
 <li><p>Load the data and take a look at it.</p></li>
@@ -3628,13 +3620,13 @@ Refferece: [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-bo
 </ol>
 <p><em>Hint</em>: <code>state_alpha</code> is the two-letter state abbreviation for each state.</p>
 <ol start="6" type="1">
-<li>Create a new dataset containg the overall average corn yields across states by taking the mean of the <code>yield</code> by <code>year</code>. Add a line plot of this dataset to the plot you created in the previous step. Use red dashed line to represent this line.</li>
+<li>Create a new dataset that contains the overall average corn yield across states by taking the mean of the <code>yield</code> by <code>year</code>. Add a line plot of this dataset to the plot you created in the previous step. Use red dashed line to represent this line.</li>
 </ol>
 <ul>
 <li>If you could add a legend to the plot to indicate what the red dashed line means, that would be great! To do this, you need to use <code>scale_color_manual()</code> function.</li>
 </ul>
 </div>
-<div id="tabset-22-2">
+<div id="tabset-21-2">
 <p>This code does not work on this slide. Copy and paste the code to the your R console.</p>
 <div id="qwebr-insertion-location-32"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>

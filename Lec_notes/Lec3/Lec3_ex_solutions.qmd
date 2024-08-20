@@ -1,26 +1,22 @@
 ---
 title: "Lecture 3: Exercise Solutions"
-format:
+format: 
   html:
-    fontsize: 1em
     theme: 
-      - cosmo 
-      - ../slide_style/styles_ex.scss
-engine: knitr
-filters:
-  - webr
-wber:
-  packages: ["data.table", "ggplot2", "dplyr", "gapminder"]
-  cell-options:
-    editor-font-scale: 0.8
-    fig-width: 7
-    fig-height: 4.3
-    out-width: "100%"
+      - cosmo
+    embed-resources: true
+    toc: true
+    number-sections: true
+    execute:
+      eval: true
+      message: false
+      warning: false
 ---
+
 
 Load packages
 
-```{webr-r}
+```{r}
 #| autorun: true
 #| results: "hide"
 library(ggplot2)
