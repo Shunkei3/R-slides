@@ -1501,8 +1501,6 @@ setDT(Journals)
 2. Show the `title`, `citations`, `price`, and `subs` columns for the top 5 journals (`title`) with the highest number of citations (`citations`). (Hint: use `order()` function to sort the data by `citations` in descending order.)
 3. This dataset is created in the year 2000. Calculate the age (`age`) of each journal by subtracting the start year (`foundingyear`) of the journal from 2000. Select the columns, `price`, `subs`, `citations`, and `pages`, and `age`. Use that data to create a correlation matrix between those variables using the `cor()` function. (Hint: use this syntax: `cor(data)`). Can you find anything interesting from the correlation matrix?
 
-4. `use = "complete.obs"` argument to exclude missing values from the calculation., )
-
 ```{webr-r}
 # You can write your code here
 ```
