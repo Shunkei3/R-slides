@@ -1532,9 +1532,7 @@ Journals[, age := 2000 - foundingyear] %>%
 :::
 
 
-
 # Appendix {#appendix}
-
 
 <!-- ## Appendix: Table of Contents
 
