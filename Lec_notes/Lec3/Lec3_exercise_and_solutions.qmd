@@ -1,0 +1,465 @@
+---
+title: "Lecture 3: Exercise Solutions"
+format: 
+  html:
+    theme: 
+      - cosmo
+    embed-resources: true
+    toc: true
+    number-sections: true
+    execute:
+      cache: false
+      eval: false
+      message: false
+      warning: false
+---
+
+
+Load packages
+
+```{r}
+#| eval: true
+library(ggplot2)
+library(data.table)
+library(dplyr)
+```
+
+# Exercise 1
+
+::: {.panel-tabset .nav-pills}
+## {{< fa person-chalkboard >}} Instructions
+
+Let's use the `economics` data, which is a dataset built into the `ggplot2` package. It was produced from US economic time series data available from Federal Reserve Economic Data. This contains the following variables:
+
++ `date`: date in year-month format 
++ `pce`: personal consumption expenditures, in billions of dollars
++ `pop`: total population in thousands
++ `psavert`: personal savings rate
++ `uempmed`: median duration of unemployment in weeks
++ `unemploy`: number of unemployed in thousands
+
+
+**1.** Create a scatter plot of `unemploy` (x-axis) and `psavert` (y-axis). Add a simple regression line to the plot. Change the x-axis, y-axis, and fill legend labels to something more informative.
+
+**2.** Create a bar plot of `psavert` by date. Use `pop` for fill color. Change the x-axis, y-axis, and fill legend labels to something more informative.
+
++ *Hint*: use `stat = 'identity'` in the `geom_bar()` function to plot the actual values of `pce`. 
+
+**3.** (Challenging) Create a multiple line plot taking `day` as x-axis and `psavert` and `uempmed` as y-axis, respectively. The output should look like the following.
+
++ *Hint*: I think there are multiple ways to do this. 
+
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+#| output-location: column
+# === Part 1 === #
+ggplot(data = economics, aes(x = unemploy, y = psavert)) +
+  geom_point()+
+  geom_smooth(method = "lm", formula = y ~ x) +
+  labs(
+    x = "Unemployment (thousands)",
+    y = "Personal savings rate",
+    title = "Relationship between unemployment and personal savings rate"
+  )
+
+# === Part 2 === #
+ggplot(data = economics) +
+  geom_bar(aes(x = date, y = psavert, fill = pop), stat = 'identity') +
+  labs(
+    x = "Date",
+    y = "Personal Savings Rate",
+    fill = 'Population',
+    title = "Personal Consumption Expenditures by Date"
+  )
+
+# === Part 3 === #
+ggplot(data = economics) +
+  geom_line(aes(x = date, y = psavert, color = "Personal Savings Rate")) +
+  geom_line(aes(x = date, y = uempmed, color = "Median Duration of Unemployment"))
+
+# In the code above, I used two geom_line() functions to create two lines in the same plot. Although there is no color called "Personal Savings Rate", if you use `color=<color_name>` option inside the `aes()` function, ggplot regards <color_name> as a variable and assigns color automatically. Also, it will be shown in the legend.
+
+
+# Alternative solution (This is more efficient if you have many variables to plot).
+economics_long <-
+  as.data.table(economics) %>%
+  melt(
+    id.vars = "date",
+    measure.vars = c("psavert", "uempmed")
+  ) %>%
+  .[, new_names := ifelse(variable == "psavert", "Personal Savings Rate", "Median Duration of Unemployment")]
+
+ggplot(economics_long) +
+  geom_line(
+    aes(x = date, y = value, color = new_names)
+  )+
+  labs(
+    x = "Date",
+    y = "Value",
+    color = "Variable"
+  )
+```
+:::
+
+
+# Exercise 2
+::: {.panel-tabset .nav-pills}
+## {{< fa database >}} Data
+For this exercise problem, we will use [medical cost personal datasets](https://github.com/stedy/Machine-Learning-with-R-datasets/blob/master/insurance.csv) descried in the book "Machine Learning with R" by Brett Lantz. The dataset provides $1,338$ records of medical information and costs billed by health insurance companies in 2013, compiled by the United States Census Bureau.
+
+The dataset contains the following variables:
+
++ `age`: age of primary beneficiary
++ `sex`: insurance contractor gender, female, male
++ `bmi`: body mass index, providing an understanding of body, weights that are relatively high or low relative to height
++ `children`: number of children covered by health insurance
++ `smoker`: smoking
++ `region`: the beneficiary's residential area in the US; northeast, southeast, southwest, northwest.
++ `charges`: individual medical costs billed by health insurance
+
+**Download the data**
+
+```{r}
+#| eval: true
+# === Download Data (Don't worry about this part.) === #
+insurance_url <- "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
+insurance <- rio::import(insurance_url)
+
+# === Take a look at the data === #
+head(insurance)
+```
+
+## {{< fa person-chalkboard  >}} Instructions
+1. Create a histogram of `charges` by `sex` in the same plot. Fill the boxes with different colors for each `sex`.
+
+2. Create a scatter plot of `bmi` (x-axis) and `charges` (y-axis).
+
+3. Now, create a scatter plot of `bmi` (x-axis) and `charges` (y-axis), and add regression lines by `smoke` (So, there are two regression lines: one for group of smokers and the other for group of non-smokers). 
+
+4. Create the following plot.
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-dpi: 100
+#| fig-width: 7
+#| fig-height: 6
+ggplot(data = insurance) +
+  geom_boxplot(aes(x = sex, y = charges, fill = region)) +
+  labs(
+    x = "Sex",
+    y = "Medical costs",
+    title = "Distribution of individual medical mosts by sex and region"
+  )
+```
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+ggplot(data = insurance) +
+  geom_histogram(aes(x = charges, fill = sex), alpha = 0.5) +
+  labs(
+    x = "Medical Charges",
+    y = "Frequency",
+    title = "Histogram of individual medical costs by sex"
+  )
+
+
+# === Part 2 === #
+ggplot(data = insurance) +
+  geom_point(aes(x = bmi, y = charges)) +
+  labs(
+    x = "Body Mass Index (BMI)",
+    y = "Scatter plot of BMI vs medical costs"
+  )
+
+# === Part 3 === #
+ggplot(data = insurance, aes(x = bmi, y = charges, color = smoker)) +
+  geom_point()+
+  geom_smooth(method = "lm", formula = y ~ x) +
+  labs(
+    x = "Body Mass Index (BMI)",
+    y = "Scatter plot of BMI vs medical costs by smoker Status",
+    color = "Smoker"
+  )
+
+# === Part 4 === #
+ggplot(data = insurance) +
+  geom_boxplot(aes(x = sex, y = charges, fill = region)) +
+  labs(
+    x = "Sex",
+    y = "Medical costs",
+    title = "Distribution of individual medical mosts by sex and region"
+  )
+```
+:::
+
+
+# Exercise 3
+
+::: {.panel-tabset .nav-pills}
+## {{< fa database >}} Data
+
+For this exercise problem, you will use the `gapminder` data from the `gapminder` package. 
+
+```{r}
+#| eval: true
+# install the gapminder package if you haven't done so.
+# install.packages("gapminder")
+
+# Load the data from the gapminder package
+library(gapminder)
+data(gapminder)
+
+gapminder <- as.data.table(gapminder) # Convert the data to a data.table object (only if you want)
+# or
+# setDT(gapminder)
+
+# See ?gapminder for more information about the dataset.
+```
+
+## {{< fa person-chalkboard >}} Instructions
+1. Find the number of unique countries in the data.
+
+2. Calculate the mean life expectancy for the entire dataset.
+
+3. Create a dataset by subsetting the data for the year 2007. Create a scatter plot of GDP per capita vs. life expectancy for the year 2007, color-coded by continent.
+
+4. Create a bar plot showing the total population for each continent in 2007. Fill the bars with blue and set the transparency to 0.5.
+
+5. Subset the data for the United States, China, India, and the United Kingdom. Create a line plot showing the change in life expectancy over time for these countries.
+
+6. Create a scatter plot of GDP per capita vs. life expectancy for the entire gapminder dataset. Use `facet_wrap` to create separate plots for each continent.
+
+7. Group the data by continent and calculate the mean GDP per capita for each continent for each year. Create a line plot showing the trend of mean GDP per capita for each continent over time.
+
+
+## {{< fa lightbulb >}} Solutions
+
+```{r}
+# === Part 1 === #
+#' There are several approaches.
+#' The most straightforward way is to use the unique() function, and then count the number of unique values.
+length(unique(gapminder$country))
+
+# Alternatively, you could use the uniqueN() function from the data.table package.
+# gapminder[, uniqueN(country)]
+
+# === Part 2 === #
+mean(gapminder$lifeExp)
+# same as
+# gapminder[, mean(lifeExp)]
+
+# === Part 3 === #
+gapminder_2007 <- gapminder[year == 2007,]
+
+ggplot(data = gapminder_2007) +
+  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  labs(
+    x = "GDP per capita",
+    y = "Life expectancy",
+    title = "Scatter plot of GDP per capita vs. life expectancy in 2007"
+  )
+
+# === Part 4 === #
+ggplot(data = gapminder_2007) +
+  geom_bar(aes(x = continent, y = pop), stat = "identity", fill = "blue", alpha = 0.5) +
+  labs(
+    x = "Continent",
+    y = "Total population",
+    title = "Total population by continent in 2007"
+  )
+
+
+# === Part 5 === #
+gapminder[country %in% c("United States", "China", "India", "United Kingdom"),] %>%
+  ggplot(data = .)+
+  geom_line(aes(x = year, y = lifeExp, color = country))+
+  labs(
+    title = "Life Expectancy in the selected countries",
+    x = "Year", y = "Life Expectancy"
+  )+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))
+
+# === Part 6 === #
+ggplot(data = gapminder) +
+  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  facet_wrap(vars(continent), scales = "fixed") +
+  labs(
+    x = "GDP per capita",
+    y = "Life expectancy",
+    title = "Scatter plot of GDP per capita vs. life expectancy by continent"
+  )
+
+# === Part 7 === #
+gapminder[, .(mean_gdp = mean(gdpPercap)), by = .(continent, year)] %>%
+  ggplot(data = .) +
+  geom_line(aes(x = year, y = mean_gdp, color = continent)) +
+  labs(
+    x = "Year",
+    y = "Mean GDP per capita",
+    title = "Trend of mean GDP per capita by continent"
+  )
+```
+
+:::
+
+
+# Exercise 4
+::: {.panel-tabset .nav-pills}
+
+## {{< fa person-chalkboard >}} Instructions
+
+For this exercise problem, we will use `economics` dataset from the ggplot2 package. You need to use data manipulation and visualization techniques using the `data.table` and `ggplot2` packages.
+
+```{r}
+#| eval: true
+# === Loading data === #
+economics <- as.data.table(ggplot2::economics)
+```
+
+1. As you already know by now, the `economics` dataset contains various economic indicators for the United States. We want to create a line plot showing the trends of all economic indicators over time. Each economic indicator is stored in a separate column in the data, and you can visualize each  indicator by creating a single line plot, separately. But, there is a better way to do this. It should look like the following plot.
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-dpi: 100
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+melt(economics, id.vars = "date") %>%
+  ggplot(.) +
+    geom_line(aes(x = date, y = value)) +
+    facet_wrap(vars(variable), scales = "free_y")
+```
+## {{< fa lightbulb >}} Solutions
+```{r}
+# Since we want use column names as variable names, we need to convert the data to a long format. We melt all the columns except the date column.
+economics_long <- melt(economics, id.vars = "date")
+
+# Then, create a facet plot where each panel shows the trend of one economic indicator.
+# Since we only have one variable to facet, facet_wrap() function is more appropriate.
+# Also, we set scales = "free_y" to make the y-axis scales free across facets.
+ggplot(data = economics_long) +
+  geom_line(aes(x = date, y = value)) +
+  facet_wrap(vars(variable), scales = "free_y")
+```
+:::
+
+
+# Exercise 5 (challenging)
+
+::: {.panel-tabset .nav-pills}
+## {{< fa person-chalkboard >}} Instructions
+
+For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder. I obtained this from [USDA-NASS Quick Stats database](https://quickstats.nass.usda.gov/). The data contains the **county-level** corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2022. 
+
+1. Load the data and take a look at it. 
+
+2. Convert the data to a `data.table` object. The `Value` column contains the corn yield data. Rename the column to `yield`. 
+
+3. Let's derive the state-level annual average corn yield data by calculating the mean of corn yield by state and year. Create a line plot of the annual trend of corn yield in Minnesota by taking `year` for the x-axis and the derived mean yield for the `y-axis.`
+
+4. Create line plots showing the trend of annual corn yield for each state in the same plot. 
+
+5. Create a facet plot showing each state's annual corn yield trend. To compare the trends across states, use `scales = "fixed"`.
+
+*Hint*: `state_alpha` is the two-letter state abbreviation for each state.
+
+6. Create a new dataset that contains the overall average corn yield across states by taking the mean of the `yield` by `year`. Add a line plot of this dataset to the plot you created in the previous step. Use red dashed line to represent this line.
+
++ If you could add a legend to the plot to indicate what the red dashed line means, that would be great! To do this, you need to use `scale_color_manual()` function.
+
+## {{< fa lightbulb >}} Solutions
+```{r}
+#| eval: false
+# === Part 1 === #
+yield_dt <- readRDS("Data/corn_yield_dt.rds")
+
+# === Part 2 === #
+yield_dt <- 
+  as.data.table(yield_dt) %>% 
+  setnames("Value", "yield")
+
+# === Part 3 === #
+mean_yield_state_y_dt <- 
+  yield_dt %>%
+  .[, .(mean_yield = mean(yield, na.rm = TRUE)), by = .(state_alpha, year)]
+
+mean_yield_state_y_dt %>%
+  .[state_alpha == "MN",] %>%
+  ggplot(data = .) +
+    geom_line(aes(x = year, y = mean_yield)) +
+    labs(
+      x = "Year",
+      y = "Mean corn yield (BU / ACRE)",
+      title = "Average corn yield produced in Minnesota"
+    )
+
+
+# === Part 4 === #
+ggplot(data = mean_yield_state_y_dt) +
+  geom_line(aes(x = year, y = mean_yield, color = state_alpha)) +
+  labs(
+      x = "Year",
+      y = "Mean corn yield (BU / ACRE)",
+      title = " Corn yield trend in Minnesota"
+    )
+
+# === Part 5 === #
+ggplot(data = mean_yield_state_y_dt) +
+  geom_line(aes(x = year, y = mean_yield)) +
+  facet_wrap(vars(state_alpha), scales = "fixed") +
+  labs(
+      x = "Year",
+      y = "Mean corn yield (BU / ACRE)",
+      title = "Corn yield trend by state"
+    )
+
+# === Part 6 === #
+mean_yield_year_dt <- 
+  yield_dt %>%
+  .[, .(mean_yield = mean(yield)), by = .(year)]
+
+
+ggplot() +
+  geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +
+  facet_wrap(vars(state_alpha), scales = "fixed") +
+  geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield), linetype = "dashed", color = "red") +
+  labs(
+      x = "Year",
+      y = "Corn yield (BU / ACRE)",
+      title = "Corn yield trend by state"
+    ) +
+  scale_color_manual(
+    values = c("Average corn yield across states" = "red")
+    ) +
+  theme_bw() +
+  theme(
+    legend.position = "bottom"
+  )
+
+
+# Furthermore, you can add a legend to the plot by using the following code.
+# ggplot() +
+#   geom_line(data = mean_yield_state_y_dt, aes(x = year, y = mean_yield)) +
+#   facet_wrap(vars(state_alpha), scales = "fixed") +
+#   geom_line(data = mean_yield_year_dt, aes(x = year, y = mean_yield, color = "Average corn yield across states"), linetype = "dashed") +
+#   labs(
+#       x = "Year",
+#       y = "Corn yield (BU / ACRE)",
+#       title = "Corn yield trend by state"
+#     ) +
+#   scale_color_manual(
+#     values = c("Average corn yield across states" = "red")
+#     ) +
+#   theme_bw() +
+#   theme(
+#     legend.position = "bottom"
+#   )
+```
+:::
