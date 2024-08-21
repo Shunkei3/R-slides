@@ -4,7 +4,7 @@ Data0
 Lec_notes/.DS_Store
 Lec_notes/*/.DS_Store
 # *.pdf
-
+.vscode
 z_doc/*.xlsx
 
 %
