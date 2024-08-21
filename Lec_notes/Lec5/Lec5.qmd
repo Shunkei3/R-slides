@@ -1,5 +1,5 @@
 ---
-title: "Day 5: Function, Loops, and Monte Carlo Simulation"
+title: "Day 5: Function, Loops, and Monte Carlo Simulations"
 subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
@@ -36,7 +36,7 @@ filters:
 
 + In the previous lecture, we learned how to do regression analysis using R, which is a fundamental skill for econometric analysis.
 
-+ Today, we will learn how to code Monte Carlo simulation in R. Monte Carlo simulations are very important tool in leaning econometrics and statistics. With Monte Carlo simulations, you can test any kind of statistical theories or properties, which is very fun and useful!!
++ Today, we will learn how to code Monte Carlo simulations in R. Monte Carlo simulations are a very important tool in learning econometrics and statistics. With Monte Carlo simulations, you can test any kind of statistical theory or property, which is very fun and useful!!
 
 <br>
 
@@ -45,12 +45,10 @@ filters:
 ## 
 
 Before we dive into the Monte Carlo simulation, we need to review some key R operations: 
-+  `for loop` function
++  `for loop` function.
 
 
-+ Although we'll not use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
-
-+ Although we'll not use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
++ Although we won't use this in today's Monte Carlo simulation, we'll also review how to write your own R functions because it's a useful skill.
 
 :::
 :::
@@ -60,8 +58,8 @@ Before we dive into the Monte Carlo simulation, we need to review some key R ope
 
 ### {{< fa bullseye >}} Learning Objectives
 
-+ to be able to write a code for your own R functions.
-+ to be able to write a code for Monte Carlo simulation using for loop function.
++ to be able to write code for your own R functions.
++ to be able to write code for a Monte Carlo simulation using the loop function.
 
 <br>
 
@@ -76,14 +74,14 @@ Before we dive into the Monte Carlo simulation, we need to review some key R ope
 :::
 
 
-## {{< fa list >}} Today's outline {.center}
+## {{< fa list >}} Today's Outline {.center}
 
 + [User-Defined Functions](#fn)
   - [Exercise Problems](#fn-ex)
 + [Loops](#loops)
   - [Basics](#loops-basics)
     - [Exercise Problems](#loops-basics-ex)
-  - [How to Save the loop output?](#loops-save)
+  - [How to Save the Loop Output](#loops-save)
   - [Multiple Outputs](#loops-multi)
     - [Exercise Problems](#loops-save-ex)
 + [Introduction to Monte Carlo Simulations](#monte-intro)
@@ -111,8 +109,7 @@ Before we dive into the Monte Carlo simulation, we need to review some key R ope
 **Example Situations**
 
 + When you want to automate the process of data cleaning.
-+ When you do complicated simulation or resampling methods, such as bootstrapping or Monte Carlo simulations.
-+ ... etc. 
++ When you do a complicated simulation or resampling methods, such as bootstrapping or Monte Carlo simulations.
 
 
 ### Basics
@@ -205,19 +202,19 @@ acre_to_ha(x = 1)
 Use `ifelse()` function. It's syntax is `ifelse(condition, return_value_if_condition_met, return_value_otherwise)`.
 :::
 
-1. In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It’s denoted by n!. For example, $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Write a function named `calculate_factorial` that takes a single integer argument `n` (Assume $n \ge 1$).
+1. In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It’s denoted by n!. For example, $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Write a function named `calculate_factorial` that takes a single integer argument `n` (assume $n \ge 1$).
 
 
 ::: {.callout-tip collapse="true"}
 ## Hints:
-+ use the prod() function to multiply all elements of a sequence (see `?prod`).
++ Use the prod() function to multiply all elements of a sequence (see `?prod`).
 + The seq() function can help you generate a sequence of numbers from 1 to n.
 :::
 
 
 ### Problem 2 (optional) 
 
-You're a data expert at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
+You're a data expert at a store chain. The company needs to study its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
 
 For sales growth, use the following formula:
 
@@ -231,7 +228,7 @@ Create a function called `monthly_sales_growth` with the following three inputs:
 + `growth_rate`: Monthly growth rate (as a decimal, like 0.03 for 3% growth).
 + `months`: How many months to predict (usually 12 for a year).
 
-The function should give back a vector of numbers (or it would be nicer if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
+The function should give back a vector of numbers (or it would be even better if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
 
 ```{webr-r}
 
@@ -246,16 +243,16 @@ The function should give back a vector of numbers (or it would be nicer if you c
 
 ## Why loop? {.center} 
 
-Using Loop is useful when you want to repeat the same task (but slight change in parameters) over and over again.
+Using Loop is useful when you want to repeat the same task (but with a slight change in parameters) over and over again.
 
 <br>
 
 ::: {.callout-note}
-## Common situations
-+ Downloading the data from the web iteratively
+## Common Situations
++ Downloading the data from the web iteratively.
   + When you want to download the ag-production data from USDA-NASS, you are limited to download 50,000 records per query. You need to repeatedly download the data until you get all the data you need.
   + USDA crop scale data, NOAA weather data, etc.
-+ Loading the multiple data files in a folder.
++ Loading multiple data files in a folder.
 + Running the same regression analysis for multiple datasets.
 + Running simulations or resampling methods, such as bootstrapping or Monte Carlo simulations.
 :::
@@ -285,7 +282,7 @@ for (variable in collection_of_objects){
 
 <br>
 
-You need to define there components in the function: (i) `variable` (ii) `collection of objects`, (iii) `the code to be executed in each iteration.`
+You need to define the components in the function: (i) `variable` (ii) `collection of objects`, (iii) `the code to be executed in each iteration.`
 
 <br>
 
@@ -348,7 +345,7 @@ for (seq_num in ls_seq_num){
 :::{.panel-tabset} 
 ### Exercise 1 
 
-In econometric class, we use `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
+In econometric class, we use the `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
 
 The basic syntax is `rnorm(n, mean = 0, sd = 1)`, where `n` is the number of random numbers you want to generate, `mean` is the mean of the normal distribution, and `sd` is the standard deviation of the normal distribution. So `rnorm(n, mean =0, sd = 1)` generates `n` random numbers from a standard normal distribution.
 
@@ -365,7 +362,7 @@ for (i in 1:10){
  
 ### Exercise  2 (nested loop)
 
-You can nest the for loop inside another for loop. For example, 
+You can nest the `for loop` inside another `for loop`. For example, 
 
 ```{webr-r}
 # Outer loop
@@ -462,7 +459,7 @@ x
 
 ### Basics
 
-+ [To save results of the loop, you need to create an empty object before the loop and save the output in the object in each iteration.]{style="color: blue;"}(You did this in the exercise 2!)
++ [To save the results of the loop, you need to create an empty object before the loop and save the output in the object in each iteration.]{style="color: blue;"} (You did this in the exercise 2!)
   + The object can be a vector, a list, a matrix, or a data frame (or data.table), depending on the type of the output you want to save.
 
 **Example**
@@ -552,7 +549,7 @@ Let’s take this concept further. Suppose Pythagoras challenges you to find all
 ::: {.callout-tip collapse="true"}
 ## Hints:
 + Consider using nested loops to iterate through all possible values of a and b up to n.
-+	Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.
++	Use the `sqrt()` function to calculate the potential value of c, and check if it’s an integer.
 :::
 
 
@@ -568,7 +565,7 @@ Let’s take this concept further. Suppose Pythagoras challenges you to find all
 
 
 
-## Check point {.center}
+## Check Point {.center}
 
 Up to this point, as long as you understand the following points, you are good to go!
 
@@ -587,26 +584,26 @@ Up to this point, as long as you understand the following points, you are good t
 
 ### What is it?
 
-[Monte Carlo simulation is a technique to approximate a likelihood of possible outcomes (e.g., predictions, estimates) from a model by iteratively running the model on artificially created datasets. In every iteration, the dataset are randomly sampled from the assumed data generating process, so it varies every iteration.]{style="color: blue;"}
+[Monte Carlo simulation is a technique to approximate a likelihood of possible outcomes (e.g., predictions, estimates) from a model by iteratively running the model on artificially created datasets. In every iteration, the datasets are randomly sampled from the assumed data generating process, so it varies every iteration.]{style="color: blue;"}
 
 
-+ The incorporation of randomness in the simulation is the key feature of Monte Carlo simulation. *It is mimicking the randomness of real-world phenomena.*
++ The incorporation of randomness in the simulation is the key feature of the Monte Carlo simulation. *It is mimicking the randomness of real-world phenomena.*
 
 
 <br>
 
 :::{.fragment .fade-up}
-### So, how Monte Carlo simulation is used in Econometrics?
+### So, how is the Monte Carlo simulation used in Econometrics?
 
-In econometrics, Monte Carlo simulation is used to evaluate the performance of the performance of a statistical procedure or the validity of theories in a realistic setting.
+In econometrics, the Monte Carlo simulation is used to evaluate the performance of a statistical procedure or the validity of theories in a realistic setting.
 
 
 ::: {.callout-tip}
 ## For example
 
-Suppose that a researcher came up a new estimator to estimate coefficients of a regression model. 
+Suppose that a researcher came up with a new estimator to estimate the coefficients of a regression model. 
 
-+ An estimator (e.g, sample mean, standard error, OLS) is a function of a random variable, therefor it is also a random variable. 
++ An estimator (e.g, sample mean, standard error, OLS) is a function of a random variable, therefore it is also a random variable. 
 + A random variable has its own probability distribution.
 + So, to understand the performance of the estimator (e.g., unbiasedness and efficiency), we need to examine the properties of the probability distribution of the estimator. 
 + We use Monte Carlo simulation to approximate the probability distribution of the estimator!
@@ -649,7 +646,7 @@ By theory, this kind of experiment is modeled by the binomial distribution. Acco
 <br>
 
 :::{.fragment .fade-up}
-[Is it true? Let's check this using Monte Carlo simulation!]{style="color: blue;"}
+[Is it true? Let's check this using a Monte Carlo simulation!]{style="color: blue;"}
 :::
 
 
@@ -675,7 +672,7 @@ step 3: compare your estimates with the true parameter
 
 <!-- start panel:Demonstration   --> 
 :::{.panel-tabset} 
-### A single iteration
+### A Single Iteration
 
 Let's start writing code for a single iteration to get an idea of the Monte Carlo simulation process in R.
 
@@ -685,7 +682,7 @@ Let's start writing code for a single iteration to get an idea of the Monte Carl
 # For the reproducibility purpose, set the seed. 
 set.seed(1843)
 
-# === Step 1: Specify the Data Generating process === #
+# === Step 1: Specify the Data Generating Process === #
 # parameters
 p <- 1/3 # the probability of getting a head
 n <- 10 # the number of trials
@@ -701,7 +698,7 @@ sum(seq_x)
 
 
 
-### Multiple iterations
+### Multiple Iterations
  
 ```{webr-r}
 # For the reproducibility purpose, set the seed. 
@@ -747,11 +744,11 @@ var(X)
 :::{.panel-tabset} 
 ### {{< fa person-chalkboard >}} Instructions
 
-Weak law of large number states that the sample mean converge (in probability) to the population mean as the sample size increase. In other words, the sample means becomes more accurately estimate the population mean as the sample size increases.
+Weak law of large number states that the sample mean converges (in probability) to the population mean as the sample size increases. In other words, the sample mean more accurately estimates the population mean as the sample size increases.
 
 $$\bar{X}_n = \frac{1}{n}\sum_{n=1}^{n} X_i E[X] \xrightarrow{p} E[X]$$
 
-Lets check this using Monte Carlo simulation! We compare the distribution of sample mean with different sample size. Lets' compare two sample size: $n=100$ and $n=1000$.
+Lets check this using Monte Carlo simulation! We compare the distribution of sample mean with different sample size. Let's compare two sample sizes: $n=100$ and $n=1000$.
 
 <br>
 
@@ -765,7 +762,7 @@ Repeat 1 and 2 for $B=1000$ times.
 
 Finally, 
 
-3. Plot histograms of the sample means obtained from the two sample 
+3. Plot histograms of the sample means obtained from the two samples.
 
 
 ### {{< fa lightbulb >}} Solution
@@ -867,7 +864,7 @@ step 2. Get (1) the mean of the sample and (2) the value of the first observatio
 
 1. The   2000 estimates of the population mean for estimator 1 and estimator 2, respectively. Compute the means for each estimator. Are they both close to the true population mean? Compute the variance of the estimates. Which one has a smaller variance?
 
-If you could also visually compare the distribution of estimates from the two estimators, it would be great!
+If you could also visually compare the distribution of estimates from the two estimators, that would be great!
 
 
 ```{webr-r}
@@ -883,7 +880,7 @@ If you could also visually compare the distribution of estimates from the two es
 
 ---
 
-## foreach function
+## foreach Function
 
 <!-- start panel:foreach   --> 
 :::{.panel-tabset} 
@@ -911,7 +908,7 @@ foreach(variable = collection_of_objects) %do% {
 ::: {.callout-note}
 + Differences between `for loop` and `foreach` function:
   + use `=` instead of `in`.
-  + you need to use `%do%` operator. 
+  + You need to use `%do%` operator. 
   + `foreach` function has a return value, while `for loop` does not. By default, the output is returned as a list.
 :::
 
@@ -961,7 +958,7 @@ results
 
 
 
-### Change the output format
+### Change the Output Format
 
 By default, `foreach` function returns each iteration's result as a list. But you can choose the format of the output by using the `.combine` argument.
 
