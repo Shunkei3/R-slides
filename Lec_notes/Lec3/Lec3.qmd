@@ -1108,7 +1108,7 @@ ggplot(data = airquality) +
 
 
 
-## Summary 
+## Summary {.center} 
 
 Let's summarize what we have learned so far.
 
@@ -1546,7 +1546,7 @@ base +
 
 ### Two Faceting Variables
 
-```{r}
+```{webr-r}
 #| autorun: false
 # Prepare the base histogram plot
 base <- ggplot(insurance)+
@@ -1567,6 +1567,71 @@ base +
 :::
 
 
+## How can we modify the facet labels?
+
+See the following document: [How can I set different axis labels for facets?](https://ggplot2.tidyverse.org/articles/faq-faceting.html#how-can-i-set-different-axis-labels-for-facets). You can use the `labeller` argument in the `facet_wrap()` and `facet_grid()` function to modify the facet labels.
+
+Here, I will show another way to modify the facet labels. You can 
+
+<!-- start panel:modify facet label   --> 
+:::{.panel-tabset}
+### Preparation
+
+
+
+```{r}
+#| include: false
+#| eval: false
+insurance_url <- "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
+insurance <- fread(insurance_url)
+```
+
+First, I re-define region and sex as factor variables. **In doing so, I will add labels for each level of the variables.** If labels are attached to the variables, ggplot use those names in the facet labels. 
+
+```{webr-r}
+#| autorun: true
+
+# To use the following code, make sure that your insurance data is data.table class. 
+insurance[,`:=`(
+  # --- re-define region as factor variable --- #
+  region = 
+    factor(
+      region, 
+      levels = c("northeast", "northwest", "southeast", "southwest"), 
+      labels = c("North East", "North West", "South East", "South West")
+    ),
+  # --- re-define sex as factor variable --- #
+  sex = 
+    factor(
+      sex,
+      levels = c("female", "male"),
+      labels = c("Female", "Male")
+    )
+  )]
+```
+
+
+### facet_wrap
+
+Now, the facet labels are changed to "North East", "North West", "South East", and "South West" for the `region` variable.
+
+```{webr-r}
+#| autorun: true
+ggplot(insurance)+
+  geom_histogram(aes(x = charges), fill = "blue", alpha = 0.5)+
+  facet_wrap(vars(region), nrow = 2)
+```
+
+### facet_grid
+
+```{webr-r}
+#| autorun: true
+ggplot(insurance)+
+  geom_histogram(aes(x = charges), fill = "blue", alpha = 0.5)+
+  facet_grid(rows = vars(region), cols = vars(sex))
+```
+<!-- end panel:modify facet label  --> 
+:::
 
 
 ## Multiple Datasets in One Figure {#multiple-datasets-in-one-figure}
@@ -1607,8 +1672,30 @@ ggplot() +
     aes(x = bmi, y = charges),
     color = "red"
   )
-# How can we make the legend?
 ```
+
+### How can we make the legend?
+
+You can do something like this:
+```{webr-r}
+#| autorun: true
+insurance_southwest <- insurance[region == "southwest",]
+insurance_northeast <- insurance[region == "northeast",]
+
+# === Create economics_month dataset === #
+ggplot() +
+  geom_point(
+    data = insurance_southwest,
+    aes(x = bmi, y = charges, color = "South West"),
+  ) +
+  geom_point(
+    data = insurance_northeast,
+    aes(x = bmi, y = charges, color = "North East")
+  ) +
+  labs(color = "Region")
+```
+
+
 
 <!-- end panel-tabset: multiple datasets in one figure (optional) -->
 :::
