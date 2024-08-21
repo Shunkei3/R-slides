@@ -35,7 +35,7 @@ filters:
 
 ## {.center}
 
-### Learning Objectives
+### {{< fa bullseye >}} Learning Objectives
 
 + Learn the basic operations of `ggplot2` package to create figures. 
 + You will be able to create:
@@ -51,22 +51,34 @@ filters:
 <br>
 
 :::{.fragment .center}
-### Reference {.center}
+### {{< fa asterisk >}} Reference {.center}
 + [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/)
 + [R for Data Science (2e), Ch1: Data Visualization](https://r4ds.had.co.nz/pipes.html)
 :::
 
 
-## Today's Outline: {.center}
+## {{< fa list >}} Today's Outline:
+1. [Taste of ggplot2 package](#taste-of-ggplot2-package)
 
-<!-- 1. [Taste of ggplot2 package]{#taste-of-ggplot2-package}
+2. [Introduction to ggplot 2](#intro) 
+   + [Anatomy of ggplot2](#anatomy-of-ggplot2)
+   + [Scatter Plot](#scatter-plot)
+   + [Exercise Problems](#exercise-problems1)
+   + [Different Types of Plot](#different-types-of-plot)
+   + [Modify Aesthetic Attributes](#modify-aesthetic-attributes)
+   + [Exercise Problems](#exercise-problems2)
+   + [Group Aesthetic](#group-aesthetic)
+   + [Collective geoms](#collective-geoms)
+   + [Modify Axis, Labels, and Titles](#modify-axis-labels-and-titles)
 
-2. [Introduction to ggplot2]{#introduction-to-ggplot2}
-
-+ [Intro](#introduction) -->
-
-
-
+3. [Advanced Topics](#advanced-topics)
+   + [Facet Plot](#facet-plot)
+   + [Multiple Datasets in One Figure](#multiple-datasets-in-one-figure)
+   + [ggplot2 Themes](#themes)
+   + [theme() Function](#theme-function)
+   + [Save the Plot](#save-the-plot)
+   + [Exercise Problems](#exercise-problems3)
+   
 
 ## Taste of ggplot2 package {#taste-of-ggplot2-package}
 
@@ -205,6 +217,12 @@ airquality %>%
 
 :::
 
+## {.center}
+
+There are many functions in the `ggplot2` package to create figures, and today's lecture is not a comprehensive guide to all of them. 
+
+We will focus on the basic functions to create the most common types of figures.
+
 
 ## Before Starting {.center}
 
@@ -229,7 +247,7 @@ library(ggplot2)
 
 
 
-##  Introduction to ggplot 2 Package {#intro}
+##  Introduction to ggplot 2 {#intro}
 
 
 :::{.panel-tabset}
@@ -263,7 +281,7 @@ Let's see what this means with an example next.
 :::
 
 
-## Anatomy of ggplot2
+## Anatomy of ggplot2 {#anatomy-of-ggplot2}
 <!-- You can alternatively use "Code Animations"(https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations) -->
 
 [Hit your right-arrow key (or down arrow key). Left colum shows the code, and the right column shows the output. Pay attention to the changes in the plot as a new line is added.]{style="color: blue;"}
@@ -606,7 +624,7 @@ Let's use the `airquality` data for this example.
 head(airquality)
 ```
 
-### Let's Create a Scatter Plot
+### Let's Create a Scatter Plot {#scatter-plot}
 
 We will create a scatter plot of `Ozone` (ozone level in the air) and `Temp` (Maximum daily temperature in degrees $F$) from the `airquality` data. 
 
@@ -703,7 +721,7 @@ ggplot(data = airquality) +
 
 <br>
 
-## Exercise Problems
+## Exercise Problems {#exercise-problems1}
 
 1. Create a scatter plot of `Temp` and `Wind` from the `airquality` data.
 
@@ -722,7 +740,7 @@ Hint:
 <!-- end .panel-tabset 1 -->
 
 
-## Different Types of Plot
+## Different Types of Plot {#different-types-of-plot}
 
 [You can create various plots with the ggplot2 package by choosing the appropriate `geom_*()` function for the desired plot type.]{style="color: blue;"}
   
@@ -743,7 +761,7 @@ see [this](https://ggplot2.tidyverse.org/reference/#geoms) for full list of `geo
 :::
 
 
-## Modify Aesthetic Attributes
+## Modify Aesthetic Attributes {#modify-aesthetic-attributes}
 
 <!-- start panel-tabset: Modify Aesthetic Attributes -->
 ::: {.panel-tabset}
@@ -836,7 +854,7 @@ ggplot(data = .) +
 <!-- end .panel-tabset: Modify Aesthetic Attributes -->
 :::
 
-## Your Turn
+## Your Turn {#exercise-problems2}
 <!-- start panel-tabset: Exercise Problem -->
 ::: {.panel-tabset}
 
@@ -904,7 +922,7 @@ ggplot(data = airquality) +
 :::
 
 
-## Group Aesthetic {.scrollable}
+## Group Aesthetic {#group-aesthetic}
 
 <!-- start panel-tabset: Group aesthetic -->
 ::: {.panel-tabset}
@@ -924,7 +942,7 @@ If you use those options [inside]{style="color:red;"} the `aes()` function like 
 Let's create density plots of `Temp` for each month, and use different colors (`fill` in this case) for different `Month`.
 
 ```{webr-r}
-#| autorun: true
+#| autorun: false
 
 # Now, fill color depends on factor(Month)
 ggplot(data = airquality) +
@@ -949,7 +967,7 @@ ggplot(data = airquality) +
 :::
 
 
-## Collective geoms
+## Collective geoms {#collective-geoms}
 
 
 <!-- start panel-tabset: Collective geoms -->
@@ -1013,7 +1031,7 @@ ggplot(data = airquality, aes(x = Temp, y = Ozone)) +
 <!-- end panel-tabset: Collective geoms -->
 :::
 
-## Modify Axis, Legend, and Plot Labels 
+## Modify Axis, Legend, and Plot Labels {#modify-axis-legend-plot-labels}
 
 <!-- start panel-tabset: Modify axis, legend, and plot labels -->
 ::: {.panel-tabset}
@@ -1245,11 +1263,11 @@ The dataset contains the following variables:
 
 # === Download Data (Don't worry about this part.) === #
 insurance_url <- "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
-insurance <- fread(insurance_url)
+insurance <- fread(insurance_url) #You can use import() function of the rio package!
 
 # fread() is a function from the data.table package used for fast and efficient reading of data from text files, particularly large CSV files.
 
-# Of course, you can also use the import function from the rio package (this only works in RStudio, not here). For example, 
+# Of course, you can also use the import function from the rio package (this only works in RStudio, not here). For example, run
 # insurance <- rio::import(insurance_url)
 
 # === Take a look at the data === #
@@ -1332,7 +1350,8 @@ ggplot(data = insurance) +
 
 :::
 
-# Section 2: Advanced Topics
+# Section 2: Advanced Topics {#advanced-topics}
+
 ---
 
 ## Before We Start {.center}
@@ -1340,7 +1359,7 @@ ggplot(data = insurance) +
 For this section, we will continue to use the `economics` and `insurance` data we used in the previous exercise problems.
 
 
-## Facet Plot
+## Facet Plot {#facet-plot}
 <!-- start panel-tabset: Facet Plot -->
 ::: {.panel-tabset}
 
@@ -1478,10 +1497,17 @@ ggplot(insurance)+
 ```
 
 
-### facet_wrap() vs facet_grid()
+<!-- end panel-tabset: Facet Plot -->
+:::
+
+
+## facet_wrap() vs facet_grid()
+
+<!-- start panel:facet vs grid   --> 
+:::{.panel-tabset} 
+### Basics
 
 [So, when should you use `facet_wrap()` and `facet_grid()`?]{style="color: blue;"}
-
 
 1. In my opinion, if you have a single variable to make a facet, you should use `facet_wrap()`. Unlike `facet_grid()`, `facet_wrap()` can control the number of rows and columns in the panel.
 
@@ -1490,8 +1516,7 @@ ggplot(insurance)+
 
 3. In `facet_grid()`, you don't always need to provide both `rows` and `columns` variables. If only one is specified, the produced plot will look like the one from `facet_wrap()` but you cannot wrap the panels into 2 rows.
 
-
-**Example**
+### Example
 
 <!-- start panel-tabset: Example -->
 :::{.panel-tabset}
@@ -1499,6 +1524,8 @@ ggplot(insurance)+
 ### One Faceting Variables
 
 ```{webr-r}
+#| autorun: false
+
 # Prepare the base histogram plot
 base <- ggplot(insurance)+
   geom_histogram(aes(x = charges), fill = "blue", alpha = 0.5)
@@ -1520,6 +1547,7 @@ base +
 ### Two Faceting Variables
 
 ```{r}
+#| autorun: false
 # Prepare the base histogram plot
 base <- ggplot(insurance)+
   geom_histogram(aes(x = charges), fill = "blue", alpha = 0.5)
@@ -1535,11 +1563,13 @@ base +
 <!-- end panel-tabset: Example -->
 :::
 
-<!-- end panel-tabset: Facet Plot -->
+<!-- end panel:facet vs grid  --> 
 :::
 
 
-## Multiple Datasets in One Figure (Optional)
+
+
+## Multiple Datasets in One Figure {#multiple-datasets-in-one-figure}
 
 <!-- start panel-tabset: multiple datasets in one figure (optional) -->
 ::: {.panel-tabset}
@@ -1584,7 +1614,7 @@ ggplot() +
 :::
 
 
-## ggplot2 Themes (Optional)
+## ggplot2 Themes (Optional) {#themes}
 
 [You can change the theme of the plot.]{style="color: blue;"}
 
@@ -1606,7 +1636,7 @@ ggplot(data = insurance) +
 ```
 
 
-## theme() Function (Optional)
+## theme() Function (Optional) {#theme-function}
 
 `theme()` function let you tweak the details of all non-data related components of a plot (e.g., font type in the plot, position of the legend and title, etc.). There are so many components you can modify with the `theme()` function. See [this](https://ggplot2.tidyverse.org/reference/theme.html) for full list of options.
 
@@ -1630,6 +1660,57 @@ ggplot(data = insurance) +
   )
 ```
 
+## Save the Plot {#save-the-plot}
+
+<!-- start panel:save the plot   --> 
+:::{.panel-tabset} 
+### Basics
+
+::: {.callout-tip}
+## Two options
++ Use the `ggsave()` function from the `ggplot2` package. 
++ Use the "Export" button in the RStudio plot viewer.
+:::
+
+<br>
+
+**Syntax:**
+
+```r
+ggsave(filename, plot = plot_object)
+```
++ `filename`: the name of the file (including path) to save the plot to. (e.g., filename = "Data/plot.png")
++ `plot`: the plot object to save.
+ 
+### Example
+
+Run the following code on your RStudio. Make sure you are opening the RProject.
+
+
+```{r}
+#| eval: false
+library(ggplot2)
+library(rio)
+
+insurance_url <- "https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv"
+insurance <- import(insurance_url)
+
+ggplot(data = insurance) +
+  geom_boxplot(aes(x = sex, y = charges, fill = region)) +
+  labs(
+    x = "Sex",
+    y = "Medical costs",
+    title = "Distribution of individual medical mosts by sex and region"
+  )
+
+# --- Sve plot --- #
+ggsave(filename = "Data/insurance.png")
+ggsave(filename = "Data/insurance.pdf")
+ggsave(filename = "Data/insurance2.png", plot = plot_insurance)
+```
+<!-- end panel:save the plot  --> 
+:::
+
 
 ## Summary 2 {.center}
 
@@ -1640,12 +1721,13 @@ Now, you know;
 + how to create facet plots with `facet_wrap()` and `facet_grid()`.
 + when to use `facet_wrap()` and `facet_grid()`.
 + how to visualize multiple datasets in a single plot.
++ how to save the plot.
 
 
 That's it!
 
 
-## Exercise Problems {.scrollable}
+## Exercise Problems {#exercise-problems3}
 
 <!-- start panel-tabset: Exercise problem  -->
 :::{.panel-tabset}
@@ -1660,7 +1742,7 @@ For this exercise problem, you will use the `gapminder` data from the `gapminder
 
 ```{webr-r}
 #| autorun: false
-#| cashe: false
+#| cache: false
 # install the gapminder package if you haven't done so.
 # install.packages("gapminder")
 
@@ -1777,7 +1859,7 @@ For this exercise problem, we will use `economics` dataset from the ggplot2 pack
 # === Loading data === #
 economics <- as.data.table(ggplot2::economics)
 # take a look at the data
-glimpse(economics)
+economics
 ```
 
 ### Instruction
@@ -1824,7 +1906,6 @@ ggplot(data = economics_long) +
 :::{.panel-tabset}
 ### Instruction
 
-
 For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder. I obtained this from [USDA-NASS Quick Stats database](https://quickstats.nass.usda.gov/). The data contains the **county-level** corn yield data (in BU / ACRE) for each major corn production state in the US Midwest from 2000 to 2022. 
 
 <br>
@@ -1847,8 +1928,6 @@ For this exercise problem, you will use "corn_yield_dt.rds" in the "Data" folder
 
 
 ### Solutions
-
-This code does not work on this slide. Copy and paste the code to the your R console.
 
 ```{webr-r}
 # === Part 1 === #
