@@ -1,5 +1,5 @@
 ---
-title: "Day4: Regression Analysis and Report the Results"
+title: "Day4: Regression Analysis and Reporting Results"
 subtitle: "Department of Applied Economics, University of Minnesota"
 author: "Shunkei Kakimoto"
 format: 
@@ -51,7 +51,7 @@ Once you have a good understanding of the data, you can move on to the next step
 
 ### Learning Objectives
 
-Today's goal is to 
+Today's goal is to:
 
 + create a descriptive summary table for the data.
 + use `lm` function to estimate a regression model and report the results with publication-ready summary tables.
@@ -68,16 +68,16 @@ Today's goal is to
 
 ## Notes
 
-+ Today's lecture is an introduction to the basic regression analysis with R.
++ Today's lecture is an introduction to basic regression analysis with R.
 
-+ The more advanced R functions such as `feols()` function from `fixest` package and `glm()` function for generalized linear models will be covered in the the Econometric class (APEC 8211-8214).
++ The more advanced R functions such as `feols()` function from `fixest` package and `glm()` function for generalized linear models will be covered in the Econometric class (APEC 8211-8214).
   + But the basic syntax are the same. So, you can easily apply the knowledge you learn today to the more advanced functions.
 
 <br>
 
 ::: {.callout-note}
 + Personally, I always use `feols()` function from `fixest` package whenever I run a regression model in R. 
-+ But I supposed to teach the basic first, so I will use the built-in `lm()` function today.
++ But I will teach the basics first, so I will use the built-in `lm()` function today.
 :::
 
 
@@ -91,10 +91,10 @@ Total time: 150 minutes
    1. descriptive statistics
    2. regression results
 3. for loop
-4. Monte Carlo simulation
+4. Monte Carlo simulations
 
 
-# Introduction to the Regression analysis with R
+# Introduction to Regression analysis with R
 
 ---
 
@@ -110,9 +110,9 @@ library(ggplot2)
 ```
 
 
-## Before we start
+## Before We Start
 
-We use the `CPS1988` dataset from `AER` package. It's a cross-section data originating from the March 1988 Current Population Survey by the US Census Bureau. For further information, see `?CPS1988` after loading the package.
+We will use the `CPS1988` dataset from the `AER` package. It's a cross-section dataset originating from the March 1988 Current Population Survey by the US Census Bureau. For further information, see `?CPS1988` after loading the package.
 
 Run the following code: 
 ```{webr-r}
@@ -120,10 +120,10 @@ Run the following code:
 library(AER)
 data(CPS1988)
 
-# I prefer to conver the data to data.table. 
+# I prefer to convert the data to data.table. 
 setDT(CPS1988)
 
-# For practice, I convert the some factor variables into character variables.
+# For practice, I converted some factor variables into character variables.
 CPS1988[,`:=`(
   ethnicity = as.character(ethnicity),
   region = as.character(region),
@@ -152,7 +152,7 @@ CPS1988[,`:=`(
 ```
 
 
-## Introduction to regression analysis with R
+## Introduction to Regression Analysis with R
 
 <!-- start: Introduction to lm() function -->
 :::{.panel-tabset}
@@ -197,7 +197,7 @@ $$wage = \beta_0 + \beta_1 education + \beta_2 experience + e$$
 <br>
 
 ```{webr-r}
-# Your turn. What is the code? What the output looks like? Can you find any other information other than the estimated coefficients?
+# Your turn. What is the code? What does the output look like? Can you find any other information other than the estimated coefficients?
 
 reg <- # write your code here
 ```
@@ -220,7 +220,7 @@ reg_summary <- summary(reg)
 
 ### Extracting Information
 
-The results from `lm()` and `summary()` contains a lot of information (In your Rstudio, you can check them on the Environment pane). 
+The results from `lm()` and `summary()` contain a lot of information (In your Rstudio, you can check them on the Environment pane). 
 
 ```{webr-r}
 # See the objects stored in the results of lm() function. 
@@ -258,7 +258,7 @@ tbl_coef_estimates <- reg_summary$coefficients
 
 ### Your Turn
 
-Let's get the value of standard error of the coefficient estimate of `education`.
+Let's get the value of the standard error of the coefficient estimate of `education`.
 
 
 ```{webr-r}
@@ -274,7 +274,7 @@ Let's get the value of standard error of the coefficient estimate of `education`
 
 ### Basics
 
-+ To include interaction terms and quadratic term in the formula in `lm()` function, use the `I()` function.
++ To include interaction terms and quadratic terms in the formula in `lm()` function, use the `I()` function.
 + For log transformation, use the `log()` function in the formula. 
 + Or you define a new variable with the transformed variable and include it in the formula.
 
@@ -302,7 +302,7 @@ What if we want to include a categorical variable (e.g., `region`, `parttime`, `
 
 `lm()` function is smart enough to convert the categorical variable into dummy variables without any additional coding.
 
-+ Even the variable you want to use as dummy variables are character type, `lm()` function automatically coerced it into a factor variable. 
++ Even the variables you want to use as dummy variables are character type, `lm()` function automatically coerced it into a factor variable. 
 
 <!-- start callout -->
 ::: {.callout-note}
@@ -313,7 +313,7 @@ What if we want to include a categorical variable (e.g., `region`, `parttime`, `
 
 ### Two categories
 
-What if we want to include dummy variable that takes 1 if `parttime` is yes, otherwise 0?
+What if we want to include a dummy variable that takes 1 if `parttime` is yes, otherwise 0?
 
 The model is as follows:
 $$
@@ -329,7 +329,7 @@ lm(log(wage) ~ education + experience + I(experience^2) + parttime, data = CPS19
 
 ### More than two categories
 
-What if we want to include dummy variables for each `region`
+What if we want to include dummy variables for each `region`?
 
 ```{webr-r}
 # 
@@ -345,7 +345,7 @@ cps_region <- lm(log(wage) ~ ethnicity + education + experience + I(experience^2
 <!-- end callout -->
 :::
 
-### Set the base group
+### Set the Base Group
 
 By default, R picks the first group in the alphabetical order for the base group.
 
@@ -421,12 +421,12 @@ ggplot(new_data) +
 ```
 
 
-## Key points {.center}
+## Key Points {.center}
 
-Here are the kye points you should know at least.
+You should at least know these key points:
 
 + the basic usage of `lm()` and `summary()` function.
-+ how to retrieve the information stored in the outputs of `lm()` and `summary()` function. 
++ how to retrieve the information stored in the outputs of `lm()` and `summary()` functions. 
 + how to include log-transformed variable, interaction terms and quadratic terms in the formula of `lm()` function.
 + how to include categorical variables in the formula of `lm()` function, and how to set the base group.
 + how to do prediction with the estimated model on a new dataset.
@@ -434,24 +434,24 @@ Here are the kye points you should know at least.
 That's it!
 
 
-# Create Publication-ready Summary Tables
+# Create Publication-Ready Summary Tables
 
 ## Before Starting {.center}
 
 + After running some regression models, ultimately you want to report the results in a neat table.
 
-+ Usually, we report the regression results in a formatted document like the Rmarkdown or Quarto document (html or PDF format).
++ Usually, we report the regression results in a formatted document like the Rmarkdown or Quarto document (html or PDF).
 
 + So, let's practice how to create a summary table for your analysis results in the Quarto document!
 
-+ Downland and open the document file "practice_modelsummary_html.qmd" under the "Lecture 5" folder. 
++ From the course website, on the Day 4 page under "Lecture Slides" download and open the document file ["practice_modelsummary_html.qmd"](https://shunkei3.github.io/R-2024-Summer/contents/day4.html). 
 
 
-## Report summary statistics with `modelsummary` package 
+## Report Summary Statistics with `modelsummary` Package 
 
 :::{.panel-tabset}
 ### Intro
-[`modelsummary` package](https://modelsummary.com/) let you create a nice summary table to report the descriptive statistics of the data and the regression results.
+[`modelsummary` package](https://modelsummary.com/) lets you create a nice summary table to report the descriptive statistics of the data and the regression results.
 
 We focus on two functions in the `modelsummary` package:
 
@@ -471,7 +471,7 @@ Check the [documentation](https://modelsummary.com/) for more details.
 <br>
 
 ::: {.callout-note}
-+ There is another package called `stargazer` that can create a summary table, but it is not maintained anymore. So, I recommend to use `modelsummary` package.
++ There is another package called `stargazer` that can create a summary table, but it is not maintained anymore. So, I recommend using `modelsummary` package.
 + `modelsummary` package is compatible with 
 :::
 
@@ -599,12 +599,12 @@ modelsummary(models=list(reg1, reg2), output = "gt")
 
 :::{.panel-tabset}
 
-### List of options
+### List of Options
 
-The default table is okay. But you can customize the appearance of the table. Here, I listed the least options you might want to know (There are lots of other options!).
+The default table is okay. But you can customize the appearance of the table. Here, I listed the bare minimum of options you might want to know (There are lots of other options!).
 
-+ `models`: you can change the name of the models.
-+ `coef_map`: to reorder coefficient rows and change their labels.
++ `models`: you can change the name of the models
++ `coef_map`: to reorder coefficient rows and change their labels
 + `stars`: to change the significance stars
 + `vcov`: to replace the standard errors with the robust ones (we will see this later)
 + `gof_map`: to define which model statistics to display
@@ -658,7 +658,7 @@ modelsummary(
 
 ### coef_map
 
-`coef_map` argument let you subset, rename, and reorder coefficients. In the argument, you specify a named or unnamed character vector. If named vector is supplied, its values are used as the new names of the variable. 
+`coef_map` argument lets you subset, rename, and reorder coefficients. In the argument, you specify a named or unnamed character vector. If named vector is supplied, its values are used as the new names of the variable. 
 
 
 **Example**
@@ -913,7 +913,7 @@ modelsummary(
 
 ### gof_map and gof_omit
 
-By default, the `modelsummary()` function reports lots of model statistics (e.g., $R^2$, $AIC$, $BIC$). You can select or omit the model statistics with specifying the `gof_map` and `gof_omit` arguments.
+By default, the `modelsummary()` function reports lots of model statistics (e.g., $R^2$, $AIC$, $BIC$). You can select or omit the model statistics by specifying the `gof_map` and `gof_omit` arguments.
 
 + You can see the list of model statistics in `modelsummary()` by running `modelsummary::gof_map`
 <br>
@@ -959,8 +959,8 @@ modelsummary(
 
 ### others
 
-+ `notes` let you add notes at the bottom of the table.
-+ `fmt` let you change the format of numbers in the table.
++ `notes` lets you add notes at the bottom of the table.
++ `fmt` lets you change the format of numbers in the table.
 
 **Example**
 
@@ -1005,12 +1005,12 @@ modelsummary(
 
 :::
 
-# Report Summary Statistics with `datasummary()` function
+# Report Summary Statistics with `datasummary()` Function
 
 
-## datasummary() function
+## datasummary() Function
 
-`modelsummary` package has another function called `datasummary()` to create a summary table for the descriptive statistics of the data.
+`modelsummary` package has another function called `datasummary()`  that can create a summary table for the descriptive statistics of the data.
 
 <br>
 
@@ -1068,7 +1068,7 @@ datasummary(
 <br>
 
 ::: {.callout-note}
-+ Just like `lm`, `formula` takes a two-sides formula devided by `~`.
++ Just like `lm`, `formula` takes a two-side formula devided by `~`.
 + The left-hand (right-hand) side of the formula describes the rows (columns).
 :::
 
@@ -1153,23 +1153,23 @@ datasummary(
 ::: {.callout-tip}
 ## Play with the `datasummary()` function:
 
-+ Exchange the rows and columns in the formula and see how the table looks like.
++ Exchange the rows and columns in the formula and see how the table looks.
 
-+ Add other statistics or variables to the formula and see how the table looks like.
++ Add other statistics or variables to the formula and see how the table looks.
 :::
 
 <!-- end panel: datasummary() -->
 :::
 
 
-## datasummary() function: Further tuning
+## datasummary() Function: Further Tuning
 
 <!-- start panel -->
 :::{.panel-tabset}
 
 ### Nesting with `*` operator
 
-`datasummary` can nest variables and statistics inside categorical variables using the `*` symbol. For example, you can display separate mean and SD for each value of `ethnicity`.
+`datasummary` can nest variables and statistics inside categorical variables using the `*` symbol. For example, you can display separate means and SD's for each value of `ethnicity`.
 
 
 <br>
@@ -1218,7 +1218,7 @@ datasummary(
 
 
 
-### Multiple nests
+### Multiple Nests
 
 You can nest variables and statistics inside multiple categorical variables using the `*` symbol.
 
@@ -1251,7 +1251,7 @@ datasummary(
 
 
 
-### Renaming the variables with `=`
+### Renaming the Variables with `=`
 <!-- start panel:renaming -->
 
 By default, variable and statistics names are used as the labels in the table. You can rename the default labels with the following syntax: `(label = variable/statistic)`.
@@ -1299,7 +1299,7 @@ datasummary(
 ```
 
 ::: {.callout-caution}
-+ In R, ``` `` ``` is used to define a variable name with spaces or special characters such as parentheses symbol `()`.
++ In R, ``` `` ``` is used to define a variable name with spaces or special characters such as the parentheses symbol `()`.
 :::
 
 
@@ -1339,7 +1339,7 @@ datasummary(
 
 <br>
 
-**Table 2: Rename some labels of Table 1**
+**Table 2: Rename some labels in Table 1**
 
 ```{r}
 #| echo: false
@@ -1350,21 +1350,20 @@ datasummary(
   output = "gt"
   )
 ```
-
 <!-- end panel -->
 :::
+:::
+
+# Appendix: Other Functions of the `modelsummary` Package
 
 
-# Appendix: Other functions of the `modelsummary` package
-
----
 
 ## datasummary_skim
 
 :::{.panel-tabset}
 ### Basics
 
-`datasummary_skim()` with `type = categorical` option might be helpfult to  quickly generate a summary table for categorical variables:
+`datasummary_skim()` with the `type = categorical` option might be helpful to  quickly generate a summary table for categorical variables:
 
 <br>
 
@@ -1467,5 +1466,6 @@ datasummary_correlation(data = CPS1988, output = "gt")
 :::
 
 
-# Exercise problems
+# Exercise Problems {.center}
 
+You can find [today's exercise problems](https://shunkei3.github.io/R-2024-Summer/contents/day4.html) for Day 4 on the course website.
