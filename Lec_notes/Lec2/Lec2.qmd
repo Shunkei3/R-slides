@@ -1519,9 +1519,7 @@ Journals[, .(
 Journals[order(-citations),] %>%
   .[, .(title, citations, price, subs)] %>%
   .[1:5]
-  
 
-\)
 # === Part 3 === #
 Journals[, age := 2000 - foundingyear] %>%
   .[, .(price, subs, citations, pages, age)] %>%

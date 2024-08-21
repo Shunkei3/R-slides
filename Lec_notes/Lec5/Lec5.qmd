@@ -185,6 +185,17 @@ acre_to_ha(x = 1)
 <!-- end panel:Functions  --> 
 :::
 
+## Load Functions from a File 
+
+If you have multiple functions or a long function, you might want to save the function in a separate file and load it when you need it.
+
+For example: 
+
+1. Save the function code file in a `.R` file (`.Rmd`, etc.).
+2. Load the function using the `source()` function.
+
+
+Let's practice this on your Rstudio!
 
 
 ## Exercise {#fn-ex}
