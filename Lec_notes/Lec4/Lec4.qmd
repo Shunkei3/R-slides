@@ -35,7 +35,7 @@ filters:
   - webr
 ---
 
-## Recap
+## Recap {.center}
 
 So far, we have learned...
 
@@ -62,39 +62,37 @@ Today's goal is to:
 :::{.fragment .center}
 ### Reference {.center}
 + `modelsummary` package [See [here](https://modelsummary.com/) for the package documentation]
-+ `stargazer` package [See [here](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf) for the package documentation]
 :::
 
 
-## Notes
+## Notes {.center}
 
 + Today's lecture is an introduction to basic regression analysis with R.
 
-+ The more advanced R functions such as `feols()` function from `fixest` package and `glm()` function for generalized linear models will be covered in the Econometric class (APEC 8211-8214).
++ The more advanced R functions such as `feols()` function from `fixest` package for fixed effects models and `glm()` function for generalized linear models will be covered in the Econometric class (APEC 8211-8214).
   + But the basic syntax are the same. So, you can easily apply the knowledge you learn today to the more advanced functions.
 
 <br>
 
-::: {.callout-note}
+<!-- ::: {.callout-note}
 + Personally, I always use `feols()` function from `fixest` package whenever I run a regression model in R. 
 + But I will teach the basics first, so I will use the built-in `lm()` function today.
-:::
+::: -->
 
 
 
 ## Today's outline: {.center}
 
-Total time: 150 minutes
+1. [Introduction to Regression analysis with R](#introduction-to-regression-analysis-with-r)
+2. [Create a summary table](#create-summary-tables)
+   1. [Introduction to `modelsummary` package](#modelsummary-package-introduction)
+   2. [`modelsummary()` function to report regression results](#modelsummary-function-introduction)
+   3. [`modelsummary()` function: Customization](#modelsummary-function-customization)
+   4. [`datasummary()` function to report descriptive statistics](#datasummary-function-introduction)
+   
 
-1. Regression analysis
-2. Create a summary table
-   1. descriptive statistics
-   2. regression results
-3. for loop
-4. Monte Carlo simulations
 
-
-# Introduction to Regression analysis with R
+# Introduction to Regression analysis with R {#introduction-to-regression-analysis-with-r}
 
 ---
 
@@ -304,10 +302,9 @@ What if we want to include a categorical variable (e.g., `region`, `parttime`, `
 
 + Even the variables you want to use as dummy variables are character type, `lm()` function automatically coerced it into a factor variable. 
 
-<!-- start callout -->
-::: {.callout-note}
 
-## Example 
+
+### Examples
 <!-- start panel: example -->
 :::{.panel-tabset}
 
@@ -327,7 +324,7 @@ lm(log(wage) ~ education + experience + I(experience^2) + parttime, data = CPS19
 ```
 
 
-### More than two categories
+### More than Two Categories
 
 What if we want to include dummy variables for each `region`?
 
@@ -342,8 +339,6 @@ cps_region <- lm(log(wage) ~ ethnicity + education + experience + I(experience^2
 <!-- end panel: example -->
 :::
 
-<!-- end callout -->
-:::
 
 ### Set the Base Group
 
@@ -404,7 +399,7 @@ predict(lm_object, newdata = new_dataset)
 
 **Example**
 
-```{werb-r}
+```{webr-r}
 reg <- lm(log(wage) ~ experience + I(experience^2), data = CPS1988)
 
 new_data <- 
@@ -434,7 +429,7 @@ You should at least know these key points:
 That's it!
 
 
-# Create Publication-Ready Summary Tables
+# Create Publication-Ready Summary Tables {#create-summary-tables}
 
 ## Before Starting {.center}
 
@@ -447,7 +442,7 @@ That's it!
 + From the course website, on the Day 4 page under "Lecture Slides" download and open the document file ["practice_modelsummary_html.qmd"](https://shunkei3.github.io/R-2024-Summer/contents/day4.html). 
 
 
-## Report Summary Statistics with `modelsummary` Package 
+## Introduction to `modelsummary` package {#modelsummary-package-introduction}
 
 :::{.panel-tabset}
 ### Intro
@@ -549,7 +544,7 @@ modelsummary(
 :::
 
 
-## `modelsummary()` function: Introduction
+## modelsummary() function to report regression results {#modelsummary-function-introduction}
 <!-- start panel: `modelsummary()` function -->
 :::{.panel-tabset}
 
@@ -595,7 +590,7 @@ modelsummary(models=list(reg1, reg2), output = "gt")
 :::
 
 
-## `modelsummary()` function: Customization
+## modelsummary() function: Customization {#modelsummary-function-customization}
 
 :::{.panel-tabset}
 
@@ -1005,10 +1000,8 @@ modelsummary(
 
 :::
 
-# Report Summary Statistics with `datasummary()` Function
 
-
-## datasummary() Function
+## datasummary() function to report descriptive statistics  {#datasummary-function-introduction}
 
 `modelsummary` package has another function called `datasummary()`  that can create a summary table for the descriptive statistics of the data.
 
@@ -1151,7 +1144,7 @@ datasummary(
 
 
 ::: {.callout-tip}
-## Play with the `datasummary()` function:
+## Play with the datasummary() function:
 
 + Exchange the rows and columns in the formula and see how the table looks.
 
@@ -1354,7 +1347,7 @@ datasummary(
 :::
 :::
 
-# Appendix: Other Functions of the `modelsummary` Package
+# Appendix: Other Functions of the modelsummary Package
 
 
 
