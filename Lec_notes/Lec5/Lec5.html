@@ -679,7 +679,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"# --- Define a function --- #\nsum_of_two_numbers <- function(x, y){\n  x + y\n}\n\n# --- Use the function --- #\nsum_of_two_numbers(x = 3, y = 4)","id":1,"options":{"label":"unnamed-chunk-1","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Define a function --- #\nmean_sd <- function(vec_x){\n  c(mean = mean(vec_x), sd = sd(vec_x))\n}\n\n# --- Use the function --- #\nvec_test <- c(3, 5, 7, 8)\nmean_sd(vec_x = vec_test)","id":2,"options":{"label":"unnamed-chunk-2","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Function to convert a Acre of Hectare --- #\nacre_to_ha <- function(x = 1){\n  x * 0.404686\n}\n\n# --- Use the function --- #\nacre_to_ha() # because x = 1 by default\n\nacre_to_ha(x = 1)","id":3,"options":{"label":"unnamed-chunk-3","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"","id":4,"options":{"label":"unnamed-chunk-4","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"for (i in 1:5){\n  print(i)\n}","id":5,"options":{"label":"unnamed-chunk-5","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"for (x in list(\"I\", \"like\", \"cats\")){\n  print(x)\n}","id":6,"options":{"label":"unnamed-chunk-6","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  print(mean(seq_num))\n}","id":7,"options":{"label":"unnamed-chunk-7","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"for (i in 1:10){\n  # write your code here\n\n}","id":8,"options":{"label":"unnamed-chunk-8","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# Outer loop\nfor (i in 1:3) {\n  # Inner loop\n  for (j in 1:2) {\n    print(paste(\"i =\", i, \"j =\", j))\n  }\n}","id":9,"options":{"label":"unnamed-chunk-9","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# Here, is the empty 3 x 3 matrix.  \nempty_matrix <- matrix(NA, nrow = 3, ncol = 3)","id":10,"options":{"label":"unnamed-chunk-10","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  # save the results in x\n  x <- mean(seq_num)\n}\n\n# What is the value of x?\nx","id":11,"options":{"label":"unnamed-chunk-11","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nx <- for (seq_num in ls_seq_num){\n  # save the results in x\n  mean(seq_num)\n}\n\n# What is the value of x?\nx","id":12,"options":{"label":"unnamed-chunk-12","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Create an empty vector --- #\noutput_storage <-rep(0, 5)\n\n# --- for loop --- #\nfor (i in 1:5){\n  output_storage[i] <- i^3\n}\n\noutput_storage","id":13,"options":{"label":"unnamed-chunk-13","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Number of iterations --- #\nB = 10\n\n# --- Create an empty data.table (or data.frame for matrix) --- #\noutput_storage <- data.table(mean = rep(0, B), sd = rep(0, B))\n\n# --- for loop --- #\nfor(i in 1:B){\n  # --- Generate random numbers --- #\n  random_numbers <- rnorm(100)\n  \n  # --- Calculate the mean and the standard deviation --- #\n  output_storage[i, mean := mean(random_numbers)]\n  output_storage[i, sd := sd(random_numbers)]\n}","id":14,"options":{"label":"unnamed-chunk-14","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# You can write your code here","id":15,"options":{"label":"unnamed-chunk-15","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"","id":16,"options":{"label":"unnamed-chunk-16","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating Process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\n\n# === Step 2.1: Generate Data  === #\n# Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\nseq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n# === Step 2.2: Get an Outcome You are Interested in === #\n# count the number of heads\nsum(seq_x)","id":17,"options":{"label":"unnamed-chunk-17","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\nB <- 1000 # the number of iterations\n\n# Don't forget to create an empty object to save the output!\nX <- rep(0, B)\n\n# === Step 2: Iteration === #\nfor (i in 1:B){\n  # --- Step 2.1: Generate Data --- #\n  # Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\n  seq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n  # --- Step 2.2: Get an Outcome You are Interested in --- #\n  # count the number of heads and save the result\n  X[i] <- sum(seq_x)\n}\n\n# === Step 3 === #\n# Compute the mean of X\nmean(X)\n\n# Compute the variance of X\nvar(X)","id":18,"options":{"label":"unnamed-chunk-18","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"set.seed(1843)\n\n# --- Parameters --- #\nmu <- 5\nsd <- 10\n\nB <- 1000\n\n# --- Create an empty object to save the output --- #\nsample_mean_100 <- rep(0, B)\nsample_mean_1000 <- rep(0, B)\n\n# --- for loop --- #\nfor (i in 1:B){\n  # --- Generate random numbers --- #\n  sample_100 <- rnorm(n = 100, mean = mu, sd = sd)\n  sample_1000 <- rnorm(n = 1000, mean = mu, sd = sd)\n  \n  # --- Compute sample mean --- #\n  sample_mean_100[i] <- mean(sample_100)\n  sample_mean_1000[i] <- mean(sample_1000)\n}\n\n\n# --- Plot --- #\nggplot() +\n  geom_histogram(\n    aes(x = sample_mean_100, fill = \"Sample size: 100\"),\n     alpha = 0.7\n  ) +\n  geom_histogram(\n    aes(x = sample_mean_1000, fill = \"Sample size: 1000\"),\n    alpha = 0.7\n  ) +\n  geom_vline(\n    xintercept = mu,\n    linetype = \"dashed\",\n  ) +\n  theme_bw()","id":19,"options":{"label":"unnamed-chunk-19","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"","id":20,"options":{"label":"unnamed-chunk-20","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Load the package --- #\nlibrary(foreach)\n\nresults <- foreach(i = 1:10) %do% {\n  i_square <- i^2\n  return(i_square)\n}\n\n# see the output\nresults","id":21,"options":{"label":"unnamed-chunk-21","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Create an empty object  --- #\nresults <- rep(0, 10)\n\n# --- for loop --- #\nfor (i in 1:10){\n  results[i] <- i^2\n}\n\n# see the output\nresults","id":22,"options":{"label":"unnamed-chunk-22","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}},{"code":"# --- Load the package --- #\nlibrary(foreach)\n\nresults <- foreach(i = 1:10, .combine = c) %do% {\n  i_square <- i^2\n  return(i_square)\n}\n\n# see the output\nresults","id":23,"options":{"label":"unnamed-chunk-23","fig-cap":"","warning":"true","editor-quick-suggestions":"false","read-only":"false","classes":"","editor-max-height":"","autorun":"false","message":"true","context":"interactive","comment":"","fig-width":7,"results":"markup","out-width":"700px","editor-word-wrap":"true","out-height":"","dpi":72,"output":"true","fig-height":5,"editor-font-scale":"0.8"}}];
+  globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-1","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Define a function --- #\nsum_of_two_numbers <- function(x, y){\n  x + y\n}\n\n# --- Use the function --- #\nsum_of_two_numbers(x = 3, y = 4)","id":1},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-2","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Define a function --- #\nmean_sd <- function(vec_x){\n  c(mean = mean(vec_x), sd = sd(vec_x))\n}\n\n# --- Use the function --- #\nvec_test <- c(3, 5, 7, 8)\nmean_sd(vec_x = vec_test)","id":2},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-3","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Function to convert a Acre of Hectare --- #\nacre_to_ha <- function(x = 1){\n  x * 0.404686\n}\n\n# --- Use the function --- #\nacre_to_ha() # because x = 1 by default\n\nacre_to_ha(x = 1)","id":3},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-4","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# You can write your code here.","id":4},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-5","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# You can write your code here.","id":5},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-6","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"for (i in 1:5){\n  print(i)\n}","id":6},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-7","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"for (x in list(\"I\", \"like\", \"cats\")){\n  print(x)\n}","id":7},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-8","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  print(mean(seq_num))\n}","id":8},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-9","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"for (i in 1:10){\n  # write your code here\n\n}","id":9},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-10","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# Outer loop\nfor (i in 1:3) {\n  # Inner loop\n  for (j in 1:2) {\n    print(paste(\"i =\", i, \"j =\", j))\n  }\n}","id":10},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-11","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# Here, is the empty 3 x 3 matrix.  \nempty_matrix <- matrix(NA, nrow = 3, ncol = 3)","id":11},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-12","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nfor (seq_num in ls_seq_num){\n  # save the results in x\n  x <- mean(seq_num)\n}\n\n# What is the value of x?\nx","id":12},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-13","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"ls_seq_num <- list(1:3, 4:6, 7:9)\n\nx <- for (seq_num in ls_seq_num){\n  # save the results in x\n  mean(seq_num)\n}\n\n# What is the value of x?\nx","id":13},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-14","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Create an empty vector --- #\noutput_storage <-rep(0, 5)\n\n# --- for loop --- #\nfor (i in 1:5){\n  output_storage[i] <- i^3\n}\n\noutput_storage","id":14},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-15","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Number of iterations --- #\nB = 10\n\n# --- Create an empty data.table (or data.frame for matrix) --- #\noutput_storage <- data.table(mean = rep(0, B), sd = rep(0, B))\n\n# --- for loop --- #\nfor(i in 1:B){\n  # --- Generate random numbers --- #\n  random_numbers <- rnorm(100)\n  \n  # --- Calculate the mean and the standard deviation --- #\n  output_storage[i, mean := mean(random_numbers)]\n  output_storage[i, sd := sd(random_numbers)]\n}","id":15},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-16","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# You can write your code here","id":16},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-17","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# You can write your code here.","id":17},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-18","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating Process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\n\n# === Step 2.1: Generate Data  === #\n# Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\nseq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n# === Step 2.2: Get an Outcome You are Interested in === #\n# count the number of heads\nsum(seq_x)","id":18},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-19","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# For the reproducibility purpose, set the seed. \nset.seed(1843)\n\n# === Step 1: Specify the Data Generating process === #\n# parameters\np <- 1/3 # the probability of getting a head\nn <- 10 # the number of trials\nB <- 1000 # the number of iterations\n\n# Don't forget to create an empty object to save the output!\nX <- rep(0, B)\n\n# === Step 2: Iteration === #\nfor (i in 1:B){\n  # --- Step 2.1: Generate Data --- #\n  # Here I randomly picked 1 or 0 for n = 10 times, with the probability of p = 1/3 for 1.\n  seq_x <- sample(c(1,0), size=n, prob=c(p, 1-p), replace=TRUE)\n\n  # --- Step 2.2: Get an Outcome You are Interested in --- #\n  # count the number of heads and save the result\n  X[i] <- sum(seq_x)\n}\n\n# === Step 3 === #\n# Compute the mean of X\nmean(X)\n\n# Compute the variance of X\nvar(X)","id":19},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-20","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"set.seed(1843)\n\n# --- Parameters --- #\nmu <- 5\nsd <- 10\n\nB <- 1000\n\n# --- Create an empty object to save the output --- #\nsample_mean_100 <- rep(0, B)\nsample_mean_1000 <- rep(0, B)\n\n# --- for loop --- #\nfor (i in 1:B){\n  # --- Generate random numbers --- #\n  sample_100 <- rnorm(n = 100, mean = mu, sd = sd)\n  sample_1000 <- rnorm(n = 1000, mean = mu, sd = sd)\n  \n  # --- Compute sample mean --- #\n  sample_mean_100[i] <- mean(sample_100)\n  sample_mean_1000[i] <- mean(sample_1000)\n}\n\n\n# --- Plot --- #\nggplot() +\n  geom_histogram(\n    aes(x = sample_mean_100, fill = \"Sample size: 100\"),\n     alpha = 0.7\n  ) +\n  geom_histogram(\n    aes(x = sample_mean_1000, fill = \"Sample size: 1000\"),\n    alpha = 0.7\n  ) +\n  geom_vline(\n    xintercept = mu,\n    linetype = \"dashed\",\n  ) +\n  theme_bw()","id":20},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-21","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"","id":21},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-22","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Parameter setting --- #\nB = 1000\nn = 1000\nmu = 170 #(cm)\n\n# --- Prepare a storage object --- #\nres_data <- \n  data.table(\n    x_bar = rep(0, B),\n    x_single = rep(0, B)\n    )\n\n# --- Monte Carlo simulation --- #\nfor(i in 1:B){\n  \n  # --- Create sample data --- #\n  data <- rchisq(n, df=mu)\n  \n  # --- Compute the sample mean --- #\n  x_bar <- mean(data)\n  # --- Get the 1st value --- #\n  x_single <- data[1]\n\n  # --- store the results --- #\n  res_data[i, \"x_bar\"] <- x_bar\n  res_data[i, \"x_single\"] <- x_single\n}\n\n# === Visualization === #\n# Just for convenience, transform the data to long-format  (you don't need to do this though)\nvis_sampling <- \n  ggplot(res_data) +\n    geom_histogram(aes(x=x_bar, fill=\"x_bar\"), alpha = 0.5)+\n    geom_histogram(aes(x=x_single, fill=\"x_single\",), alpha = 0.5)+\n    labs(title=\"Sample size 1000\")+\n    theme_bw() +\n    # modify x-label and legend name\n    labs(x = expression (~hat(beta)), fill = \"Estimator\")","id":22},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-23","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Load the package --- #\nlibrary(foreach)\n\nresults <- foreach(i = 1:10) %do% {\n  i_square <- i^2\n  return(i_square)\n}\n\n# see the output\nresults","id":23},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-24","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Create an empty object  --- #\nresults <- rep(0, 10)\n\n# --- for loop --- #\nfor (i in 1:10){\n  results[i] <- i^2\n}\n\n# see the output\nresults","id":24},{"options":{"fig-width":7,"classes":"","context":"interactive","autorun":"false","warning":"true","message":"true","editor-word-wrap":"true","editor-max-height":"","editor-quick-suggestions":"false","fig-height":5,"label":"unnamed-chunk-25","dpi":72,"results":"markup","output":"true","read-only":"false","out-width":"700px","fig-cap":"","editor-font-scale":"0.8","comment":"","out-height":""},"code":"# --- Load the package --- #\nlibrary(foreach)\n\nresults <- foreach(i = 1:10, .combine = c) %do% {\n  i_square <- i^2\n  return(i_square)\n}\n\n# see the output\nresults","id":25}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2303,7 +2303,7 @@ Shunkei Kakimoto
 </div>
 </div>
 </div>
-</section><section id="load-functions-from-a-file" class="slide level2 scrollable"><h2>Load Functions from a File</h2>
+</section><section id="load-functions-from-a-file" class="slide level2 center scrollable"><h2>Load Functions from a File</h2>
 <p>If you have multiple functions or a long function, you might want to save the function in a separate file and load it when you need it.</p>
 <p>For example:</p>
 <ol type="1">
@@ -2322,34 +2322,12 @@ Shunkei Kakimoto
 <div id="tabset-2-1">
 <ol type="1">
 <li><p>Write a function (you can name it whatever you want) to calculate the area of a circle with a given radius. The function should return the area of the circle. Use <code>pi</code>, which is a built-in constant for the value of <span class="math inline">\(\pi\)</span> in R.</p></li>
-<li><p>Write a function to check whether the provided number is an even number or not. The function should return <code>TRUE</code> if the number is even, and <code>FALSE</code> otherwise.</p></li>
+<li><p>Write a function to count the number of NA values in a given vector. (Hint: use the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function.)</p></li>
+<li><p>Write a function called calc_mad that calculates the Median Absolute Deviation (MAD) of a numeric vector. The MAD is a robust measure of variability, defined as the median of the absolute deviations from the median.(Hint: use the <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> function to calculate the median of a vector. use the <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code> function to calculate the absolute value of a vector.)</p></li>
 </ol>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Hints:</strong></p>
-</div>
-<div class="callout-content">
-<p>Use <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> function. It’s syntax is <code>ifelse(condition, return_value_if_condition_met, return_value_otherwise)</code>.</p>
-</div>
-</div>
-</div>
-<ol type="1">
-<li>In mathematics, the factorial of a non-negative integer n is the product of all positive integers less than or equal to n.&nbsp;It’s denoted by n!. For example, <span class="math inline">\(5! = 5 \times 4 \times 3 \times 2 \times 1 = 120\)</span>. Write a function named <code>calculate_factorial</code> that takes a single integer argument <code>n</code> (assume <span class="math inline">\(n \ge 1\)</span>).</li>
-</ol>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Hints:</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Use the prod() function to multiply all elements of a sequence (see <code><a href="https://rdrr.io/r/base/prod.html">?prod</a></code>).</li>
-<li>The seq() function can help you generate a sequence of numbers from 1 to n.</li>
-</ul>
-</div>
-</div>
-</div>
+<p><br></p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-2-2">
 <p>You’re a data expert at a store chain. The company needs to study its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.</p>
@@ -2366,7 +2344,7 @@ Shunkei Kakimoto
 <code>months</code>: How many months to predict (usually 12 for a year).</li>
 </ul>
 <p>The function should give back a vector of numbers (or it would be even better if you could show in a <code>data.frame</code> or <code>data.table</code> in which two columns, e.g., month and sales, show the expected sales for each month.)</p>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:Exercise 1  -->
 </div>
@@ -2440,15 +2418,15 @@ Shunkei Kakimoto
 <div id="tabset-3-2">
 <p><strong>1. Print the numbers from 1 to 5.</strong></p>
 <p>Variable <code>i</code> takes each number in the sequence <code>1:5</code> in order and print the value of <code>i</code>.</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>2. Print characters in a list.</strong></p>
 <p>Variable <code>x</code> takes each character in the list <code>list("I", "like", "cats")</code> in order and print the value of <code>x</code>.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>3. Calculate the mean of each element in a list.</strong></p>
 <p>Can you tell me what’s going on in the following code?</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <aside class="notes"><ul>
 <li>ls_seq_num is a list of three vectors, and each vector is a sequence of values.</li>
@@ -2481,12 +2459,12 @@ Shunkei Kakimoto
 <p>The basic syntax is <code>rnorm(n, mean = 0, sd = 1)</code>, where <code>n</code> is the number of random numbers you want to generate, <code>mean</code> is the mean of the normal distribution, and <code>sd</code> is the standard deviation of the normal distribution. So <code>rnorm(n, mean =0, sd = 1)</code> generates <code>n</code> random numbers from a standard normal distribution.</p>
 <p><br></p>
 <p>Generate 1000 random numbers from a standard normal distribution and calculate the mean the numbers (use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function), and print the results. Repeat this process 10 times using the <code>for loop</code>.</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-4-2">
 <p>You can nest the <code>for loop</code> inside another <code>for loop</code>. For example,</p>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Using the above code as a reference, fill in the following empty 3 x 3 matrix with the sum of the row and column indices.</p>
 <p>The output should look like this:</p>
@@ -2499,7 +2477,7 @@ Shunkei Kakimoto
 </div>
 </div>
 <p><br></p>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:exercise  -->
 </div>
@@ -2525,14 +2503,14 @@ Shunkei Kakimoto
 </ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<div id="qwebr-insertion-location-11"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="fragment center">
 <p><span style="color: blue;">Every round of the loop, the variables defined inside the loop are updated.</span></p>
 </div>
 </div>
 <div id="tabset-5-2">
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="fragment">
 <ul>
@@ -2555,7 +2533,7 @@ Shunkei Kakimoto
 </ul>
 <p><strong>Example</strong></p>
 <p>Suppose you want to cube each number in the sequence <code>1:5</code>.</p>
-<div id="qwebr-insertion-location-13"></div>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2577,7 +2555,7 @@ Shunkei Kakimoto
 <p>What if we want to have multiple outputs from the loop and combine them into a single dataset?</p>
 <p><strong>Example</strong></p>
 <p>Let’s generate 100 random numbers from a standard normal distribution and calculate the mean and the standard deviation of numbers. Repeat this process 10 times using the <code>for loop</code> and save the results in a dataset.</p>
-<div id="qwebr-insertion-location-14"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section><section id="loops-save-ex" class="slide level2 scrollable"><h2>Exercise</h2>
 <!-- start panel:Exercise 3   -->
@@ -2593,18 +2571,18 @@ Shunkei Kakimoto
 </ol>
 <p><br></p>
 <ol start="2" type="1">
-<li>Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones (e.g.&nbsp;0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …). Write a function that generates the first <code>n</code> numbers in the Fibonacci sequence.</li>
+<li>Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones (e.g.&nbsp;0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …). Write a function that generates the first <code>n</code> numbers in the Fibonacci sequence. (You use the <code>for loop</code> function inside the function.) For example, when <code>n = 5</code>, the function should return <code>c(0, 1, 1, 2, 3)</code>. For simplicity, let’s assume that <span class="math inline">\(n \ge 3\)</span> (You don’t need to consider the case where n = 1 or 2).</li>
 </ol>
 <p><br></p>
-<div id="qwebr-insertion-location-15"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-7-2">
-<p>The ancient Greek mathematician Pythagoras is known for his famous theorem, but he also explored fascinating numerical relationships. One of these involves Pythagorean triples: sets of three positive integers (a, b, c) that satisfy the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are less than or equal to a given number <span class="math inline">\(n\)</span>. To make this task easier, you need to create an R function that will generate all such triples.</p>
+<p><span style="color: blue;">NOTE: It’s okay if you cannot solve this problem! See the solutions. I showed two approaches to solve this problem, and did speed comparison between the two approaches.</span></p>
+<p><a href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean triples</a> are sets of three <strong>positive integers</strong> <span class="math inline">\((a, b, c)\)</span> that satisfy the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>, who are named after the ancient Greek mathematician Pythagoras.</p>
+<p>Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are less than or equal to a given number <span class="math inline">\(n\)</span>. To address this problem, let’s create an R function that will produce all such triples.</p>
 <ol type="1">
-<li>Create a function named <code>find_pythagorean_triples</code> that takes a single argument <code>n</code>, an integer, representing the maximum value for <code>a</code> and <code>b</code>.</li>
-<li>The function should return a data frame with columns <code>a</code>, <code>b</code>, and <code>c</code>, containing all Pythagorean triples where <code>a \leq b \leq n</code> and <code>a^2 + b^2 = c^2</code>.</li>
+<li>Write a function that takes one argument <code>n</code>, an integer, representing the maximum value for <code>a</code> and <code>b</code>. The function should return a data frame with columns <code>a</code>, <code>b</code>, and <code>c</code>, containing all Pythagorean triples where <span class="math inline">\(b \leq a \leq n\)</span> and <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</li>
 </ol>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2614,15 +2592,15 @@ Shunkei Kakimoto
 <div class="callout-content">
 <ul>
 <li>Consider using nested loops to iterate through all possible values of a and b up to n.</li>
-<li>Use the <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> function to calculate the potential value of c, and check if it’s an integer.</li>
+<li>Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.</li>
+<li>Use the floor() function to round down the value of c.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="qwebr-insertion-location-16"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><em>Reference: <a href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triples</a></em></p>
-<!-- end panel:Exercise 3  -->
+<p><em>Reference: <a href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triples</a></em> <!-- end panel:Exercise 3  --></p>
 </div>
 </div>
 </div>
@@ -2699,7 +2677,7 @@ Shunkei Kakimoto
 </div>
 <p><br></p>
 <div class="fragment fade-up">
-<p>By theory, this kind of experiment is modeled by the binomial distribution. According to the theory, it is predicted that</p>
+<p>This kind of experiment is modeled by the binomial distribution. According to the theory, it is predicted that</p>
 <ul>
 <li>Mean of <span class="math inline">\(X\)</span> is <span class="math inline">\(E[X] = np = 10 \times 1/3 = 3.33\)</span>
 </li>
@@ -2744,11 +2722,11 @@ Shunkei Kakimoto
 <ul>
 <li>We want to repeat this 1000 times.</li>
 </ul>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 <div id="tabset-8-2">
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:Demonstration  -->
 </div>
@@ -2781,7 +2759,7 @@ Shunkei Kakimoto
 </ol>
 </div>
 <div id="tabset-9-2">
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:exercise  -->
 </div>
@@ -2793,6 +2771,7 @@ Shunkei Kakimoto
 <ul id="tabset-10" class="panel-tabset-tabby">
 <li><a data-tabby-default="" href="#tabset-10-1"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Instructions</a></li>
 <li><a href="#tabset-10-2"><i class="fa-solid fa-circle-info" aria-label="circle-info"></i> Hint</a></li>
+<li><a href="#tabset-10-3"><i class="fa-solid fa-lightbulb" aria-label="lightbulb"></i> Solution</a></li>
 </ul>
 <div class="tab-content">
 <div id="tabset-10-1">
@@ -2831,13 +2810,17 @@ E[X_1] &amp;= \mu
 <ol type="1">
 <li>Repeat the following processes 1000 times:</li>
 </ol>
-<p>step 1. Draw <span class="math inline">\(n = 1000\)</span> random numbers with known mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. This will the sample data.</p>
+<p>step 1. Draw <span class="math inline">\(n = 1000\)</span> random numbers with known mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. This will be the sample data.</p>
 <p>step 2. Get (1) the mean of the sample and (2) the value of the first observation, and save the results.</p>
 <ol type="1">
-<li>The 2000 estimates of the population mean for estimator 1 and estimator 2, respectively. Compute the means for each estimator. Are they both close to the true population mean? Compute the variance of the estimates. Which one has a smaller variance?</li>
+<li>The previous iterations produce 1000 estimates of the population mean for estimator 1 and estimator 2, respectively. Compute the means for each estimator. Are they both close to the true population mean? Compute the variance of the estimates. Which one has a smaller variance?</li>
 </ol>
 <p>If you could also visually compare the distribution of estimates from the two estimators, that would be great!</p>
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<div id="tabset-10-3">
+<div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:exercise  -->
 </div>
@@ -2892,11 +2875,11 @@ E[X_1] &amp;= \mu
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>foreach</strong></p>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div><div class="column" style="width:50%;">
 <p><strong>for loop</strong></p>
-<div id="qwebr-insertion-location-22"></div>
+<div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div></div>
 </div>
@@ -2916,7 +2899,7 @@ E[X_1] &amp;= \mu
 <ul>
 <li>Try different <code>.combine</code> options in the following code.</li>
 </ul>
-<div id="qwebr-insertion-location-23"></div>
+<div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <!-- end panel:foreach  -->
 </div>
