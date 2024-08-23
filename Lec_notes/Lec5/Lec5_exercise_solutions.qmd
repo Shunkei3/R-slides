@@ -14,41 +14,359 @@ format:
       warning: false
 ---
 
-## Loop
 
-<!-- start panel:   --> 
-:::{.panel-tabset} 
+# User-Defined Functions
+
+## Exercise 1
+
+<!-- start panel:Ex1   --> 
+:::{.panel-tabset .nav-pills}
 ### {{< fa person-chalkboard >}} Instructions
-
-1. Using the `for loop`, calculate the sum of the first `n` numbers for `n = 1, 2, ..., 10`. Save the results in a vector object.
  
-2. 
+1. Write a function (you can name it whatever you want) to calculate the area of a circle with a given radius. The function should return the area of the circle. Use `pi`, which is a built-in constant for the value of $\pi$ in R. 
+
+2. Write a function to count the number of NA values in a given vector. (Hint: use the `is.na()` function.)
+
+3. Write a function called calc_mad that calculates the Median Absolute Deviation (MAD) of a numeric vector. The MAD is a robust measure of variability, defined as the median of the absolute deviations from the median.(Hint: use the `median()` function to calculate the median of a vector. use the `abs()` function to calculate the absolute value of a vector.)
 
 ### {{< fa lightbulb >}}  Solutons
 
+```{r}
+#/*--------------------------------*/
+#' ## Part 1
+#/*--------------------------------*/
+# --- Create a function --- #
+circle_area <- function(radius){
+  return(pi * radius^2)
+}
+
+# --- Test --- #
+circle_area(3)
+
+#/*--------------------------------*/
+#' ## Part 2
+#/*--------------------------------*/
+# --- Create a function --- #
+calc_mad <- function(x) {
+  # Remove missing values
+  x <- na.omit(x)
+  
+  # Calculate the median of the vector
+  med <- median(x)
+  
+  # Calculate the absolute deviations from the median
+  abs_dev <- abs(x - med)
+  
+  # Return the median of the absolute deviations
+  return(median(abs_dev))
+}
+
+# --- Test --- #
+test <- c(2, 4, 4, 6, 8)
+calc_mad(x)
+
+
+#/*--------------------------------*/
+#' ## Part 3
+#/*--------------------------------*/
+# --- Create a function --- #
+count_na <- function(vec){
+  return(sum(is.na(vec)))
+}
+
+# --- Test --- #
+test <- c(1, 2, NA, 4, 5, NA) 
+count_na(test)
+```
+<!-- end panel:Ex1  --> 
+:::
+
+
+## Exercise 2 (A Bit Advanced)
+
+<!-- start panel:exercise   --> 
+:::{.panel-tabset .nav-pills} 
+### {{< fa person-chalkboard >}} Instructions
+
+You're a data expart at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
+
+For sales growth, use the following formula 
+
+$$S_t = S_0 \times (1 + g)^{t-1}$$ 
+
+, where $S_t$ is the sales in month $t$ , $S_0$  is the starting sales, and $g$ is the growth rate.
+
+Create a function called `monthly_sales_growth` with the following three inputs:
+
++ `initial_sales`: Starting sales (in thousands of dollars).
++ `growth_rate`: Monthly growth rate (as a decimal, like 0.03 for 3% growth).
++ `months`: How many months to predict (usually 12 for a year).
+
+The function should give back a vector of numbers (or it would be nicer if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
+
+
+### {{< fa lightbulb >}} Solutions
+
 **Part 1**
+```{r}
+monthly_sales_growth <- function(initial_sales, growth_rate, months, discount_rate = 0){
+  sales <- rep(0, months)
+  
+  for (i in 1:months){
+    sales[i] <- initial_sales * (1 + growth_rate)^(i-1) * (1 - discount_rate)
+  }
+  
+  return(sales)
+}
+``` 
+
+If you don't use `for loop`, you can use the following code:
+
+```{r}
+monthly_sales_growth <- function(initial_sales, growth_rate, months) {
+  # Generate a sequence of months
+  month_seq <- 1:months
+  
+  # Calculate the sales growth for each month
+  sales <- initial_sales * (1 + growth_rate) ^ (month_seq - 1)
+
+  return(sales)
+}
+
+# --- Test --- #
+monthly_sales_growth(initial_sales = 50, growth_rate = 0.03, months = 12)
+```
+<!-- end panel:exercise  --> 
+:::
+
+
+
+# Loops
+
+## Exercise 1 (Basics)
+
+### Problem 1
+<!-- start panel:problem 1   --> 
+:::{.panel-tabset .nav-pills} 
+### {{< fa person-chalkboard >}} Instructions 
+
+In econometric class, we use the `rnorm()` function a lot! It is a function that generates random numbers from a normal distribution. See `?rnorm` for more details.
+
+The basic syntax is `rnorm(n, mean = 0, sd = 1)`, where `n` is the number of random numbers you want to generate, `mean` is the mean of the normal distribution, and `sd` is the standard deviation of the normal distribution. So `rnorm(n, mean =0, sd = 1)` generates `n` random numbers from a standard normal distribution.
+
+<br>
+
+Generate 1000 random numbers from a standard normal distribution and calculate the mean the numbers (use `mean()` function), and print the results. Repeat this process 10 times using the `for loop`.
+
+### {{< fa lightbulb >}}  Solutons
+
+```{r}
+for(i in 1:10){
+  random_numbers <- rnorm(1000)
+  mean_random_numbers <- mean(random_numbers)
+  print(mean_random_numbers)
+}
+
+```
+<!-- end panel:problem 1  --> 
+:::
+
+### Problem 2
+
+<!-- start panel:problem 2   -->
+:::{.panel-tabset .nav-pills}
+### {{< fa person-chalkboard >}} Instructions
+
+You can nest the `for loop` inside another `for loop`. For example, 
+
+```{webr-r}
+# Outer loop
+for (i in 1:3) {
+  # Inner loop
+  for (j in 1:2) {
+    print(paste("i =", i, "j =", j))
+  }
+}
+```
+
+Using the above code as a reference, fill in the following empty 3 x 3 matrix with the sum of the row and column indices.
+
+The output should look like this: 
+
+```{r}
+#| eval: true
+#| echo: false
+empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
+for (i in 1:3){
+  for (j in 1:3){
+    empty_matrix[i, j] <- i + j
+  }
+}
+print(empty_matrix)
+```
+
+<br>
+
+Here, is the empty 3 x 3 matrix.  
+```{r}
+empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
+```
+
+### {{< fa lightbulb >}}  Solutons
+```{r}
+empty_matrix <- matrix(NA, nrow = 3, ncol = 3)
+
+for (i in 1:3){
+  for (j in 1:3){
+    empty_matrix[i, j] <- i + j
+  }
+}
+```
+<!-- end panel:problem 2  -->
+:::
+
+
+## Exercise 2
+
+:::{.panel-tabset .nav-pills}
+
+### {{< fa person-chalkboard >}} Instructions
+
+Using the `for loop`, calculate the sum of the first `n` numbers for `n = 1, 2, ..., 10`. For example, the sum of the first 3 numbers (n=3) is 1 + 2 + 3 = 6. Save the results in a vector object.
+
+### {{< fa lightbulb >}} Solutions
+
 ```{r}
 # --- Create an empty vector --- #
 output_storage <- rep(0, 10)
 
-# --- for loop --- #
-for (i in 1:10){
+# --- loops --- #
+for(i in 1:10){
   output_storage[i] <- sum(1:i)
 }
 ```
-
-
-**Part 2**
-
-
-<!-- end panel:  --> 
 :::
 
 
-## Combining Datasets using Loop
+## Exercise 3
+
+:::{.panel-tabset .nav-pills}
+
+### {{< fa person-chalkboard >}} Instructions
+
+Fibonacci sequence is a series of numbers in which each number is the sum of the two preceding ones (e.g. 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...). Write a function that generates the first `n` numbers in the Fibonacci sequence. (You use the `for loop` function inside the function.) For example, when `n = 5`, the function should return `c(0, 1, 1, 2, 3)`. For simplicity, let's assume that $n \ge 3$ (You don't need to consider the case where n = 1 or 2).
 
 
-:::{.panel-tabset} 
+### {{< fa lightbulb >}} Solutions
+```{r}
+# --- Define a function --- #
+# for example, when n=1, the function should return 0. When n=2, the function should return 0, 1. When n=3, the function should return 0, 1, 1.
+
+gen_fibonacci_seq <- function(n){
+  empty_storage <- rep(0, n)
+  empty_storage[2] <- 1
+
+  for(i in 3:n){
+    empty_storage[i] <- empty_storage[i-1] + empty_storage[i-2]
+  }
+  return(empty_storage)
+}
+
+# --- test --- #
+gen_fibonacci_seq(6)
+```
+
+:::
+
+## Exercise 4: Functions and Loops (Advanced, Interesting Problem!)
+
+<!-- start panel:functons and loops   --> 
+:::{.panel-tabset .nav-pills} 
+### {{< fa person-chalkboard >}} Instructions 
+
+[Pythagorean triples](https://en.wikipedia.org/wiki/Pythagorean_triple) are sets of three **positive integers** $(a, b, c)$ that satisfy the equation $a^2 + b^2 = c^2$, who are named after the ancient Greek mathematician Pythagoras.
+
+Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where $a$ and $b$ are less than or equal to a given number $n$. To address this problem, let's create an R function that will produce all such triples.
+
+1. Write a function that takes one argument `n`, an integer, representing the maximum value for `a` and `b`. The function should return a data frame with columns `a`, `b`, and `c`,  containing all Pythagorean triples where $b \leq a \leq n$ and $a^2 + b^2 = c^2$.
+
+
+::: {.callout-tip collapse="true"}
+## Hints:
++ Consider using nested loops to iterate through all possible values of a and b up to n.
++	Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.
++ Use the floor() function to round down the value of c.
+:::
+
+
+### {{< fa lightbulb >}} Solutions
+
+There are many ways to do this. I will show you two approaches: one using loops and the other using vectorized operations. Then, I will show you the speed comparison between the two approaches.
+
+
+```{r}
+#/*--------------------------------*/
+#' ## Approach 1 (loops)
+#/*--------------------------------*/
+find_pythagorean_triples <- function(n){
+  # --- prepare an empty storages --- #
+  triples_storage_dt <- 
+    data.frame(a = integer(), b = integer(), c = integer())
+
+  for(a in 1:n){
+    # for example a = 4
+    for(b in 1:a){
+      # for example b = 3
+      c <- sqrt(a^2 + b^2)
+      if(c == floor(c)){
+        res_triples_dt <- data.frame(a = a, b = b, c = c)
+        triples_storage_dt <- rbind(triples_storage_dt, res_triples_dt)
+      }
+    }
+  }
+  return(triples_storage_dt)
+}
+
+# --- test --- #
+find_pythagorean_triples(n = 5)
+
+
+#/*--------------------------------*/
+#' ## Approach 2 (Vectorized)
+#/*--------------------------------*/
+library(data.table)
+library(dplyr)
+
+find_pythagorean_triples_vec <- function(n){
+  # for example, n = 5
+  # --- create all combinations of (a, b) --- #
+  abc_all_dt <- 
+    CJ(a = 1:n, b = 1:n) %>% 
+    .[, c := sqrt(a^2 + b^2)] %>%
+    # find a row where c is an integer
+    .[c == floor(c), ]
+  
+  return(abc_all_dt)
+}
+
+# NOTE: #CJ() is a function from data.table package that creates all combinations of two vectors. (It is similar to expand.grid() function in base R.)
+
+# --- test --- #
+find_pythagorean_triples_vec(n = 5)
+
+#/*--------------------------------*/
+#' ## Speed Competition
+#/*--------------------------------*/
+system.time(find_pythagorean_triples(n = 10^4))
+system.time(find_pythagorean_triples_vec(n = 10^4))
+
+# Lesson: Vectorized operations are much faster than loops in R!
+```
+<!-- end panel:functons and loops  --> 
+:::
+
+## Exercise 5: Combining Datasets using Loop
+:::{.panel-tabset .nav-pills}
  <!-- start panel:exerciese1   --> 
 
 ### {{< fa person-chalkboard >}} Instruction
@@ -66,7 +384,7 @@ Make sure that you open the R project fo this course. If so, the following code 
 
 There are lots of approach. The most easy one is to use `foreach` function (in my opinion).
 
-:::{.panel-tabset}
+:::{.panel-tabset .nav-pills}
 
 ### {{< fa lightbulb >}} Solution 1: Using loop
 
@@ -136,192 +454,179 @@ The `foreach` function returns the last value of the loop by default. In this ca
 :::
 
 
-## Functions (Basics)
+# Monte Carlo Simulation
 
-<!-- start panel:funcions   --> 
-:::{.panel-tabset} 
-### {{< fa person-chalkboard >}} Instructions
-
-1. Write a function to calculate the area of a circle with a given radius. The function should return the area of the circle.
-
-
-2. The factorial of a non-negative integer $n$, $n!$ is the product of all positive integers between 1 and $n$(e.g., $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.) Create a function named `calculate_factorial` that takes a single integer argument `n`. The function should return the value of $n!$. Assume that `n` does not take zero for simplicity.
-
-3. Write a function that calculates the sum of the first `n` numbers for `n = 1, 2, ..., 10`. The function should return the results as a vector object.
-
-4. Write a function to count how many odd numbers there are in a provided vector containing a series of integers.
-
-
-### {{< fa lightbulb >}} Solutions
-
-**Part 1**
-```{r}
-# --- Create a function --- #
-circle_area <- function(radius){
-  return(pi * radius^2)
-}
-```
-
-
-```{r}
-# --- Create a function --- #
-calculate_factorial <- function(n){
-  return(prod(1:n))
-}
-
-# --- Test --- #
-calculate_factorial(0)
-
-
-# --- A bit more sophisticated way --- #
-calculate_factorial <- function(n) {
-  if (n %in% c(0, 1) {
-    return(1)
-  } else {
-    return(prod(1:n))
-  }
-}
-
-```
-
-**Part 2**
-```{r}
-# --- Create a function --- #
-sum_n <- function(n){
-  output_storage <- rep(0, n)
-  
-  for (i in 1:n){
-    output_storage[i] <- sum(1:i)
-  }
-  
-  return(output_storage)
-}
-```
-
-**Part 3**
-```{r}
-# --- Using loop --- #
-num.odd <- function(v){
-  count <- 0
-  
-  for (i in 1:length(v)){
-    if (v[i] %% 2 != 0){
-      count <- count + 1
-    }
-  }
-  
-  return(count)
-}
-```
-
- 
- 
-<!-- end panel:funcions  --> 
-:::
-
-
-
-### Functions
-
-<!-- start panel:exercise   --> 
-:::{.panel-tabset} 
-### {{< fa person-chalkboard >}} Instructions
-
-You're a data expart at a store chain. The company needs to study its its monthly sales growth to plan better. They expect sales to grow by a fixed percentage each month. Your job is to create an R function that shows sales growth over a year.
-
-For sales growth, use the following formula 
-
-$$S_t = S_0 \times (1 + g)^{t-1}$$ 
-
-, where $S_t$ is the sales in month $t$ , $S_0$  is the starting sales, and $g$ is the growth rate.
-
-Create a function called `monthly_sales_growth` with the following three inputs:
-
-+ `initial_sales`: Starting sales (in thousands of dollars).
-+ `growth_rate`: Monthly growth rate (as a decimal, like 0.03 for 3% growth).
-+ `months`: How many months to predict (usually 12 for a year).
-
-The function should give back a vector of numbers (or it would be nicer if you could show in a `data.frame` or `data.table` in which two columns, e.g., month and sales, show the expected sales for each month.)
-
-
-### {{< fa lightbulb >}} Solutions
-
-**Part 1**
-```{r}
-monthly_sales_growth <- function(initial_sales, growth_rate, months, discount_rate = 0){
-  sales <- rep(0, months)
-  
-  for (i in 1:months){
-    sales[i] <- initial_sales * (1 + growth_rate)^(i-1) * (1 - discount_rate)
-  }
-  
-  return(sales)
-}
-``` 
-
-If you don't use `for loop`, you can use the following code:
-
-```{r}
-monthly_sales_growth <- function(initial_sales, growth_rate, months) {
-  # Generate a sequence of months
-  month_seq <- 1:months
-  
-  # Calculate the sales growth for each month
-  sales <- initial_sales * (1 + growth_rate) ^ (month_seq - 1)
-
-  return(sales)
-}
-
-# --- Test --- #
-monthly_sales_growth(initial_sales = 50, growth_rate = 0.03, months = 12)
-```
- 
- 
-<!-- end panel:exercise  --> 
-:::
-
-
-
-### Functions and Loops (Advanced)
-
-<!-- start panel:functons and loops   --> 
-:::{.panel-tabset} 
+## Exercise 1:  (Weak) Low of Large Number
+<!-- start panel:ex1   --> 
+:::{.panel-tabset .nav-pills} 
 ### {{< fa person-chalkboard >}} Instructions 
 
-[Pythagorean triples](https://en.wikipedia.org/wiki/Pythagorean_triple) are sets of three positive integers $(a, b, c)$ that satisfy the equation $a^2 + b^2 = c^2$, who are named after the ancient Greek mathematician Pythagoras.
+Weak law of large number states that the sample mean converges (in probability) to the population mean as the sample size increases. In other words, the sample mean more accurately estimates the population mean as the sample size increases.
 
-Let’s take this concept further. Suppose Pythagoras challenges you to find all possible Pythagorean triples where $a$ and $b$ are less than or equal to a given number $n$. To address this problem, let's create an R function that will produce all such triples.
+$$\bar{X}_n = \frac{1}{n}\sum_{n=1}^{n} X_i E[X] \xrightarrow{p} E[X]$$
 
+Lets check this using Monte Carlo simulation! We compare the distribution of sample mean with different sample size. Let's compare two sample sizes: $n=100$ and $n=1000$.
 
-1. Write a function named `find_pythagorean_triples` that takes one argument `n`, an integer, representing the maximum value for `a` and `b`. The function should return a data frame with columns `a`, `b`, and `c`,  containing all Pythagorean triples where `a \leq b \leq n` and `a^2 + b^2 = c^2`.
+<br>
 
+**Process**
 
-::: {.callout-tip collapse="true"}
-## Hints:
-+ Consider using nested loops to iterate through all possible values of a and b up to n.
-+	Use the sqrt() function to calculate the potential value of c, and check if it’s an integer.
-:::
+Repeat 1 and 2 for $B=1000$ times.
+
+1. Using a normal distribution with mean $\mu = 5$ and $sd = 10$, generate random numbers for $n=100$ and $n=1000$. e.g. `rnorm(n = 10, mean = 5, sd = 10)`.
+
+2. Compute sample mean for each sample data, and save them.
+
+Finally, 
+
+3. Plot histograms of the sample means obtained from the two samples.
 
 
 ### {{< fa lightbulb >}} Solutions
 
 ```{r}
-find_pythagorean_triples <- function(n){
-  b <- seq()
+set.seed(1843)
+
+# --- Parameters --- #
+mu <- 5
+sd <- 10
+
+B <- 1000
+
+# --- Create an empty object to save the output --- #
+sample_mean_100 <- rep(0, B)
+sample_mean_1000 <- rep(0, B)
+
+# --- for loop --- #
+for (i in 1:B){
+  # --- Generate random numbers --- #
+  sample_100 <- rnorm(n = 100, mean = mu, sd = sd)
+  sample_1000 <- rnorm(n = 1000, mean = mu, sd = sd)
+  
+  # --- Compute sample mean --- #
+  sample_mean_100[i] <- mean(sample_100)
+  sample_mean_1000[i] <- mean(sample_1000)
 }
 
 
+# --- Plot --- #
+ggplot() +
+  geom_histogram(
+    aes(x = sample_mean_100, fill = "Sample size: 100"),
+     alpha = 0.7
+  ) +
+  geom_histogram(
+    aes(x = sample_mean_1000, fill = "Sample size: 1000"),
+    alpha = 0.7
+  ) +
+  geom_vline(
+    xintercept = mu,
+    linetype = "dashed",
+  ) +
+  theme_bw()
 ```
- 
- 
-<!-- end panel:functons and loops  --> 
+<!-- end panel:ex1  --> 
 :::
 
 
+## Exercise 2: Two estimators to estimate the population mean? 
+<!-- start panel:ex1   --> 
+:::{.panel-tabset .nav-pills} 
+### {{< fa person-chalkboard >}} Instructions 
+
+Suppose you're interested in estimating the unknown population mean of men's heights (i.e., $\mu$) in the US. We have randomly sampled data with the size of $n=1000$. Let $X_i$ denote the individual $i$'s height in the sample. **How should we use the sample data to estimate the population mean?**
+
+<br>
+
+Your friends suggested two different estimators:
+
+Estimator 1. Use the sample mean: $\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i$ 
+
+Estimator 2. Use only the first observation: $X_1$
+
+<br>
+
+Theoretically, both estimators are unbiased estimators (i.e., if we repeat the estimation process many times on a different sample data every time, the average of the estimates will be equal to the population mean):
+
+<!-- Note that $X_i$ is a random variable, and all $X_i$ for $i = 1,2,...,2000$ belong to the same population with the same mean $\mu$. -->
+
+\begin{align*}
+E[\bar{X}_n] &= E \left[\frac{1}{n} \sum_{i=1}^{n} \right] = \frac{1}{n} E \left[\sum_{i=1}^{n} X_i \right] = \frac{1}{n} \sum_{i=1}^{n} E[X_i] = \frac{1}{n} \cdot n \cdot \mu = \mu \\
+E[X_1] &= \mu
+\end{align*}
+
+<br>
+
+**Questions:**
+
++ Is it true that both estimators are correctly estimating the population mean, on average?
++ Which one is more accurate in estimating the population mean?
+
+Using Monte Carlo simulation, let's examine these questions!
+
+::: {.callout-tip collapse="true"}
+## Hints
+
+1. Repeat the following processes 1000 times:
+
+step 1. Draw $n = 1000$ random numbers with known mean $\mu$ and standard deviation $\sigma$. This will the sample data. 
+
+step 2. Get (1) the mean of the sample and (2) the value of the first observation, and save the results.
+
+1. The 2000 estimates of the population mean for estimator 1 and estimator 2, respectively. Compute the means for each estimator. Are they both close to the true population mean? Compute the variance of the estimates. Which one has a smaller variance?
+
+If you could also visually compare the distribution of estimates from the two estimators, that would be great!
 
 
+:::
 
+### {{< fa lightbulb >}} Solutions
 
 ```{r}
+# --- Load packages --- #
+library(data.table)
+library(ggplot2)
 
+
+# --- Parameter setting --- #
+B = 1000
+n = 1000
+mu = 170 #(cm)
+
+# --- Prepare a storage object --- #
+res_data <- 
+  data.table(
+    x_bar = rep(0, B),
+    x_single = rep(0, B)
+    )
+
+# --- Monte Carlo simulation --- #
+for(i in 1:B){
+  
+  # --- Create sample data --- #
+  data <- rchisq(n, df=mu)
+  
+  # --- Compute the sample mean --- #
+  x_bar <- mean(data)
+  # --- Get the 1st value --- #
+  x_single <- data[1]
+
+  # --- store the results --- #
+  res_data[i, "x_bar"] <- x_bar
+  res_data[i, "x_single"] <- x_single
+}
+
+# === Visualization === #
+# Just for convenience, transform the data to long-format  (you don't need to do this though)
+vis_sampling <- 
+  ggplot(res_data) +
+    geom_histogram(aes(x=x_bar, fill="x_bar"), alpha = 0.5)+
+    geom_histogram(aes(x=x_single, fill="x_single",), alpha = 0.5)+
+    labs(title="Sample size 1000")+
+    theme_bw() +
+    # modify x-label and legend name
+    labs(x = expression (~hat(beta)), fill = "Estimator")
 ```
+
+<!-- end panel:ex1  --> 
+:::
